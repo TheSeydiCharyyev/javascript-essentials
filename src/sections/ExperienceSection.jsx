@@ -37,8 +37,8 @@ const ExperienceSection = () => {
                                                 <p className='text-[#839cb5 italic]'>
                                                     Responsibilities
                                                 </p>
-                                                <ul className='list-disc ms-5'>
-
+                                                <ul className='list-disc ms-5 mt-5 flex flex-col gap-5 text-white-50'>
+                                                    {card.responsibilities.map((responsibility))}
                                                 </ul>
                                             </div>
                                         </div>

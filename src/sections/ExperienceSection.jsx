@@ -18,6 +18,8 @@ const ExperienceSection = () => {
                                             <img src={card.imgPath} alt={card.title} />
                                         </div>
                                     </GlowCard>
+                                </div>
+                                <div className='xl:w-4/6'>
 
                                 </div>
                             </div>

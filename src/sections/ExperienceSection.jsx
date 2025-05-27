@@ -26,7 +26,13 @@ const ExperienceSection = () => {
             })
         })
         gsap.to('.timeline', {
-            transformOrigin: 'bottom bottom'
+            transformOrigin: 'bottom bottom',
+            ease: 'power1.inOut',
+            ScrollTrigger: {
+                trigger: '.timeline',
+                start: 'top center',
+                end: '70% center'
+            }
         })
 
     }, []);

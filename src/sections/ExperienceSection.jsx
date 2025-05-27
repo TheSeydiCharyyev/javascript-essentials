@@ -1,6 +1,10 @@
 import GlowCard from '../components/GlowCard'
 import TitleHeader from '../components/TitleHeader'
 import { expCards } from '../constants/index'
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 
 const ExperienceSection = () => {
     return (

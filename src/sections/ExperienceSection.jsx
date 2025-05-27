@@ -31,8 +31,13 @@ const ExperienceSection = () => {
             ScrollTrigger: {
                 trigger: '.timeline',
                 start: 'top center',
-                end: '70% center'
-            }
+                end: '70% center',
+                onUpdate: (self) => {
+                    gsap.to('.timeline');
+                }
+            },
+
+
         })
 
     }, []);

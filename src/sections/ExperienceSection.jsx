@@ -19,7 +19,10 @@ const ExperienceSection = () => {
                 transformOrigin: 'left left',
                 duration: 1,
                 ease: 'power2.inout',
-                ScrollTrigger
+                ScrollTrigger: {
+                    trigger: card,
+                    start: 'top 8'
+                }
             })
         })
 

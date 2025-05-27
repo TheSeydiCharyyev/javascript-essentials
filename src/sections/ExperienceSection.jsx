@@ -33,7 +33,9 @@ const ExperienceSection = () => {
                 start: 'top center',
                 end: '70% center',
                 onUpdate: (self) => {
-                    gsap.to('.timeline');
+                    gsap.to('.timeline', {
+                        scaleY: 1 - self.progress
+                    });
                 }
             },
 

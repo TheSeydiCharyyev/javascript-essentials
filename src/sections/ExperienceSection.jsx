@@ -21,11 +21,13 @@ const ExperienceSection = () => {
                 ease: 'power2.inout',
                 ScrollTrigger: {
                     trigger: card,
-                    start: 'top 8'
+                    start: 'top 80%'
                 }
             })
         })
-
+        gsap.to('.timeline', {
+            transformOrigin: 'bottom bottom'
+        })
 
     }, []);
 

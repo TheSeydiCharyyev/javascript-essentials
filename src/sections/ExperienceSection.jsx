@@ -13,7 +13,14 @@ const ExperienceSection = () => {
     useGSAP(() => {
 
         gsap.utils.toArray('.time-card').forEach((card) => {
-            gsap.from(card)
+            gsap.from(card, {
+                xPercent: -100,
+                opacity: 0,
+                transformOrigin: 'left left',
+                duration: 1,
+                ease: 'power2.inout',
+                ScrollTrigger
+            })
         })
 
 

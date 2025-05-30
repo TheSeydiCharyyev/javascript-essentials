@@ -14,6 +14,7 @@ const TechStack = () => {
                 <div className='tech-grid'>
                     {techStackIcons.map((icon) => (
                         <div key={icon.name}>
+                            {icon.name}
 
                         </div>
                     ))}

@@ -5,7 +5,10 @@ const TechStack = () => {
     return (
         <div id='skills' className='flex-center section-padding'>
             <div>
-                <TitleHeader />
+                <TitleHeader
+                    title='My Preferred Tech Stack'
+                    sub='The skills I bring to the table'
+                />
             </div>
         </div>
     )

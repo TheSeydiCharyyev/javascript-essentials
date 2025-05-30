@@ -1,6 +1,7 @@
 import React from 'react'
 import TitleHeader from '../components/TitleHeader'
 import { techStackIcons } from '../constants'
+import TechIcon from '../components/Models/TechLogos/TechIcon'
 
 const TechStack = () => {
     return (
@@ -17,7 +18,10 @@ const TechStack = () => {
                             <div className='tech-card-animated-bg' />
                             <div className='tech-card-content'>
                                 <div className='tech-icon-wrapper'>
-
+                                    <TechIcon model={icon} />
+                                </div>
+                                <div className='padding-x w-full'>
+                                    {icon.name}
                                 </div>
                             </div>
                         </div>

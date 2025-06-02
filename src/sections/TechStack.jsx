@@ -10,7 +10,11 @@ const TechStack = () => {
                     sub="The Skills I bring the table"
                 />
                 <div className='tech-grid'>
-                    {techStackIcons}
+                    {techStackIcons.map((icon) => (
+                        <div key={icon.name}>
+
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>

@@ -4,7 +4,9 @@ const TechIcon = ({ model }) => {
     const scene = useGLTF(model.modelPath);
 
     return (
-        <div>TechIcon</div>
+        <div>
+
+        </div>
     )
 }
 

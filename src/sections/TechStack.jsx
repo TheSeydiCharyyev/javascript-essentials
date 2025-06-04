@@ -1,7 +1,7 @@
 import { useGSAP } from '@gsap/react'
 import TechIcon from '../components/Models/TechLogos/TechIcon'
 import TitleHeader from '../components/TitleHeader'
-import { techStackIcons } from '../constants'
+import { techStackIcons, techStackImgs } from '../constants'
 import { gsap } from 'gsap'
 
 const TechStack = () => {
@@ -13,6 +13,7 @@ const TechStack = () => {
             stagger: 0.2,
             scrollTrigger: {
                 trigger: '#skills',
+                start: 'top center'
             }
         })
     })
@@ -39,6 +40,10 @@ const TechStack = () => {
                             </div>
                         </div>
                     ))}
+                    {techStackImgs.map((icon) => (
+                        <div></div>
+                    ))}
+
                 </div>
             </div>
         </div>

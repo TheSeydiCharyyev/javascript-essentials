@@ -6,7 +6,15 @@ import { gsap } from 'gsap'
 
 const TechStack = () => {
     useGSAP(() => {
-        gsap.fromTo
+        gsap.fromTo('.tech-card', { y: 50, opacity: 0 }, {
+            y: 0,
+            duration: 1,
+            ease: 'power2.inOut',
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: '#skills',
+            }
+        })
     })
 
 

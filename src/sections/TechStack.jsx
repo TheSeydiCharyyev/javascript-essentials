@@ -40,6 +40,11 @@ const TechStack = () => {
                             </div>
                         </div>
                     ))}
+
+                    {/*
+                    Bu yerde GLB model tapylmasa asakdaky suratlary ulanyp bilyan
+                    
+                    */ }
                     {   /* {techStackImgs.map((icon) => (
                         <div key={icon.name} className='card-border tech-card overflow-hidden group xl:rounded-full rounded-lg'>
                             <div className='tech-card-animated-bg' />

@@ -41,7 +41,9 @@ const TechStack = () => {
                         </div>
                     ))}
                     {techStackImgs.map((icon) => (
-                        <div></div>
+                        <div key={icon.name} className='card-border tech-card overflow-hidden group xl:rounded-full rounded-lg'>
+
+                        </div>
                     ))}
 
                 </div>

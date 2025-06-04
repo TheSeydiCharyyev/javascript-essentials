@@ -61,6 +61,10 @@ const TechStack = () => {
                     ))}
                     */}
 
+                    {/** 
+                Surat seksiyag gutardy
+ * **/}
+
                 </div>
             </div>
         </div>

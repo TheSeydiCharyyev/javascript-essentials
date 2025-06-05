@@ -1,4 +1,3 @@
-import React from 'react'
 import TitleHeader from '../components/TitleHeader'
 import { testimonials } from '../constants'
 
@@ -10,7 +9,9 @@ const Testimonials = () => {
                     sub='Client Feedback Highlights'
                 />
                 <div className='lg:columns-3 md:columns-2 columns-1 mt-16'>
-                    {testimonials}
+                    {testimonials.map((testimonials) => (
+                        <p>{testimonials.review}</p>
+                    ))}
                 </div>
 
             </div>

@@ -1,3 +1,4 @@
+import GlowCard from '../components/GlowCard'
 import TitleHeader from '../components/TitleHeader'
 import { testimonials } from '../constants'
 
@@ -10,7 +11,11 @@ const Testimonials = () => {
                 />
                 <div className='lg:columns-3 md:columns-2 columns-1 mt-16'>
                     {testimonials.map((testimonials) => (
-                        <p>{testimonials.review}</p>
+                        <GlowCard card={testimonials}>
+                            <div className='flex items-center gap-3'>
+
+                            </div>
+                        </GlowCard>
                     ))}
                 </div>
 

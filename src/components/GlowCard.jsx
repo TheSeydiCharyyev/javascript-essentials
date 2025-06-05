@@ -40,5 +40,8 @@ const GlowCard = ({ card, children, index }) => {
         </div>
     )
 }
+{/*
+    End of Testimonials section
+    */}
 
 export default GlowCard

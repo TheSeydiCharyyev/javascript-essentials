@@ -1,28 +1,27 @@
-import LogoSections from "./sections/LogoSections";
-import NavBar from "./components/NavBar";
-import Hero from "./sections/hero"
-import ShowcaseSection from "./sections/ShowcaseSection"
-import FeatureCards from "./sections/FeatureCards";
-import ExperienceSection from "./sections/ExperienceSection";
-import TechStack from "./sections/TechStack";
 import Testimonials from "./sections/Testimonials";
+import Footer from "./sections/Footer";
+import Contact from "./sections/Contact";
+import TechStack from "./sections/TechStack";
+import Experience from "./sections/Experience";
+import Hero from "./sections/Hero";
+import ShowcaseSection from "./sections/ShowcaseSection";
+import LogoShowcase from "./sections/LogoShowcase";
+import FeatureCards from "./sections/FeatureCards";
+import Navbar from "./components/NavBar";
 
-const app = () => {
-    return (
-        <>
-            <NavBar />
-            <Hero />
-            <ShowcaseSection />
-            <LogoSections />
-            <FeatureCards />
-            <ExperienceSection />
-            <TechStack />
-            <Testimonials />
+const App = () => (
+    <>
+        <Navbar />
+        <Hero />
+        <ShowcaseSection />
+        <LogoShowcase />
+        <FeatureCards />
+        <Experience />
+        <TechStack />
+        <Testimonials />
+        <Contact />
+        <Footer />
+    </>
+);
 
-        </>
-
-
-    )
-}
-
-export default app;
+export default App;

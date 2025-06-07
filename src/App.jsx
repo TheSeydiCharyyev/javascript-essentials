@@ -10,18 +10,18 @@ import FeatureCards from "./sections/FeatureCards";
 import Navbar from "./components/NavBar";
 
 const App = () => (
-    <>
-        <Navbar />
-        <Hero />
-        <ShowcaseSection />
-        <LogoShowcase />
-        <FeatureCards />
-        <Experience />
-        <TechStack />
-        <Testimonials />
-        <Contact />
-        <Footer />
-    </>
+  <>
+    <Navbar />
+    <Hero />
+    <ShowcaseSection />
+    <LogoShowcase />
+    <FeatureCards />
+    <Experience />
+    <TechStack />
+    <Testimonials />
+    <Contact />
+    <Footer />
+  </>
 );
 
 export default App;

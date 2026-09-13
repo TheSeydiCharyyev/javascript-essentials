@@ -1,13 +1,696 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/images/fav.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Adrian &mdash;&mdash; Portfolio</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Essentials — Полный курс</title>
+    <link rel="stylesheet" href="css/common.css">
+    <script src="js/lang.js" defer></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        /* ========== HEADER ========== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            z-index: 100;
+        }
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: #1e293b;
+        }
+        .header-logo span {
+            background: linear-gradient(135deg, #facc15, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .sidebar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            margin-right: 8px;
+            border-radius: 8px;
+            color: #1e293b;
+        }
+        .sidebar-toggle:hover { background: #f1f5f9; }
+        .header-info {
+            margin-left: auto;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        /* ========== SIDEBAR ========== */
+        .sidebar {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            bottom: 0;
+            width: 280px;
+            background: #fff;
+            border-right: 1px solid #e2e8f0;
+            overflow-y: auto;
+            padding: 16px 12px;
+            z-index: 50;
+            transition: transform 0.3s ease;
+        }
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8px;
+            margin-bottom: 16px;
+        }
+        .sidebar-header span {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #94a3b8;
+        }
+        .sidebar-badge {
+            font-size: 0.7rem;
+            background: #fef3c7;
+            color: #a16207;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+        .sidebar-group { margin-bottom: 20px; }
+        .sidebar-group-title {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: #94a3b8;
+            padding: 0 8px;
+            margin-bottom: 6px;
+        }
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #334155;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.15s ease;
+        }
+        .sidebar-link:hover {
+            background: #f1f5f9;
+            transform: translateX(4px);
+        }
+        .sidebar-link.disabled {
+            color: #cbd5e1;
+            pointer-events: none;
+        }
+        .sidebar-num {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            background: #f1f5f9;
+            color: #64748b;
+            flex-shrink: 0;
+        }
+        .sidebar-link.disabled .sidebar-num {
+            background: #f8fafc;
+            color: #cbd5e1;
+        }
+        .sidebar-divider {
+            height: 1px;
+            background: #e2e8f0;
+            margin: 12px 8px;
+        }
+        .sidebar-special {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #a16207;
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: #fffbeb;
+            transition: all 0.15s ease;
+        }
+        .sidebar-special:hover {
+            background: #fef3c7;
+            transform: translateX(4px);
+        }
+
+        /* ========== MAIN ========== */
+        .main {
+            margin-left: 280px;
+            margin-top: 60px;
+            padding: 32px 32px 64px;
+            max-width: 1100px;
+        }
+
+        /* ========== HERO ========== */
+        .hero { margin-bottom: 40px; }
+        .hero-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+        .hero-title h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #facc15, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-title .icon { font-size: 2.2rem; }
+        .hero-sub { color: #64748b; font-size: 1.05rem; }
+        .hero-sub b { color: #a16207; }
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .stat-card {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+        }
+        .stat-card .stat-icon { font-size: 1.4rem; }
+        .stat-label { font-size: 0.8rem; color: #94a3b8; }
+        .stat-value { font-weight: 700; font-size: 1rem; }
+
+        /* ========== MODULE ========== */
+        .module { margin-bottom: 40px; }
+        .module-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .module-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #fff;
+            flex-shrink: 0;
+        }
+        .module-title { font-size: 1.2rem; font-weight: 700; }
+        .module-count { font-size: 0.8rem; color: #94a3b8; font-weight: 400; }
+
+        /* ========== CARD GRID ========== */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        /* ========== LESSON CARD ========== */
+        .lesson-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 20px;
+            transition: all 0.25s ease;
+            position: relative;
+        }
+        .lesson-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+            border-color: transparent;
+        }
+        .card-number {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1e293b;
+        }
+        .card-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.15s ease;
+        }
+        .card-link:hover { transform: scale(1.05); }
+        .card-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 12px;
+        }
+        .card-topic {
+            font-size: 0.68rem;
+            padding: 2px 8px;
+            border-radius: 6px;
+            background: #f1f5f9;
+            color: #475569;
+            font-weight: 500;
+        }
+        .card-link.lecture { background: #dbeafe; color: #1d4ed8; }
+        .card-link.student { background: #dcfce7; color: #15803d; }
+        .card-link.tasks { background: #fef3c7; color: #a16207; }
+
+        /* ========== SIDEBAR OVERLAY ========== */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 40;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .sidebar-toggle { display: block; }
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.open { transform: translateX(0); }
+            .sidebar-overlay.open { display: block; }
+            .main { margin-left: 0; padding: 20px 16px 48px; }
+            .hero-title h1 { font-size: 1.5rem; }
+            .card-grid { grid-template-columns: 1fr; }
+        }
+
+        .sidebar::-webkit-scrollbar { width: 4px; }
+        .sidebar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 2px; }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Меню">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <a href="index.html" class="header-logo">&#x1F4DC; <span>JavaScript Essentials</span></a>
+        <div class="header-info" data-lang="ru">36 занятий &bull; 12 недель</div>
+        <div class="header-info" data-lang="en">36 lessons &bull; 12 weeks</div>
+        <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
+    </header>
+
+    <div class="sidebar-overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <span data-lang="ru">Навигация</span>
+            <span data-lang="en">Navigation</span>
+            <span class="sidebar-badge" data-lang="ru">36 занятий</span>
+            <span class="sidebar-badge" data-lang="en">36 lessons</span>
+        </div>
+
+        <div class="sidebar-group">
+            <div class="sidebar-group-title" data-lang="ru">&#x1F4DC; Введение в JavaScript</div>
+            <div class="sidebar-group-title" data-lang="en">&#x1F4DC; Introduction to JavaScript</div>
+            <a href="lessons/Lesson-1/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">1</span> Введение в JavaScript</a>
+            <a href="lessons/Lesson-1/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">1</span> Introduction to JavaScript</a>
+            <a href="lessons/Lesson-2/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">2</span> Установка инструментов и первый скрипт</a>
+            <a href="lessons/Lesson-2/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">2</span> Tools Setup & First Script</a>
+            <a href="lessons/Lesson-3/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">3</span> Синтаксис и консоль</a>
+            <a href="lessons/Lesson-3/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">3</span> Syntax & Console</a>
+        </div>
+
+        <div class="sidebar-group">
+            <div class="sidebar-group-title" data-lang="ru">&#x1F524; Синтаксис и типы</div>
+            <div class="sidebar-group-title" data-lang="en">&#x1F524; Syntax & Types</div>
+            <a href="lessons/Lesson-4/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">4</span> Переменные и типы данных</a>
+            <a href="lessons/Lesson-4/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">4</span> Variables & Data Types</a>
+            <a href="lessons/Lesson-5/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">5</span> Операторы и выражения</a>
+            <a href="lessons/Lesson-5/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">5</span> Operators & Expressions</a>
+            <a href="lessons/Lesson-6/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">6</span> Условия</a>
+            <a href="lessons/Lesson-6/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">6</span> Conditionals</a>
+            <a href="lessons/Lesson-7/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">7</span> Циклы</a>
+            <a href="lessons/Lesson-7/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">7</span> Loops</a>
+        </div>
+
+        <div class="sidebar-group">
+            <div class="sidebar-group-title" data-lang="ru">&#x1F3AF; Функции</div>
+            <div class="sidebar-group-title" data-lang="en">&#x1F3AF; Functions</div>
+            <a href="lessons/Lesson-8/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">8</span> Функции &mdash; основы</a>
+            <a href="lessons/Lesson-8/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">8</span> Functions Basics</a>
+            <a href="lessons/Lesson-9/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">9</span> Arrow-функции и область видимости</a>
+            <a href="lessons/Lesson-9/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">9</span> Arrow Functions & Scope</a>
+            <a href="lessons/Lesson-10/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">10</span> Строки и методы</a>
+            <a href="lessons/Lesson-10/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">10</span> Strings & Methods</a>
+            <a href="lessons/Lesson-11/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">11</span> Числа и объект Math</a>
+            <a href="lessons/Lesson-11/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">11</span> Numbers & Math</a>
+        </div>
+
+        <div class="sidebar-group">
+            <div class="sidebar-group-title" data-lang="ru">&#x1F4E6; Массивы и объекты</div>
+            <div class="sidebar-group-title" data-lang="en">&#x1F4E6; Arrays & Objects</div>
+            <a href="lessons/Lesson-12/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">12</span> Массивы &mdash; основы</a>
+            <a href="lessons/Lesson-12/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">12</span> Arrays Basics</a>
+            <a href="lessons/Lesson-13/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">13</span> Методы массивов</a>
+            <a href="lessons/Lesson-13/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">13</span> Array Methods</a>
+            <a href="lessons/Lesson-14/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">14</span> Объекты &mdash; основы</a>
+            <a href="lessons/Lesson-14/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">14</span> Objects Basics</a>
+            <a href="lessons/Lesson-15/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">15</span> Деструктуризация и spread/rest</a>
+            <a href="lessons/Lesson-15/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">15</span> Destructuring & Spread/Rest</a>
+        </div>
+
+        <div class="sidebar-group">
+            <div class="sidebar-group-title" data-lang="ru">&#x1F333; DOM и события</div>
+            <div class="sidebar-group-title" data-lang="en">&#x1F333; DOM & Events</div>
+            <a href="lessons/Lesson-16/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">16</span> Введение в DOM</a>
+            <a href="lessons/Lesson-16/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">16</span> Introduction to DOM</a>
+            <a href="lessons/Lesson-17/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">17</span> Манипуляция DOM</a>
+            <a href="lessons/Lesson-17/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">17</span> DOM Manipulation</a>
+            <a href="lessons/Lesson-18/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">18</span> События</a>
+            <a href="lessons/Lesson-18/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">18</span> Events</a>
+            <a href="lessons/Lesson-19/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">19</span> Формы и валидация</a>
+            <a href="lessons/Lesson-19/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">19</span> Forms & Validation</a>
+            <a href="lessons/Lesson-20/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">20</span> Мини-проект &mdash; Todo List</a>
+            <a href="lessons/Lesson-20/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">20</span> Mini-Project &mdash; Todo List</a>
+        </div>
+
+        <div class="sidebar-group">
+            <div class="sidebar-group-title" data-lang="ru">&#x1F9E0; Продвинутые функции</div>
+            <div class="sidebar-group-title" data-lang="en">&#x1F9E0; Advanced Functions</div>
+            <a href="lessons/Lesson-21/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">21</span> Замыкания (closures)</a>
+            <a href="lessons/Lesson-21/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">21</span> Closures</a>
+            <a href="lessons/Lesson-22/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">22</span> Контекст this, call/apply/bind</a>
+            <a href="lessons/Lesson-22/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">22</span> this, call/apply/bind</a>
+        </div>
+
+        <div class="sidebar-group">
+            <div class="sidebar-group-title" data-lang="ru">&#x23F1;&#xFE0F; Асинхронность</div>
+            <div class="sidebar-group-title" data-lang="en">&#x23F1;&#xFE0F; Asynchrony</div>
+            <a href="lessons/Lesson-23/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">23</span> Таймеры</a>
+            <a href="lessons/Lesson-23/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">23</span> Timers</a>
+            <a href="lessons/Lesson-24/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">24</span> Промисы</a>
+            <a href="lessons/Lesson-24/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">24</span> Promises</a>
+            <a href="lessons/Lesson-25/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">25</span> async/await</a>
+            <a href="lessons/Lesson-25/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">25</span> async/await</a>
+            <a href="lessons/Lesson-26/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">26</span> Fetch API и JSON</a>
+            <a href="lessons/Lesson-26/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">26</span> Fetch API & JSON</a>
+        </div>
+
+        <div class="sidebar-group">
+            <div class="sidebar-group-title" data-lang="ru">&#x1F3DB;&#xFE0F; ООП и модули</div>
+            <div class="sidebar-group-title" data-lang="en">&#x1F3DB;&#xFE0F; OOP & Modules</div>
+            <a href="lessons/Lesson-27/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">27</span> Классы</a>
+            <a href="lessons/Lesson-27/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">27</span> Classes</a>
+            <a href="lessons/Lesson-28/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">28</span> Наследование</a>
+            <a href="lessons/Lesson-28/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">28</span> Inheritance</a>
+            <a href="lessons/Lesson-29/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">29</span> Модули ES6</a>
+            <a href="lessons/Lesson-29/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">29</span> ES6 Modules</a>
+            <a href="lessons/Lesson-30/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">30</span> Map, Set, Symbol</a>
+            <a href="lessons/Lesson-30/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">30</span> Map, Set, Symbol</a>
+        </div>
+
+        <div class="sidebar-group">
+            <div class="sidebar-group-title" data-lang="ru">&#x1F680; Проекты и финал</div>
+            <div class="sidebar-group-title" data-lang="en">&#x1F680; Projects & Final</div>
+            <a href="lessons/Lesson-31/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">31</span> LocalStorage</a>
+            <a href="lessons/Lesson-31/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">31</span> LocalStorage</a>
+            <a href="lessons/Lesson-32/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">32</span> Мини-проект &mdash; Каталог</a>
+            <a href="lessons/Lesson-32/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">32</span> Mini-Project &mdash; Catalog</a>
+            <a href="lessons/Lesson-33/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">33</span> Финальный проект (1)</a>
+            <a href="lessons/Lesson-33/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">33</span> Final Project (1)</a>
+            <a href="lessons/Lesson-34/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">34</span> Финальный проект (2)</a>
+            <a href="lessons/Lesson-34/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">34</span> Final Project (2)</a>
+            <a href="lessons/Lesson-35/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">35</span> Финальный проект (3)</a>
+            <a href="lessons/Lesson-35/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">35</span> Final Project (3)</a>
+            <a href="lessons/Lesson-36/lecture.html" class="sidebar-link" data-lang="ru"><span class="sidebar-num">36</span> Презентация проектов</a>
+            <a href="lessons/Lesson-36/lecture.html" class="sidebar-link" data-lang="en"><span class="sidebar-num">36</span> Project Presentations</a>
+        </div>
+
+        <div class="sidebar-divider"></div>
+        <a href="reference.html" class="sidebar-special" data-lang="ru">&#x1F4CB; Справочник пройденного</a>
+        <a href="reference.html" class="sidebar-special" data-lang="en">&#x1F4CB; Completed Reference</a>
+        <a href="notebook.html" class="sidebar-special" style="margin-top:6px;" data-lang="ru">&#x1F4D3; Для тетради</a>
+        <a href="notebook.html" class="sidebar-special" style="margin-top:6px;" data-lang="en">&#x1F4D3; For Notebook</a>
+    </aside>
+
+    <div class="main">
+
+        <div class="hero">
+            <div class="hero-title">
+                <span class="icon">&#x1F4DC;</span>
+                <h1>JavaScript Essentials</h1>
+            </div>
+            <p class="hero-sub" data-lang="ru">Полный курс по JavaScript для начинающих: <b>36 занятий</b></p>
+            <p class="hero-sub" data-lang="en">Complete JavaScript course for beginners: <b>36 lessons</b></p>
+            <div class="hero-stats" data-lang="ru">
+                <div class="stat-card"><span class="stat-icon">&#x1F4DA;</span><div><div class="stat-label">Модулей</div><div class="stat-value">9</div></div></div>
+                <div class="stat-card"><span class="stat-icon">&#x1F4D6;</span><div><div class="stat-label">Занятий</div><div class="stat-value">36</div></div></div>
+                <div class="stat-card"><span class="stat-icon">&#x1F4C5;</span><div><div class="stat-label">Длительность</div><div class="stat-value">12 недель</div></div></div>
+            </div>
+            <div class="hero-stats" data-lang="en">
+                <div class="stat-card"><span class="stat-icon">&#x1F4DA;</span><div><div class="stat-label">Modules</div><div class="stat-value">9</div></div></div>
+                <div class="stat-card"><span class="stat-icon">&#x1F4D6;</span><div><div class="stat-label">Lessons</div><div class="stat-value">36</div></div></div>
+                <div class="stat-card"><span class="stat-icon">&#x1F4C5;</span><div><div class="stat-label">Duration</div><div class="stat-value">12 weeks</div></div></div>
+            </div>
+        </div>
+
+        <!-- МОДУЛЬ 1: Введение -->
+        <div class="module">
+            <div class="module-header">
+                <div class="module-icon" style="background: linear-gradient(135deg, #3b82f6, #06b6d4);">&#x1F4DC;</div>
+                <div>
+                    <div class="module-title" data-lang="ru">Введение в JavaScript</div>
+                    <div class="module-title" data-lang="en">Introduction to JavaScript</div>
+                    <div class="module-count" data-lang="ru">Занятия 1-3 &bull; Неделя 1</div>
+                    <div class="module-count" data-lang="en">Lessons 1-3 &bull; Week 1</div>
+                </div>
+            </div>
+            <div class="card-grid">
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #3b82f6, #06b6d4);">01</div><div class="card-title" data-lang="ru">Введение в JavaScript</div><div class="card-title" data-lang="en">Introduction to JavaScript</div><div class="card-topics"><span class="card-topic">История</span><span class="card-topic">ECMAScript</span><span class="card-topic">Где используется</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-1/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-1/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-1/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-1/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-1/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-1/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #3b82f6, #06b6d4);">02</div><div class="card-title" data-lang="ru">Установка инструментов и первый скрипт</div><div class="card-title" data-lang="en">Tools Setup &amp; First Script</div><div class="card-topics"><span class="card-topic">VS Code</span><span class="card-topic">&lt;script&gt;</span><span class="card-topic">Browser</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-2/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-2/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-2/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-2/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-2/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-2/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #3b82f6, #06b6d4);">03</div><div class="card-title" data-lang="ru">Синтаксис и консоль</div><div class="card-title" data-lang="en">Syntax &amp; Console</div><div class="card-topics"><span class="card-topic">console.log</span><span class="card-topic">комментарии</span><span class="card-topic">ошибки</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-3/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-3/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-3/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-3/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-3/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-3/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+            </div>
+        </div>
+
+        <!-- МОДУЛЬ 2: Синтаксис и типы -->
+        <div class="module">
+            <div class="module-header">
+                <div class="module-icon" style="background: linear-gradient(135deg, #a855f7, #8b5cf6);">&#x1F524;</div>
+                <div>
+                    <div class="module-title" data-lang="ru">Синтаксис и типы</div>
+                    <div class="module-title" data-lang="en">Syntax &amp; Types</div>
+                    <div class="module-count" data-lang="ru">Занятия 4-7 &bull; Недели 1-2</div>
+                    <div class="module-count" data-lang="en">Lessons 4-7 &bull; Weeks 1-2</div>
+                </div>
+            </div>
+            <div class="card-grid">
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #a855f7, #8b5cf6);">04</div><div class="card-title" data-lang="ru">Переменные и типы данных</div><div class="card-title" data-lang="en">Variables &amp; Data Types</div><div class="card-topics"><span class="card-topic">let/const</span><span class="card-topic">var</span><span class="card-topic">typeof</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-4/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-4/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-4/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-4/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-4/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-4/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #a855f7, #8b5cf6);">05</div><div class="card-title" data-lang="ru">Операторы и выражения</div><div class="card-title" data-lang="en">Operators &amp; Expressions</div><div class="card-topics"><span class="card-topic">+ - * /</span><span class="card-topic">== ===</span><span class="card-topic">&amp;&amp; ||</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-5/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-5/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-5/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-5/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-5/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-5/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #a855f7, #8b5cf6);">06</div><div class="card-title" data-lang="ru">Условия</div><div class="card-title" data-lang="en">Conditionals</div><div class="card-topics"><span class="card-topic">if/else</span><span class="card-topic">switch</span><span class="card-topic">ternary</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-6/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-6/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-6/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-6/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-6/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-6/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #a855f7, #8b5cf6);">07</div><div class="card-title" data-lang="ru">Циклы</div><div class="card-title" data-lang="en">Loops</div><div class="card-topics"><span class="card-topic">for</span><span class="card-topic">while</span><span class="card-topic">break</span><span class="card-topic">continue</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-7/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-7/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-7/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-7/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-7/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-7/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+            </div>
+        </div>
+
+        <!-- МОДУЛЬ 3: Функции -->
+        <div class="module">
+            <div class="module-header">
+                <div class="module-icon" style="background: linear-gradient(135deg, #22c55e, #10b981);">&#x1F3AF;</div>
+                <div>
+                    <div class="module-title" data-lang="ru">Функции</div>
+                    <div class="module-title" data-lang="en">Functions</div>
+                    <div class="module-count" data-lang="ru">Занятия 8-11 &bull; Недели 3-4</div>
+                    <div class="module-count" data-lang="en">Lessons 8-11 &bull; Weeks 3-4</div>
+                </div>
+            </div>
+            <div class="card-grid">
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #22c55e, #10b981);">08</div><div class="card-title" data-lang="ru">Функции &mdash; основы</div><div class="card-title" data-lang="en">Functions Basics</div><div class="card-topics"><span class="card-topic">function</span><span class="card-topic">return</span><span class="card-topic">параметры</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-8/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-8/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-8/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-8/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-8/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-8/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #22c55e, #10b981);">09</div><div class="card-title" data-lang="ru">Arrow-функции и область видимости</div><div class="card-title" data-lang="en">Arrow Functions &amp; Scope</div><div class="card-topics"><span class="card-topic">=&gt;</span><span class="card-topic">scope</span><span class="card-topic">hoisting</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-9/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-9/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-9/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-9/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-9/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-9/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #22c55e, #10b981);">10</div><div class="card-title" data-lang="ru">Строки и методы</div><div class="card-title" data-lang="en">Strings &amp; Methods</div><div class="card-topics"><span class="card-topic">split</span><span class="card-topic">slice</span><span class="card-topic">template</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-10/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-10/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-10/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-10/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-10/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-10/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #22c55e, #10b981);">11</div><div class="card-title" data-lang="ru">Числа и объект Math</div><div class="card-title" data-lang="en">Numbers &amp; Math</div><div class="card-topics"><span class="card-topic">Math.random</span><span class="card-topic">parseInt</span><span class="card-topic">toFixed</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-11/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-11/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-11/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-11/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-11/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-11/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+            </div>
+        </div>
+
+        <!-- МОДУЛЬ 4: Массивы и объекты -->
+        <div class="module">
+            <div class="module-header">
+                <div class="module-icon" style="background: linear-gradient(135deg, #f97316, #f59e0b);">&#x1F4E6;</div>
+                <div>
+                    <div class="module-title" data-lang="ru">Массивы и объекты</div>
+                    <div class="module-title" data-lang="en">Arrays &amp; Objects</div>
+                    <div class="module-count" data-lang="ru">Занятия 12-15 &bull; Неделя 5</div>
+                    <div class="module-count" data-lang="en">Lessons 12-15 &bull; Week 5</div>
+                </div>
+            </div>
+            <div class="card-grid">
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #f97316, #f59e0b);">12</div><div class="card-title" data-lang="ru">Массивы &mdash; основы</div><div class="card-title" data-lang="en">Arrays Basics</div><div class="card-topics"><span class="card-topic">push/pop</span><span class="card-topic">индексы</span><span class="card-topic">length</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-12/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-12/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-12/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-12/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-12/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-12/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #f97316, #f59e0b);">13</div><div class="card-title" data-lang="ru">Методы массивов</div><div class="card-title" data-lang="en">Array Methods</div><div class="card-topics"><span class="card-topic">map</span><span class="card-topic">filter</span><span class="card-topic">reduce</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-13/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-13/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-13/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-13/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-13/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-13/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #f97316, #f59e0b);">14</div><div class="card-title" data-lang="ru">Объекты &mdash; основы</div><div class="card-title" data-lang="en">Objects Basics</div><div class="card-topics"><span class="card-topic">{ key: val }</span><span class="card-topic">this</span><span class="card-topic">методы</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-14/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-14/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-14/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-14/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-14/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-14/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #f97316, #f59e0b);">15</div><div class="card-title" data-lang="ru">Деструктуризация и spread/rest</div><div class="card-title" data-lang="en">Destructuring &amp; Spread/Rest</div><div class="card-topics"><span class="card-topic">{ a, b } =</span><span class="card-topic">...spread</span><span class="card-topic">...rest</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-15/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-15/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-15/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-15/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-15/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-15/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+            </div>
+        </div>
+
+        <!-- МОДУЛЬ 5: DOM и события -->
+        <div class="module">
+            <div class="module-header">
+                <div class="module-icon" style="background: linear-gradient(135deg, #ef4444, #f43f5e);">&#x1F333;</div>
+                <div>
+                    <div class="module-title" data-lang="ru">DOM и события</div>
+                    <div class="module-title" data-lang="en">DOM &amp; Events</div>
+                    <div class="module-count" data-lang="ru">Занятия 16-20 &bull; Недели 6-7</div>
+                    <div class="module-count" data-lang="en">Lessons 16-20 &bull; Weeks 6-7</div>
+                </div>
+            </div>
+            <div class="card-grid">
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #ef4444, #f43f5e);">16</div><div class="card-title" data-lang="ru">Введение в DOM</div><div class="card-title" data-lang="en">Introduction to DOM</div><div class="card-topics"><span class="card-topic">document</span><span class="card-topic">querySelector</span><span class="card-topic">getElementById</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-16/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-16/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-16/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-16/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-16/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-16/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #ef4444, #f43f5e);">17</div><div class="card-title" data-lang="ru">Манипуляция DOM</div><div class="card-title" data-lang="en">DOM Manipulation</div><div class="card-topics"><span class="card-topic">innerHTML</span><span class="card-topic">classList</span><span class="card-topic">createElement</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-17/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-17/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-17/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-17/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-17/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-17/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #ef4444, #f43f5e);">18</div><div class="card-title" data-lang="ru">События</div><div class="card-title" data-lang="en">Events</div><div class="card-topics"><span class="card-topic">addEventListener</span><span class="card-topic">event</span><span class="card-topic">делегирование</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-18/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-18/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-18/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-18/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-18/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-18/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #ef4444, #f43f5e);">19</div><div class="card-title" data-lang="ru">Формы и валидация</div><div class="card-title" data-lang="en">Forms &amp; Validation</div><div class="card-topics"><span class="card-topic">submit</span><span class="card-topic">preventDefault</span><span class="card-topic">input</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-19/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-19/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-19/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-19/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-19/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-19/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #ef4444, #f43f5e);">20</div><div class="card-title" data-lang="ru">Мини-проект &mdash; Todo List</div><div class="card-title" data-lang="en">Mini-Project &mdash; Todo List</div><div class="card-topics"><span class="card-topic">DOM</span><span class="card-topic">events</span><span class="card-topic">CRUD</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-20/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-20/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-20/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-20/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-20/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-20/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+            </div>
+        </div>
+
+        <!-- МОДУЛЬ 6: Продвинутые функции -->
+        <div class="module">
+            <div class="module-header">
+                <div class="module-icon" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">&#x1F9E0;</div>
+                <div>
+                    <div class="module-title" data-lang="ru">Продвинутые функции</div>
+                    <div class="module-title" data-lang="en">Advanced Functions</div>
+                    <div class="module-count" data-lang="ru">Занятия 21-22 &bull; Неделя 7</div>
+                    <div class="module-count" data-lang="en">Lessons 21-22 &bull; Week 7</div>
+                </div>
+            </div>
+            <div class="card-grid">
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">21</div><div class="card-title" data-lang="ru">Замыкания (closures)</div><div class="card-title" data-lang="en">Closures</div><div class="card-topics"><span class="card-topic">closure</span><span class="card-topic">scope</span><span class="card-topic">IIFE</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-21/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-21/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-21/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-21/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-21/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-21/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">22</div><div class="card-title" data-lang="ru">Контекст this, call/apply/bind</div><div class="card-title" data-lang="en">this, call/apply/bind</div><div class="card-topics"><span class="card-topic">this</span><span class="card-topic">call</span><span class="card-topic">bind</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-22/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-22/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-22/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-22/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-22/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-22/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+            </div>
+        </div>
+
+        <!-- МОДУЛЬ 7: Асинхронность -->
+        <div class="module">
+            <div class="module-header">
+                <div class="module-icon" style="background: linear-gradient(135deg, #14b8a6, #06b6d4);">&#x23F1;&#xFE0F;</div>
+                <div>
+                    <div class="module-title" data-lang="ru">Асинхронность</div>
+                    <div class="module-title" data-lang="en">Asynchrony</div>
+                    <div class="module-count" data-lang="ru">Занятия 23-26 &bull; Недели 8-9</div>
+                    <div class="module-count" data-lang="en">Lessons 23-26 &bull; Weeks 8-9</div>
+                </div>
+            </div>
+            <div class="card-grid">
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #14b8a6, #06b6d4);">23</div><div class="card-title" data-lang="ru">Таймеры</div><div class="card-title" data-lang="en">Timers</div><div class="card-topics"><span class="card-topic">setTimeout</span><span class="card-topic">setInterval</span><span class="card-topic">clear</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-23/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-23/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-23/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-23/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-23/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-23/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #14b8a6, #06b6d4);">24</div><div class="card-title" data-lang="ru">Промисы</div><div class="card-title" data-lang="en">Promises</div><div class="card-topics"><span class="card-topic">Promise</span><span class="card-topic">then/catch</span><span class="card-topic">chain</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-24/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-24/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-24/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-24/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-24/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-24/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #14b8a6, #06b6d4);">25</div><div class="card-title" data-lang="ru">async/await</div><div class="card-title" data-lang="en">async/await</div><div class="card-topics"><span class="card-topic">async</span><span class="card-topic">await</span><span class="card-topic">try/catch</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-25/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-25/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-25/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-25/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-25/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-25/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #14b8a6, #06b6d4);">26</div><div class="card-title" data-lang="ru">Fetch API и JSON</div><div class="card-title" data-lang="en">Fetch API &amp; JSON</div><div class="card-topics"><span class="card-topic">fetch</span><span class="card-topic">JSON</span><span class="card-topic">REST</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-26/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-26/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-26/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-26/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-26/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-26/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+            </div>
+        </div>
+
+        <!-- МОДУЛЬ 8: ООП и модули -->
+        <div class="module">
+            <div class="module-header">
+                <div class="module-icon" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">&#x1F3DB;&#xFE0F;</div>
+                <div>
+                    <div class="module-title" data-lang="ru">ООП и модули</div>
+                    <div class="module-title" data-lang="en">OOP &amp; Modules</div>
+                    <div class="module-count" data-lang="ru">Занятия 27-30 &bull; Недели 9-10</div>
+                    <div class="module-count" data-lang="en">Lessons 27-30 &bull; Weeks 9-10</div>
+                </div>
+            </div>
+            <div class="card-grid">
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">27</div><div class="card-title" data-lang="ru">Классы</div><div class="card-title" data-lang="en">Classes</div><div class="card-topics"><span class="card-topic">class</span><span class="card-topic">constructor</span><span class="card-topic">методы</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-27/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-27/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-27/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-27/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-27/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-27/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">28</div><div class="card-title" data-lang="ru">Наследование</div><div class="card-title" data-lang="en">Inheritance</div><div class="card-topics"><span class="card-topic">extends</span><span class="card-topic">super</span><span class="card-topic">override</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-28/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-28/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-28/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-28/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-28/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-28/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">29</div><div class="card-title" data-lang="ru">Модули ES6</div><div class="card-title" data-lang="en">ES6 Modules</div><div class="card-topics"><span class="card-topic">import</span><span class="card-topic">export</span><span class="card-topic">default</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-29/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-29/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-29/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-29/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-29/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-29/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">30</div><div class="card-title" data-lang="ru">Map, Set, Symbol</div><div class="card-title" data-lang="en">Map, Set, Symbol</div><div class="card-topics"><span class="card-topic">Map</span><span class="card-topic">Set</span><span class="card-topic">Symbol</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-30/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-30/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-30/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-30/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-30/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-30/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+            </div>
+        </div>
+
+        <!-- МОДУЛЬ 9: Проекты и финал -->
+        <div class="module">
+            <div class="module-header">
+                <div class="module-icon" style="background: linear-gradient(135deg, #eab308, #f97316);">&#x1F680;</div>
+                <div>
+                    <div class="module-title" data-lang="ru">Проекты и финал</div>
+                    <div class="module-title" data-lang="en">Projects &amp; Final</div>
+                    <div class="module-count" data-lang="ru">Занятия 31-36 &bull; Недели 11-12</div>
+                    <div class="module-count" data-lang="en">Lessons 31-36 &bull; Weeks 11-12</div>
+                </div>
+            </div>
+            <div class="card-grid">
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #eab308, #f97316);">31</div><div class="card-title" data-lang="ru">LocalStorage и SessionStorage</div><div class="card-title" data-lang="en">LocalStorage &amp; SessionStorage</div><div class="card-topics"><span class="card-topic">localStorage</span><span class="card-topic">sessionStorage</span><span class="card-topic">JSON</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-31/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-31/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-31/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-31/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-31/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-31/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #eab308, #f97316);">32</div><div class="card-title" data-lang="ru">Мини-проект &mdash; Каталог с Fetch API</div><div class="card-title" data-lang="en">Mini-Project &mdash; Catalog with Fetch</div><div class="card-topics"><span class="card-topic">fetch</span><span class="card-topic">фильтр</span><span class="card-topic">render</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-32/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-32/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-32/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-32/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-32/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-32/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #eab308, #f97316);">33</div><div class="card-title" data-lang="ru">Финальный проект (1)</div><div class="card-title" data-lang="en">Final Project (1)</div><div class="card-topics"><span class="card-topic">Planning</span><span class="card-topic">Design</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-33/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-33/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-33/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-33/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-33/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-33/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #eab308, #f97316);">34</div><div class="card-title" data-lang="ru">Финальный проект (2)</div><div class="card-title" data-lang="en">Final Project (2)</div><div class="card-topics"><span class="card-topic">Implementation</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-34/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-34/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-34/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-34/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-34/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-34/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #eab308, #f97316);">35</div><div class="card-title" data-lang="ru">Финальный проект (3)</div><div class="card-title" data-lang="en">Final Project (3)</div><div class="card-topics"><span class="card-topic">Deploy</span><span class="card-topic">Netlify</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-35/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-35/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-35/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-35/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-35/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-35/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #eab308, #f97316);">36</div><div class="card-title" data-lang="ru">Презентация проектов</div><div class="card-title" data-lang="en">Project Presentations</div><div class="card-topics"><span class="card-topic">Demo</span><span class="card-topic">Pitch</span></div><div class="card-links" data-lang="ru"><a href="lessons/Lesson-36/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="lessons/Lesson-36/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="lessons/Lesson-36/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div><div class="card-links" data-lang="en"><a href="lessons/Lesson-36/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="lessons/Lesson-36/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="lessons/Lesson-36/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('open');
+            document.getElementById('overlay').classList.toggle('open');
+        }
+        function closeSidebarMobile() {
+            if (window.innerWidth <= 768) {
+                document.getElementById('sidebar').classList.remove('open');
+                document.getElementById('overlay').classList.remove('open');
+            }
+        }
+    </script>
+</body>
 </html>

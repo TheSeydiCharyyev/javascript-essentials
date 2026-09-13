@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Занятие 1 — Практические задания</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/tasks.css">
+    <script src="../../js/lang.js" defer></script>
+</head>
+<body>
+
+<div class="lesson-nav">
+    <a href="../../index.html" class="nav-home" data-lang="ru">&#8592; Главная</a>
+    <a href="../../index.html" class="nav-home" data-lang="en">&#8592; Home</a>
+    <span class="nav-sep">|</span>
+    <span class="nav-title" data-lang="ru">Занятие 1: Введение в JavaScript</span>
+    <span class="nav-title" data-lang="en">Lesson 1: Introduction to JavaScript</span>
+    <span class="nav-sep">|</span>
+    <a href="lecture.html" class="nav-link" data-lang="ru">&#x1F468;&#x200D;&#x1F3EB; Лекция</a>
+    <a href="lecture.html" class="nav-link" data-lang="en">&#x1F468;&#x200D;&#x1F3EB; Lecture</a>
+    <a href="student.html" class="nav-link" data-lang="ru">&#x1F468;&#x200D;&#x1F393; Конспект</a>
+    <a href="student.html" class="nav-link" data-lang="en">&#x1F468;&#x200D;&#x1F393; Notes</a>
+    <span class="nav-active" data-lang="ru">&#x1F4CB; Задания</span>
+    <span class="nav-active" data-lang="en">&#x1F4CB; Tasks</span>
+    <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
+</div>
+
+<div class="container">
+
+    <h1 data-lang="ru">&#x1F4DD; ПРАКТИЧЕСКИЕ ЗАДАНИЯ</h1>
+    <h1 data-lang="en">&#x1F4DD; PRACTICAL TASKS</h1>
+    <p class="subtitle" data-lang="ru">Занятие 1: Введение в JavaScript &mdash; 6 заданий от простого к сложному</p>
+    <p class="subtitle" data-lang="en">Lesson 1: Introduction to JavaScript &mdash; 6 tasks from easy to advanced</p>
+
+    <hr>
+
+    <!-- TASK 1 -->
+    <div class="task">
+        <div class="task-header">
+            <div class="task-title" data-lang="ru">Задание 1. Эксперименты в DevTools Console</div>
+            <div class="task-title" data-lang="en">Task 1. Experiments in the DevTools Console</div>
+            <div class="task-meta">
+                <span class="badge badge-easy" data-lang="ru">Легко</span>
+                <span class="badge badge-easy" data-lang="en">Easy</span>
+                <span class="badge badge-time">10 мин</span>
+            </div>
+        </div>
+
+        <div class="task-goal">
+            <span data-lang="ru">Попробовать консоль браузера в деле, написать несколько выражений и понять, что возвращает JavaScript.</span>
+            <span data-lang="en">Try the browser console in action, write several expressions, and understand what JavaScript returns.</span>
+        </div>
+
+        <p data-lang="ru"><strong>Шаги:</strong></p>
+        <p data-lang="en"><strong>Steps:</strong></p>
+        <ol data-lang="ru">
+            <li>Откройте любой сайт (можно этот).</li>
+            <li>Нажмите <span class="kbd">F12</span>, перейдите на вкладку <strong>Console</strong>.</li>
+            <li>Выполните по очереди каждое из выражений ниже и запишите результат в тетрадь.</li>
+        </ol>
+        <ol data-lang="en">
+            <li>Open any site (this one works).</li>
+            <li>Press <span class="kbd">F12</span> and go to the <strong>Console</strong> tab.</li>
+            <li>Run each of the expressions below one by one and write down the results.</li>
+        </ol>
+
+        <pre><code>console.log("Hello, JS!");
+2 + 2
+"hello" + " " + "world"
+10 * 5
+"5" + 3
+"5" - 3
+2 ** 10
+Math.random()
+new Date()
+typeof 42
+typeof "text"
+typeof true
+typeof null
+typeof undefined</code></pre>
+
+        <div class="criteria">
+            <ul data-lang="ru">
+                <li>Все 14 выражений выполнены</li>
+                <li>Результаты записаны в тетрадь</li>
+                <li>Вы заметили: <code>"5" + 3</code> и <code>"5" - 3</code> дают разные результаты — попытайтесь объяснить почему</li>
+            </ul>
+            <ul data-lang="en">
+                <li>All 14 expressions executed</li>
+                <li>Results written down in the notebook</li>
+                <li>You noticed that <code>"5" + 3</code> and <code>"5" - 3</code> produce different results — try to explain why</li>
+            </ul>
+        </div>
+
+        <div class="hint">
+            <p data-lang="ru">Если консоль не открывается по <span class="kbd">F12</span> — попробуйте правый клик на странице → «Просмотреть код» → вкладка «Console».</p>
+            <p data-lang="en">If the console doesn't open with <span class="kbd">F12</span>, try right-click on the page → "Inspect" → "Console" tab.</p>
+        </div>
+    </div>
+
+    <!-- TASK 2 -->
+    <div class="task">
+        <div class="task-header">
+            <div class="task-title" data-lang="ru">Задание 2. Первая HTML-страница с JavaScript</div>
+            <div class="task-title" data-lang="en">Task 2. First HTML page with JavaScript</div>
+            <div class="task-meta">
+                <span class="badge badge-easy" data-lang="ru">Легко</span>
+                <span class="badge badge-easy" data-lang="en">Easy</span>
+                <span class="badge badge-time">15 мин</span>
+            </div>
+        </div>
+
+        <div class="task-goal">
+            <span data-lang="ru">Создать HTML-страницу, подключить к ней внешний JS-файл, увидеть вывод в консоли.</span>
+            <span data-lang="en">Create an HTML page, link an external JS file, and see the output in the console.</span>
+        </div>
+
+        <p data-lang="ru"><strong>Шаги:</strong></p>
+        <p data-lang="en"><strong>Steps:</strong></p>
+        <ol data-lang="ru">
+            <li>Создайте папку <code>task-2/</code>.</li>
+            <li>В ней создайте два файла: <code>index.html</code> и <code>app.js</code>.</li>
+            <li>В HTML сделайте простую страницу с заголовком «Моя первая JS-страница» и подключите <code>app.js</code> через <code>&lt;script src="app.js" defer&gt;&lt;/script&gt;</code> в <code>&lt;head&gt;</code>.</li>
+            <li>В <code>app.js</code> напишите <strong>три</strong> вызова <code>console.log()</code> с разной информацией о себе: имя, возраст, любимый цвет.</li>
+            <li>Запустите через <em>Open with Live Server</em> и откройте консоль (F12).</li>
+        </ol>
+        <ol data-lang="en">
+            <li>Create a folder <code>task-2/</code>.</li>
+            <li>Inside it create two files: <code>index.html</code> and <code>app.js</code>.</li>
+            <li>In HTML, make a simple page with the heading "My first JS page" and link <code>app.js</code> via <code>&lt;script src="app.js" defer&gt;&lt;/script&gt;</code> in <code>&lt;head&gt;</code>.</li>
+            <li>In <code>app.js</code>, write <strong>three</strong> <code>console.log()</code> calls with information about yourself: name, age, favorite color.</li>
+            <li>Run via <em>Open with Live Server</em> and open the console (F12).</li>
+        </ol>
+
+        <div class="example">
+            <p data-lang="ru"><strong>Пример содержимого <code>app.js</code>:</strong></p>
+            <p data-lang="en"><strong>Example of <code>app.js</code> contents:</strong></p>
+            <pre><code>console.log("Меня зовут Сейди");
+console.log("Мне 20 лет");
+console.log("Мой любимый цвет — синий");</code></pre>
+        </div>
+
+        <div class="criteria">
+            <ul data-lang="ru">
+                <li>Страница открывается в браузере</li>
+                <li>В консоли видны все три сообщения</li>
+                <li>JS подключён через <strong>внешний файл</strong> с <code>defer</code>, а не inline и не internal</li>
+            </ul>
+            <ul data-lang="en">
+                <li>The page opens in the browser</li>
+                <li>All three messages are visible in the console</li>
+                <li>JS is linked as an <strong>external file</strong> with <code>defer</code>, not inline or internal</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- TASK 3 -->
+    <div class="task">
+        <div class="task-header">
+            <div class="task-title" data-lang="ru">Задание 3. Три способа подключения</div>
+            <div class="task-title" data-lang="en">Task 3. Three ways to link JS</div>
+            <div class="task-meta">
+                <span class="badge badge-medium" data-lang="ru">Средне</span>
+                <span class="badge badge-medium" data-lang="en">Medium</span>
+                <span class="badge badge-time">20 мин</span>
+            </div>
+        </div>
+
+        <div class="task-goal">
+            <span data-lang="ru">На практике попробовать все три способа подключения JS и убедиться, что они работают по-разному.</span>
+            <span data-lang="en">Practically try all three ways of linking JS and see how they behave differently.</span>
+        </div>
+
+        <p data-lang="ru"><strong>Шаги:</strong></p>
+        <p data-lang="en"><strong>Steps:</strong></p>
+        <ol data-lang="ru">
+            <li>Создайте страницу <code>task-3.html</code> с тремя кнопками.</li>
+            <li>Первая кнопка — показывает alert через <strong>inline</strong> <code>onclick</code>.</li>
+            <li>Вторая кнопка — работает через <strong>internal</strong> <code>&lt;script&gt;</code> внутри HTML.</li>
+            <li>Третья кнопка — работает через <strong>external</strong> <code>app.js</code>.</li>
+            <li>Все три должны показывать разный alert: «Я inline», «Я internal», «Я external».</li>
+        </ol>
+        <ol data-lang="en">
+            <li>Create a page <code>task-3.html</code> with three buttons.</li>
+            <li>First button — shows an alert via <strong>inline</strong> <code>onclick</code>.</li>
+            <li>Second button — works via an <strong>internal</strong> <code>&lt;script&gt;</code> inside the HTML.</li>
+            <li>Third button — works via an <strong>external</strong> <code>app.js</code>.</li>
+            <li>All three should show different alerts: "I am inline", "I am internal", "I am external".</li>
+        </ol>
+
+        <div class="criteria">
+            <ul data-lang="ru">
+                <li>Все три кнопки работают и показывают разные alert</li>
+                <li>У каждой кнопки разный способ подключения JS</li>
+                <li>В тетради запишите: какой способ вам показался удобнее и почему</li>
+            </ul>
+            <ul data-lang="en">
+                <li>All three buttons work and show different alerts</li>
+                <li>Each button uses a different way of linking JS</li>
+                <li>Write in your notebook: which way seemed more convenient and why</li>
+            </ul>
+        </div>
+
+        <div class="hint">
+            <p data-lang="ru">Для второй кнопки используйте <code>document.getElementById("btn2").addEventListener("click", ...)</code> внутри <code>&lt;script&gt;</code> в конце body.</p>
+            <p data-lang="en">For the second button, use <code>document.getElementById("btn2").addEventListener("click", ...)</code> inside a <code>&lt;script&gt;</code> at the end of the body.</p>
+        </div>
+    </div>
+
+    <!-- TASK 4 -->
+    <div class="task">
+        <div class="task-header">
+            <div class="task-title" data-lang="ru">Задание 4. Исследуем JS-движок браузера</div>
+            <div class="task-title" data-lang="en">Task 4. Explore the browser's JS engine</div>
+            <div class="task-meta">
+                <span class="badge badge-medium" data-lang="ru">Средне</span>
+                <span class="badge badge-medium" data-lang="en">Medium</span>
+                <span class="badge badge-time">15 мин</span>
+            </div>
+        </div>
+
+        <div class="task-goal">
+            <span data-lang="ru">Выяснить, какой JS-движок работает в вашем основном браузере и в нём же увидеть его настройки.</span>
+            <span data-lang="en">Find out which JS engine runs in your main browser and see its settings.</span>
+        </div>
+
+        <p data-lang="ru"><strong>Шаги:</strong></p>
+        <p data-lang="en"><strong>Steps:</strong></p>
+        <ol data-lang="ru">
+            <li>Откройте ваш основной браузер. Запишите: Chrome / Edge / Firefox / Safari.</li>
+            <li>В консоли (F12) напишите <code>navigator.userAgent</code> и изучите строку.</li>
+            <li>Определите, какой JS-движок работает в вашем браузере (V8, SpiderMonkey, JavaScriptCore). Проверьте по таблице в лекции.</li>
+            <li>В консоли напишите <code>console.log(window)</code> — увидите всё, что доступно в глобальном контексте JS.</li>
+            <li>Попробуйте вызвать методы: <code>window.innerWidth</code>, <code>window.innerHeight</code>, <code>window.location.href</code>.</li>
+        </ol>
+        <ol data-lang="en">
+            <li>Open your main browser. Write down: Chrome / Edge / Firefox / Safari.</li>
+            <li>In the console (F12), type <code>navigator.userAgent</code> and inspect the string.</li>
+            <li>Identify which JS engine runs in your browser (V8, SpiderMonkey, JavaScriptCore). Check the table in the lecture.</li>
+            <li>In the console, type <code>console.log(window)</code> — you'll see everything available in the global JS scope.</li>
+            <li>Try calling: <code>window.innerWidth</code>, <code>window.innerHeight</code>, <code>window.location.href</code>.</li>
+        </ol>
+
+        <div class="criteria">
+            <ul data-lang="ru">
+                <li>В тетради записано: название браузера, название движка, размеры окна в пикселях, ваш userAgent</li>
+                <li>Вы понимаете, что <code>window</code> — глобальный объект браузера, где живут все встроенные функции JS</li>
+            </ul>
+            <ul data-lang="en">
+                <li>Written in the notebook: browser name, engine name, window dimensions in pixels, your userAgent</li>
+                <li>You understand that <code>window</code> is the browser's global object where all built-in JS functions live</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- TASK 5 -->
+    <div class="task">
+        <div class="task-header">
+            <div class="task-title" data-lang="ru">Задание 5. Кнопка-счётчик</div>
+            <div class="task-title" data-lang="en">Task 5. Counter button</div>
+            <div class="task-meta">
+                <span class="badge badge-hard" data-lang="ru">Сложно</span>
+                <span class="badge badge-hard" data-lang="en">Hard</span>
+                <span class="badge badge-time">25 мин</span>
+            </div>
+        </div>
+
+        <div class="task-goal">
+            <span data-lang="ru">Написать маленькое интерактивное приложение: кнопка, которая считает, сколько раз её нажали, и показывает это на странице.</span>
+            <span data-lang="en">Write a small interactive app: a button that counts how many times it was clicked and shows it on the page.</span>
+        </div>
+
+        <p data-lang="ru"><strong>Что должно получиться:</strong> на странице заголовок «Счётчик: 0» и кнопка «Нажми меня». При каждом клике число в заголовке увеличивается на 1.</p>
+        <p data-lang="en"><strong>What to build:</strong> a heading "Counter: 0" and a "Click me" button. Each click increments the number in the heading by 1.</p>
+
+        <div class="example">
+            <p data-lang="ru"><strong>Заготовка HTML:</strong></p>
+            <p data-lang="en"><strong>HTML skeleton:</strong></p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Счётчик&lt;/title&gt;
+    &lt;script src="counter.js" defer&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 id="title"&gt;Счётчик: 0&lt;/h1&gt;
+    &lt;button id="btn"&gt;Нажми меня&lt;/button&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+
+        <div class="hint">
+            <p data-lang="ru">В <code>counter.js</code> нужна переменная <code>count = 0</code>, обработчик <code>addEventListener("click", ...)</code> на кнопке, и обновление текста через <code>title.textContent = "Счётчик: " + count</code>.</p>
+            <p data-lang="en">In <code>counter.js</code> you need a variable <code>count = 0</code>, a handler <code>addEventListener("click", ...)</code> on the button, and updating the text via <code>title.textContent = "Counter: " + count</code>.</p>
+        </div>
+
+        <div class="criteria">
+            <ul data-lang="ru">
+                <li>При каждом клике число увеличивается на 1</li>
+                <li>JS подключён через внешний файл с <code>defer</code></li>
+                <li>В консоли нет ошибок (F12 → Console)</li>
+                <li>(Бонус) После 10 кликов показывается alert «Поздравляю, 10 кликов!»</li>
+            </ul>
+            <ul data-lang="en">
+                <li>Each click increments the number by 1</li>
+                <li>JS is linked as an external file with <code>defer</code></li>
+                <li>No errors in the console (F12 → Console)</li>
+                <li>(Bonus) After 10 clicks, show an alert "Congratulations, 10 clicks!"</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- TASK 6 -->
+    <div class="task">
+        <div class="task-header">
+            <div class="task-title" data-lang="ru">Задание 6. Исследование: где JavaScript меняет мир</div>
+            <div class="task-title" data-lang="en">Task 6. Research: where JavaScript changes the world</div>
+            <div class="task-meta">
+                <span class="badge badge-hard" data-lang="ru">Сложно</span>
+                <span class="badge badge-hard" data-lang="en">Hard</span>
+                <span class="badge badge-time">30 мин</span>
+            </div>
+        </div>
+
+        <div class="task-goal">
+            <span data-lang="ru">Подготовить короткую презентацию (5-7 минут) о том, где именно используется JavaScript в реальном мире.</span>
+            <span data-lang="en">Prepare a short presentation (5-7 minutes) about where exactly JavaScript is used in the real world.</span>
+        </div>
+
+        <p data-lang="ru"><strong>Что нужно сделать:</strong></p>
+        <p data-lang="en"><strong>What to do:</strong></p>
+        <ol data-lang="ru">
+            <li>Выберите <strong>одно</strong> из направлений: фронтенд, бэкенд (Node.js), мобильные приложения (React Native), десктоп (Electron), игры.</li>
+            <li>Найдите в интернете <strong>3 реальных продукта</strong>, которые используют JS в выбранной области. Например, для Electron: VS Code, Slack, Discord.</li>
+            <li>Для каждого продукта запишите: название, ссылку на сайт, что делает, какие технологии (React, Vue, Node.js и т. п.) использует.</li>
+            <li>Напишите короткий вывод (3-5 предложений): почему JS — хороший выбор для этой области.</li>
+        </ol>
+        <ol data-lang="en">
+            <li>Choose <strong>one</strong> area: frontend, backend (Node.js), mobile (React Native), desktop (Electron), games.</li>
+            <li>Find <strong>3 real products</strong> that use JS in that area. For example, for Electron: VS Code, Slack, Discord.</li>
+            <li>For each product, record: name, website link, what it does, what technologies it uses (React, Vue, Node.js, etc.).</li>
+            <li>Write a short conclusion (3-5 sentences): why JS is a good choice for this area.</li>
+        </ol>
+
+        <div class="criteria">
+            <ul data-lang="ru">
+                <li>Выбрано одно направление</li>
+                <li>Описаны 3 реальных продукта</li>
+                <li>Для каждого указаны технологии</li>
+                <li>Есть вывод, объясняющий выбор JS в этой области</li>
+            </ul>
+            <ul data-lang="en">
+                <li>One area chosen</li>
+                <li>3 real products described</li>
+                <li>Technologies listed for each</li>
+                <li>There's a conclusion explaining why JS was chosen in this area</li>
+            </ul>
+        </div>
+
+        <div class="hint">
+            <p data-lang="ru">Источники: <strong>stackshare.io</strong>, <strong>built-with.com</strong>, <strong>github.com</strong> (смотрите раздел «Used by» в популярных репозиториях), статьи на Хабре и Medium.</p>
+            <p data-lang="en">Sources: <strong>stackshare.io</strong>, <strong>built-with.com</strong>, <strong>github.com</strong> (check the "Used by" section of popular repos), articles on dev.to and Medium.</p>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="write-box">
+        <p data-lang="ru">Запишите сюда, какие задания вам дались легко, а где пришлось подумать дольше всего:</p>
+        <p data-lang="en">Write here which tasks were easy and which took the most thought:</p>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Занятие 2 — Установка инструментов и первый скрипт</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/lecture.css">
+    <script src="../../js/lang.js" defer></script>
+    <style>
+        h1 { border-bottom-color: #f59e0b; }
+        h2 { color: #a16207; background: #fffbeb; border-left-color: #f59e0b; }
+        h3 { color: #78350f; }
+        .timeline { border-left-color: #f59e0b; }
+        .timeline-item::before { background: #f59e0b; }
+        .timeline-year { color: #a16207; }
+        .step-number { background: #f59e0b; }
+        .toc a { color: #a16207; }
+    </style>
+</head>
+<body>
+
+<div class="lesson-nav">
+    <a href="../../index.html" class="nav-home" data-lang="ru">&#8592; Главная</a>
+    <a href="../../index.html" class="nav-home" data-lang="en">&#8592; Home</a>
+    <span class="nav-sep">|</span>
+    <span class="nav-title" data-lang="ru">Занятие 2: Установка инструментов и первый скрипт</span>
+    <span class="nav-title" data-lang="en">Lesson 2: Tools Setup &amp; First Script</span>
+    <span class="nav-sep">|</span>
+    <span class="nav-active" data-lang="ru">&#x1F468;&#x200D;&#x1F3EB; Лекция</span>
+    <span class="nav-active" data-lang="en">&#x1F468;&#x200D;&#x1F3EB; Lecture</span>
+    <a href="student.html" class="nav-link" data-lang="ru">&#x1F468;&#x200D;&#x1F393; Конспект</a>
+    <a href="student.html" class="nav-link" data-lang="en">&#x1F468;&#x200D;&#x1F393; Notes</a>
+    <a href="tasks.html" class="nav-link" data-lang="ru">&#x1F4CB; Задания</a>
+    <a href="tasks.html" class="nav-link" data-lang="en">&#x1F4CB; Tasks</a>
+    <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
+</div>
+
+<div class="container">
+
+    <h1 data-lang="ru">Занятие 2: Установка инструментов и первый скрипт</h1>
+    <h1 data-lang="en">Lesson 2: Tools Setup &amp; First Script</h1>
+    <p class="subtitle" data-lang="ru">Настраиваем рабочее место разработчика: VS Code, расширения, Live Server, Node.js — и пишем первое полноценное приложение</p>
+    <p class="subtitle" data-lang="en">Setting up a developer's workstation: VS Code, extensions, Live Server, Node.js — and writing our first real application</p>
+
+    <div class="why">
+        <p data-lang="ru">В прошлом занятии мы разобрались, <em>что такое</em> JavaScript. Сегодня — настроим рабочее место, чтобы писать на нём было удобно. Хороший редактор и правильные инструменты экономят <strong>часы</strong> времени каждую неделю. Без них программирование превращается в мучение.</p>
+        <p data-lang="en">In the previous lesson we understood <em>what</em> JavaScript is. Today — we'll set up a workspace where writing JS is comfortable. A good editor and the right tools save you <strong>hours</strong> every week. Without them, programming becomes a chore.</p>
+        <p data-lang="ru"><strong>После этого занятия вы сможете:</strong></p>
+        <p data-lang="en"><strong>After this lesson you will be able to:</strong></p>
+        <ul data-lang="ru">
+            <li>Установить и настроить VS Code с нуля</li>
+            <li>Поставить 5 обязательных расширений для JS-разработчика</li>
+            <li>Настроить авто-сохранение и авто-форматирование кода</li>
+            <li>Запустить HTML-страницу через Live Server</li>
+            <li>Установить Node.js и запустить JS-файл в терминале</li>
+            <li>Объяснить разницу между запуском JS в браузере и в Node.js</li>
+            <li>Использовать горячие клавиши VS Code и Emmet для ускорения набора</li>
+            <li>Написать мини-игру «Угадай число» с нуля</li>
+        </ul>
+        <ul data-lang="en">
+            <li>Install and set up VS Code from scratch</li>
+            <li>Install 5 essential extensions for a JS developer</li>
+            <li>Configure auto-save and auto-formatting of code</li>
+            <li>Run an HTML page via Live Server</li>
+            <li>Install Node.js and run a JS file in the terminal</li>
+            <li>Explain the difference between running JS in the browser and in Node.js</li>
+            <li>Use VS Code shortcuts and Emmet to type faster</li>
+            <li>Write a "Guess the number" mini-game from scratch</li>
+        </ul>
+    </div>
+
+    <div class="toc">
+        <div class="toc-title" data-lang="ru">Содержание</div>
+        <div class="toc-title" data-lang="en">Contents</div>
+        <ol data-lang="ru">
+            <li><a href="#vscode">Установка VS Code</a></li>
+            <li><a href="#extensions">Полезные расширения для JS-разработчика</a></li>
+            <li><a href="#settings">Настройка VS Code под себя</a></li>
+            <li><a href="#liveserver">Live Server — авто-обновление страницы</a></li>
+            <li><a href="#node">Node.js и npm — что это и зачем</a></li>
+            <li><a href="#run-node">Первый запуск JS через Node.js</a></li>
+            <li><a href="#shortcuts">Горячие клавиши и Emmet</a></li>
+            <li><a href="#game">Мини-проект «Угадай число»</a></li>
+        </ol>
+        <ol data-lang="en">
+            <li><a href="#vscode">Installing VS Code</a></li>
+            <li><a href="#extensions">Useful extensions for a JS developer</a></li>
+            <li><a href="#settings">Customizing VS Code</a></li>
+            <li><a href="#liveserver">Live Server — auto-reload</a></li>
+            <li><a href="#node">Node.js and npm — what and why</a></li>
+            <li><a href="#run-node">Running JS via Node.js</a></li>
+            <li><a href="#shortcuts">Shortcuts and Emmet</a></li>
+            <li><a href="#game">Mini-project "Guess the number"</a></li>
+        </ol>
+    </div>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <h2 id="vscode" data-lang="ru">1. Установка VS Code</h2>
+    <h2 id="vscode" data-lang="en">1. Installing VS Code</h2>
+
+    <p data-lang="ru"><strong>Visual Studio Code</strong> (или просто VS Code) — самый популярный редактор кода в мире. Его используют более <strong>70% разработчиков</strong>. Он бесплатный, быстрый, кросс-платформенный (Windows, Mac, Linux) и с огромным количеством расширений. Именно его мы будем использовать весь курс.</p>
+    <p data-lang="en"><strong>Visual Studio Code</strong> (or just VS Code) is the most popular code editor in the world. Over <strong>70% of developers</strong> use it. It's free, fast, cross-platform (Windows, Mac, Linux), and has a huge ecosystem of extensions. We'll use it throughout the course.</p>
+
+    <div class="important">
+        <p data-lang="ru">Не путайте <strong>VS Code</strong> с <strong>Visual Studio</strong>. Это разные продукты Microsoft. Visual Studio — тяжёлая среда для C#/C++, нам она не нужна. Нам нужен <strong>VS Code</strong> — лёгкий редактор.</p>
+        <p data-lang="en">Don't confuse <strong>VS Code</strong> with <strong>Visual Studio</strong>. These are different Microsoft products. Visual Studio is a heavy IDE for C#/C++ and we don't need it. We need <strong>VS Code</strong> — a lightweight editor.</p>
+    </div>
+
+    <h3 data-lang="ru">Пошаговая установка</h3>
+    <h3 data-lang="en">Step-by-step installation</h3>
+
+    <div class="step">
+        <div class="step-number">1</div>
+        <div>
+            <p data-lang="ru">Откройте в браузере сайт <strong>code.visualstudio.com</strong></p>
+            <p data-lang="en">Open <strong>code.visualstudio.com</strong> in your browser</p>
+        </div>
+    </div>
+    <div class="step">
+        <div class="step-number">2</div>
+        <div>
+            <p data-lang="ru">Нажмите большую синюю кнопку <strong>Download</strong> — сайт сам определит вашу операционную систему.</p>
+            <p data-lang="en">Click the big blue <strong>Download</strong> button — the site will auto-detect your operating system.</p>
+        </div>
+    </div>
+    <div class="step">
+        <div class="step-number">3</div>
+        <div>
+            <p data-lang="ru">Запустите скачанный установщик. В мастере установки поставьте галочки:</p>
+            <p data-lang="en">Run the downloaded installer. In the setup wizard, check these options:</p>
+            <ul data-lang="ru">
+                <li><strong>Add "Open with Code" action to Windows Explorer file context menu</strong> — позволит открывать файлы правым кликом</li>
+                <li><strong>Add "Open with Code" action to Windows Explorer directory context menu</strong> — то же для папок</li>
+                <li><strong>Add to PATH</strong> — позволит запускать VS Code из терминала командой <code>code .</code></li>
+            </ul>
+            <ul data-lang="en">
+                <li><strong>Add "Open with Code" action to Windows Explorer file context menu</strong> — lets you open files with right-click</li>
+                <li><strong>Add "Open with Code" action to Windows Explorer directory context menu</strong> — same for folders</li>
+                <li><strong>Add to PATH</strong> — lets you launch VS Code from terminal with <code>code .</code></li>
+            </ul>
+        </div>
+    </div>
+    <div class="step">
+        <div class="step-number">4</div>
+        <div>
+            <p data-lang="ru">Дождитесь окончания установки и запустите VS Code. При первом запуске вам предложат выбрать тему (светлая/тёмная) — выбирайте то, что нравится, это можно поменять позже.</p>
+            <p data-lang="en">Wait for installation to finish and launch VS Code. On the first run you'll be asked to pick a theme (light/dark) — choose what you like, it can be changed later.</p>
+        </div>
+    </div>
+
+    <h3 data-lang="ru">Знакомство с интерфейсом</h3>
+    <h3 data-lang="en">Getting familiar with the interface</h3>
+
+    <p data-lang="ru">Окно VS Code состоит из четырёх основных частей:</p>
+    <p data-lang="en">The VS Code window has four main parts:</p>
+
+    <ul data-lang="ru">
+        <li><strong>Activity Bar</strong> (левая полоска с иконками) — Files, Search, Source Control (Git), Debug, Extensions</li>
+        <li><strong>Side Bar</strong> — древовидная структура файлов вашего проекта</li>
+        <li><strong>Editor</strong> — главное окно, где вы пишете код</li>
+        <li><strong>Status Bar</strong> (внизу) — информация о файле: язык, кодировка, Git-ветка, позиция курсора</li>
+        <li><strong>Terminal</strong> (открывается через <span class="kbd">Ctrl</span>+<span class="kbd">`</span>) — встроенная командная строка</li>
+    </ul>
+    <ul data-lang="en">
+        <li><strong>Activity Bar</strong> (left vertical strip) — Files, Search, Source Control (Git), Debug, Extensions</li>
+        <li><strong>Side Bar</strong> — tree view of your project files</li>
+        <li><strong>Editor</strong> — main window where you write code</li>
+        <li><strong>Status Bar</strong> (bottom) — file info: language, encoding, Git branch, cursor position</li>
+        <li><strong>Terminal</strong> (opens with <span class="kbd">Ctrl</span>+<span class="kbd">`</span>) — built-in command line</li>
+    </ul>
+
+    <div class="pro-tip">
+        <p data-lang="ru">Работайте с <strong>папкой проекта</strong>, а не с отдельными файлами. <em>File → Open Folder</em> (или <em>File → Open...</em> на Mac). Тогда VS Code показывает всю структуру проекта в Side Bar, а расширения (Git, Live Server) работают правильно.</p>
+        <p data-lang="en">Work with a <strong>project folder</strong>, not individual files. <em>File → Open Folder</em> (or <em>File → Open...</em> on Mac). This way VS Code shows the entire project structure in the Side Bar and extensions (Git, Live Server) work correctly.</p>
+    </div>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <h2 id="extensions" data-lang="ru">2. Полезные расширения для JS-разработчика</h2>
+    <h2 id="extensions" data-lang="en">2. Useful extensions for a JS developer</h2>
+
+    <p data-lang="ru">Расширения превращают VS Code из «текстового редактора» в мощный инструмент. Вот 5 обязательных расширений для начинающего JS-разработчика:</p>
+    <p data-lang="en">Extensions turn VS Code from a "text editor" into a powerful tool. Here are the 5 must-have extensions for a beginner JS developer:</p>
+
+    <table>
+        <thead data-lang="ru"><tr><th>Расширение</th><th>Что делает</th><th>Зачем нужно</th></tr></thead>
+        <thead data-lang="en"><tr><th>Extension</th><th>What it does</th><th>Why you need it</th></tr></thead>
+        <tbody data-lang="ru">
+            <tr><td><strong>Live Server</strong><br><small>ritwickdey.LiveServer</small></td><td>Локальный сервер с авто-перезагрузкой страницы при сохранении файла</td><td>Не надо каждый раз вручную обновлять браузер</td></tr>
+            <tr><td><strong>Prettier</strong><br><small>esbenp.prettier-vscode</small></td><td>Авто-форматирование кода (пробелы, отступы, кавычки)</td><td>Код всегда выглядит одинаково аккуратно</td></tr>
+            <tr><td><strong>Error Lens</strong><br><small>usernamehw.errorlens</small></td><td>Показывает ошибки прямо в строке кода</td><td>Не надо наводить на подчёркнутое красным — ошибка сразу видна</td></tr>
+            <tr><td><strong>JavaScript (ES6) code snippets</strong><br><small>xabikos.JavaScriptSnippets</small></td><td>Быстрые сниппеты: <code>clg</code> → <code>console.log()</code>, <code>fn</code> → функция</td><td>Пишете код в 3 раза быстрее</td></tr>
+            <tr><td><strong>Auto Rename Tag</strong><br><small>formulahendry.auto-rename-tag</small></td><td>Переименовываете открывающий тег — автоматически меняется закрывающий</td><td>Экономит время при редактировании HTML</td></tr>
+        </tbody>
+        <tbody data-lang="en">
+            <tr><td><strong>Live Server</strong><br><small>ritwickdey.LiveServer</small></td><td>Local server with auto-reload when you save a file</td><td>No need to manually refresh the browser</td></tr>
+            <tr><td><strong>Prettier</strong><br><small>esbenp.prettier-vscode</small></td><td>Auto-formats code (spaces, indents, quotes)</td><td>Code always looks consistently neat</td></tr>
+            <tr><td><strong>Error Lens</strong><br><small>usernamehw.errorlens</small></td><td>Shows errors right in the line of code</td><td>No need to hover over red underlines — errors are visible instantly</td></tr>
+            <tr><td><strong>JavaScript (ES6) code snippets</strong><br><small>xabikos.JavaScriptSnippets</small></td><td>Quick snippets: <code>clg</code> → <code>console.log()</code>, <code>fn</code> → function</td><td>Write code 3x faster</td></tr>
+            <tr><td><strong>Auto Rename Tag</strong><br><small>formulahendry.auto-rename-tag</small></td><td>Rename an opening tag — the closing tag renames automatically</td><td>Saves time when editing HTML</td></tr>
+        </tbody>
+    </table>
+
+    <h3 data-lang="ru">Как установить расширение</h3>
+    <h3 data-lang="en">How to install an extension</h3>
+
+    <div class="step">
+        <div class="step-number">1</div>
+        <div>
+            <p data-lang="ru">Нажмите на иконку <strong>Extensions</strong> в Activity Bar (или <span class="kbd">Ctrl</span>+<span class="kbd">Shift</span>+<span class="kbd">X</span>).</p>
+            <p data-lang="en">Click the <strong>Extensions</strong> icon in the Activity Bar (or <span class="kbd">Ctrl</span>+<span class="kbd">Shift</span>+<span class="kbd">X</span>).</p>
+        </div>
+    </div>
+    <div class="step">
+        <div class="step-number">2</div>
+        <div>
+            <p data-lang="ru">В строке поиска введите название, например <code>Live Server</code>.</p>
+            <p data-lang="en">In the search box, type the name, e.g. <code>Live Server</code>.</p>
+        </div>
+    </div>
+    <div class="step">
+        <div class="step-number">3</div>
+        <div>
+            <p data-lang="ru">Выберите нужное (обычно первое в списке) и нажмите <strong>Install</strong>. Проверьте, что установили именно то расширение — по имени автора (см. таблицу выше).</p>
+            <p data-lang="en">Pick the right one (usually the first result) and click <strong>Install</strong>. Check the author name matches the table above.</p>
+        </div>
+    </div>
+
+    <div class="mistake">
+        <p data-lang="ru">Не ставьте <strong>все подряд</strong> расширения, которые попадаются. Каждое расширение замедляет VS Code. Хорошее правило: ставьте только то, что реально используете. Остальное — удаляйте через кнопку <em>Uninstall</em>.</p>
+        <p data-lang="en">Don't install <strong>every extension</strong> you come across. Each extension slows down VS Code. Good rule: install only what you actually use. Remove the rest via the <em>Uninstall</em> button.</p>
+    </div>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <h2 id="settings" data-lang="ru">3. Настройка VS Code под себя</h2>
+    <h2 id="settings" data-lang="en">3. Customizing VS Code</h2>
+
+    <p data-lang="ru">Чтобы открыть настройки: <span class="kbd">Ctrl</span>+<span class="kbd">,</span> (или <em>File → Preferences → Settings</em> на Windows, <em>Code → Settings</em> на Mac).</p>
+    <p data-lang="en">To open settings: <span class="kbd">Ctrl</span>+<span class="kbd">,</span> (or <em>File → Preferences → Settings</em> on Windows, <em>Code → Settings</em> on Mac).</p>
+
+    <h3 data-lang="ru">Минимальный набор настроек для JS</h3>
+    <h3 data-lang="en">Minimum settings for JS</h3>
+
+    <ol data-lang="ru">
+        <li><strong>Auto Save</strong> → выберите <code>onFocusChange</code> (сохранять при переключении на другое окно). Больше не потеряете несохранённое!</li>
+        <li><strong>Format On Save</strong> → поставьте галочку. Код будет автоматически форматироваться Prettier при каждом сохранении.</li>
+        <li><strong>Default Formatter</strong> → выберите <code>Prettier - Code formatter</code>.</li>
+        <li><strong>Tab Size</strong> → 2 (стандарт JS-сообщества) или 4 (если привычнее).</li>
+        <li><strong>Font Family</strong> → <code>Fira Code</code> или <code>JetBrains Mono</code> (моноширинные шрифты с лигатурами).</li>
+        <li><strong>Font Ligatures</strong> → <code>true</code> — символы <code>=&gt;</code>, <code>!=</code>, <code>===</code> будут рисоваться красиво.</li>
+    </ol>
+    <ol data-lang="en">
+        <li><strong>Auto Save</strong> → select <code>onFocusChange</code> (save when switching windows). Never lose unsaved changes again!</li>
+        <li><strong>Format On Save</strong> → check the box. Prettier will auto-format your code on every save.</li>
+        <li><strong>Default Formatter</strong> → select <code>Prettier - Code formatter</code>.</li>
+        <li><strong>Tab Size</strong> → 2 (JS community standard) or 4 (if more familiar).</li>
+        <li><strong>Font Family</strong> → <code>Fira Code</code> or <code>JetBrains Mono</code> (monospace fonts with ligatures).</li>
+        <li><strong>Font Ligatures</strong> → <code>true</code> — symbols like <code>=&gt;</code>, <code>!=</code>, <code>===</code> will render beautifully.</li>
+    </ol>
+
+    <div class="analogy">
+        <p data-lang="ru">Настройка редактора — как настройка рабочего стола дома. Можно работать за любым, но за <em>своим</em>, удобным — производительность в 2 раза выше. Один раз потратьте 20 минут — и следующий год будете радоваться.</p>
+        <p data-lang="en">Setting up your editor is like setting up your desk at home. You can work at any desk, but at <em>your own</em>, comfortable one — productivity is 2x higher. Spend 20 minutes once — and enjoy it for the next year.</p>
+    </div>
+
+    <h3 data-lang="ru">Темы оформления</h3>
+    <h3 data-lang="en">Color themes</h3>
+
+    <p data-lang="ru">Тему меняют через <span class="kbd">Ctrl</span>+<span class="kbd">K</span>, <span class="kbd">Ctrl</span>+<span class="kbd">T</span> или <em>File → Preferences → Color Theme</em>. Популярные бесплатные темы:</p>
+    <p data-lang="en">Change theme via <span class="kbd">Ctrl</span>+<span class="kbd">K</span>, <span class="kbd">Ctrl</span>+<span class="kbd">T</span> or <em>File → Preferences → Color Theme</em>. Popular free themes:</p>
+
+    <ul data-lang="ru">
+        <li><strong>One Dark Pro</strong> — классика, тёмная</li>
+        <li><strong>Dracula Official</strong> — тёмно-фиолетовая, стильная</li>
+        <li><strong>Material Theme</strong> — много вариантов в одном расширении</li>
+        <li><strong>GitHub Theme</strong> — светлая/тёмная в стиле GitHub</li>
+        <li><strong>Default Dark Modern</strong> — встроенная, минималистичная</li>
+    </ul>
+    <ul data-lang="en">
+        <li><strong>One Dark Pro</strong> — classic dark theme</li>
+        <li><strong>Dracula Official</strong> — dark purple, stylish</li>
+        <li><strong>Material Theme</strong> — many variants in one extension</li>
+        <li><strong>GitHub Theme</strong> — light/dark GitHub-style</li>
+        <li><strong>Default Dark Modern</strong> — built-in, minimalist</li>
+    </ul>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <h2 id="liveserver" data-lang="ru">4. Live Server — авто-обновление страницы</h2>
+    <h2 id="liveserver" data-lang="en">4. Live Server — auto-reload</h2>
+
+    <p data-lang="ru">В прошлом занятии вы узнали, что такое Live Server. Сегодня разберём, <strong>зачем</strong> он нужен и <strong>как работает</strong>.</p>
+    <p data-lang="en">In the last lesson you learned what Live Server is. Today we'll understand <strong>why</strong> it's needed and <strong>how it works</strong>.</p>
+
+    <h3 data-lang="ru">Проблема без Live Server</h3>
+    <h3 data-lang="en">The problem without Live Server</h3>
+
+    <p data-lang="ru">Обычно, чтобы увидеть HTML-страницу, вы делаете двойной клик по файлу — браузер открывает её через <code>file:///</code>. Это работает, но:</p>
+    <p data-lang="en">Normally, to see an HTML page, you double-click the file — the browser opens it via <code>file:///</code>. This works, but:</p>
+
+    <ul data-lang="ru">
+        <li>После каждой правки надо <strong>вручную</strong> обновлять браузер (<span class="kbd">F5</span>)</li>
+        <li>Некоторые вещи (например, загрузка JSON через <code>fetch</code>) работают <strong>только по HTTP</strong>, а не из файла</li>
+        <li>ES6-модули (<code>import/export</code>) требуют HTTP и падают при открытии напрямую</li>
+    </ul>
+    <ul data-lang="en">
+        <li>After each edit you must <strong>manually</strong> refresh the browser (<span class="kbd">F5</span>)</li>
+        <li>Some things (like loading JSON via <code>fetch</code>) work <strong>only over HTTP</strong>, not from a file</li>
+        <li>ES6 modules (<code>import/export</code>) require HTTP and fail when opened directly</li>
+    </ul>
+
+    <h3 data-lang="ru">Решение: Live Server</h3>
+    <h3 data-lang="en">Solution: Live Server</h3>
+
+    <p data-lang="ru">Расширение Live Server поднимает у вас на компьютере <strong>маленький HTTP-сервер</strong> и открывает страницу по адресу вроде <code>http://127.0.0.1:5500</code>. При каждом сохранении файла страница автоматически перезагружается — без нажатия F5.</p>
+    <p data-lang="en">Live Server starts a <strong>tiny HTTP server</strong> on your machine and opens the page at an address like <code>http://127.0.0.1:5500</code>. When you save a file, the page auto-reloads — no F5 needed.</p>
+
+    <h3 data-lang="ru">Как запустить</h3>
+    <h3 data-lang="en">How to launch it</h3>
+
+    <p data-lang="ru"><strong>Способ 1:</strong> Правый клик по <code>index.html</code> в VS Code → <em>Open with Live Server</em>.</p>
+    <p data-lang="en"><strong>Method 1:</strong> Right-click <code>index.html</code> in VS Code → <em>Open with Live Server</em>.</p>
+
+    <p data-lang="ru"><strong>Способ 2:</strong> Внизу справа в VS Code появится кнопка <strong>Go Live</strong> — нажмите на неё.</p>
+    <p data-lang="en"><strong>Method 2:</strong> Bottom-right of VS Code has a <strong>Go Live</strong> button — click it.</p>
+
+    <p data-lang="ru"><strong>Остановить сервер:</strong> ещё раз нажать на ту же кнопку (теперь она называется <strong>Port: 5500</strong>).</p>
+    <p data-lang="en"><strong>Stop the server:</strong> click the same button again (now labeled <strong>Port: 5500</strong>).</p>
+
+    <div class="try-it">
+        <p data-lang="ru">Создайте папку <code>live-test/</code> с файлом <code>index.html</code>:</p>
+        <p data-lang="en">Create a folder <code>live-test/</code> with an <code>index.html</code> file:</p>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+    &lt;h1&gt;Моя страница&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <p data-lang="ru">Запустите Live Server. Затем поменяйте текст заголовка на «<em>Моя крутая страница</em>», сохраните (Ctrl+S). Страница обновится сама — без F5!</p>
+        <p data-lang="en">Start Live Server. Then change the heading to "<em>My cool page</em>" and save (Ctrl+S). The page reloads by itself — no F5!</p>
+    </div>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <h2 id="node" data-lang="ru">5. Node.js и npm — что это и зачем</h2>
+    <h2 id="node" data-lang="en">5. Node.js and npm — what and why</h2>
+
+    <p data-lang="ru">До 2009 года JavaScript жил только в браузере. Потом Райан Даль взял движок <strong>V8</strong> из Chrome и упаковал его в отдельную программу, которая работает в операционной системе. Так появился <strong>Node.js</strong>.</p>
+    <p data-lang="en">Before 2009, JavaScript lived only in the browser. Then Ryan Dahl took the <strong>V8</strong> engine from Chrome and wrapped it in a standalone program that runs in the operating system. That's how <strong>Node.js</strong> was born.</p>
+
+    <div style="background:#fffbeb;border:1px solid #fde047;padding:16px 20px;border-radius:8px;margin:16px 0;">
+        <p data-lang="ru"><strong>Node.js</strong> — это <strong>среда исполнения JavaScript</strong>, которая работает вне браузера. Использует тот же движок V8, что и Chrome. Позволяет запускать JS-файлы командой <code>node filename.js</code> в терминале.</p>
+        <p data-lang="en"><strong>Node.js</strong> is a <strong>JavaScript runtime</strong> that runs outside the browser. It uses the same V8 engine as Chrome. It lets you run JS files with <code>node filename.js</code> in the terminal.</p>
+    </div>
+
+    <h3 data-lang="ru">Зачем нам Node.js на этом этапе</h3>
+    <h3 data-lang="en">Why we need Node.js at this stage</h3>
+
+    <p data-lang="ru">Сейчас — чтобы <strong>быстро проверять маленькие куски кода</strong> без лишней возни с HTML-страницей. Написал <code>test.js</code>, выполнил <code>node test.js</code> в терминале — сразу увидел результат. В будущем Node понадобится для установки библиотек через npm, сборки проектов, создания серверов.</p>
+    <p data-lang="en">Right now — to <strong>quickly test small chunks of code</strong> without the hassle of an HTML page. You write <code>test.js</code>, run <code>node test.js</code> in the terminal — and instantly see the result. Later Node will be needed for installing libraries via npm, building projects, and creating servers.</p>
+
+    <h3 data-lang="ru">Что такое npm</h3>
+    <h3 data-lang="en">What is npm</h3>
+
+    <p data-lang="ru"><strong>npm</strong> (Node Package Manager) — это менеджер пакетов, который устанавливается <strong>вместе с Node.js</strong>. Через него вы скачиваете и подключаете готовые библиотеки: React, Express, Lodash и ещё более миллиона. В мире JavaScript npm — это «магазин приложений» для разработчиков.</p>
+    <p data-lang="en"><strong>npm</strong> (Node Package Manager) is a package manager that installs <strong>together with Node.js</strong>. Through it you download and use ready-made libraries: React, Express, Lodash, and over a million others. In the JS world, npm is the "app store" for developers.</p>
+
+    <h3 data-lang="ru">Установка Node.js</h3>
+    <h3 data-lang="en">Installing Node.js</h3>
+
+    <div class="step">
+        <div class="step-number">1</div>
+        <div>
+            <p data-lang="ru">Откройте сайт <strong>nodejs.org</strong>.</p>
+            <p data-lang="en">Open <strong>nodejs.org</strong>.</p>
+        </div>
+    </div>
+    <div class="step">
+        <div class="step-number">2</div>
+        <div>
+            <p data-lang="ru">Скачайте версию <strong>LTS</strong> (Long Term Support) — она стабильная и рекомендуется для большинства пользователей. Не берите «Current» — там могут быть сырые фичи.</p>
+            <p data-lang="en">Download the <strong>LTS</strong> (Long Term Support) version — it's stable and recommended for most users. Don't pick "Current" — it may contain raw features.</p>
+        </div>
+    </div>
+    <div class="step">
+        <div class="step-number">3</div>
+        <div>
+            <p data-lang="ru">Запустите установщик, соглашайтесь с лицензией, оставьте все галочки по умолчанию. npm установится автоматически.</p>
+            <p data-lang="en">Run the installer, accept the license, keep all defaults. npm installs automatically.</p>
+        </div>
+    </div>
+    <div class="step">
+        <div class="step-number">4</div>
+        <div>
+            <p data-lang="ru">Проверьте установку. Откройте терминал (в VS Code: <span class="kbd">Ctrl</span>+<span class="kbd">`</span>) и выполните:</p>
+            <p data-lang="en">Verify the installation. Open a terminal (in VS Code: <span class="kbd">Ctrl</span>+<span class="kbd">`</span>) and run:</p>
+            <pre><code>node --version
+npm --version</code></pre>
+            <p data-lang="ru">Если увидите что-то вроде <code>v20.11.0</code> и <code>10.2.4</code> — всё установлено правильно.</p>
+            <p data-lang="en">If you see something like <code>v20.11.0</code> and <code>10.2.4</code> — everything is installed correctly.</p>
+        </div>
+    </div>
+
+    <div class="mistake">
+        <p data-lang="ru">Если команды <code>node</code> и <code>npm</code> <strong>не распознаются</strong> — скорее всего, Node установился, но не добавлен в <em>PATH</em>. Решение: закрыть и заново открыть терминал (в VS Code достаточно закрыть и заново открыть вкладку терминала). Если не помогло — переустановите Node.js, убедившись, что в установщике стоит галочка «Add to PATH».</p>
+        <p data-lang="en">If <code>node</code> and <code>npm</code> commands are <strong>not recognized</strong> — Node likely installed but isn't in <em>PATH</em>. Fix: close and reopen the terminal (in VS Code just close and reopen the terminal tab). If that doesn't help — reinstall Node, making sure "Add to PATH" is checked.</p>
+    </div>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <h2 id="run-node" data-lang="ru">6. Первый запуск JS через Node.js</h2>
+    <h2 id="run-node" data-lang="en">6. Running JS via Node.js</h2>
+
+    <div class="step">
+        <div class="step-number">1</div>
+        <div>
+            <p data-lang="ru">Создайте папку <code>node-test/</code> и откройте её в VS Code.</p>
+            <p data-lang="en">Create a folder <code>node-test/</code> and open it in VS Code.</p>
+        </div>
+    </div>
+    <div class="step">
+        <div class="step-number">2</div>
+        <div>
+            <p data-lang="ru">Создайте файл <code>hello.js</code>:</p>
+            <p data-lang="en">Create a file <code>hello.js</code>:</p>
+            <pre><code>console.log("Hello from Node.js!");
+console.log("2 + 2 =", 2 + 2);
+console.log("Сейчас:", new Date().toLocaleString());</code></pre>
+        </div>
+    </div>
+    <div class="step">
+        <div class="step-number">3</div>
+        <div>
+            <p data-lang="ru">Откройте терминал в VS Code (<span class="kbd">Ctrl</span>+<span class="kbd">`</span>) и выполните:</p>
+            <p data-lang="en">Open the terminal in VS Code (<span class="kbd">Ctrl</span>+<span class="kbd">`</span>) and run:</p>
+            <pre><code>node hello.js</code></pre>
+        </div>
+    </div>
+
+    <div class="result-box">
+        <p data-lang="ru">В терминале вы увидите:</p>
+        <p data-lang="en">You'll see in the terminal:</p>
+        <pre><code>Hello from Node.js!
+2 + 2 = 4
+Сейчас: 13.04.2026, 15:32:10</code></pre>
+    </div>
+
+    <h3 data-lang="ru">JS в браузере vs JS в Node.js</h3>
+    <h3 data-lang="en">JS in the browser vs JS in Node.js</h3>
+
+    <p data-lang="ru">Язык один и тот же, но среда исполнения разная. Поэтому доступны разные встроенные возможности:</p>
+    <p data-lang="en">The language is the same, but the runtime differs. Different built-in features are available:</p>
+
+    <table>
+        <thead data-lang="ru"><tr><th>Что</th><th>Браузер</th><th>Node.js</th></tr></thead>
+        <thead data-lang="en"><tr><th>What</th><th>Browser</th><th>Node.js</th></tr></thead>
+        <tbody data-lang="ru">
+            <tr><td><code>window</code>, <code>document</code></td><td>✅ Есть</td><td>❌ Нет</td></tr>
+            <tr><td><code>alert</code>, <code>prompt</code>, <code>confirm</code></td><td>✅ Есть</td><td>❌ Нет</td></tr>
+            <tr><td>DOM, события кликов</td><td>✅ Есть</td><td>❌ Нет</td></tr>
+            <tr><td>Чтение/запись файлов (<code>fs</code>)</td><td>❌ Нет</td><td>✅ Есть</td></tr>
+            <tr><td>HTTP-серверы</td><td>❌ Нет</td><td>✅ Есть</td></tr>
+            <tr><td><code>console.log</code>, <code>setTimeout</code>, <code>JSON</code></td><td>✅ Есть</td><td>✅ Есть</td></tr>
+            <tr><td>Глобальный объект</td><td><code>window</code></td><td><code>global</code> / <code>globalThis</code></td></tr>
+        </tbody>
+        <tbody data-lang="en">
+            <tr><td><code>window</code>, <code>document</code></td><td>✅ Yes</td><td>❌ No</td></tr>
+            <tr><td><code>alert</code>, <code>prompt</code>, <code>confirm</code></td><td>✅ Yes</td><td>❌ No</td></tr>
+            <tr><td>DOM, click events</td><td>✅ Yes</td><td>❌ No</td></tr>
+            <tr><td>File read/write (<code>fs</code>)</td><td>❌ No</td><td>✅ Yes</td></tr>
+            <tr><td>HTTP servers</td><td>❌ No</td><td>✅ Yes</td></tr>
+            <tr><td><code>console.log</code>, <code>setTimeout</code>, <code>JSON</code></td><td>✅ Yes</td><td>✅ Yes</td></tr>
+            <tr><td>Global object</td><td><code>window</code></td><td><code>global</code> / <code>globalThis</code></td></tr>
+        </tbody>
+    </table>
+
+    <div class="pro-tip">
+        <p data-lang="ru">Для обучения и тренировки чистого JS (переменные, функции, массивы, циклы) <strong>удобнее Node.js</strong> — быстрее запуск, понятнее ошибки. Для всего, что связано со страницей и пользователем — нужен <strong>браузер</strong> и DOM. В этом курсе мы будем использовать обе среды.</p>
+        <p data-lang="en">For learning and practicing pure JS (variables, functions, arrays, loops), <strong>Node.js is more convenient</strong> — faster to run, clearer errors. For anything involving the page and user — you need the <strong>browser</strong> and DOM. In this course we'll use both.</p>
+    </div>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <h2 id="shortcuts" data-lang="ru">7. Горячие клавиши и Emmet</h2>
+    <h2 id="shortcuts" data-lang="en">7. Shortcuts and Emmet</h2>
+
+    <p data-lang="ru">Профессиональный разработчик почти не тратит время на набор «руками». Он использует <strong>горячие клавиши</strong> и <strong>автокомплит</strong>. Это кажется мелочью, но за год экономит недели времени.</p>
+    <p data-lang="en">A professional developer barely types "by hand". They use <strong>shortcuts</strong> and <strong>autocomplete</strong>. It seems minor, but saves weeks of time over a year.</p>
+
+    <h3 data-lang="ru">Топ-10 горячих клавиш VS Code</h3>
+    <h3 data-lang="en">Top 10 VS Code shortcuts</h3>
+
+    <table class="shortcut-table">
+        <thead data-lang="ru"><tr><th>Клавиши</th><th>Что делает</th></tr></thead>
+        <thead data-lang="en"><tr><th>Keys</th><th>What it does</th></tr></thead>
+        <tbody data-lang="ru">
+            <tr><td><span class="kbd">Ctrl</span>+<span class="kbd">S</span></td><td>Сохранить файл</td></tr>
+            <tr><td><span class="kbd">Ctrl</span>+<span class="kbd">D</span></td><td>Выделить следующее вхождение слова (мульти-курсор)</td></tr>
+            <tr><td><span class="kbd">Alt</span>+<span class="kbd">&#8593;</span> / <span class="kbd">&#8595;</span></td><td>Переместить строку вверх/вниз</td></tr>
+            <tr><td><span class="kbd">Shift</span>+<span class="kbd">Alt</span>+<span class="kbd">&#8595;</span></td><td>Дублировать строку вниз</td></tr>
+            <tr><td><span class="kbd">Ctrl</span>+<span class="kbd">/</span></td><td>Закомментировать / раскомментировать строку</td></tr>
+            <tr><td><span class="kbd">Ctrl</span>+<span class="kbd">P</span></td><td>Быстрый поиск файла по имени</td></tr>
+            <tr><td><span class="kbd">Ctrl</span>+<span class="kbd">Shift</span>+<span class="kbd">P</span></td><td>Command Palette (любая команда VS Code)</td></tr>
+            <tr><td><span class="kbd">Ctrl</span>+<span class="kbd">`</span></td><td>Открыть/закрыть встроенный терминал</td></tr>
+            <tr><td><span class="kbd">Ctrl</span>+<span class="kbd">B</span></td><td>Показать/скрыть Side Bar</td></tr>
+            <tr><td><span class="kbd">F2</span></td><td>Переименовать переменную/функцию во всём файле</td></tr>
+        </tbody>
+        <tbody data-lang="en">
+            <tr><td><span class="kbd">Ctrl</span>+<span class="kbd">S</span></td><td>Save file</td></tr>
+            <tr><td><span class="kbd">Ctrl</span>+<span class="kbd">D</span></td><td>Select next occurrence (multi-cursor)</td></tr>
+            <tr><td><span class="kbd">Alt</span>+<span class="kbd">&#8593;</span> / <span class="kbd">&#8595;</span></td><td>Move line up/down</td></tr>
+            <tr><td><span class="kbd">Shift</span>+<span class="kbd">Alt</span>+<span class="kbd">&#8595;</span></td><td>Duplicate line down</td></tr>
+            <tr><td><span class="kbd">Ctrl</span>+<span class="kbd">/</span></td><td>Toggle line comment</td></tr>
+            <tr><td><span class="kbd">Ctrl</span>+<span class="kbd">P</span></td><td>Quick open file by name</td></tr>
+            <tr><td><span class="kbd">Ctrl</span>+<span class="kbd">Shift</span>+<span class="kbd">P</span></td><td>Command Palette (any VS Code command)</td></tr>
+            <tr><td><span class="kbd">Ctrl</span>+<span class="kbd">`</span></td><td>Toggle integrated terminal</td></tr>
+            <tr><td><span class="kbd">Ctrl</span>+<span class="kbd">B</span></td><td>Toggle Side Bar</td></tr>
+            <tr><td><span class="kbd">F2</span></td><td>Rename variable/function throughout the file</td></tr>
+        </tbody>
+    </table>
+
+    <p data-lang="ru"><em>На Mac заменяйте <span class="kbd">Ctrl</span> на <span class="kbd">Cmd</span>.</em></p>
+    <p data-lang="en"><em>On Mac, replace <span class="kbd">Ctrl</span> with <span class="kbd">Cmd</span>.</em></p>
+
+    <h3 data-lang="ru">Emmet — супер-быстрый набор HTML</h3>
+    <h3 data-lang="en">Emmet — lightning-fast HTML typing</h3>
+
+    <p data-lang="ru"><strong>Emmet</strong> встроен в VS Code. Это «магическое» сокращение: вы пишете короткий код, нажимаете <span class="kbd">Tab</span> — и он разворачивается в полноценный HTML.</p>
+    <p data-lang="en"><strong>Emmet</strong> is built into VS Code. It's a "magical" shorthand: you type a short pattern, press <span class="kbd">Tab</span>, and it expands into full HTML.</p>
+
+    <table>
+        <thead data-lang="ru"><tr><th>Наберите</th><th>Нажмите Tab — получите</th></tr></thead>
+        <thead data-lang="en"><tr><th>Type</th><th>Press Tab — get</th></tr></thead>
+        <tbody>
+            <tr><td><code>html:5</code></td><td>Полный шаблон HTML5</td></tr>
+            <tr><td><code>ul&gt;li*5</code></td><td><code>&lt;ul&gt;</code> с пятью <code>&lt;li&gt;</code></td></tr>
+            <tr><td><code>.card</code></td><td><code>&lt;div class="card"&gt;&lt;/div&gt;</code></td></tr>
+            <tr><td><code>#app</code></td><td><code>&lt;div id="app"&gt;&lt;/div&gt;</code></td></tr>
+            <tr><td><code>a.btn</code></td><td><code>&lt;a href="" class="btn"&gt;&lt;/a&gt;</code></td></tr>
+            <tr><td><code>ul.menu&gt;li.item*3</code></td><td><code>&lt;ul class="menu"&gt;</code> с тремя <code>&lt;li class="item"&gt;</code></td></tr>
+        </tbody>
+    </table>
+
+    <div class="try-it">
+        <p data-lang="ru">В любом <code>.html</code>-файле наберите <code>html:5</code> и нажмите Tab. За полсекунды появится полноценный скелет HTML-документа. Попробуйте прямо сейчас.</p>
+        <p data-lang="en">In any <code>.html</code> file, type <code>html:5</code> and press Tab. In half a second a full HTML skeleton appears. Try it right now.</p>
+    </div>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <h2 id="game" data-lang="ru">8. Мини-проект «Угадай число»</h2>
+    <h2 id="game" data-lang="en">8. Mini-project "Guess the number"</h2>
+
+    <p data-lang="ru">Теперь — пишем первое настоящее приложение. Это классическая игра: компьютер загадывает число от 1 до 100, вы его отгадываете, он подсказывает «больше» или «меньше», считает количество попыток.</p>
+    <p data-lang="en">Now — we write our first real application. A classic game: the computer picks a number from 1 to 100, you guess it, it hints "higher" or "lower", and counts your attempts.</p>
+
+    <div class="step">
+        <div class="step-number">1</div>
+        <div>
+            <p data-lang="ru">Создайте папку <code>guess-number/</code>, в ней файлы <code>index.html</code> и <code>game.js</code>.</p>
+            <p data-lang="en">Create a folder <code>guess-number/</code> with files <code>index.html</code> and <code>game.js</code>.</p>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-number">2</div>
+        <div>
+            <p data-lang="ru"><strong>index.html</strong> (наберите через Emmet <code>html:5</code> и добавьте подключение скрипта):</p>
+            <p data-lang="en"><strong>index.html</strong> (type <code>html:5</code> with Emmet and add the script tag):</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Угадай число&lt;/title&gt;
+    &lt;script src="game.js" defer&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Игра «Угадай число»&lt;/h1&gt;
+    &lt;p&gt;Открой консоль (F12) — там идёт игра!&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-number">3</div>
+        <div>
+            <p data-lang="ru"><strong>game.js</strong> — основной код:</p>
+            <p data-lang="en"><strong>game.js</strong> — the main logic:</p>
+            <pre><code>// Компьютер загадывает число от 1 до 100
+const secret = Math.floor(Math.random() * 100) + 1;
+let attempts = 0;
+let guess = null;
+
+console.log("Я загадал число от 1 до 100. Попробуй угадать!");
+
+// Играем пока пользователь не угадает
+while (guess !== secret) {
+    const input = prompt("Твоё число (1-100):");
+
+    // Если пользователь нажал «Отмена»
+    if (input === null) {
+        console.log("Игра отменена.");
+        break;
+    }
+
+    guess = Number(input);
+    attempts++;
+
+    if (guess &lt; secret) {
+        console.log(guess + " — мало! Пробуй больше.");
+    } else if (guess &gt; secret) {
+        console.log(guess + " — много! Пробуй меньше.");
+    } else {
+        console.log("🎉 Угадал! Число было " + secret);
+        console.log("Попыток: " + attempts);
+    }
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-number">4</div>
+        <div>
+            <p data-lang="ru">Запустите через <em>Open with Live Server</em>. В браузере появится окно с приглашением ввести число. После каждого ввода консоль (F12) показывает подсказку.</p>
+            <p data-lang="en">Run via <em>Open with Live Server</em>. An input prompt appears in the browser. After each input the console (F12) shows a hint.</p>
+        </div>
+    </div>
+
+    <h3 data-lang="ru">Разбор кода</h3>
+    <h3 data-lang="en">Code walkthrough</h3>
+
+    <ul data-lang="ru">
+        <li><code>Math.random()</code> — возвращает случайное число от 0 до 1 (например, 0.7342).</li>
+        <li><code>* 100</code> — превращаем в число от 0 до 100.</li>
+        <li><code>Math.floor(...)</code> — округляем вниз до целого (0 до 99).</li>
+        <li><code>+ 1</code> — получаем диапазон 1 до 100.</li>
+        <li><code>prompt(...)</code> — показывает окно ввода в браузере, возвращает строку или <code>null</code> (если нажали Отмена).</li>
+        <li><code>Number(input)</code> — превращаем строку в число.</li>
+        <li><code>while (guess !== secret)</code> — цикл работает, пока не угадали.</li>
+        <li><code>attempts++</code> — увеличиваем счётчик попыток на 1.</li>
+    </ul>
+    <ul data-lang="en">
+        <li><code>Math.random()</code> — returns a random number from 0 to 1 (e.g., 0.7342).</li>
+        <li><code>* 100</code> — turns it into 0 to 100.</li>
+        <li><code>Math.floor(...)</code> — rounds down to an integer (0 to 99).</li>
+        <li><code>+ 1</code> — gives us the range 1 to 100.</li>
+        <li><code>prompt(...)</code> — shows an input dialog in the browser, returns a string or <code>null</code> (if Cancel was clicked).</li>
+        <li><code>Number(input)</code> — converts string to number.</li>
+        <li><code>while (guess !== secret)</code> — loop runs until guessed.</li>
+        <li><code>attempts++</code> — increments the attempt counter by 1.</li>
+    </ul>
+
+    <div class="important">
+        <p data-lang="ru">Не волнуйтесь, если пока не понимаете каждую строку — <code>while</code>, <code>Math.floor</code>, <code>prompt</code>. Мы подробно разберём их в следующих занятиях: переменные, условия, циклы, функции. Сегодня важно увидеть, что <strong>настоящая программа</strong> — это просто последовательность понятных команд.</p>
+        <p data-lang="en">Don't worry if you don't understand every line yet — <code>while</code>, <code>Math.floor</code>, <code>prompt</code>. We'll cover them in detail in the next lessons: variables, conditionals, loops, functions. What matters today is seeing that a <strong>real program</strong> is just a sequence of clear commands.</p>
+    </div>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <div class="summary">
+        <ul data-lang="ru">
+            <li>Установили <strong>VS Code</strong> + 5 расширений: Live Server, Prettier, Error Lens, JS snippets, Auto Rename Tag.</li>
+            <li>Настроили <strong>Auto Save</strong>, <strong>Format on Save</strong>, шрифт с лигатурами и удобную тему.</li>
+            <li><strong>Live Server</strong> автоматически обновляет страницу в браузере при сохранении.</li>
+            <li><strong>Node.js</strong> позволяет запускать JS вне браузера: <code>node file.js</code>.</li>
+            <li>В Node.js <strong>нет</strong> <code>window</code>, <code>document</code>, DOM — зато есть <code>fs</code>, <code>global</code>, HTTP-серверы.</li>
+            <li><strong>Emmet</strong>: <code>html:5</code> + Tab — за секунду полный HTML-шаблон.</li>
+            <li>Топ горячие клавиши: <span class="kbd">Ctrl</span>+<span class="kbd">D</span>, <span class="kbd">Alt</span>+<span class="kbd">&#8593;</span>/<span class="kbd">&#8595;</span>, <span class="kbd">Ctrl</span>+<span class="kbd">/</span>, <span class="kbd">F2</span>.</li>
+            <li>Написали первое настоящее приложение — игру «Угадай число».</li>
+        </ul>
+        <ul data-lang="en">
+            <li>Installed <strong>VS Code</strong> + 5 extensions: Live Server, Prettier, Error Lens, JS snippets, Auto Rename Tag.</li>
+            <li>Configured <strong>Auto Save</strong>, <strong>Format on Save</strong>, a font with ligatures, and a comfortable theme.</li>
+            <li><strong>Live Server</strong> auto-refreshes the browser on save.</li>
+            <li><strong>Node.js</strong> lets you run JS outside the browser: <code>node file.js</code>.</li>
+            <li>Node.js has <strong>no</strong> <code>window</code>, <code>document</code>, DOM — but has <code>fs</code>, <code>global</code>, HTTP servers.</li>
+            <li><strong>Emmet</strong>: <code>html:5</code> + Tab — a full HTML skeleton in a second.</li>
+            <li>Top shortcuts: <span class="kbd">Ctrl</span>+<span class="kbd">D</span>, <span class="kbd">Alt</span>+<span class="kbd">&#8593;</span>/<span class="kbd">&#8595;</span>, <span class="kbd">Ctrl</span>+<span class="kbd">/</span>, <span class="kbd">F2</span>.</li>
+            <li>Built our first real app — the "Guess the number" game.</li>
+        </ul>
+    </div>
+
+    <div class="quiz">
+        <ol data-lang="ru">
+            <li>Чем <strong>VS Code</strong> отличается от <strong>Visual Studio</strong>?</li>
+            <li>Какое расширение автоматически обновляет страницу при сохранении?</li>
+            <li>Какая команда проверяет версию Node.js в терминале?</li>
+            <li>Чем отличается запуск JS в браузере и в Node.js (назовите 2 различия)?</li>
+            <li>Что делает Emmet-команда <code>ul&gt;li*5</code>?</li>
+            <li>Что возвращает <code>Math.random()</code>?</li>
+            <li>Что произойдёт, если в игре «Угадай число» пользователь нажмёт «Отмена»?</li>
+            <li>Какая горячая клавиша открывает встроенный терминал в VS Code?</li>
+        </ol>
+        <ol data-lang="en">
+            <li>How does <strong>VS Code</strong> differ from <strong>Visual Studio</strong>?</li>
+            <li>Which extension auto-refreshes the page on save?</li>
+            <li>Which command checks the Node.js version in the terminal?</li>
+            <li>Name two differences between running JS in the browser and in Node.js.</li>
+            <li>What does the Emmet command <code>ul&gt;li*5</code> produce?</li>
+            <li>What does <code>Math.random()</code> return?</li>
+            <li>What happens if the user clicks "Cancel" in the "Guess the number" game?</li>
+            <li>Which shortcut opens the integrated terminal in VS Code?</li>
+        </ol>
+    </div>
+
+</div>
+
+</body>
+</html>

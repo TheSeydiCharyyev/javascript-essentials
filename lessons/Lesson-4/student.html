@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Занятие 4 — Конспект ученика</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/student.css">
+    <script src="../../js/lang.js" defer></script>
+    <style>
+        h1 { border-bottom-color: #f59e0b; }
+        h2 { color: #a16207; background: #fffbeb; border-left-color: #f59e0b; }
+        h3 { color: #78350f; }
+        .definition strong { color: #a16207; }
+    </style>
+</head>
+<body>
+
+<div class="lesson-nav">
+    <a href="../../index.html" class="nav-home" data-lang="ru">&#8592; Главная</a>
+    <a href="../../index.html" class="nav-home" data-lang="en">&#8592; Home</a>
+    <span class="nav-sep">|</span>
+    <span class="nav-title" data-lang="ru">Занятие 4: Переменные и типы данных</span>
+    <span class="nav-title" data-lang="en">Lesson 4: Variables &amp; Data Types</span>
+    <span class="nav-sep">|</span>
+    <a href="lecture.html" class="nav-link" data-lang="ru">&#x1F468;&#x200D;&#x1F3EB; Лекция</a>
+    <a href="lecture.html" class="nav-link" data-lang="en">&#x1F468;&#x200D;&#x1F3EB; Lecture</a>
+    <span class="nav-active" data-lang="ru">&#x1F468;&#x200D;&#x1F393; Конспект</span>
+    <span class="nav-active" data-lang="en">&#x1F468;&#x200D;&#x1F393; Notes</span>
+    <a href="tasks.html" class="nav-link" data-lang="ru">&#x1F4CB; Задания</a>
+    <a href="tasks.html" class="nav-link" data-lang="en">&#x1F4CB; Tasks</a>
+    <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
+</div>
+
+<div class="container">
+
+    <h1 data-lang="ru">&#x1F4D3; КОНСПЕКТ УЧЕНИКА</h1>
+    <h1 data-lang="en">&#x1F4D3; STUDENT NOTES</h1>
+    <p class="subtitle" data-lang="ru">Занятие 4: Переменные и типы данных</p>
+    <p class="subtitle" data-lang="en">Lesson 4: Variables &amp; Data Types</p>
+    <p class="date-line" data-lang="ru">Дата: _______________</p>
+    <p class="date-line" data-lang="en">Date: _______________</p>
+
+    <hr>
+
+    <h2 data-lang="ru">1. Что такое переменная</h2>
+    <h2 data-lang="en">1. What is a variable</h2>
+
+    <div class="definition">
+        <p data-lang="ru"><strong>Переменная</strong> — это <strong>именованное хранилище данных</strong>. Аналогия: подписанная коробка в памяти. У неё есть имя и содержимое.</p>
+        <p data-lang="en">A <strong>variable</strong> is a <strong>named storage for data</strong>. Analogy: a labeled box in memory. It has a name and contents.</p>
+    </div>
+
+    <pre><code>let age = 20;     // объявили + положили значение
+age = 21;         // заменили значение</code></pre>
+
+    <div class="key-point">
+        <p data-lang="ru"><strong>Знак <code>=</code> — это не «равно», а «присвоить».</strong> Для сравнения используют <code>==</code> и <code>===</code>.</p>
+        <p data-lang="en"><strong>The <code>=</code> sign is not "equals", it's "assign".</strong> For comparison use <code>==</code> and <code>===</code>.</p>
+    </div>
+
+    <hr>
+
+    <h2 data-lang="ru">2. var, let, const</h2>
+    <h2 data-lang="en">2. var, let, const</h2>
+
+    <table>
+        <thead data-lang="ru"><tr><th>Слово</th><th>Меняется?</th><th>Область</th><th>Использовать?</th></tr></thead>
+        <thead data-lang="en"><tr><th>Word</th><th>Reassign?</th><th>Scope</th><th>Use?</th></tr></thead>
+        <tbody data-lang="ru">
+            <tr><td><code>var</code></td><td>Да</td><td>Функция</td><td>❌ Нет</td></tr>
+            <tr><td><code>let</code></td><td>Да</td><td>Блок <code>{ }</code></td><td>✅ Когда меняется</td></tr>
+            <tr><td><code>const</code></td><td>Нет</td><td>Блок <code>{ }</code></td><td>✅ По умолчанию</td></tr>
+        </tbody>
+        <tbody data-lang="en">
+            <tr><td><code>var</code></td><td>Yes</td><td>Function</td><td>❌ No</td></tr>
+            <tr><td><code>let</code></td><td>Yes</td><td>Block <code>{ }</code></td><td>✅ When it changes</td></tr>
+            <tr><td><code>const</code></td><td>No</td><td>Block <code>{ }</code></td><td>✅ Default</td></tr>
+        </tbody>
+    </table>
+
+    <div class="key-point">
+        <p data-lang="ru"><strong>Правило:</strong> начинай с <code>const</code>. Переключайся на <code>let</code> только если действительно нужно переприсвоить.</p>
+        <p data-lang="en"><strong>Rule:</strong> start with <code>const</code>. Switch to <code>let</code> only when you actually need to reassign.</p>
+    </div>
+
+    <pre><code>const PI = 3.14;          // не изменится
+let score = 0;            // будет меняться
+score = 10;               // OK
+PI = 3.15;                // ❌ TypeError</code></pre>
+
+    <hr>
+
+    <h2 data-lang="ru">3. Правила именования</h2>
+    <h2 data-lang="en">3. Naming rules</h2>
+
+    <h3 data-lang="ru">Обязательные</h3>
+    <h3 data-lang="en">Required</h3>
+
+    <ul data-lang="ru">
+        <li>Буквы, цифры, <code>_</code>, <code>$</code> — можно</li>
+        <li>С цифры начинать нельзя: <code>2name</code> ❌</li>
+        <li>Регистр важен: <code>age</code> ≠ <code>Age</code></li>
+        <li>Зарезервированные слова нельзя: <code>let</code>, <code>if</code>, <code>function</code>...</li>
+    </ul>
+    <ul data-lang="en">
+        <li>Letters, digits, <code>_</code>, <code>$</code> — allowed</li>
+        <li>Can't start with a digit: <code>2name</code> ❌</li>
+        <li>Case matters: <code>age</code> ≠ <code>Age</code></li>
+        <li>No reserved words: <code>let</code>, <code>if</code>, <code>function</code>...</li>
+    </ul>
+
+    <h3 data-lang="ru">Стили</h3>
+    <h3 data-lang="en">Styles</h3>
+
+    <ul data-lang="ru">
+        <li><strong>camelCase</strong> — переменные и функции: <code>userName</code>, <code>maxScore</code></li>
+        <li><strong>PascalCase</strong> — классы: <code>User</code>, <code>HttpClient</code></li>
+        <li><strong>UPPER_SNAKE_CASE</strong> — константы: <code>MAX_USERS</code></li>
+    </ul>
+    <ul data-lang="en">
+        <li><strong>camelCase</strong> — variables and functions: <code>userName</code>, <code>maxScore</code></li>
+        <li><strong>PascalCase</strong> — classes: <code>User</code>, <code>HttpClient</code></li>
+        <li><strong>UPPER_SNAKE_CASE</strong> — constants: <code>MAX_USERS</code></li>
+    </ul>
+
+    <hr>
+
+    <h2 data-lang="ru">4. 8 типов данных</h2>
+    <h2 data-lang="en">4. 8 data types</h2>
+
+    <div class="diagram">                    Типы данных
+        ┌────────────────────┴────────────────────┐
+        │                                         │
+    ПРИМИТИВЫ (7)                          ССЫЛОЧНЫЙ (1)
+    ├── number                             └── object
+    ├── string                                 ├── { } объекты
+    ├── boolean                                ├── [ ] массивы
+    ├── null                                   └── функции
+    ├── undefined
+    ├── symbol
+    └── bigint</div>
+
+    <div class="key-point">
+        <p data-lang="ru"><strong>Примитив = копия значения.</strong> <strong>Объект = ссылка на память.</strong></p>
+        <p data-lang="en"><strong>Primitive = value is copied.</strong> <strong>Object = a reference is shared.</strong></p>
+    </div>
+
+    <pre><code>let a = 5; let b = a; b = 10;
+console.log(a);    // 5 — независимы
+
+let u1 = { name: "Анна" };
+let u2 = u1; u2.name = "Боб";
+console.log(u1.name);  // "Боб" — один объект на двоих!</code></pre>
+
+    <hr>
+
+    <h2 data-lang="ru">5. Number, String, Boolean</h2>
+    <h2 data-lang="en">5. Number, String, Boolean</h2>
+
+    <pre><code>// number — целые и дробные в одном типе
+const age = 20;
+const pi = 3.14;
+1 / 0          // Infinity
+0 / 0          // NaN
+0.1 + 0.2      // 0.30000000000000004 (особенность IEEE 754)
+
+// string — три типа кавычек
+const a = 'одинарные';
+const b = "двойные";
+const c = `обратные — с ${a}`;   // подстановка переменных
+
+// boolean — true / false
+const isLoggedIn = true;
+const isAdmin = age &gt;= 18;</code></pre>
+
+    <h3 data-lang="ru">Шаблонные литералы (backticks)</h3>
+    <h3 data-lang="en">Template literals (backticks)</h3>
+
+    <pre><code>const name = "Анна", age = 25;
+const text = `Меня зовут ${name}, мне ${age} лет`;
+const html = `
+    &lt;div&gt;
+        &lt;h2&gt;${name}&lt;/h2&gt;
+    &lt;/div&gt;
+`;   // многострочный текст</code></pre>
+
+    <h3 data-lang="ru">Falsy-значения (6 штук)</h3>
+    <h3 data-lang="en">Falsy values (6 of them)</h3>
+
+    <p data-lang="ru"><code>false</code>, <code>0</code>, <code>""</code>, <code>null</code>, <code>undefined</code>, <code>NaN</code> — всё остальное truthy.</p>
+    <p data-lang="en"><code>false</code>, <code>0</code>, <code>""</code>, <code>null</code>, <code>undefined</code>, <code>NaN</code> — everything else is truthy.</p>
+
+    <div class="key-point">
+        <p data-lang="ru"><strong>Внимание:</strong> <code>"0"</code>, <code>"false"</code>, <code>[]</code>, <code>{}</code> — <em>truthy</em>! Любая непустая строка — true.</p>
+        <p data-lang="en"><strong>Watch out:</strong> <code>"0"</code>, <code>"false"</code>, <code>[]</code>, <code>{}</code> are <em>truthy</em>! Any non-empty string is true.</p>
+    </div>
+
+    <hr>
+
+    <h2 data-lang="ru">6. null vs undefined</h2>
+    <h2 data-lang="en">6. null vs undefined</h2>
+
+    <table>
+        <thead data-lang="ru"><tr><th>Значение</th><th>Смысл</th><th>Кто ставит</th></tr></thead>
+        <thead data-lang="en"><tr><th>Value</th><th>Meaning</th><th>Set by</th></tr></thead>
+        <tbody data-lang="ru">
+            <tr><td><code>undefined</code></td><td>«Не присвоено»</td><td>JavaScript автоматически</td></tr>
+            <tr><td><code>null</code></td><td>«Намеренно пусто»</td><td>Программист вручную</td></tr>
+        </tbody>
+        <tbody data-lang="en">
+            <tr><td><code>undefined</code></td><td>"Not assigned"</td><td>JavaScript automatically</td></tr>
+            <tr><td><code>null</code></td><td>"Intentionally empty"</td><td>The programmer manually</td></tr>
+        </tbody>
+    </table>
+
+    <pre><code>let x;             // undefined — мы НЕ присваивали
+let user = null;   // null — мы СПЕЦИАЛЬНО положили «нет»</code></pre>
+
+    <hr>
+
+    <h2 data-lang="ru">7. typeof</h2>
+    <h2 data-lang="en">7. typeof</h2>
+
+    <pre><code>typeof 42;             // "number"
+typeof "hi";           // "string"
+typeof true;           // "boolean"
+typeof undefined;      // "undefined"
+typeof null;           // "object" ← баг 1995, не исправляют
+typeof { };            // "object"
+typeof [ ];            // "object" ← массив тоже object
+typeof function(){};   // "function"</code></pre>
+
+    <div class="key-point">
+        <p data-lang="ru"><strong>Запомни:</strong> <code>typeof null === "object"</code> — историческая «причуда». Все остальные типы работают предсказуемо.</p>
+        <p data-lang="en"><strong>Remember:</strong> <code>typeof null === "object"</code> is a historical quirk. All other types behave predictably.</p>
+    </div>
+
+    <hr>
+
+    <h2 data-lang="ru">8. Преобразование типов</h2>
+    <h2 data-lang="en">8. Type conversion</h2>
+
+    <h3 data-lang="ru">Явное (мы просим)</h3>
+    <h3 data-lang="en">Explicit (we ask)</h3>
+
+    <pre><code>String(123);         // "123"
+Number("42");        // 42
+Number("abc");       // NaN
+Boolean(0);          // false
+Boolean("text");     // true
+parseInt("42px");    // 42
+parseFloat("3.14");  // 3.14</code></pre>
+
+    <h3 data-lang="ru">Неявное (JS делает сам)</h3>
+    <h3 data-lang="en">Implicit (JS does it)</h3>
+
+    <pre><code>"5" + 3      // "53"  ← + со строкой = склейка
+"5" - 3      // 2     ← - всегда число
+"5" * "2"    // 10
+true + 1     // 2     ← true → 1
+null + 1     // 1     ← null → 0
+undefined+1  // NaN</code></pre>
+
+    <div class="key-point">
+        <p data-lang="ru"><strong>Главное правило:</strong> <code>+</code> со строкой = конкатенация. Все остальные (<code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>) — приводят к числу.</p>
+        <p data-lang="en"><strong>Key rule:</strong> <code>+</code> with a string = concatenation. All others (<code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>) force a number.</p>
+    </div>
+
+    <hr>
+
+    <div class="remember">
+        <ul data-lang="ru">
+            <li><code>const</code> по умолчанию, <code>let</code> для изменяемых, <code>var</code> — забыли.</li>
+            <li>Имена: <strong>camelCase</strong> для переменных, <strong>UPPER_SNAKE</strong> для констант.</li>
+            <li>В JS 8 типов: 7 примитивов + <code>object</code>.</li>
+            <li>Примитив копируется, объект передаётся по ссылке.</li>
+            <li><code>null</code> — программист, <code>undefined</code> — JavaScript.</li>
+            <li><code>typeof null === "object"</code> — баг 1995, помним.</li>
+            <li>Шаблонные литералы <code>`...${...}...`</code> — модерн-стандарт.</li>
+            <li><code>+</code> со строкой склеивает, минус/умножение — всегда число.</li>
+            <li>6 falsy: <code>false</code>, <code>0</code>, <code>""</code>, <code>null</code>, <code>undefined</code>, <code>NaN</code>.</li>
+        </ul>
+        <ul data-lang="en">
+            <li><code>const</code> by default, <code>let</code> when reassigning, <code>var</code> — forgotten.</li>
+            <li>Names: <strong>camelCase</strong> for variables, <strong>UPPER_SNAKE</strong> for constants.</li>
+            <li>JS has 8 types: 7 primitives + <code>object</code>.</li>
+            <li>Primitive copies the value; object is passed by reference.</li>
+            <li><code>null</code> — programmer; <code>undefined</code> — JavaScript.</li>
+            <li><code>typeof null === "object"</code> — 1995 bug, remember it.</li>
+            <li>Template literals <code>`...${...}...`</code> are the modern standard.</li>
+            <li><code>+</code> with a string concatenates; minus/multiply always number.</li>
+            <li>6 falsy: <code>false</code>, <code>0</code>, <code>""</code>, <code>null</code>, <code>undefined</code>, <code>NaN</code>.</li>
+        </ul>
+    </div>
+
+    <div class="homework">
+        <ol data-lang="ru">
+            <li>Создайте файл <code>variables.js</code> и объявите 5 переменных разных типов: имя (string), возраст (number), студент ли (boolean), любимый цвет (string), массив навыков (array). Выведите карточку в консоль через шаблонный литерал.</li>
+            <li>В DevTools проверьте <code>typeof</code> для 8 значений: <code>42</code>, <code>"text"</code>, <code>true</code>, <code>null</code>, <code>undefined</code>, <code>Symbol()</code>, <code>10n</code>, <code>{}</code>. Запишите результаты.</li>
+            <li>Найдите 3 ошибки в этом коде и исправьте (запишите исправление):
+                <pre><code>const score = 0;
+score = 100;
+let 2name = "Анна";
+let user-name = "Боб";</code></pre>
+            </li>
+            <li>Выпишите, что выведет каждое выражение. <strong>Сначала угадайте, потом проверьте в консоли</strong>: <code>"7" + 1</code>, <code>"7" - 1</code>, <code>true + true</code>, <code>null + 5</code>, <code>"5" * "2"</code>, <code>Number("abc")</code>, <code>Boolean("")</code>, <code>Boolean("0")</code>.</li>
+            <li>Подготовьте устные ответы на все 10 вопросов из раздела «Проверь себя» лекции.</li>
+        </ol>
+        <ol data-lang="en">
+            <li>Create a file <code>variables.js</code> and declare 5 variables of different types: name (string), age (number), is student (boolean), favorite color (string), array of skills (array). Print a card to the console with a template literal.</li>
+            <li>In DevTools check <code>typeof</code> for 8 values: <code>42</code>, <code>"text"</code>, <code>true</code>, <code>null</code>, <code>undefined</code>, <code>Symbol()</code>, <code>10n</code>, <code>{}</code>. Write down the results.</li>
+            <li>Find 3 errors in this code and fix them (write down the fix):
+                <pre><code>const score = 0;
+score = 100;
+let 2name = "Анна";
+let user-name = "Боб";</code></pre>
+            </li>
+            <li>Write down what each expression outputs. <strong>First guess, then check in the console</strong>: <code>"7" + 1</code>, <code>"7" - 1</code>, <code>true + true</code>, <code>null + 5</code>, <code>"5" * "2"</code>, <code>Number("abc")</code>, <code>Boolean("")</code>, <code>Boolean("0")</code>.</li>
+            <li>Prepare spoken answers to all 10 questions from the "Test yourself" section of the lecture.</li>
+        </ol>
+    </div>
+
+</div>
+
+</body>
+</html>

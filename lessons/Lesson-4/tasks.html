@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Занятие 4 — Практические задания</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/tasks.css">
+    <script src="../../js/lang.js" defer></script>
+</head>
+<body>
+
+<div class="lesson-nav">
+    <a href="../../index.html" class="nav-home" data-lang="ru">&#8592; Главная</a>
+    <a href="../../index.html" class="nav-home" data-lang="en">&#8592; Home</a>
+    <span class="nav-sep">|</span>
+    <span class="nav-title" data-lang="ru">Занятие 4: Переменные и типы данных</span>
+    <span class="nav-title" data-lang="en">Lesson 4: Variables &amp; Data Types</span>
+    <span class="nav-sep">|</span>
+    <a href="lecture.html" class="nav-link" data-lang="ru">&#x1F468;&#x200D;&#x1F3EB; Лекция</a>
+    <a href="lecture.html" class="nav-link" data-lang="en">&#x1F468;&#x200D;&#x1F3EB; Lecture</a>
+    <a href="student.html" class="nav-link" data-lang="ru">&#x1F468;&#x200D;&#x1F393; Конспект</a>
+    <a href="student.html" class="nav-link" data-lang="en">&#x1F468;&#x200D;&#x1F393; Notes</a>
+    <span class="nav-active" data-lang="ru">&#x1F4CB; Задания</span>
+    <span class="nav-active" data-lang="en">&#x1F4CB; Tasks</span>
+    <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
+</div>
+
+<div class="container">
+
+    <h1 data-lang="ru">&#x1F4DD; ПРАКТИЧЕСКИЕ ЗАДАНИЯ</h1>
+    <h1 data-lang="en">&#x1F4DD; PRACTICAL TASKS</h1>
+    <p class="subtitle" data-lang="ru">Занятие 4: Переменные и типы данных &mdash; 6 заданий от простого к сложному</p>
+    <p class="subtitle" data-lang="en">Lesson 4: Variables &amp; Data Types &mdash; 6 tasks from easy to advanced</p>
+
+    <hr>
+
+    <!-- TASK 1 -->
+    <div class="task">
+        <div class="task-header">
+            <div class="task-title" data-lang="ru">Задание 1. Карточка о себе</div>
+            <div class="task-title" data-lang="en">Task 1. Card about yourself</div>
+            <div class="task-meta">
+                <span class="badge badge-easy" data-lang="ru">Легко</span>
+                <span class="badge badge-easy" data-lang="en">Easy</span>
+                <span class="badge badge-time">15 мин</span>
+            </div>
+        </div>
+
+        <div class="task-goal">
+            <span data-lang="ru">Объявить 5 переменных разных типов и вывести красивую карточку через шаблонный литерал.</span>
+            <span data-lang="en">Declare 5 variables of different types and print a neat card with a template literal.</span>
+        </div>
+
+        <p data-lang="ru"><strong>Шаги:</strong></p>
+        <p data-lang="en"><strong>Steps:</strong></p>
+        <ol data-lang="ru">
+            <li>Создайте папку <code>task-1/</code> с файлами <code>index.html</code> и <code>app.js</code>.</li>
+            <li>В <code>app.js</code> объявите 5 переменных:
+                <ul>
+                    <li><code>firstName</code> — ваше имя (string)</li>
+                    <li><code>age</code> — возраст (number)</li>
+                    <li><code>isStudent</code> — учитесь ли вы (boolean)</li>
+                    <li><code>city</code> — город (string)</li>
+                    <li><code>hobbies</code> — массив из 3 любимых занятий (array)</li>
+                </ul>
+            </li>
+            <li>Выведите в консоль <strong>одну многострочную карточку</strong> через шаблонный литерал <code>`...${...}...`</code>.</li>
+            <li>Используйте <code>const</code> для всех переменных.</li>
+        </ol>
+        <ol data-lang="en">
+            <li>Create a folder <code>task-1/</code> with files <code>index.html</code> and <code>app.js</code>.</li>
+            <li>In <code>app.js</code> declare 5 variables:
+                <ul>
+                    <li><code>firstName</code> — your name (string)</li>
+                    <li><code>age</code> — your age (number)</li>
+                    <li><code>isStudent</code> — whether you study (boolean)</li>
+                    <li><code>city</code> — your city (string)</li>
+                    <li><code>hobbies</code> — an array of 3 favorite hobbies (array)</li>
+                </ul>
+            </li>
+            <li>Print <strong>one multiline card</strong> in the console using a template literal <code>`...${...}...`</code>.</li>
+            <li>Use <code>const</code> for all variables.</li>
+        </ol>
+
+        <div class="example">
+            <p data-lang="ru"><strong>Ожидаемый вид вывода:</strong></p>
+            <p data-lang="en"><strong>Expected output:</strong></p>
+            <pre><code>=== Обо мне ===
+Имя:     Сейди
+Возраст: 24
+Студент: да
+Город:   Ашхабад
+Хобби:   код, чтение, кофе</code></pre>
+        </div>
+
+        <div class="criteria">
+            <ul data-lang="ru">
+                <li>5 переменных объявлены через <code>const</code></li>
+                <li>Карточка выведена <strong>одним</strong> <code>console.log()</code></li>
+                <li>Использован шаблонный литерал (backticks)</li>
+                <li>Массив выведен через <code>hobbies.join(", ")</code></li>
+            </ul>
+            <ul data-lang="en">
+                <li>5 variables declared with <code>const</code></li>
+                <li>The card is printed in <strong>one</strong> <code>console.log()</code></li>
+                <li>Template literal (backticks) is used</li>
+                <li>The array is printed via <code>hobbies.join(", ")</code></li>
+            </ul>
+        </div>
+
+        <div class="hint">
+            <p data-lang="ru">Для булевого значения красивее использовать тернарный оператор внутри строки: <code>${isStudent ? "да" : "нет"}</code>.</p>
+            <p data-lang="en">For the boolean, a ternary operator inside the string reads nicer: <code>${isStudent ? "yes" : "no"}</code>.</p>
+        </div>
+    </div>
+
+    <!-- TASK 2 -->
+    <div class="task">
+        <div class="task-header">
+            <div class="task-title" data-lang="ru">Задание 2. Угадай результат</div>
+            <div class="task-title" data-lang="en">Task 2. Guess the result</div>
+            <div class="task-meta">
+                <span class="badge badge-easy" data-lang="ru">Легко</span>
+                <span class="badge badge-easy" data-lang="en">Easy</span>
+                <span class="badge badge-time">15 мин</span>
+            </div>
+        </div>
+
+        <div class="task-goal">
+            <span data-lang="ru">Закрепить правила преобразования типов: сначала угадать ответ, потом проверить в консоли.</span>
+            <span data-lang="en">Reinforce type-conversion rules: first guess the answer, then check in the console.</span>
+        </div>
+
+        <p data-lang="ru"><strong>Шаги:</strong></p>
+        <p data-lang="en"><strong>Steps:</strong></p>
+        <ol data-lang="ru">
+            <li>Сделайте таблицу из <strong>трёх колонок</strong>: «Выражение», «Мой ответ», «Реальный результат».</li>
+            <li>Для каждого выражения ниже <strong>сначала</strong> запишите свой ответ.</li>
+            <li><strong>Потом</strong> откройте DevTools (F12) и проверьте каждое.</li>
+            <li>Если ошиблись — объясните себе письменно, почему JS вернул именно такой результат.</li>
+        </ol>
+        <ol data-lang="en">
+            <li>Make a table with <strong>three columns</strong>: "Expression", "My guess", "Actual result".</li>
+            <li>For each expression below, write your guess <strong>first</strong>.</li>
+            <li><strong>Then</strong> open DevTools (F12) and check each one.</li>
+            <li>If you were wrong — write down why JS returned that exact result.</li>
+        </ol>
+
+        <pre><code>"10" + 5
+"10" - 5
+"10" * "2"
+1 + 2 + "3"
+"1" + 2 + 3
+true + true + true
+true + "1"
+null + 5
+undefined + 5
+"5" == 5
+"5" === 5
+NaN === NaN
+Boolean("")
+Boolean(" ")
+Boolean("false")
+typeof null
+typeof NaN
+typeof []
+typeof undefined</code></pre>
+
+        <div class="criteria">
+            <ul data-lang="ru">
+                <li>Таблица заполнена для всех 19 выражений</li>
+                <li>У каждого выражения свой реальный результат из консоли</li>
+                <li>Хотя бы 5 объяснений, почему получился именно такой ответ</li>
+            </ul>
+            <ul data-lang="en">
+                <li>The table is filled for all 19 expressions</li>
+                <li>Each expression has the real result from the console</li>
+                <li>At least 5 written explanations of why the result is what it is</li>
+            </ul>
+        </div>
+
+        <div class="hint">
+            <p data-lang="ru">Главное правило: <code>+</code> со строкой склеивает, остальные операторы (<code>-</code>, <code>*</code>, <code>/</code>) приводят к числу. <code>true</code> → <code>1</code>, <code>false</code> → <code>0</code>, <code>null</code> → <code>0</code>, <code>undefined</code> → <code>NaN</code>.</p>
+            <p data-lang="en">Main rule: <code>+</code> with a string concatenates; other operators (<code>-</code>, <code>*</code>, <code>/</code>) coerce to number. <code>true</code> → <code>1</code>, <code>false</code> → <code>0</code>, <code>null</code> → <code>0</code>, <code>undefined</code> → <code>NaN</code>.</p>
+        </div>
+    </div>
+
+    <!-- TASK 3 -->
+    <div class="task">
+        <div class="task-header">
+            <div class="task-title" data-lang="ru">Задание 3. Найди ошибки</div>
+            <div class="task-title" data-lang="en">Task 3. Find the errors</div>
+            <div class="task-meta">
+                <span class="badge badge-medium" data-lang="ru">Средне</span>
+                <span class="badge badge-medium" data-lang="en">Medium</span>
+                <span class="badge badge-time">20 мин</span>
+            </div>
+        </div>
+
+        <div class="task-goal">
+            <span data-lang="ru">Натренировать внимание к именам и ключевым словам. Найти и исправить все 6 ошибок.</span>
+            <span data-lang="en">Train your eye for names and keywords. Find and fix all 6 errors.</span>
+        </div>
+
+        <p data-lang="ru">В коде ниже <strong>6 ошибок</strong>. Они могут быть: неправильное имя переменной, неподходящее ключевое слово, синтаксическая ошибка, попытка изменить константу. Найдите все и исправьте.</p>
+        <p data-lang="en">The code below has <strong>6 errors</strong>. They may be: a bad variable name, the wrong keyword, a syntax error, or trying to mutate a constant. Find all of them and fix them.</p>
+
+        <pre><code>const userName = "Анна";
+userName = "Боб";              // 1
+
+let 1stPlace = "Иван";          // 2
+
+let user-age = 30;              // 3
+
+const MAX_SCORE;                // 4
+MAX_SCORE = 100;
+
+var let = "значение";           // 5
+
+const pi = 3.14
+console.log(pi.toFixed(2))      // 6 (пустяк, но в одном месте)</code></pre>
+
+        <p data-lang="ru"><strong>Что сделать:</strong></p>
+        <p data-lang="en"><strong>What to do:</strong></p>
+        <ol data-lang="ru">
+            <li>Перепишите код без ошибок в новый файл <code>fixed.js</code>.</li>
+            <li>Запустите через Node.js (<code>node fixed.js</code>) или подключите к HTML — убедитесь, что нет ошибок.</li>
+            <li>Рядом в комментариях напишите: <code>// ошибка №X: ...</code> для каждой.</li>
+        </ol>
+        <ol data-lang="en">
+            <li>Rewrite the code without errors in a new file <code>fixed.js</code>.</li>
+            <li>Run it through Node.js (<code>node fixed.js</code>) or link to HTML — make sure there are no errors.</li>
+            <li>Add comments: <code>// error #X: ...</code> for each fix.</li>
+        </ol>
+
+        <div class="criteria">
+            <ul data-lang="ru">
+                <li>Найдены все 6 ошибок</li>
+                <li>Код запускается без сообщений в консоли</li>
+                <li>Каждая ошибка прокомментирована: что было и почему это ошибка</li>
+            </ul>
+            <ul data-lang="en">
+                <li>All 6 errors found</li>
+                <li>The code runs with no console messages</li>
+                <li>Each error is commented: what it was and why it's an error</li>
+            </ul>
+        </div>
+
+        <div class="hint">
+            <p data-lang="ru">Подсказка к ошибке 5: <code>let</code> — зарезервированное слово, его нельзя использовать как имя переменной. Подсказка к ошибке 4: <code>const</code> требует <em>сразу</em> присвоить значение.</p>
+            <p data-lang="en">Hint for error 5: <code>let</code> is a reserved word and can't be used as a variable name. Hint for error 4: <code>const</code> requires an <em>immediate</em> assignment.</p>
+        </div>
+    </div>
+
+    <!-- TASK 4 -->
+    <div class="task">
+        <div class="task-header">
+            <div class="task-title" data-lang="ru">Задание 4. Калькулятор площади и объёма</div>
+            <div class="task-title" data-lang="en">Task 4. Area &amp; volume calculator</div>
+            <div class="task-meta">
+                <span class="badge badge-medium" data-lang="ru">Средне</span>
+                <span class="badge badge-medium" data-lang="en">Medium</span>
+                <span class="badge badge-time">25 мин</span>
+            </div>
+        </div>
+
+        <div class="task-goal">
+            <span data-lang="ru">Применить переменные, числа, строки и явное преобразование типов на реальном примере.</span>
+            <span data-lang="en">Apply variables, numbers, strings, and explicit type conversion to a real example.</span>
+        </div>
+
+        <p data-lang="ru"><strong>Задача:</strong> посчитать площадь и объём прямоугольного бассейна. Размеры берём из <code>prompt()</code> (он всегда возвращает <strong>строку</strong>!), значит нужно явно преобразовать в число.</p>
+        <p data-lang="en"><strong>Task:</strong> calculate the area and volume of a rectangular pool. Sizes come from <code>prompt()</code> (it always returns a <strong>string</strong>!), so explicit conversion to number is required.</p>
+
+        <pre><code>// Заготовка
+const lengthStr = prompt("Длина бассейна (м)?");
+const widthStr  = prompt("Ширина (м)?");
+const depthStr  = prompt("Глубина (м)?");
+
+// 1. Преобразуйте все три в number
+// 2. Посчитайте площадь = длина * ширина
+// 3. Посчитайте объём  = площадь * глубина
+// 4. Выведите итог через шаблонный литерал</code></pre>
+
+        <p data-lang="ru"><strong>Ожидаемый вывод:</strong></p>
+        <p data-lang="en"><strong>Expected output:</strong></p>
+        <pre><code>=== Бассейн ===
+Размеры: 10 × 5 × 2 м
+Площадь: 50 м²
+Объём:   100 м³ (= 100 000 литров)</code></pre>
+
+        <div class="criteria">
+            <ul data-lang="ru">
+                <li>Использован <code>Number(...)</code> или <code>parseFloat(...)</code> для преобразования</li>
+                <li>Площадь и объём посчитаны корректно</li>
+                <li>В выводе использованы спецсимволы м² и м³ (символы Unicode)</li>
+                <li>Литры посчитаны: 1 м³ = 1000 л</li>
+                <li><strong>Бонус:</strong> используйте <code>toLocaleString()</code> чтобы 100000 стало <code>100 000</code></li>
+            </ul>
+            <ul data-lang="en">
+                <li><code>Number(...)</code> or <code>parseFloat(...)</code> used for conversion</li>
+                <li>Area and volume calculated correctly</li>
+                <li>Output uses m² and m³ Unicode symbols</li>
+                <li>Liters computed: 1 m³ = 1000 L</li>
+                <li><strong>Bonus:</strong> use <code>toLocaleString()</code> to format 100000 as <code>100,000</code></li>
+            </ul>
+        </div>
+
+        <div class="hint">
+            <p data-lang="ru">Если забыть преобразование, <code>"10" * "5"</code> сработает (минус и умножение приводят к числу автоматически), но <code>"10" + "5"</code> даст <code>"105"</code>. Привычка ставить <code>Number()</code> сразу — спасёт от багов.</p>
+            <p data-lang="en">If you skip conversion, <code>"10" * "5"</code> works (minus/multiply coerce automatically), but <code>"10" + "5"</code> gives <code>"105"</code>. The habit of writing <code>Number()</code> upfront saves you from bugs.</p>
+        </div>
+    </div>
+
+    <!-- TASK 5 -->
+    <div class="task">
+        <div class="task-header">
+            <div class="task-title" data-lang="ru">Задание 5. Поменять местами две переменные</div>
+            <div class="task-title" data-lang="en">Task 5. Swap two variables</div>
+            <div class="task-meta">
+                <span class="badge badge-hard" data-lang="ru">Сложно</span>
+                <span class="badge badge-hard" data-lang="en">Hard</span>
+                <span class="badge badge-time">20 мин</span>
+            </div>
+        </div>
+
+        <div class="task-goal">
+            <span data-lang="ru">Решить классическую задачку: поменять значения двух переменных местами — тремя разными способами.</span>
+            <span data-lang="en">Solve a classic puzzle: swap the values of two variables — three different ways.</span>
+        </div>
+
+        <p data-lang="ru"><strong>Задача:</strong> даны <code>let a = "🍎";</code> и <code>let b = "🍌";</code>. После работы кода нужно: <code>a === "🍌"</code> и <code>b === "🍎"</code>. Реализуйте <strong>три варианта</strong> в одном файле:</p>
+        <p data-lang="en"><strong>Task:</strong> given <code>let a = "🍎";</code> and <code>let b = "🍌";</code>. After your code: <code>a === "🍌"</code> and <code>b === "🍎"</code>. Implement <strong>three variants</strong> in one file:</p>
+
+        <ol data-lang="ru">
+            <li><strong>Через временную переменную</strong> (классика, понятно школьнику):
+                <pre><code>const tmp = a;
+a = b;
+b = tmp;</code></pre>
+            </li>
+            <li><strong>Через арифметику</strong> (только для чисел — попробуйте с <code>let a = 10, b = 20</code>):
+                <pre><code>a = a + b;
+b = a - b;
+a = a - b;</code></pre>
+            </li>
+            <li><strong>Через деструктуризацию массива</strong> (современный способ, ES6+):
+                <pre><code>[a, b] = [b, a];</code></pre>
+            </li>
+        </ol>
+        <ol data-lang="en">
+            <li><strong>With a temporary variable</strong> (classic):
+                <pre><code>const tmp = a;
+a = b;
+b = tmp;</code></pre>
+            </li>
+            <li><strong>With arithmetic</strong> (numbers only — try with <code>let a = 10, b = 20</code>):
+                <pre><code>a = a + b;
+b = a - b;
+a = a - b;</code></pre>
+            </li>
+            <li><strong>With array destructuring</strong> (modern, ES6+):
+                <pre><code>[a, b] = [b, a];</code></pre>
+            </li>
+        </ol>
+
+        <p data-lang="ru">Для каждого варианта <strong>выведите до и после</strong> через <code>console.log</code>.</p>
+        <p data-lang="en">For each variant <strong>log before and after</strong> using <code>console.log</code>.</p>
+
+        <div class="criteria">
+            <ul data-lang="ru">
+                <li>Все три способа реализованы и работают</li>
+                <li>Понимаете, что способ 2 годится только для чисел</li>
+                <li>В комментариях написано, какой способ вам понравился больше и почему</li>
+                <li>(Бонус) Объясните, почему способ 1 — самый универсальный и читаемый</li>
+            </ul>
+            <ul data-lang="en">
+                <li>All three ways implemented and working</li>
+                <li>You understand that way 2 works only for numbers</li>
+                <li>In comments, write which way you liked best and why</li>
+                <li>(Bonus) Explain why way 1 is the most universal and readable</li>
+            </ul>
+        </div>
+
+        <div class="hint">
+            <p data-lang="ru">Деструктуризацию мы подробно разберём на занятии 15, но синтаксис <code>[a, b] = [b, a]</code> работает уже сейчас. Это «магия», к которой мы вернёмся.</p>
+            <p data-lang="en">We'll cover destructuring in detail in Lesson 15, but the syntax <code>[a, b] = [b, a]</code> works now. It's "magic" we'll return to.</p>
+        </div>
+    </div>
+
+    <!-- TASK 6 -->
+    <div class="task">
+        <div class="task-header">
+            <div class="task-title" data-lang="ru">Задание 6. Конвертер валют и температур</div>
+            <div class="task-title" data-lang="en">Task 6. Currency &amp; temperature converter</div>
+            <div class="task-meta">
+                <span class="badge badge-hard" data-lang="ru">Сложно</span>
+                <span class="badge badge-hard" data-lang="en">Hard</span>
+                <span class="badge badge-time">35 мин</span>
+            </div>
+        </div>
+
+        <div class="task-goal">
+            <span data-lang="ru">Сделать мини-конвертер: ввод суммы и температуры — вывод результата. Использовать <code>const</code> для констант (курсов), <code>let</code> для входных данных, шаблонные литералы и явное преобразование типов.</span>
+            <span data-lang="en">Build a mini converter: input an amount and a temperature — output the result. Use <code>const</code> for constants (rates), <code>let</code> for inputs, template literals, and explicit type conversion.</span>
+        </div>
+
+        <p data-lang="ru"><strong>Что построить:</strong></p>
+        <p data-lang="en"><strong>What to build:</strong></p>
+        <ol data-lang="ru">
+            <li>HTML-страница с двумя <code>&lt;input&gt;</code>: «Сумма в USD» и «Температура в °C».</li>
+            <li>Кнопка «Конвертировать».</li>
+            <li>При нажатии — JS читает значения, преобразует в число, считает и выводит результат на странице.</li>
+        </ol>
+        <ol data-lang="en">
+            <li>An HTML page with two <code>&lt;input&gt;</code>s: "Amount in USD" and "Temperature in °C".</li>
+            <li>A "Convert" button.</li>
+            <li>On click — JS reads the values, converts to number, computes, and shows the result on the page.</li>
+        </ol>
+
+        <p data-lang="ru"><strong>Формулы:</strong></p>
+        <p data-lang="en"><strong>Formulas:</strong></p>
+        <ul data-lang="ru">
+            <li>USD → TMT (туркменский манат): <code>сумма * 3.5</code></li>
+            <li>USD → EUR: <code>сумма * 0.92</code></li>
+            <li>USD → RUB: <code>сумма * 90</code></li>
+            <li>°C → °F: <code>температура * 9 / 5 + 32</code></li>
+            <li>°C → K (кельвин): <code>температура + 273.15</code></li>
+        </ul>
+        <ul data-lang="en">
+            <li>USD → TMT (Turkmen manat): <code>amount * 3.5</code></li>
+            <li>USD → EUR: <code>amount * 0.92</code></li>
+            <li>USD → RUB: <code>amount * 90</code></li>
+            <li>°C → °F: <code>temp * 9 / 5 + 32</code></li>
+            <li>°C → K (kelvin): <code>temp + 273.15</code></li>
+        </ul>
+
+        <div class="example">
+            <p data-lang="ru"><strong>Пример работы:</strong></p>
+            <p data-lang="en"><strong>Example:</strong></p>
+            <pre><code>Ввод: USD = 100, °C = 25
+
+Вывод:
+$100 = 350 TMT = 92 € = 9 000 ₽
+25 °C = 77 °F = 298.15 K</code></pre>
+        </div>
+
+        <div class="criteria">
+            <ul data-lang="ru">
+                <li>Курсы и константы преобразования — в <code>const</code> с именами <code>UPPER_SNAKE_CASE</code></li>
+                <li>Значения из <code>input</code> явно преобразованы через <code>Number()</code></li>
+                <li>Вывод — через шаблонный литерал</li>
+                <li>Числа округлены до 2 знаков после запятой (<code>toFixed(2)</code>)</li>
+                <li>(Бонус) Если пользователь ввёл не число — показать сообщение об ошибке</li>
+                <li>(Бонус) Использован <code>Number.isNaN()</code> для проверки</li>
+            </ul>
+            <ul data-lang="en">
+                <li>Rates and conversion constants in <code>const</code> with <code>UPPER_SNAKE_CASE</code> names</li>
+                <li>Values from <code>input</code> are explicitly converted via <code>Number()</code></li>
+                <li>Output uses a template literal</li>
+                <li>Numbers rounded to 2 decimal places (<code>toFixed(2)</code>)</li>
+                <li>(Bonus) If the user enters a non-number — show an error message</li>
+                <li>(Bonus) <code>Number.isNaN()</code> used for the check</li>
+            </ul>
+        </div>
+
+        <div class="hint">
+            <p data-lang="ru">Заготовка структуры:</p>
+            <p data-lang="en">Skeleton:</p>
+            <pre><code>const USD_TO_TMT = 3.5;
+const USD_TO_EUR = 0.92;
+const USD_TO_RUB = 90;
+const C_TO_K = 273.15;
+
+document.getElementById("btn").addEventListener("click", () =&gt; {
+    const usd  = Number(document.getElementById("usd").value);
+    const celsius = Number(document.getElementById("celsius").value);
+    // ... ваш код
+    document.getElementById("result").textContent = `...`;
+});</code></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="write-box">
+        <p data-lang="ru">Запишите, какие задания дались легко, а где «зависли». Что из преобразований типов было самым неочевидным?</p>
+        <p data-lang="en">Write down which tasks were easy and which made you stuck. Which type-conversion result was the most surprising?</p>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Занятие 3 — Синтаксис и консоль</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/lecture.css">
+    <script src="../../js/lang.js" defer></script>
+    <style>
+        h1 { border-bottom-color: #f59e0b; }
+        h2 { color: #a16207; background: #fffbeb; border-left-color: #f59e0b; }
+        h3 { color: #78350f; }
+        .step-number { background: #f59e0b; }
+        .toc a { color: #a16207; }
+    </style>
+</head>
+<body>
+
+<div class="lesson-nav">
+    <a href="../../index.html" class="nav-home" data-lang="ru">&#8592; Главная</a>
+    <a href="../../index.html" class="nav-home" data-lang="en">&#8592; Home</a>
+    <span class="nav-sep">|</span>
+    <span class="nav-title" data-lang="ru">Занятие 3: Синтаксис и консоль</span>
+    <span class="nav-title" data-lang="en">Lesson 3: Syntax &amp; Console</span>
+    <span class="nav-sep">|</span>
+    <span class="nav-active" data-lang="ru">&#x1F468;&#x200D;&#x1F3EB; Лекция</span>
+    <span class="nav-active" data-lang="en">&#x1F468;&#x200D;&#x1F3EB; Lecture</span>
+    <a href="student.html" class="nav-link" data-lang="ru">&#x1F468;&#x200D;&#x1F393; Конспект</a>
+    <a href="student.html" class="nav-link" data-lang="en">&#x1F468;&#x200D;&#x1F393; Notes</a>
+    <a href="tasks.html" class="nav-link" data-lang="ru">&#x1F4CB; Задания</a>
+    <a href="tasks.html" class="nav-link" data-lang="en">&#x1F4CB; Tasks</a>
+    <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
+</div>
+
+<div class="container">
+
+    <h1 data-lang="ru">Занятие 3: Синтаксис и консоль</h1>
+    <h1 data-lang="en">Lesson 3: Syntax &amp; Console</h1>
+    <p class="subtitle" data-lang="ru">Правила языка, комментарии, работа с консолью, чтение ошибок и первые диалоги с пользователем</p>
+    <p class="subtitle" data-lang="en">Language rules, comments, working with the console, reading errors, and first dialogs with the user</p>
+
+    <div class="why">
+        <p data-lang="ru">До этого мы говорили о JavaScript <em>вокруг</em> кода: история, инструменты, где запускается. Сегодня — погружаемся <em>внутрь</em>. Мы разберём, из чего состоит программа на JS, научимся комментировать код, использовать консоль на полную и — что важнее всего — <strong>читать ошибки</strong>. Без этого навыка вы будете тонуть в первых же сложных задачах.</p>
+        <p data-lang="en">Until now we talked <em>around</em> the code: history, tools, where it runs. Today we go <em>inside</em>. We'll break down what a JS program is made of, learn to comment code, use the console to its fullest, and — most importantly — <strong>read errors</strong>. Without this skill you'll drown in the first complex tasks.</p>
+        <p data-lang="ru"><strong>После этого занятия вы сможете:</strong></p>
+        <p data-lang="en"><strong>After this lesson you will be able to:</strong></p>
+        <ul data-lang="ru">
+            <li>Объяснить, что такое инструкция (statement) и выражение (expression)</li>
+            <li>Писать комментарии трёх типов и понимать, когда они полезны</li>
+            <li>Называть правила именования переменных и ключевые слова JS</li>
+            <li>Использовать <code>console.log</code>, <code>warn</code>, <code>error</code>, <code>table</code>, <code>group</code>, <code>time</code></li>
+            <li>Читать и понимать три главных типа ошибок: Syntax, Reference, Type</li>
+            <li>Использовать <code>alert</code>, <code>prompt</code>, <code>confirm</code> для диалога с пользователем</li>
+            <li>Написать интерактивную программу, которая задаёт вопросы и реагирует</li>
+        </ul>
+        <ul data-lang="en">
+            <li>Explain what a statement and an expression are</li>
+            <li>Write three kinds of comments and know when they're useful</li>
+            <li>Name the rules for naming variables and JS keywords</li>
+            <li>Use <code>console.log</code>, <code>warn</code>, <code>error</code>, <code>table</code>, <code>group</code>, <code>time</code></li>
+            <li>Read and understand the three main error types: Syntax, Reference, Type</li>
+            <li>Use <code>alert</code>, <code>prompt</code>, <code>confirm</code> for user dialogs</li>
+            <li>Write an interactive program that asks questions and reacts</li>
+        </ul>
+    </div>
+
+    <div class="toc">
+        <div class="toc-title" data-lang="ru">Содержание</div>
+        <div class="toc-title" data-lang="en">Contents</div>
+        <ol data-lang="ru">
+            <li><a href="#statements">Инструкции и выражения</a></li>
+            <li><a href="#comments">Комментарии</a></li>
+            <li><a href="#syntax-rules">Правила синтаксиса</a></li>
+            <li><a href="#identifiers">Идентификаторы и ключевые слова</a></li>
+            <li><a href="#console">Console во всей красе</a></li>
+            <li><a href="#errors">Как читать ошибки в консоли</a></li>
+            <li><a href="#dialogs">Диалоговые окна: alert, prompt, confirm</a></li>
+            <li><a href="#project">Мини-проект «Интерактивный приветствующий»</a></li>
+        </ol>
+        <ol data-lang="en">
+            <li><a href="#statements">Statements and expressions</a></li>
+            <li><a href="#comments">Comments</a></li>
+            <li><a href="#syntax-rules">Syntax rules</a></li>
+            <li><a href="#identifiers">Identifiers and keywords</a></li>
+            <li><a href="#console">Console in depth</a></li>
+            <li><a href="#errors">Reading console errors</a></li>
+            <li><a href="#dialogs">Dialog boxes: alert, prompt, confirm</a></li>
+            <li><a href="#project">Mini-project "Interactive Greeter"</a></li>
+        </ol>
+    </div>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <h2 id="statements" data-lang="ru">1. Инструкции и выражения</h2>
+    <h2 id="statements" data-lang="en">1. Statements and expressions</h2>
+
+    <p data-lang="ru">Программа на JavaScript — это <strong>последовательность инструкций</strong> (<em>statements</em>), которые движок выполняет по очереди, сверху вниз. Каждая инструкция — это «шаг» программы: создать переменную, вызвать функцию, сделать проверку.</p>
+    <p data-lang="en">A JavaScript program is a <strong>sequence of statements</strong>, which the engine executes in order, top to bottom. Each statement is a "step" of the program: create a variable, call a function, make a check.</p>
+
+    <pre><code>let name = "Seydi";      // инструкция 1 — создать переменную
+console.log(name);       // инструкция 2 — вывести её
+let age = 25;            // инструкция 3 — ещё переменная
+console.log(age + 5);    // инструкция 4 — вывести age + 5</code></pre>
+
+    <h3 data-lang="ru">Инструкция vs выражение</h3>
+    <h3 data-lang="en">Statement vs expression</h3>
+
+    <ul data-lang="ru">
+        <li><strong>Выражение (expression)</strong> — это что-то, что <em>производит значение</em>. Например: <code>2 + 2</code>, <code>"hello"</code>, <code>Math.random()</code>.</li>
+        <li><strong>Инструкция (statement)</strong> — это <em>действие</em>, которое что-то делает. Обычно заканчивается точкой с запятой. Например: <code>let x = 5;</code>, <code>console.log("hi");</code>.</li>
+    </ul>
+    <ul data-lang="en">
+        <li><strong>Expression</strong> — something that <em>produces a value</em>. E.g., <code>2 + 2</code>, <code>"hello"</code>, <code>Math.random()</code>.</li>
+        <li><strong>Statement</strong> — an <em>action</em> that does something. Usually ends with a semicolon. E.g., <code>let x = 5;</code>, <code>console.log("hi");</code>.</li>
+    </ul>
+
+    <div class="analogy">
+        <p data-lang="ru">Аналогия: выражение — это <em>слово или словосочетание</em> («три», «два плюс два», «синий цвет»). Инструкция — это <em>целое предложение с точкой</em> («Иди домой.»). Из выражений строятся инструкции. Из инструкций — вся программа.</p>
+        <p data-lang="en">Analogy: an expression is a <em>word or phrase</em> ("three", "two plus two", "the color blue"). A statement is a <em>full sentence with a period</em> ("Go home."). Statements are built from expressions. Programs are built from statements.</p>
+    </div>
+
+    <h3 data-lang="ru">Точка с запятой и ASI</h3>
+    <h3 data-lang="en">Semicolons and ASI</h3>
+
+    <p data-lang="ru">Каждая инструкция <strong>должна</strong> заканчиваться точкой с запятой <code>;</code>. Но у JS есть <strong>ASI</strong> (Automatic Semicolon Insertion) — если вы забыли, движок попытается поставить сам. Это не всегда работает правильно.</p>
+    <p data-lang="en">Each statement <strong>should</strong> end with a semicolon <code>;</code>. JS has <strong>ASI</strong> (Automatic Semicolon Insertion) — if you forget, the engine tries to insert one. But it doesn't always work right.</p>
+
+    <div class="compare">
+        <div class="right">
+            <div class="label" data-lang="ru">С точкой с запятой (надёжно)</div>
+            <div class="label" data-lang="en">With semicolons (safe)</div>
+            <pre><code>let x = 5;
+let y = 10;
+console.log(x + y);</code></pre>
+        </div>
+        <div class="wrong">
+            <div class="label" data-lang="ru">Без (рискованно)</div>
+            <div class="label" data-lang="en">Without (risky)</div>
+            <pre><code>let x = 5
+let y = 10
+console.log(x + y)</code></pre>
+        </div>
+    </div>
+
+    <div class="pro-tip">
+        <p data-lang="ru">Включённый <strong>Prettier</strong> (из прошлого занятия) расставит точки с запятой сам при каждом сохранении. Поэтому просто пишите код и сохраняйте — всё будет чисто.</p>
+        <p data-lang="en">With <strong>Prettier</strong> enabled (from the last lesson), semicolons are added automatically on every save. Just write code and save — it stays clean.</p>
+    </div>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <h2 id="comments" data-lang="ru">2. Комментарии</h2>
+    <h2 id="comments" data-lang="en">2. Comments</h2>
+
+    <p data-lang="ru"><strong>Комментарий</strong> — это текст, который движок JS <em>игнорирует</em>. Он не влияет на работу программы, но помогает <em>людям</em> понимать, что делает код. В JS есть три вида комментариев:</p>
+    <p data-lang="en">A <strong>comment</strong> is text that the JS engine <em>ignores</em>. It doesn't affect the program, but helps <em>people</em> understand the code. JS has three kinds of comments:</p>
+
+    <h3 data-lang="ru">Однострочный</h3>
+    <h3 data-lang="en">Single-line</h3>
+    <pre><code>// Это однострочный комментарий
+let price = 100; // можно писать в конце строки тоже</code></pre>
+
+    <h3 data-lang="ru">Многострочный</h3>
+    <h3 data-lang="en">Multi-line</h3>
+    <pre><code>/*
+    Это комментарий из нескольких строк.
+    Полезен для длинных объяснений,
+    или чтобы временно «выключить» кусок кода.
+*/
+let x = 10;</code></pre>
+
+    <h3 data-lang="ru">JSDoc (документация функций)</h3>
+    <h3 data-lang="en">JSDoc (function documentation)</h3>
+    <pre><code>/**
+ * Складывает два числа и возвращает результат.
+ * @param {number} a — первое число
+ * @param {number} b — второе число
+ * @returns {number} — сумма
+ */
+function sum(a, b) {
+    return a + b;
+}</code></pre>
+
+    <p data-lang="ru">JSDoc-комментарии VS Code «понимает» и показывает подсказку при наведении на функцию. Очень полезная привычка для командной работы.</p>
+    <p data-lang="en">VS Code "understands" JSDoc comments and shows a hint when hovering over a function. A very useful habit for teamwork.</p>
+
+    <h3 data-lang="ru">Когда писать комментарии</h3>
+    <h3 data-lang="en">When to write comments</h3>
+
+    <ul data-lang="ru">
+        <li>✅ Когда код делает что-то неочевидное (<em>«почему именно так?»</em>)</li>
+        <li>✅ Когда есть особый случай или обход бага</li>
+        <li>✅ Для TODO-заметок: <code>// TODO: добавить валидацию email</code></li>
+        <li>❌ <strong>НЕ пишите очевидного:</strong> <code>let x = 5; // присваиваем 5 переменной x</code> — это мусор</li>
+        <li>❌ НЕ комментируйте устаревший код — удаляйте его, Git сохранит историю</li>
+    </ul>
+    <ul data-lang="en">
+        <li>✅ When the code does something non-obvious (<em>"why like this?"</em>)</li>
+        <li>✅ Special cases or bug workarounds</li>
+        <li>✅ TODO notes: <code>// TODO: add email validation</code></li>
+        <li>❌ <strong>DON'T state the obvious:</strong> <code>let x = 5; // assign 5 to x</code> — noise</li>
+        <li>❌ DON'T comment out old code — delete it, Git keeps history</li>
+    </ul>
+
+    <div class="mistake">
+        <p data-lang="ru">Комментарии — это не замена <strong>хорошим названиям переменных</strong>. Плохо: <code>let d = 5; // количество дней</code>. Хорошо: <code>let days = 5;</code> (вообще без комментария).</p>
+        <p data-lang="en">Comments are not a substitute for <strong>good variable names</strong>. Bad: <code>let d = 5; // number of days</code>. Good: <code>let days = 5;</code> (no comment at all).</p>
+    </div>
+
+    <h3 data-lang="ru">Горячая клавиша комментирования</h3>
+    <h3 data-lang="en">Comment shortcut</h3>
+
+    <p data-lang="ru"><span class="kbd">Ctrl</span>+<span class="kbd">/</span> — VS Code закомментирует/раскомментирует текущую строку или выделение. Очень полезно для быстрого «выключения» кода при отладке.</p>
+    <p data-lang="en"><span class="kbd">Ctrl</span>+<span class="kbd">/</span> — VS Code toggles the comment for the current line or selection. Very handy for temporarily "disabling" code during debugging.</p>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <h2 id="syntax-rules" data-lang="ru">3. Правила синтаксиса</h2>
+    <h2 id="syntax-rules" data-lang="en">3. Syntax rules</h2>
+
+    <h3 data-lang="ru">Регистр символов важен (case-sensitive)</h3>
+    <h3 data-lang="en">Case sensitivity</h3>
+
+    <p data-lang="ru">JavaScript <strong>различает большие и маленькие буквы</strong>. <code>name</code>, <code>Name</code> и <code>NAME</code> — это три <em>разные</em> переменные.</p>
+    <p data-lang="en">JavaScript <strong>distinguishes upper and lower case</strong>. <code>name</code>, <code>Name</code>, and <code>NAME</code> are three <em>different</em> variables.</p>
+
+    <pre><code>let age = 25;
+console.log(Age);  // ❌ ReferenceError: Age is not defined</code></pre>
+
+    <h3 data-lang="ru">Пробелы и отступы</h3>
+    <h3 data-lang="en">Whitespace and indentation</h3>
+
+    <p data-lang="ru">Для движка JS <strong>пробелы и отступы не важны</strong> — он одинаково понимает все три варианта ниже:</p>
+    <p data-lang="en">For the JS engine, <strong>whitespace and indentation don't matter</strong> — all three below are equivalent:</p>
+
+    <pre><code>let x=5;let y=10;console.log(x+y);
+
+let x = 5;
+let y = 10;
+console.log(x + y);
+
+let x  =  5 ;
+let y  =  10 ;
+console.log ( x + y ) ;</code></pre>
+
+    <p data-lang="ru">Но для <strong>человека</strong>, который будет читать код (в том числе для вас через месяц), аккуратное форматирование с отступами — это <em>жизненно важно</em>. Стандарт: 2 пробела отступа, пробелы вокруг <code>=</code>, после запятых.</p>
+    <p data-lang="en">But for a <strong>human</strong> reading the code (including you a month from now), neat formatting with indentation is <em>vital</em>. Standard: 2-space indent, spaces around <code>=</code>, after commas.</p>
+
+    <h3 data-lang="ru">Строки в кавычках — три варианта</h3>
+    <h3 data-lang="en">Strings in quotes — three variants</h3>
+
+    <pre><code>let a = "двойные кавычки";
+let b = 'одинарные кавычки';
+let c = `обратные кавычки (шаблонные строки)`;</code></pre>
+
+    <p data-lang="ru">Первые два варианта работают одинаково. Третий — <strong>шаблонная строка</strong> — позволяет вставлять выражения через <code>${ }</code>. Мы её подробно разберём в занятии 10, а пока знаем, что такая есть.</p>
+    <p data-lang="en">The first two are equivalent. The third — a <strong>template literal</strong> — lets you embed expressions via <code>${ }</code>. We'll cover it in detail in Lesson 10; for now just know it exists.</p>
+
+    <div class="pro-tip">
+        <p data-lang="ru"><strong>Консистентность важнее выбора.</strong> Выберите один стиль кавычек и используйте везде. Prettier сам приведёт всё к одному виду — по умолчанию к двойным.</p>
+        <p data-lang="en"><strong>Consistency beats the choice itself.</strong> Pick one quote style and use it everywhere. Prettier will unify them — defaults to double.</p>
+    </div>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <h2 id="identifiers" data-lang="ru">4. Идентификаторы и ключевые слова</h2>
+    <h2 id="identifiers" data-lang="en">4. Identifiers and keywords</h2>
+
+    <p data-lang="ru"><strong>Идентификатор</strong> — это имя, которое вы даёте переменной, функции, классу. Например, <code>age</code>, <code>calculateTotal</code>, <code>User</code>.</p>
+    <p data-lang="en">An <strong>identifier</strong> is a name you give to a variable, function, or class. E.g., <code>age</code>, <code>calculateTotal</code>, <code>User</code>.</p>
+
+    <h3 data-lang="ru">Правила именования</h3>
+    <h3 data-lang="en">Naming rules</h3>
+
+    <table>
+        <thead data-lang="ru"><tr><th>Правило</th><th>Пример</th></tr></thead>
+        <thead data-lang="en"><tr><th>Rule</th><th>Example</th></tr></thead>
+        <tbody data-lang="ru">
+            <tr><td>Можно буквы (a-z, A-Z), цифры, <code>_</code>, <code>$</code></td><td><code>age</code>, <code>_name</code>, <code>$total</code>, <code>user2</code></td></tr>
+            <tr><td><strong>Нельзя</strong> начинать с цифры</td><td>❌ <code>2user</code>, ✅ <code>user2</code></td></tr>
+            <tr><td><strong>Нельзя</strong> использовать пробелы и дефисы</td><td>❌ <code>my name</code>, ❌ <code>my-name</code>, ✅ <code>myName</code></td></tr>
+            <tr><td><strong>Нельзя</strong> использовать ключевые слова</td><td>❌ <code>let let = 5;</code></td></tr>
+            <tr><td>Можно любые буквы Unicode</td><td><code>имя</code>, <code>возраст</code> (но лучше английские)</td></tr>
+        </tbody>
+        <tbody data-lang="en">
+            <tr><td>Allowed: letters (a-z, A-Z), digits, <code>_</code>, <code>$</code></td><td><code>age</code>, <code>_name</code>, <code>$total</code>, <code>user2</code></td></tr>
+            <tr><td><strong>Not allowed</strong> to start with a digit</td><td>❌ <code>2user</code>, ✅ <code>user2</code></td></tr>
+            <tr><td><strong>Not allowed</strong>: spaces, hyphens</td><td>❌ <code>my name</code>, ❌ <code>my-name</code>, ✅ <code>myName</code></td></tr>
+            <tr><td><strong>Not allowed</strong>: reserved keywords</td><td>❌ <code>let let = 5;</code></td></tr>
+            <tr><td>Unicode letters allowed</td><td><code>имя</code>, <code>возраст</code> (but English is preferred)</td></tr>
+        </tbody>
+    </table>
+
+    <h3 data-lang="ru">Соглашения по стилю (не правила языка, а общепринятые)</h3>
+    <h3 data-lang="en">Style conventions (not language rules, but widely used)</h3>
+
+    <ul data-lang="ru">
+        <li><code>camelCase</code> — переменные и функции: <code>userName</code>, <code>calculateTotal</code></li>
+        <li><code>PascalCase</code> — классы и «конструкторы»: <code>User</code>, <code>HttpClient</code></li>
+        <li><code>UPPER_SNAKE_CASE</code> — константы-настройки: <code>MAX_USERS</code>, <code>API_URL</code></li>
+        <li>Имена должны быть <strong>говорящими</strong>: <code>userAge</code>, а не <code>ua</code> или <code>x</code></li>
+    </ul>
+    <ul data-lang="en">
+        <li><code>camelCase</code> — variables and functions: <code>userName</code>, <code>calculateTotal</code></li>
+        <li><code>PascalCase</code> — classes and "constructors": <code>User</code>, <code>HttpClient</code></li>
+        <li><code>UPPER_SNAKE_CASE</code> — config constants: <code>MAX_USERS</code>, <code>API_URL</code></li>
+        <li>Names should be <strong>descriptive</strong>: <code>userAge</code>, not <code>ua</code> or <code>x</code></li>
+    </ul>
+
+    <h3 data-lang="ru">Ключевые (зарезервированные) слова</h3>
+    <h3 data-lang="en">Reserved keywords</h3>
+
+    <p data-lang="ru">Эти слова имеют особое значение в языке — их <strong>нельзя</strong> использовать как имена переменных:</p>
+    <p data-lang="en">These words have special meaning in the language — you <strong>cannot</strong> use them as variable names:</p>
+
+    <div class="diagram">break   case       catch     class    const     continue  debugger
+default delete     do        else     export    extends   false
+finally for        function  if       import    in        instanceof
+let     new        null      return   super     switch    this
+throw   true       try       typeof   var       void      while
+with    yield      await     async</div>
+
+    <div class="important">
+        <p data-lang="ru">Не пугайтесь — заучивать список наизусть <strong>не нужно</strong>. VS Code сразу подчеркнёт ошибку красным, если вы случайно попытаетесь использовать ключевое слово. Со временем список запомнится сам.</p>
+        <p data-lang="en">Don't panic — you <strong>don't need</strong> to memorize this list. VS Code will instantly underline an error in red if you accidentally use a keyword. Over time the list becomes second nature.</p>
+    </div>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <h2 id="console" data-lang="ru">5. Console во всей красе</h2>
+    <h2 id="console" data-lang="en">5. Console in depth</h2>
+
+    <p data-lang="ru">В занятии 1 мы использовали только <code>console.log()</code>. На самом деле у объекта <code>console</code> есть более <strong>20 методов</strong>. Разберём самые полезные.</p>
+    <p data-lang="en">In Lesson 1 we only used <code>console.log()</code>. Actually, <code>console</code> has over <strong>20 methods</strong>. Let's cover the most useful.</p>
+
+    <h3 data-lang="ru">Основные методы</h3>
+    <h3 data-lang="en">Main methods</h3>
+
+    <pre><code>console.log("обычное сообщение");      // белое
+console.info("информационное");        // синяя иконка
+console.warn("⚠️ предупреждение");      // жёлтый фон
+console.error("❌ ошибка!");            // красный фон
+console.debug("для отладки");          // мелкое</code></pre>
+
+    <p data-lang="ru">Все пять выводят текст в консоль, но <strong>разного цвета</strong>. Это удобно, когда в консоли много вывода — ошибки сразу бросаются в глаза.</p>
+    <p data-lang="en">All five print to the console, but in <strong>different colors</strong>. Useful when the console is busy — errors stand out.</p>
+
+    <h3 data-lang="ru">console.table — красивая таблица</h3>
+    <h3 data-lang="en">console.table — a nice table</h3>
+
+    <pre><code>const users = [
+    { name: "Anna", age: 25, city: "London" },
+    { name: "Bob", age: 30, city: "Paris" },
+    { name: "Charlie", age: 22, city: "Berlin" }
+];
+
+console.table(users);</code></pre>
+
+    <p data-lang="ru">Вывод — аккуратная таблица в консоли. Незаменимо, когда смотришь массивы объектов (результаты API, пользователей).</p>
+    <p data-lang="en">Output — a neat table in the console. Invaluable when inspecting arrays of objects (API results, users).</p>
+
+    <h3 data-lang="ru">console.group — группировка сообщений</h3>
+    <h3 data-lang="en">console.group — grouping messages</h3>
+
+    <pre><code>console.group("Пользователь Anna");
+    console.log("Возраст: 25");
+    console.log("Город: London");
+    console.log("Email: anna@mail.com");
+console.groupEnd();
+
+console.group("Пользователь Bob");
+    console.log("Возраст: 30");
+    console.log("Город: Paris");
+console.groupEnd();</code></pre>
+
+    <p data-lang="ru">В консоли появятся две сворачиваемые группы. Удобно для отчётов с большим количеством логов.</p>
+    <p data-lang="en">The console shows two collapsible groups. Handy for reports with lots of logs.</p>
+
+    <h3 data-lang="ru">console.time — измерение времени</h3>
+    <h3 data-lang="en">console.time — measuring time</h3>
+
+    <pre><code>console.time("Мой таймер");
+
+// ... какой-то код, например цикл:
+let sum = 0;
+for (let i = 0; i &lt; 1000000; i++) sum += i;
+
+console.timeEnd("Мой таймер");  // Мой таймер: 4.2 ms</code></pre>
+
+    <p data-lang="ru">Позволяет узнать, <strong>сколько миллисекунд</strong> занял кусок кода. Имя таймера (<code>"Мой таймер"</code>) должно совпадать в <code>time</code> и <code>timeEnd</code>.</p>
+    <p data-lang="en">Shows how many <strong>milliseconds</strong> a block of code took. The timer name (<code>"My timer"</code>) must match in <code>time</code> and <code>timeEnd</code>.</p>
+
+    <h3 data-lang="ru">Форматирование с подстановками</h3>
+    <h3 data-lang="en">Formatting with placeholders</h3>
+
+    <pre><code>let name = "Seydi";
+let age = 25;
+
+// Обычный способ — через запятую
+console.log("Имя:", name, "Возраст:", age);
+
+// С подстановками
+console.log("Имя: %s, Возраст: %d", name, age);
+// %s — строка, %d — число, %o — объект
+
+// Стилизация через %c (только в браузере)
+console.log("%c🎉 Победа!", "color: green; font-size: 20px; font-weight: bold");</code></pre>
+
+    <div class="try-it">
+        <p data-lang="ru">Откройте консоль (F12) и выполните каждый из примеров выше. Посмотрите, как разные методы выглядят в вашем браузере.</p>
+        <p data-lang="en">Open the console (F12) and run each example above. See how different methods look in your browser.</p>
+    </div>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <h2 id="errors" data-lang="ru">6. Как читать ошибки в консоли</h2>
+    <h2 id="errors" data-lang="en">6. Reading console errors</h2>
+
+    <p data-lang="ru">Ошибки в консоли — это <strong>не враг</strong>, а ваш главный помощник. Они точно говорят, где и почему всё сломалось. Научиться читать ошибки — важнейший навык программиста.</p>
+    <p data-lang="en">Console errors are <strong>not your enemy</strong> but your main helper. They tell you exactly where and why things broke. Learning to read them is a core dev skill.</p>
+
+    <h3 data-lang="ru">Анатомия ошибки</h3>
+    <h3 data-lang="en">Anatomy of an error</h3>
+
+    <p data-lang="ru">В консоли ошибка выглядит примерно так:</p>
+    <p data-lang="en">In the console, an error looks roughly like this:</p>
+
+    <div class="diagram">ReferenceError: userName is not defined
+    at greet (app.js:5:15)
+    at app.js:9:1</div>
+
+    <ul data-lang="ru">
+        <li><strong>ReferenceError</strong> — тип ошибки</li>
+        <li><strong>userName is not defined</strong> — описание («переменная userName не определена»)</li>
+        <li><strong>app.js:5:15</strong> — <em>стек вызовов</em>: файл <code>app.js</code>, строка <strong>5</strong>, символ <strong>15</strong></li>
+    </ul>
+    <ul data-lang="en">
+        <li><strong>ReferenceError</strong> — error type</li>
+        <li><strong>userName is not defined</strong> — description</li>
+        <li><strong>app.js:5:15</strong> — <em>call stack</em>: file <code>app.js</code>, line <strong>5</strong>, column <strong>15</strong></li>
+    </ul>
+
+    <div class="pro-tip">
+        <p data-lang="ru">Кликните по синей ссылке <code>app.js:5:15</code> в консоли — браузер откроет файл и поставит курсор прямо на проблемное место. Магия.</p>
+        <p data-lang="en">Click the blue <code>app.js:5:15</code> link in the console — the browser opens the file and positions the cursor right at the problem. Magic.</p>
+    </div>
+
+    <h3 data-lang="ru">Три главных типа ошибок</h3>
+    <h3 data-lang="en">Three main error types</h3>
+
+    <table>
+        <thead data-lang="ru"><tr><th>Тип</th><th>Что значит</th><th>Пример</th></tr></thead>
+        <thead data-lang="en"><tr><th>Type</th><th>Meaning</th><th>Example</th></tr></thead>
+        <tbody data-lang="ru">
+            <tr>
+                <td><strong>SyntaxError</strong></td>
+                <td>Сломан синтаксис — движок <em>не может прочитать</em> код. Скрипт не запустится вообще.</td>
+                <td><code>let x = ;</code> или <code>if (x { ... }</code></td>
+            </tr>
+            <tr>
+                <td><strong>ReferenceError</strong></td>
+                <td>Вы обратились к переменной, которой <em>не существует</em>. Часто — опечатка в имени.</td>
+                <td><code>console.log(userNmae);</code></td>
+            </tr>
+            <tr>
+                <td><strong>TypeError</strong></td>
+                <td>Вы делаете с данными что-то, для чего они не годятся (например, вызываете число как функцию).</td>
+                <td><code>let x = 5; x();</code></td>
+            </tr>
+        </tbody>
+        <tbody data-lang="en">
+            <tr>
+                <td><strong>SyntaxError</strong></td>
+                <td>Syntax is broken — the engine <em>can't read</em> the code. The script won't run at all.</td>
+                <td><code>let x = ;</code> or <code>if (x { ... }</code></td>
+            </tr>
+            <tr>
+                <td><strong>ReferenceError</strong></td>
+                <td>You referenced a variable that <em>doesn't exist</em>. Often a typo in the name.</td>
+                <td><code>console.log(userNmae);</code></td>
+            </tr>
+            <tr>
+                <td><strong>TypeError</strong></td>
+                <td>You do something to data that doesn't fit it (e.g., call a number as a function).</td>
+                <td><code>let x = 5; x();</code></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 data-lang="ru">Примеры и как чинить</h3>
+    <h3 data-lang="en">Examples and fixes</h3>
+
+    <h4 data-lang="ru">SyntaxError: «Забыл закрыть скобку»</h4>
+    <h4 data-lang="en">SyntaxError: "Forgot to close a brace"</h4>
+
+    <pre><code>// ❌ Сломано
+if (age &gt; 18 {
+    console.log("Взрослый");
+}
+// SyntaxError: Unexpected token '{'
+
+// ✅ Починили — закрыли круглую скобку
+if (age &gt; 18) {
+    console.log("Взрослый");
+}</code></pre>
+
+    <h4 data-lang="ru">ReferenceError: «Опечатка»</h4>
+    <h4 data-lang="en">ReferenceError: "Typo"</h4>
+
+    <pre><code>let userName = "Seydi";
+console.log(userNmae);   // ❌ опечатка
+// ReferenceError: userNmae is not defined
+
+// ✅ Починили
+console.log(userName);</code></pre>
+
+    <h4 data-lang="ru">TypeError: «Неправильный тип»</h4>
+    <h4 data-lang="en">TypeError: "Wrong type"</h4>
+
+    <pre><code>let num = 42;
+num.toUpperCase();       // ❌ у числа нет метода toUpperCase
+// TypeError: num.toUpperCase is not a function
+
+// ✅ Починили — превратили в строку
+String(num).toUpperCase();</code></pre>
+
+    <div class="real-world">
+        <p data-lang="ru">Опытные разработчики <strong>первым делом</strong> смотрят в консоль браузера, когда что-то не работает. Красная строка в DevTools — это не катастрофа, это подсказка, которая обычно на 80% решает задачу.</p>
+        <p data-lang="en">Experienced developers <strong>first look</strong> at the browser console when something breaks. A red line in DevTools isn't a disaster — it's a hint that usually solves 80% of the problem.</p>
+    </div>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <h2 id="dialogs" data-lang="ru">7. Диалоговые окна: alert, prompt, confirm</h2>
+    <h2 id="dialogs" data-lang="en">7. Dialog boxes: alert, prompt, confirm</h2>
+
+    <p data-lang="ru">Пока мы не изучили DOM (это занятие 16), у нас есть только <strong>три встроенных функции</strong> для общения с пользователем. Они работают <em>только в браузере</em> (не в Node.js).</p>
+    <p data-lang="en">Until we learn the DOM (Lesson 16), we only have <strong>three built-in functions</strong> for talking to the user. They work <em>only in the browser</em> (not Node.js).</p>
+
+    <h3 data-lang="ru">alert — показать сообщение</h3>
+    <h3 data-lang="en">alert — show a message</h3>
+
+    <pre><code>alert("Привет! Это моё первое сообщение.");</code></pre>
+
+    <p data-lang="ru">Выведет модальное окно с текстом и кнопкой OK. Пока пользователь не нажмёт OK — скрипт <em>приостановлен</em>.</p>
+    <p data-lang="en">Shows a modal with text and an OK button. Until the user clicks OK, the script is <em>paused</em>.</p>
+
+    <h3 data-lang="ru">prompt — запросить ввод</h3>
+    <h3 data-lang="en">prompt — ask for input</h3>
+
+    <pre><code>let name = prompt("Как тебя зовут?");
+console.log("Привет, " + name + "!");
+
+// С дефолтным значением
+let age = prompt("Сколько тебе лет?", "18");</code></pre>
+
+    <p data-lang="ru">Возвращает:</p>
+    <p data-lang="en">Returns:</p>
+    <ul data-lang="ru">
+        <li><strong>Строку</strong>, если пользователь ввёл текст и нажал OK</li>
+        <li><code>null</code>, если нажал «Отмена» или Esc</li>
+    </ul>
+    <ul data-lang="en">
+        <li>A <strong>string</strong> if the user entered text and clicked OK</li>
+        <li><code>null</code> if they clicked Cancel or Esc</li>
+    </ul>
+
+    <div class="important">
+        <p data-lang="ru"><strong>prompt всегда возвращает строку!</strong> Даже если пользователь ввёл число. Чтобы получить число, оборачивайте: <code>Number(prompt("Возраст:"))</code>.</p>
+        <p data-lang="en"><strong>prompt always returns a string!</strong> Even if the user typed a number. Wrap it to get a number: <code>Number(prompt("Age:"))</code>.</p>
+    </div>
+
+    <h3 data-lang="ru">confirm — задать вопрос «да/нет»</h3>
+    <h3 data-lang="en">confirm — ask a yes/no question</h3>
+
+    <pre><code>let answer = confirm("Ты готов учить JavaScript?");
+
+if (answer) {
+    console.log("Отлично, продолжаем!");
+} else {
+    console.log("Жаль. Возвращайся, когда будешь готов.");
+}</code></pre>
+
+    <p data-lang="ru">Возвращает <code>true</code> (OK) или <code>false</code> (Отмена).</p>
+    <p data-lang="en">Returns <code>true</code> (OK) or <code>false</code> (Cancel).</p>
+
+    <div class="mistake">
+        <p data-lang="ru">Диалоги — <strong>простые, но неудобные</strong>: блокируют страницу, выглядят некрасиво, нельзя стилизовать. В реальных проектах их почти не используют — делают свои формы на HTML/CSS. Но для учёбы (пока мы не изучили DOM) — идеально.</p>
+        <p data-lang="en">Dialogs are <strong>simple but clunky</strong>: they block the page, look ugly, can't be styled. Real projects rarely use them — custom HTML/CSS forms are used instead. But for learning (until we cover the DOM) — they're perfect.</p>
+    </div>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <h2 id="project" data-lang="ru">8. Мини-проект «Интерактивный приветствующий»</h2>
+    <h2 id="project" data-lang="en">8. Mini-project "Interactive Greeter"</h2>
+
+    <p data-lang="ru">Соберём всё изученное в маленькую программу, которая знакомится с пользователем, задаёт несколько вопросов и реагирует на ответы.</p>
+    <p data-lang="en">Let's combine everything we learned into a small program that introduces itself to the user, asks a few questions, and reacts to the answers.</p>
+
+    <div class="step">
+        <div class="step-number">1</div>
+        <div>
+            <p data-lang="ru">Создайте папку <code>greeter/</code> с файлами <code>index.html</code> и <code>app.js</code>.</p>
+            <p data-lang="en">Create folder <code>greeter/</code> with <code>index.html</code> and <code>app.js</code>.</p>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-number">2</div>
+        <div>
+            <p data-lang="ru"><strong>index.html</strong>:</p>
+            <p data-lang="en"><strong>index.html</strong>:</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Приветствующий&lt;/title&gt;
+    &lt;script src="app.js" defer&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Открой консоль (F12) и следуй подсказкам&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-number">3</div>
+        <div>
+            <p data-lang="ru"><strong>app.js</strong>:</p>
+            <p data-lang="en"><strong>app.js</strong>:</p>
+            <pre><code>// ====== Приветствие ======
+alert("Привет! Сейчас мы познакомимся 👋");
+
+// Спрашиваем имя
+const name = prompt("Как тебя зовут?");
+
+// Если пользователь нажал «Отмена» — выходим
+if (name === null || name.trim() === "") {
+    alert("Жаль, без имени не познакомиться. Пока!");
+} else {
+    // Спрашиваем возраст и сразу превращаем в число
+    const age = Number(prompt("Сколько тебе лет, " + name + "?"));
+
+    // Считаем, сколько лет до 100
+    const yearsTo100 = 100 - age;
+
+    // Выводим в консоль красиво через group
+    console.group("👤 Профиль пользователя");
+    console.log("Имя:", name);
+    console.log("Возраст:", age);
+    console.log("Лет до 100:", yearsTo100);
+    console.groupEnd();
+
+    // Спрашиваем, нравится ли JS
+    const likesJS = confirm("Тебе нравится JavaScript?");
+
+    if (likesJS) {
+        alert("Отлично, " + name + "! Продолжай учиться 🎉");
+        console.log("%c" + name + " любит JS!", "color: green; font-size: 16px");
+    } else {
+        alert("Ничего, " + name + ". Через пару занятий полюбишь 😉");
+        console.warn(name + " пока не любит JS. Дадим шанс!");
+    }
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-number">4</div>
+        <div>
+            <p data-lang="ru">Запустите через <em>Open with Live Server</em>. Откройте консоль (F12) — параллельно с диалогами будут появляться записи.</p>
+            <p data-lang="en">Run via <em>Open with Live Server</em>. Open the console (F12) — log entries will appear alongside the dialogs.</p>
+        </div>
+    </div>
+
+    <h3 data-lang="ru">Что нового в этом коде</h3>
+    <h3 data-lang="en">What's new in this code</h3>
+
+    <ul data-lang="ru">
+        <li><code>name.trim()</code> — убирает пробелы в начале и конце строки (чтобы пустой ввод с пробелами тоже распознать)</li>
+        <li><code>name === null</code> — строгое сравнение: пользователь нажал «Отмена»</li>
+        <li><code>console.group / groupEnd</code> — красивая сворачиваемая группа в консоли</li>
+        <li><code>%c</code> в <code>console.log</code> — стилизация текста (зелёный, крупный)</li>
+        <li><code>if (likesJS) { ... } else { ... }</code> — ветвление по ответу</li>
+    </ul>
+    <ul data-lang="en">
+        <li><code>name.trim()</code> — strips whitespace at start/end (to catch empty-with-spaces inputs)</li>
+        <li><code>name === null</code> — strict equality: user clicked "Cancel"</li>
+        <li><code>console.group / groupEnd</code> — a nice collapsible group in the console</li>
+        <li><code>%c</code> in <code>console.log</code> — text styling (green, large)</li>
+        <li><code>if (likesJS) { ... } else { ... }</code> — branch on the answer</li>
+    </ul>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <div class="summary">
+        <ul data-lang="ru">
+            <li>Программа — это <strong>последовательность инструкций</strong>, каждая обычно заканчивается <code>;</code>.</li>
+            <li>Три вида комментариев: <code>//</code>, <code>/* */</code>, <code>/** */</code> (JSDoc).</li>
+            <li>JS <strong>различает регистр</strong>: <code>name</code> ≠ <code>Name</code>.</li>
+            <li>Пробелы и отступы — для людей, не для движка. Стандарт: <strong>2 пробела</strong>.</li>
+            <li>Идентификаторы: буквы/цифры/<code>_</code>/<code>$</code>, <strong>не начинаются с цифры</strong>, <strong>без пробелов</strong>, не ключевые слова.</li>
+            <li>Стили: <code>camelCase</code> (переменные), <code>PascalCase</code> (классы), <code>UPPER_SNAKE_CASE</code> (константы).</li>
+            <li>Консоль — не только <code>log</code>: есть <code>warn</code>, <code>error</code>, <code>table</code>, <code>group</code>, <code>time</code>.</li>
+            <li>Три главных ошибки: <strong>SyntaxError</strong> (сломан синтаксис), <strong>ReferenceError</strong> (переменной нет), <strong>TypeError</strong> (неправильный тип).</li>
+            <li>Диалоги: <code>alert</code> (показать), <code>prompt</code> (ввод), <code>confirm</code> (да/нет). Работают только в браузере.</li>
+            <li><code>prompt</code> всегда возвращает <strong>строку</strong> — для чисел оборачивайте <code>Number(...)</code>.</li>
+        </ul>
+        <ul data-lang="en">
+            <li>A program is a <strong>sequence of statements</strong>, each usually ending with <code>;</code>.</li>
+            <li>Three comment types: <code>//</code>, <code>/* */</code>, <code>/** */</code> (JSDoc).</li>
+            <li>JS is <strong>case-sensitive</strong>: <code>name</code> ≠ <code>Name</code>.</li>
+            <li>Whitespace and indentation — for humans, not the engine. Standard: <strong>2 spaces</strong>.</li>
+            <li>Identifiers: letters/digits/<code>_</code>/<code>$</code>, <strong>no leading digit</strong>, <strong>no spaces</strong>, not a keyword.</li>
+            <li>Styles: <code>camelCase</code> (variables), <code>PascalCase</code> (classes), <code>UPPER_SNAKE_CASE</code> (constants).</li>
+            <li>Console isn't just <code>log</code>: there's <code>warn</code>, <code>error</code>, <code>table</code>, <code>group</code>, <code>time</code>.</li>
+            <li>Three main errors: <strong>SyntaxError</strong> (bad syntax), <strong>ReferenceError</strong> (undefined var), <strong>TypeError</strong> (wrong type).</li>
+            <li>Dialogs: <code>alert</code> (show), <code>prompt</code> (input), <code>confirm</code> (yes/no). Browser only.</li>
+            <li><code>prompt</code> always returns a <strong>string</strong> — wrap in <code>Number(...)</code> for numbers.</li>
+        </ul>
+    </div>
+
+    <div class="quiz">
+        <ol data-lang="ru">
+            <li>В чём разница между инструкцией (statement) и выражением (expression)?</li>
+            <li>Какие три вида комментариев есть в JS?</li>
+            <li>Какая горячая клавиша в VS Code комментирует строку?</li>
+            <li>Почему нельзя назвать переменную <code>2user</code>?</li>
+            <li>В каком стиле именуют переменные, а в каком — классы?</li>
+            <li>Что такое <strong>SyntaxError</strong> и чем он отличается от <strong>ReferenceError</strong>?</li>
+            <li>Что возвращает <code>prompt</code>, если пользователь нажал «Отмена»?</li>
+            <li>Какой метод консоли показывает массив объектов в виде таблицы?</li>
+            <li>Можно ли использовать <code>alert</code> в Node.js? Почему?</li>
+        </ol>
+        <ol data-lang="en">
+            <li>What's the difference between a statement and an expression?</li>
+            <li>What are the three kinds of comments in JS?</li>
+            <li>Which VS Code shortcut toggles a line comment?</li>
+            <li>Why can't you name a variable <code>2user</code>?</li>
+            <li>Which naming style is used for variables, which for classes?</li>
+            <li>What is a <strong>SyntaxError</strong> and how does it differ from a <strong>ReferenceError</strong>?</li>
+            <li>What does <code>prompt</code> return if the user clicks "Cancel"?</li>
+            <li>Which console method displays an array of objects as a table?</li>
+            <li>Can you use <code>alert</code> in Node.js? Why?</li>
+        </ol>
+    </div>
+
+</div>
+
+</body>
+</html>

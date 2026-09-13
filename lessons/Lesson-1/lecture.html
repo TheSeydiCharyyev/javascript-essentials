@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Занятие 1 — Введение в JavaScript</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/lecture.css">
+    <script src="../../js/lang.js" defer></script>
+    <style>
+        /* JavaScript theme override (yellow/amber) */
+        h1 { border-bottom-color: #f59e0b; }
+        h2 { color: #a16207; background: #fffbeb; border-left-color: #f59e0b; }
+        h3 { color: #78350f; }
+        .timeline { border-left-color: #f59e0b; }
+        .timeline-item::before { background: #f59e0b; }
+        .timeline-year { color: #a16207; }
+        .person-card .role { color: #a16207; }
+        .step-number { background: #f59e0b; }
+        .toc a { color: #a16207; }
+    </style>
+</head>
+<body>
+
+<div class="lesson-nav">
+    <a href="../../index.html" class="nav-home" data-lang="ru">&#8592; Главная</a>
+    <a href="../../index.html" class="nav-home" data-lang="en">&#8592; Home</a>
+    <span class="nav-sep">|</span>
+    <span class="nav-title" data-lang="ru">Занятие 1: Введение в JavaScript</span>
+    <span class="nav-title" data-lang="en">Lesson 1: Introduction to JavaScript</span>
+    <span class="nav-sep">|</span>
+    <span class="nav-active" data-lang="ru">&#x1F468;&#x200D;&#x1F3EB; Лекция</span>
+    <span class="nav-active" data-lang="en">&#x1F468;&#x200D;&#x1F3EB; Lecture</span>
+    <a href="student.html" class="nav-link" data-lang="ru">&#x1F468;&#x200D;&#x1F393; Конспект</a>
+    <a href="student.html" class="nav-link" data-lang="en">&#x1F468;&#x200D;&#x1F393; Notes</a>
+    <a href="tasks.html" class="nav-link" data-lang="ru">&#x1F4CB; Задания</a>
+    <a href="tasks.html" class="nav-link" data-lang="en">&#x1F4CB; Tasks</a>
+    <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
+</div>
+
+<div class="container">
+
+    <h1 data-lang="ru">Занятие 1: Введение в JavaScript</h1>
+    <h1 data-lang="en">Lesson 1: Introduction to JavaScript</h1>
+    <p class="subtitle" data-lang="ru">История языка, где он используется, как устроен и как написать свой первый скрипт</p>
+    <p class="subtitle" data-lang="en">The history of the language, where it is used, how it works, and how to write your first script</p>
+
+    <div class="why">
+        <p data-lang="ru">Это ваше <strong>первое занятие по JavaScript</strong> — и оно задаёт фундамент. Прежде чем писать код, важно понять: откуда взялся язык, что это вообще такое, где он работает и какое место занимает в мире программирования. Без этой картины вы будете учить синтаксис «вслепую», не понимая контекста.</p>
+        <p data-lang="en">This is your <strong>first JavaScript lesson</strong> — it lays the foundation. Before writing code, it's important to understand where the language came from, what it actually is, where it runs, and its place in the programming world. Without that big picture, you'll be learning syntax blindly, without context.</p>
+        <p data-lang="ru"><strong>После этого занятия вы сможете:</strong></p>
+        <p data-lang="en"><strong>After this lesson you will be able to:</strong></p>
+        <ul data-lang="ru">
+            <li>Объяснить, что такое JavaScript и чем он отличается от Java</li>
+            <li>Рассказать историю языка (от 10 дней Брендана Айка до современного ES)</li>
+            <li>Понимать, что такое ECMAScript и как он связан с JS</li>
+            <li>Назвать, где работает JavaScript, кроме браузера</li>
+            <li>Объяснить, что такое мультипарадигменный и динамически-типизированный язык</li>
+            <li>Подключить JS к HTML-странице тремя способами</li>
+            <li>Использовать <code>console.log</code> и открывать DevTools</li>
+            <li>Написать свой первый скрипт «Hello, JavaScript!»</li>
+        </ul>
+        <ul data-lang="en">
+            <li>Explain what JavaScript is and how it differs from Java</li>
+            <li>Tell the history of the language (from Brendan Eich's 10 days to modern ES)</li>
+            <li>Understand what ECMAScript is and how it relates to JS</li>
+            <li>Name places where JavaScript runs besides the browser</li>
+            <li>Explain what a multi-paradigm and dynamically-typed language is</li>
+            <li>Link JS to an HTML page using three different methods</li>
+            <li>Use <code>console.log</code> and open DevTools</li>
+            <li>Write your first "Hello, JavaScript!" script</li>
+        </ul>
+    </div>
+
+    <div class="toc">
+        <div class="toc-title" data-lang="ru">Содержание</div>
+        <div class="toc-title" data-lang="en">Contents</div>
+        <ol data-lang="ru">
+            <li><a href="#history">Краткая история JavaScript</a></li>
+            <li><a href="#brendan">Кто такой Брендан Айк</a></li>
+            <li><a href="#what-is-js">Что такое JavaScript</a></li>
+            <li><a href="#where">Где работает JavaScript</a></li>
+            <li><a href="#how-works">Как JS работает в браузере</a></li>
+            <li><a href="#linking">Три способа подключения JS к HTML</a></li>
+            <li><a href="#console">console.log и DevTools Console</a></li>
+            <li><a href="#vs">JavaScript против других языков</a></li>
+            <li><a href="#tools">Что нужно для работы</a></li>
+            <li><a href="#first">Твой первый скрипт: Hello, JavaScript!</a></li>
+        </ol>
+        <ol data-lang="en">
+            <li><a href="#history">A brief history of JavaScript</a></li>
+            <li><a href="#brendan">Who is Brendan Eich</a></li>
+            <li><a href="#what-is-js">What is JavaScript</a></li>
+            <li><a href="#where">Where JavaScript runs</a></li>
+            <li><a href="#how-works">How JS works in the browser</a></li>
+            <li><a href="#linking">Three ways to link JS to HTML</a></li>
+            <li><a href="#console">console.log and DevTools Console</a></li>
+            <li><a href="#vs">JavaScript vs other languages</a></li>
+            <li><a href="#tools">What you need to start</a></li>
+            <li><a href="#first">Your first script: Hello, JavaScript!</a></li>
+        </ol>
+    </div>
+
+    <hr>
+
+    <h2 id="history" data-lang="ru">1. Краткая история JavaScript</h2>
+    <h2 id="history" data-lang="en">1. A brief history of JavaScript</h2>
+
+    <p data-lang="ru">JavaScript — один из самых популярных языков программирования в мире. Но он появился не сразу и не просто так. Понимание истории поможет вам увидеть, почему язык устроен именно так, а не иначе.</p>
+    <p data-lang="en">JavaScript is one of the most popular programming languages in the world. But it didn't appear out of nowhere. Understanding its history helps you see why the language is designed the way it is.</p>
+
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-year" data-lang="ru">1995 — Рождение языка</div>
+            <div class="timeline-year" data-lang="en">1995 — The birth of the language</div>
+            <p data-lang="ru">Компания <strong>Netscape</strong> выпускала самый популярный на тот момент браузер — Netscape Navigator. Им был нужен «лёгкий» язык, чтобы веб-страницы могли хоть как-то «оживать»: проверять формы, показывать всплывающие окна. Руководство поручило создать такой язык программисту <strong>Брендану Айку (Brendan Eich)</strong> — и дало ему всего <strong>10 дней</strong>. За эти 10 дней родился прототип языка под названием <strong>Mocha</strong>, который вскоре переименовали в <strong>LiveScript</strong>, а затем, на волне популярности Java, — в <strong>JavaScript</strong>.</p>
+            <p data-lang="en"><strong>Netscape</strong> made the most popular browser at the time — Netscape Navigator. They needed a "light" language so that web pages could come alive: validate forms, show popups. Management assigned programmer <strong>Brendan Eich</strong> to create such a language — and gave him just <strong>10 days</strong>. In those 10 days a prototype was born called <strong>Mocha</strong>, later renamed to <strong>LiveScript</strong>, and then — riding on Java's fame — to <strong>JavaScript</strong>.</p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-year" data-lang="ru">1996 — JavaScript против JScript</div>
+            <div class="timeline-year" data-lang="en">1996 — JavaScript vs JScript</div>
+            <p data-lang="ru">Microsoft выпустила свою копию языка под названием <strong>JScript</strong> для браузера Internet Explorer. Началась «война браузеров»: в каждом браузере свой JS, код, написанный для одного, ломался в другом.</p>
+            <p data-lang="en">Microsoft released its own clone called <strong>JScript</strong> for Internet Explorer. The "browser wars" began: each browser had its own JS, and code written for one broke in another.</p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-year" data-lang="ru">1997 — Стандарт ECMAScript</div>
+            <div class="timeline-year" data-lang="en">1997 — The ECMAScript standard</div>
+            <p data-lang="ru">Чтобы прекратить хаос, язык передали международной организации <strong>Ecma International</strong>, которая выпустила первый стандарт — <strong>ECMAScript 1 (ES1)</strong>. С этого момента <em>JavaScript</em> — это конкретная реализация спецификации <em>ECMAScript</em>. Запомните эту разницу: мы о ней ещё поговорим в разделе 3.</p>
+            <p data-lang="en">To end the chaos, the language was handed to the international body <strong>Ecma International</strong>, which released the first standard — <strong>ECMAScript 1 (ES1)</strong>. From this point on, <em>JavaScript</em> is a specific implementation of the <em>ECMAScript</em> specification. Remember this distinction — we'll return to it in section 3.</p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-year" data-lang="ru">2005 — AJAX и возрождение</div>
+            <div class="timeline-year" data-lang="en">2005 — AJAX and rebirth</div>
+            <p data-lang="ru">Появилась технология <strong>AJAX</strong> — возможность загружать данные с сервера без перезагрузки страницы. Именно благодаря ей стали возможны такие сервисы, как <strong>Google Maps</strong> и <strong>Gmail</strong>. Это вернуло интерес к JavaScript, и он начал стремительно развиваться.</p>
+            <p data-lang="en"><strong>AJAX</strong> appeared — the ability to load data from a server without reloading the page. Thanks to it, services like <strong>Google Maps</strong> and <strong>Gmail</strong> became possible. This revived interest in JavaScript and the language started evolving rapidly.</p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-year" data-lang="ru">2009 — Node.js: JS вне браузера</div>
+            <div class="timeline-year" data-lang="en">2009 — Node.js: JS outside the browser</div>
+            <p data-lang="ru"><strong>Райан Даль (Ryan Dahl)</strong> создал <strong>Node.js</strong> — среду исполнения JavaScript, работающую прямо в операционной системе, без браузера. С этого момента на JS стало можно писать серверы, CLI-утилиты, скрипты автоматизации. Это был переломный момент: JS перестал быть «только языком для кнопок».</p>
+            <p data-lang="en"><strong>Ryan Dahl</strong> created <strong>Node.js</strong> — a JavaScript runtime that works directly on the operating system, without a browser. From this moment on, you could write servers, CLI tools, and automation scripts in JS. It was a turning point: JS stopped being "just a language for buttons".</p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-year" data-lang="ru">2015 — ES6 (ES2015): большой скачок</div>
+            <div class="timeline-year" data-lang="en">2015 — ES6 (ES2015): the big leap</div>
+            <p data-lang="ru">Вышла версия <strong>ECMAScript 6</strong> — самое крупное обновление в истории языка. Появились <code>let</code>/<code>const</code>, стрелочные функции, классы, модули, деструктуризация, промисы. После ES6 новые версии стандарта выходят <strong>каждый год</strong> (ES2016, ES2017, … ES2025).</p>
+            <p data-lang="en"><strong>ECMAScript 6</strong> was released — the largest update in the language's history. It introduced <code>let</code>/<code>const</code>, arrow functions, classes, modules, destructuring, promises. After ES6, new versions of the standard are released <strong>every year</strong> (ES2016, ES2017, … ES2025).</p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-year" data-lang="ru">Сегодня</div>
+            <div class="timeline-year" data-lang="en">Today</div>
+            <p data-lang="ru">JavaScript — язык №1 на GitHub по количеству репозиториев, обязательный навык для любого веб-разработчика. На нём написаны фронтенды всех крупных сайтов, серверы Netflix, PayPal, LinkedIn, мобильные приложения Facebook и Instagram (через React Native), даже некоторые десктопные программы — VS Code, Slack, Discord (через Electron).</p>
+            <p data-lang="en">JavaScript is the #1 language on GitHub by repository count and a must-have skill for any web developer. Frontends of all major sites, servers at Netflix, PayPal, LinkedIn, mobile apps of Facebook and Instagram (via React Native), and even desktop apps — VS Code, Slack, Discord (via Electron) — are written in JS.</p>
+        </div>
+    </div>
+
+    <div class="fun-fact">
+        <p data-lang="ru">Название <strong>JavaScript</strong> — чисто маркетинговое решение. Netscape договорилась с компанией Sun (создателем Java) назвать язык похожим именем, чтобы «прокатиться» на волне популярности Java. На самом деле <strong>JavaScript и Java — это совершенно разные языки</strong>, у них почти ничего общего. Как говорят разработчики: «Java относится к JavaScript так же, как автомобиль (car) к ковру (carpet)».</p>
+        <p data-lang="en">The name <strong>JavaScript</strong> is purely a marketing move. Netscape made a deal with Sun (creator of Java) to give the language a similar name, riding on Java's popularity. In reality, <strong>JavaScript and Java are completely different languages</strong> with almost nothing in common. As developers say: "Java is to JavaScript what a car is to a carpet."</p>
+    </div>
+
+    <hr>
+
+    <h2 id="brendan" data-lang="ru">2. Кто такой Брендан Айк</h2>
+    <h2 id="brendan" data-lang="en">2. Who is Brendan Eich</h2>
+
+    <div class="person-card">
+        <div class="info">
+            <div class="name">Brendan Eich</div>
+            <div class="role" data-lang="ru">Создатель JavaScript</div>
+            <div class="role" data-lang="en">Creator of JavaScript</div>
+            <p data-lang="ru" style="margin-top:8px;">Американский программист, родился в 1961 году. В 1995-м, работая в Netscape, за <strong>10 дней</strong> создал прототип языка JavaScript. Позднее стал CTO компании Mozilla, участвовал в создании браузера Firefox. В 2016 году основал компанию <strong>Brave Software</strong>, которая делает браузер Brave, ориентированный на приватность. Сегодня продолжает активно участвовать в развитии веб-технологий.</p>
+            <p data-lang="en" style="margin-top:8px;">An American programmer born in 1961. In 1995, while working at Netscape, he created the JavaScript prototype in <strong>10 days</strong>. Later he became CTO of Mozilla and co-founded Firefox. In 2016 he founded <strong>Brave Software</strong>, making the privacy-focused Brave browser. He remains active in shaping web technologies today.</p>
+        </div>
+    </div>
+
+    <div class="analogy">
+        <p data-lang="ru">Представьте: вам дают 10 дней, чтобы спроектировать язык, который потом будут использовать <em>миллиарды людей</em> 30 лет подряд. Именно поэтому в JS есть странности и «причуды» — Брендан делал то, что успевал. Многие из них мы увидим позже (например, <code>typeof null === 'object'</code>). Но именно эти «причуды» — часть истории языка.</p>
+        <p data-lang="en">Imagine: you have 10 days to design a language that <em>billions of people</em> will use for 30 years. That's why JS has quirks — Eich did what he could in the time given. We'll see many of them later (e.g., <code>typeof null === 'object'</code>). But those quirks are part of the language's story.</p>
+    </div>
+
+    <hr>
+
+    <h2 id="what-is-js" data-lang="ru">3. Что такое JavaScript</h2>
+    <h2 id="what-is-js" data-lang="en">3. What is JavaScript</h2>
+
+    <div style="background:#fffbeb;border:1px solid #fde047;padding:16px 20px;border-radius:8px;margin:16px 0;">
+        <p data-lang="ru"><strong>JavaScript</strong> — это <strong>высокоуровневый, мультипарадигменный, динамически-типизированный, интерпретируемый язык программирования</strong>, являющийся реализацией спецификации <strong>ECMAScript</strong>. Изначально создан для добавления интерактивности веб-страницам, но сегодня используется везде — от серверов до космических аппаратов.</p>
+        <p data-lang="en"><strong>JavaScript</strong> is a <strong>high-level, multi-paradigm, dynamically-typed, interpreted programming language</strong>, which is an implementation of the <strong>ECMAScript</strong> specification. Originally created to add interactivity to web pages, today it's used everywhere — from servers to spacecraft.</p>
+    </div>
+
+    <p data-lang="ru">Это определение звучит сложно, но его легко разобрать на части. Разберём каждый термин.</p>
+    <p data-lang="en">This definition sounds complex, but it's easy to break down. Let's go through each term.</p>
+
+    <h3 data-lang="ru">3.1. Высокоуровневый язык (high-level)</h3>
+    <h3 data-lang="en">3.1. High-level language</h3>
+
+    <p data-lang="ru">«Высокоуровневый» означает, что язык <strong>далёк от «железа»</strong> компьютера. Вам не нужно думать о регистрах процессора, управлении памятью, указателях. Все эти детали скрыты от вас — вы просто пишете <code>let x = 5</code>, а движок сам решает, где и как хранить число в памяти. Противоположность — «низкоуровневые» языки вроде <strong>C</strong> или <strong>Ассемблер</strong>, где вы работаете с памятью вручную.</p>
+    <p data-lang="en">"High-level" means the language is <strong>far from the computer's hardware</strong>. You don't need to think about CPU registers, memory management, or pointers. All those details are hidden — you just write <code>let x = 5</code>, and the engine decides where and how to store the number in memory. The opposite is "low-level" languages like <strong>C</strong> or <strong>Assembly</strong>, where you manage memory by hand.</p>
+
+    <h3 data-lang="ru">3.2. Мультипарадигменный язык</h3>
+    <h3 data-lang="en">3.2. Multi-paradigm language</h3>
+
+    <p data-lang="ru"><strong>Парадигма программирования</strong> — это стиль или подход к написанию программ. JavaScript называют <em>мультипарадигменным</em>, потому что он поддерживает сразу <strong>несколько стилей</strong>, и программист сам выбирает, как писать код. Три основных стиля:</p>
+    <p data-lang="en">A <strong>programming paradigm</strong> is a style or approach to writing programs. JavaScript is called <em>multi-paradigm</em> because it supports <strong>several styles at once</strong>, and the programmer chooses how to write code. Three main styles:</p>
+
+    <table>
+        <thead data-lang="ru"><tr><th>Парадигма</th><th>Суть</th><th>Пример на JS</th></tr></thead>
+        <thead data-lang="en"><tr><th>Paradigm</th><th>Essence</th><th>JS example</th></tr></thead>
+        <tbody data-lang="ru">
+            <tr><td><strong>Императивная</strong></td><td>«Пошагово описываем, <em>как</em> делать»: присваиваем переменные, пишем циклы, условия.</td><td><code>for (let i = 0; i &lt; 5; i++) { ... }</code></td></tr>
+            <tr><td><strong>Объектно-ориентированная (ООП)</strong></td><td>Программа — это набор <em>объектов</em>, которые взаимодействуют. У каждого объекта есть свойства и методы.</td><td><code>class User { ... } const u = new User();</code></td></tr>
+            <tr><td><strong>Функциональная</strong></td><td>Программа — это набор <em>функций</em>, которые передают данные друг другу. Функции — «первоклассные объекты».</td><td><code>[1,2,3].map(x =&gt; x * 2)</code></td></tr>
+        </tbody>
+        <tbody data-lang="en">
+            <tr><td><strong>Imperative</strong></td><td>"Step-by-step, describe <em>how</em> to do it": assign variables, write loops and conditions.</td><td><code>for (let i = 0; i &lt; 5; i++) { ... }</code></td></tr>
+            <tr><td><strong>Object-oriented (OOP)</strong></td><td>A program is a set of <em>objects</em> interacting with each other. Each object has properties and methods.</td><td><code>class User { ... } const u = new User();</code></td></tr>
+            <tr><td><strong>Functional</strong></td><td>A program is a set of <em>functions</em> passing data between each other. Functions are "first-class citizens".</td><td><code>[1,2,3].map(x =&gt; x * 2)</code></td></tr>
+        </tbody>
+    </table>
+
+    <p data-lang="ru">На одном и том же языке одну и ту же задачу можно решить по-разному. Например, посчитать сумму массива чисел:</p>
+    <p data-lang="en">The same task can be solved in different ways in the same language. For example, summing an array of numbers:</p>
+
+    <pre><code>// Императивный стиль
+let sum = 0;
+for (let i = 0; i &lt; nums.length; i++) {
+    sum += nums[i];
+}
+
+// Функциональный стиль
+const sum = nums.reduce((a, b) =&gt; a + b, 0);</code></pre>
+
+    <div class="pro-tip">
+        <p data-lang="ru">На практике профессиональные разработчики <strong>смешивают парадигмы</strong>. Например, в React компоненты часто пишутся в функциональном стиле, но состояние внутри обновляется императивно. Умение выбирать подходящий стиль под задачу — признак зрелого программиста.</p>
+        <p data-lang="en">In practice, professional developers <strong>mix paradigms</strong>. For example, React components are often written functionally, but state inside is updated imperatively. Picking the right style for the task is the mark of a mature programmer.</p>
+    </div>
+
+    <h3 data-lang="ru">3.3. Динамически-типизированный (dynamically-typed)</h3>
+    <h3 data-lang="en">3.3. Dynamically-typed</h3>
+
+    <p data-lang="ru"><strong>Тип</strong> — это то, какие данные хранит переменная: число, строка, объект и т. д. В <em>статически-типизированных</em> языках (Java, C++, TypeScript) тип переменной указывается заранее и не может меняться. В <em>динамически-типизированных</em> (JavaScript, Python, Ruby) — тип определяется автоматически во время выполнения и может меняться «на лету»:</p>
+    <p data-lang="en">A <strong>type</strong> is the kind of data a variable stores: a number, a string, an object, etc. In <em>statically-typed</em> languages (Java, C++, TypeScript), the type is declared in advance and cannot change. In <em>dynamically-typed</em> languages (JavaScript, Python, Ruby), the type is determined automatically at runtime and can change on the fly:</p>
+
+    <pre><code>let x = 42;              // тип: number
+x = "hello";             // стал string — JS не ругается
+x = [1, 2, 3];           // теперь array — тоже OK
+x = { name: "Seydi" };   // теперь object — OK</code></pre>
+
+    <div class="mistake">
+        <p data-lang="ru"><strong>Динамическая типизация = свобода и риск.</strong> С одной стороны, писать код быстрее. С другой — легко случайно смешать типы и получить баг. Например: <code>"5" + 3</code> даёт <code>"53"</code> (строка), а <code>"5" - 3</code> даёт <code>2</code> (число). Именно поэтому придумали <strong>TypeScript</strong> — «надстройку» над JS со статическими типами. Но это тема отдельного занятия.</p>
+        <p data-lang="en"><strong>Dynamic typing = freedom and risk.</strong> On one hand, you write code faster. On the other, it's easy to accidentally mix types and get a bug. For example: <code>"5" + 3</code> gives <code>"53"</code> (string), but <code>"5" - 3</code> gives <code>2</code> (number). That's exactly why <strong>TypeScript</strong> was invented — a "superset" over JS with static types. But that's a topic for another lesson.</p>
+    </div>
+
+    <h3 data-lang="ru">3.4. Интерпретируемый (interpreted)</h3>
+    <h3 data-lang="en">3.4. Interpreted</h3>
+
+    <p data-lang="ru">Существует два больших способа исполнять код:</p>
+    <p data-lang="en">There are two broad ways to execute code:</p>
+
+    <div class="compare">
+        <div class="wrong">
+            <div class="label" data-lang="ru">Компилируемые языки (C, Rust, Go)</div>
+            <div class="label" data-lang="en">Compiled languages (C, Rust, Go)</div>
+            <p data-lang="ru">Сначала <em>компилятор</em> переводит весь код в машинные инструкции и создаёт исполняемый файл (<code>.exe</code>). Потом этот файл запускается. Медленная сборка, но быстрый запуск.</p>
+            <p data-lang="en">First a <em>compiler</em> translates the whole code into machine instructions and creates an executable file (<code>.exe</code>). Then this file runs. Slow build, fast execution.</p>
+        </div>
+        <div class="right">
+            <div class="label" data-lang="ru">Интерпретируемые (JS, Python, Ruby)</div>
+            <div class="label" data-lang="en">Interpreted (JS, Python, Ruby)</div>
+            <p data-lang="ru">Программа (<em>интерпретатор</em>) читает код построчно и сразу его выполняет. Ничего заранее компилировать не надо. Быстрый старт, удобно для веба.</p>
+            <p data-lang="en">A program (the <em>interpreter</em>) reads code line by line and executes it on the fly. No pre-compilation needed. Quick to start, convenient for the web.</p>
+        </div>
+    </div>
+
+    <p data-lang="ru">На практике современные движки JavaScript (например, <strong>V8</strong> в Chrome) используют <strong>JIT-компиляцию</strong> (Just-In-Time) — они <em>на лету</em> превращают куски JS в машинный код для скорости. То есть формально JS интерпретируемый, но фактически работает почти так же быстро, как компилируемые языки.</p>
+    <p data-lang="en">In practice modern JavaScript engines (like <strong>V8</strong> in Chrome) use <strong>JIT compilation</strong> (Just-In-Time) — they convert chunks of JS into machine code on the fly for speed. So formally JS is interpreted, but in practice it runs nearly as fast as compiled languages.</p>
+
+    <h3 data-lang="ru">3.5. JavaScript и ECMAScript — в чём разница?</h3>
+    <h3 data-lang="en">3.5. JavaScript and ECMAScript — what's the difference?</h3>
+
+    <p data-lang="ru">Это, пожалуй, самое важное, что нужно понять из этого раздела.</p>
+    <p data-lang="en">This is perhaps the most important takeaway from this section.</p>
+
+    <ul data-lang="ru">
+        <li><strong>ECMAScript (ES)</strong> — это <em>спецификация</em>, то есть <strong>формальный документ</strong>, который описывает, как должен вести себя язык: какие есть ключевые слова, как работает <code>if</code>, как устроены числа и т. д. Это <em>«закон»</em>.</li>
+        <li><strong>JavaScript</strong> — это <em>реализация</em> этой спецификации, то есть <strong>реальный язык</strong>, которым мы пользуемся. Это <em>«исполнение закона»</em>.</li>
+    </ul>
+    <ul data-lang="en">
+        <li><strong>ECMAScript (ES)</strong> is a <em>specification</em>, a <strong>formal document</strong> describing how the language should behave: what keywords exist, how <code>if</code> works, how numbers are represented, etc. It's the <em>"law"</em>.</li>
+        <li><strong>JavaScript</strong> is an <em>implementation</em> of that specification — the <strong>actual language</strong> we use. It's the <em>"enforcement of the law"</em>.</li>
+    </ul>
+
+    <div class="analogy">
+        <p data-lang="ru">Аналогия: <strong>ECMAScript</strong> — как правила футбола (написанные в книжке ФИФА). <strong>JavaScript</strong> — это реальный футбольный матч, который играют команды по этим правилам. Правила — одни, а матчей с этими правилами может быть много. Разные движки (V8 в Chrome, SpiderMonkey в Firefox, JavaScriptCore в Safari) — это разные «команды», которые играют по одним и тем же правилам ECMAScript.</p>
+        <p data-lang="en">Analogy: <strong>ECMAScript</strong> is like the rules of football (written in the FIFA book). <strong>JavaScript</strong> is an actual football match played by teams according to those rules. The rules are the same, but many matches can be played. Different engines (V8 in Chrome, SpiderMonkey in Firefox, JavaScriptCore in Safari) are different "teams" playing by the same ECMAScript rules.</p>
+    </div>
+
+    <p data-lang="ru">Когда вы слышите «ES6», «ES2020», «ES2024» — это версии <em>спецификации</em>. Каждая новая версия добавляет новые возможности в язык. Мы в этом курсе будем использовать <strong>современный JavaScript</strong> — код, соответствующий ES2015 (ES6) и выше.</p>
+    <p data-lang="en">When you hear "ES6", "ES2020", "ES2024" — those are versions of the <em>specification</em>. Each new version adds new features. In this course we'll use <strong>modern JavaScript</strong> — code compliant with ES2015 (ES6) and above.</p>
+
+    <h3 data-lang="ru">3.6. Однопоточный (single-threaded)</h3>
+    <h3 data-lang="en">3.6. Single-threaded</h3>
+
+    <p data-lang="ru">JavaScript выполняет код <strong>по одной операции за раз</strong>. Нет параллельного исполнения из коробки, как в Java. Зато есть <strong>цикл событий (event loop)</strong> и <strong>асинхронность</strong>, которые позволяют не блокировать программу при долгих операциях (например, запросах к серверу). Об этом — в разделе 5 и подробно в занятии 24 («Промисы»).</p>
+    <p data-lang="en">JavaScript executes code <strong>one operation at a time</strong>. There's no built-in parallel execution like in Java. Instead, there's the <strong>event loop</strong> and <strong>asynchronous programming</strong>, which let the program avoid blocking during long operations (like server requests). More in section 5 and in detail in Lesson 24 ("Promises").</p>
+
+    <hr>
+
+    <h2 id="where" data-lang="ru">4. Где работает JavaScript</h2>
+    <h2 id="where" data-lang="en">4. Where JavaScript runs</h2>
+
+    <p data-lang="ru">Многие думают, что JavaScript — это «язык для браузера». Это правда, но только часть правды. Сегодня JS работает почти везде:</p>
+    <p data-lang="en">Many people think JavaScript is "the browser language". That's true, but only part of the truth. Today JS runs almost everywhere:</p>
+
+    <table>
+        <thead data-lang="ru"><tr><th>Где</th><th>Что делает</th><th>Технологии</th></tr></thead>
+        <thead data-lang="en"><tr><th>Where</th><th>What it does</th><th>Technologies</th></tr></thead>
+        <tbody data-lang="ru">
+            <tr><td><strong>Браузер</strong> (фронтенд)</td><td>Интерактивные сайты, SPA, формы, анимации</td><td>React, Vue, Angular, Svelte</td></tr>
+            <tr><td><strong>Сервер</strong> (бэкенд)</td><td>API, работа с БД, авторизация</td><td>Node.js, Express, NestJS, Deno</td></tr>
+            <tr><td><strong>Мобильные приложения</strong></td><td>iOS / Android на одном коде</td><td>React Native, Expo, Ionic</td></tr>
+            <tr><td><strong>Десктопные программы</strong></td><td>Приложения для Windows/Mac/Linux</td><td>Electron, Tauri, NW.js</td></tr>
+            <tr><td><strong>Игры</strong></td><td>Браузерные и кросс-платформенные игры</td><td>Phaser, Three.js, Babylon.js</td></tr>
+            <tr><td><strong>Встроенные системы / IoT</strong></td><td>Умные устройства, микроконтроллеры</td><td>Espruino, Johnny-Five</td></tr>
+            <tr><td><strong>CLI-утилиты</strong></td><td>Инструменты для терминала</td><td>npm-пакеты, Commander</td></tr>
+        </tbody>
+        <tbody data-lang="en">
+            <tr><td><strong>Browser</strong> (frontend)</td><td>Interactive sites, SPAs, forms, animations</td><td>React, Vue, Angular, Svelte</td></tr>
+            <tr><td><strong>Server</strong> (backend)</td><td>APIs, databases, authentication</td><td>Node.js, Express, NestJS, Deno</td></tr>
+            <tr><td><strong>Mobile apps</strong></td><td>iOS / Android from one codebase</td><td>React Native, Expo, Ionic</td></tr>
+            <tr><td><strong>Desktop programs</strong></td><td>Apps for Windows/Mac/Linux</td><td>Electron, Tauri, NW.js</td></tr>
+            <tr><td><strong>Games</strong></td><td>Browser and cross-platform games</td><td>Phaser, Three.js, Babylon.js</td></tr>
+            <tr><td><strong>Embedded / IoT</strong></td><td>Smart devices, microcontrollers</td><td>Espruino, Johnny-Five</td></tr>
+            <tr><td><strong>CLI tools</strong></td><td>Terminal utilities</td><td>npm packages, Commander</td></tr>
+        </tbody>
+    </table>
+
+    <div class="real-world">
+        <p data-lang="ru">Именно поэтому JavaScript — такая ценная инвестиция. Выучили один язык — открыли дверь во все эти миры. Научились писать кнопку на сайте? Сможете написать и сервер, и мобильное приложение, и даже игру — используя <em>те же самые знания синтаксиса</em>.</p>
+        <p data-lang="en">That's why JavaScript is such a valuable investment. Learn one language — open doors to all these worlds. You learned to write a button on a website? You can also write a server, a mobile app, and even a game — using <em>the same syntax knowledge</em>.</p>
+    </div>
+
+    <hr>
+
+    <h2 id="how-works" data-lang="ru">5. Как JavaScript работает в браузере</h2>
+    <h2 id="how-works" data-lang="en">5. How JavaScript works in the browser</h2>
+
+    <p data-lang="ru">В каждом современном браузере встроен <strong>движок JavaScript</strong> — специальная программа, которая читает ваш JS-код и выполняет его. У каждого браузера — свой движок:</p>
+    <p data-lang="en">Every modern browser has a built-in <strong>JavaScript engine</strong> — a special program that reads your JS code and executes it. Each browser has its own engine:</p>
+
+    <ul data-lang="ru">
+        <li><strong>V8</strong> — Chrome, Edge, Opera, <em>а также Node.js</em> (самый известный, разработан Google)</li>
+        <li><strong>SpiderMonkey</strong> — Firefox (первый JS-движок в истории, создан Бренданом Айком)</li>
+        <li><strong>JavaScriptCore (Nitro)</strong> — Safari, все браузеры на iOS</li>
+    </ul>
+    <ul data-lang="en">
+        <li><strong>V8</strong> — Chrome, Edge, Opera, <em>and Node.js</em> (the most famous, developed by Google)</li>
+        <li><strong>SpiderMonkey</strong> — Firefox (the first JS engine ever, created by Brendan Eich)</li>
+        <li><strong>JavaScriptCore (Nitro)</strong> — Safari and all iOS browsers</li>
+    </ul>
+
+    <h3 data-lang="ru">Что делает движок, когда вы открываете страницу</h3>
+    <h3 data-lang="en">What the engine does when you open a page</h3>
+
+    <div class="step">
+        <div class="step-number">1</div>
+        <div>
+            <p data-lang="ru"><strong>Скачивает JS-файл</strong> (либо из тега <code>&lt;script src="..."&gt;</code>, либо из inline-кода в HTML).</p>
+            <p data-lang="en"><strong>Downloads the JS file</strong> (either from <code>&lt;script src="..."&gt;</code> or inline code in HTML).</p>
+        </div>
+    </div>
+    <div class="step">
+        <div class="step-number">2</div>
+        <div>
+            <p data-lang="ru"><strong>Парсит код</strong> — разбирает текст и превращает его в структуру данных (абстрактное синтаксическое дерево, AST).</p>
+            <p data-lang="en"><strong>Parses the code</strong> — turns the text into a data structure (an Abstract Syntax Tree, AST).</p>
+        </div>
+    </div>
+    <div class="step">
+        <div class="step-number">3</div>
+        <div>
+            <p data-lang="ru"><strong>Компилирует в машинный код</strong> (JIT-компиляция) — для скорости.</p>
+            <p data-lang="en"><strong>Compiles to machine code</strong> (JIT compilation) — for speed.</p>
+        </div>
+    </div>
+    <div class="step">
+        <div class="step-number">4</div>
+        <div>
+            <p data-lang="ru"><strong>Исполняет</strong> — строка за строкой, реагируя на события пользователя (клики, ввод текста, скролл).</p>
+            <p data-lang="en"><strong>Executes</strong> line by line, reacting to user events (clicks, typing, scrolling).</p>
+        </div>
+    </div>
+
+    <h3 data-lang="ru">Что JS умеет делать в браузере</h3>
+    <h3 data-lang="en">What JS can do in the browser</h3>
+
+    <ul data-lang="ru">
+        <li>Изменять содержимое HTML-страницы (через <strong>DOM</strong>)</li>
+        <li>Менять стили CSS</li>
+        <li>Реагировать на клики, ввод текста, скролл, наведение</li>
+        <li>Загружать данные с сервера без перезагрузки (<strong>AJAX / fetch</strong>)</li>
+        <li>Хранить данные прямо в браузере (<code>localStorage</code>, <code>cookies</code>)</li>
+        <li>Показывать уведомления, работать с камерой и микрофоном (с разрешения пользователя)</li>
+    </ul>
+    <ul data-lang="en">
+        <li>Modify the HTML page contents (via the <strong>DOM</strong>)</li>
+        <li>Change CSS styles</li>
+        <li>React to clicks, typing, scrolling, hovering</li>
+        <li>Load data from the server without reload (<strong>AJAX / fetch</strong>)</li>
+        <li>Store data right in the browser (<code>localStorage</code>, <code>cookies</code>)</li>
+        <li>Show notifications, access camera and microphone (with user's permission)</li>
+    </ul>
+
+    <div class="important">
+        <p data-lang="ru"><strong>Чего JS в браузере делать НЕ может</strong> (по соображениям безопасности):</p>
+        <p data-lang="en"><strong>What JS in the browser CANNOT do</strong> (for security reasons):</p>
+        <ul data-lang="ru">
+            <li>Читать/записывать произвольные файлы на вашем диске</li>
+            <li>Запускать программы на компьютере</li>
+            <li>Свободно обращаться к другим сайтам (ограничение <strong>CORS</strong>)</li>
+        </ul>
+        <ul data-lang="en">
+            <li>Read/write arbitrary files on your disk</li>
+            <li>Run programs on your computer</li>
+            <li>Freely talk to other websites (<strong>CORS</strong> restriction)</li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <h2 id="linking" data-lang="ru">6. Три способа подключения JavaScript к HTML</h2>
+    <h2 id="linking" data-lang="en">6. Three ways to link JavaScript to HTML</h2>
+
+    <p data-lang="ru">Чтобы браузер выполнил ваш JS-код, его нужно «подключить» к HTML-странице. Есть три способа.</p>
+    <p data-lang="en">For the browser to execute your JS code, it needs to be "linked" to an HTML page. There are three ways.</p>
+
+    <h3 data-lang="ru">Способ 1: Inline (внутри атрибута тега)</h3>
+    <h3 data-lang="en">Method 1: Inline (inside a tag attribute)</h3>
+
+    <pre><code>&lt;button onclick="alert('Привет!')"&gt;Нажми меня&lt;/button&gt;</code></pre>
+
+    <p data-lang="ru">Код пишется прямо в атрибут <code>onclick</code>, <code>onmouseover</code> и т. п. <strong>Так делать не надо</strong> — это смешивает HTML и JS, делает код трудно поддерживаемым. Упоминаем только, чтобы вы знали, что так бывает.</p>
+    <p data-lang="en">Code is written directly into an <code>onclick</code>, <code>onmouseover</code>, etc. attribute. <strong>Don't do this</strong> — it mixes HTML and JS and makes code hard to maintain. We mention it only so you know it exists.</p>
+
+    <h3 data-lang="ru">Способ 2: Internal (тег &lt;script&gt; внутри HTML)</h3>
+    <h3 data-lang="en">Method 2: Internal (&lt;script&gt; tag inside HTML)</h3>
+
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Моя страница&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Привет, мир!&lt;/h1&gt;
+    &lt;script&gt;
+        console.log('Скрипт работает!');
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+    <p data-lang="ru">Код пишется прямо в <code>&lt;script&gt;...&lt;/script&gt;</code>. Подходит для маленьких страничек или когда скрипт нужен только на этой странице.</p>
+    <p data-lang="en">Code is written directly inside <code>&lt;script&gt;...&lt;/script&gt;</code>. Good for small pages or when the script is only used on this page.</p>
+
+    <h3 data-lang="ru">Способ 3: External (отдельный .js-файл) — рекомендуемый</h3>
+    <h3 data-lang="en">Method 3: External (separate .js file) — recommended</h3>
+
+    <pre><code>&lt;!-- index.html --&gt;
+&lt;body&gt;
+    &lt;h1&gt;Привет, мир!&lt;/h1&gt;
+    &lt;script src="app.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+
+// app.js
+console.log('Скрипт из отдельного файла!');</code></pre>
+
+    <p data-lang="ru">JavaScript выносится в отдельный файл с расширением <code>.js</code>, а в HTML подключается через <code>&lt;script src="..."&gt;</code>. Это <strong>правильный способ</strong> для любого серьёзного проекта: HTML занимается структурой, CSS — стилями, JS — логикой.</p>
+    <p data-lang="en">JavaScript goes into a separate file with the <code>.js</code> extension and is linked via <code>&lt;script src="..."&gt;</code>. This is the <strong>right way</strong> for any serious project: HTML for structure, CSS for styles, JS for logic.</p>
+
+    <h3 data-lang="ru">Где размещать &lt;script&gt; и зачем нужны defer и async</h3>
+    <h3 data-lang="en">Where to place &lt;script&gt; and why defer and async exist</h3>
+
+    <p data-lang="ru">Браузер читает HTML сверху вниз. Если тег <code>&lt;script&gt;</code> встретится в <code>&lt;head&gt;</code>, он <strong>остановит</strong> парсинг страницы, пока скрипт не скачается и не выполнится. Страница будет «зависать». Чтобы этого избежать, есть три варианта:</p>
+    <p data-lang="en">The browser reads HTML top to bottom. If <code>&lt;script&gt;</code> is encountered in <code>&lt;head&gt;</code>, the browser <strong>pauses</strong> parsing until the script is downloaded and executed. The page will "freeze". To avoid that, you have three options:</p>
+
+    <table>
+        <thead data-lang="ru"><tr><th>Вариант</th><th>Что делает</th><th>Когда использовать</th></tr></thead>
+        <thead data-lang="en"><tr><th>Option</th><th>What it does</th><th>When to use</th></tr></thead>
+        <tbody data-lang="ru">
+            <tr><td><code>&lt;script src="app.js"&gt;</code> в конце <code>&lt;body&gt;</code></td><td>HTML успевает прогрузиться до выполнения скрипта</td><td>Простые страницы</td></tr>
+            <tr><td><code>&lt;script defer src="app.js"&gt;</code> в <code>&lt;head&gt;</code></td><td>Скрипт скачивается параллельно, выполняется после парсинга HTML, в порядке появления</td><td><strong>Рекомендуемый вариант</strong></td></tr>
+            <tr><td><code>&lt;script async src="app.js"&gt;</code> в <code>&lt;head&gt;</code></td><td>Скачивается параллельно, выполняется сразу после скачивания (в любом порядке)</td><td>Независимые скрипты (аналитика)</td></tr>
+        </tbody>
+        <tbody data-lang="en">
+            <tr><td><code>&lt;script src="app.js"&gt;</code> at the end of <code>&lt;body&gt;</code></td><td>HTML finishes loading before the script runs</td><td>Simple pages</td></tr>
+            <tr><td><code>&lt;script defer src="app.js"&gt;</code> in <code>&lt;head&gt;</code></td><td>Downloads in parallel, runs after HTML is parsed, in order</td><td><strong>Recommended</strong></td></tr>
+            <tr><td><code>&lt;script async src="app.js"&gt;</code> in <code>&lt;head&gt;</code></td><td>Downloads in parallel, runs as soon as ready (any order)</td><td>Independent scripts (analytics)</td></tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2 id="console" data-lang="ru">7. console.log и DevTools Console</h2>
+    <h2 id="console" data-lang="en">7. console.log and DevTools Console</h2>
+
+    <p data-lang="ru"><code>console.log()</code> — ваш лучший друг в первые месяцы программирования. Это функция, которая <strong>выводит информацию в консоль</strong> — специальную панель разработчика в браузере.</p>
+    <p data-lang="en"><code>console.log()</code> will be your best friend in the first months of programming. It's a function that <strong>prints information to the console</strong> — a special developer panel in the browser.</p>
+
+    <pre><code>console.log("Hello, JavaScript!");
+console.log(42);
+console.log(2 + 2);
+console.log("Меня зовут", "Сейди");</code></pre>
+
+    <h3 data-lang="ru">Как открыть консоль</h3>
+    <h3 data-lang="en">How to open the console</h3>
+
+    <ul data-lang="ru">
+        <li>Откройте любой сайт в Chrome/Edge/Firefox</li>
+        <li>Нажмите клавишу <span class="kbd">F12</span> (или <span class="kbd">Ctrl</span>+<span class="kbd">Shift</span>+<span class="kbd">I</span>)</li>
+        <li>В появившейся панели DevTools перейдите на вкладку <strong>Console</strong></li>
+        <li>Можете прямо там написать <code>2 + 2</code> и нажать Enter — получите <code>4</code></li>
+    </ul>
+    <ul data-lang="en">
+        <li>Open any site in Chrome/Edge/Firefox</li>
+        <li>Press <span class="kbd">F12</span> (or <span class="kbd">Ctrl</span>+<span class="kbd">Shift</span>+<span class="kbd">I</span>)</li>
+        <li>In the DevTools panel, go to the <strong>Console</strong> tab</li>
+        <li>Type <code>2 + 2</code> there and press Enter — you'll get <code>4</code></li>
+    </ul>
+
+    <div class="try-it">
+        <p data-lang="ru">Откройте консоль прямо сейчас (<span class="kbd">F12</span>) и напишите:</p>
+        <p data-lang="en">Open the console right now (<span class="kbd">F12</span>) and type:</p>
+        <pre><code>console.log("Меня зовут " + "Сейди");
+2 ** 10;
+new Date();</code></pre>
+        <p data-lang="ru">Попробуйте каждую строку — и посмотрите, что выведется.</p>
+        <p data-lang="en">Try each line and see what gets printed.</p>
+    </div>
+
+    <h3 data-lang="ru">Полезные варианты console</h3>
+    <h3 data-lang="en">Other useful console methods</h3>
+
+    <pre><code>console.log("обычное сообщение");
+console.warn("⚠️ предупреждение");
+console.error("❌ ошибка");
+console.table([{ name: "Ann", age: 25 }, { name: "Bob", age: 30 }]);</code></pre>
+
+    <hr>
+
+    <h2 id="vs" data-lang="ru">8. JavaScript против других языков</h2>
+    <h2 id="vs" data-lang="en">8. JavaScript vs other languages</h2>
+
+    <table>
+        <thead data-lang="ru"><tr><th>Признак</th><th>JavaScript</th><th>Python</th><th>Java</th><th>C++</th></tr></thead>
+        <thead data-lang="en"><tr><th>Feature</th><th>JavaScript</th><th>Python</th><th>Java</th><th>C++</th></tr></thead>
+        <tbody data-lang="ru">
+            <tr><td>Типизация</td><td>Динамическая</td><td>Динамическая</td><td>Статическая</td><td>Статическая</td></tr>
+            <tr><td>Исполнение</td><td>Интерпретация + JIT</td><td>Интерпретация</td><td>Компиляция в байт-код</td><td>Компиляция</td></tr>
+            <tr><td>Основной дом</td><td>Браузер + сервер</td><td>Наука, ИИ, бэкенд</td><td>Корпоративные системы</td><td>Системы, игры</td></tr>
+            <tr><td>Синтаксис</td><td>Похож на C</td><td>Минималистичный</td><td>Многословный</td><td>Сложный</td></tr>
+            <tr><td>Сборщик мусора</td><td>Да</td><td>Да</td><td>Да</td><td>Нет (руками)</td></tr>
+        </tbody>
+        <tbody data-lang="en">
+            <tr><td>Typing</td><td>Dynamic</td><td>Dynamic</td><td>Static</td><td>Static</td></tr>
+            <tr><td>Execution</td><td>Interpreted + JIT</td><td>Interpreted</td><td>Compiled to bytecode</td><td>Compiled</td></tr>
+            <tr><td>Main home</td><td>Browser + server</td><td>Science, AI, backend</td><td>Enterprise systems</td><td>Systems, games</td></tr>
+            <tr><td>Syntax</td><td>C-like</td><td>Minimalist</td><td>Verbose</td><td>Complex</td></tr>
+            <tr><td>Garbage collector</td><td>Yes</td><td>Yes</td><td>Yes</td><td>No (manual)</td></tr>
+        </tbody>
+    </table>
+
+    <div class="fun-fact">
+        <p data-lang="ru">Согласно опросу <em>Stack Overflow Developer Survey</em>, JavaScript <strong>12+ лет подряд</strong> занимает первое место по популярности среди разработчиков. Его знают даже те, кто «специализируется» на Python или Go — потому что рано или поздно в любой команде нужен фронтенд.</p>
+        <p data-lang="en">According to the <em>Stack Overflow Developer Survey</em>, JavaScript has held <strong>first place</strong> in developer popularity for <strong>12+ years in a row</strong>. Even developers who "specialize" in Python or Go know it — because sooner or later every team needs a frontend.</p>
+    </div>
+
+    <hr>
+
+    <h2 id="tools" data-lang="ru">9. Что нужно для работы с JavaScript</h2>
+    <h2 id="tools" data-lang="en">9. What you need to start working with JavaScript</h2>
+
+    <p data-lang="ru">Хорошая новость: для старта <strong>ничего платного не нужно</strong>. Весь набор — бесплатный и открытый.</p>
+    <p data-lang="en">Good news: to start, you need <strong>nothing paid</strong>. The entire toolkit is free and open-source.</p>
+
+    <ol data-lang="ru">
+        <li><strong>Браузер</strong> — Chrome, Edge или Firefox (любой современный). В нём встроены DevTools и движок JavaScript.</li>
+        <li><strong>Редактор кода</strong> — <strong>VS Code</strong> (рекомендуемый). Бесплатный, быстрый, с тысячами расширений. Скачать: <code>code.visualstudio.com</code></li>
+        <li><strong>Расширение Live Server</strong> для VS Code — автоматически обновляет страницу в браузере при сохранении файла. Устанавливается за 10 секунд.</li>
+        <li><strong>(Позже) Node.js</strong> — для запуска JS вне браузера. Установим в занятии 2.</li>
+    </ol>
+    <ol data-lang="en">
+        <li><strong>Browser</strong> — Chrome, Edge, or Firefox (any modern one). It has DevTools and a JavaScript engine built in.</li>
+        <li><strong>Code editor</strong> — <strong>VS Code</strong> (recommended). Free, fast, with thousands of extensions. Download: <code>code.visualstudio.com</code></li>
+        <li><strong>Live Server extension</strong> for VS Code — auto-reloads the page in the browser when you save a file. Installs in 10 seconds.</li>
+        <li><strong>(Later) Node.js</strong> — to run JS outside the browser. We'll install it in Lesson 2.</li>
+    </ol>
+
+    <div class="pro-tip">
+        <p data-lang="ru">Вторым браузером поставьте <strong>Firefox</strong> (или наоборот, если основной — Firefox, то Chrome). Периодически проверяйте, как ваш код работает в разных браузерах — это поможет ловить «кроссбраузерные» проблемы ещё на раннем этапе.</p>
+        <p data-lang="en">Install <strong>Firefox</strong> as your second browser (or Chrome if your primary is Firefox). Periodically test your code in different browsers — it helps catch cross-browser issues early.</p>
+    </div>
+
+    <hr>
+
+    <h2 id="first" data-lang="ru">10. Твой первый скрипт: Hello, JavaScript!</h2>
+    <h2 id="first" data-lang="en">10. Your first script: Hello, JavaScript!</h2>
+
+    <p data-lang="ru">Сейчас мы напишем самый простой «живой» JS. Нам понадобится HTML-страница и пара строк кода.</p>
+    <p data-lang="en">Now we'll write the simplest "alive" JS. We'll need an HTML page and a few lines of code.</p>
+
+    <div class="step">
+        <div class="step-number">1</div>
+        <div>
+            <p data-lang="ru"><strong>Создайте папку</strong> <code>hello-js/</code> на рабочем столе.</p>
+            <p data-lang="en"><strong>Create a folder</strong> <code>hello-js/</code> on your desktop.</p>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-number">2</div>
+        <div>
+            <p data-lang="ru"><strong>Откройте папку в VS Code</strong> (File → Open Folder).</p>
+            <p data-lang="en"><strong>Open the folder in VS Code</strong> (File → Open Folder).</p>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-number">3</div>
+        <div>
+            <p data-lang="ru"><strong>Создайте файл</strong> <code>index.html</code> и вставьте:</p>
+            <p data-lang="en"><strong>Create a file</strong> <code>index.html</code> and paste:</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Hello, JavaScript!&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 id="title"&gt;Загружаю...&lt;/h1&gt;
+    &lt;button id="btn"&gt;Нажми меня&lt;/button&gt;
+
+    &lt;script src="app.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-number">4</div>
+        <div>
+            <p data-lang="ru"><strong>Создайте файл</strong> <code>app.js</code> и вставьте:</p>
+            <p data-lang="en"><strong>Create a file</strong> <code>app.js</code> and paste:</p>
+            <pre><code>console.log("Привет из JavaScript!");
+
+const title = document.getElementById("title");
+title.textContent = "Hello, JavaScript!";
+
+const btn = document.getElementById("btn");
+btn.addEventListener("click", function () {
+    alert("Ты нажал кнопку! 🎉");
+});</code></pre>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-number">5</div>
+        <div>
+            <p data-lang="ru"><strong>Запустите Live Server:</strong> правый клик по <code>index.html</code> → <em>Open with Live Server</em>. В браузере откроется страница.</p>
+            <p data-lang="en"><strong>Start Live Server:</strong> right-click <code>index.html</code> → <em>Open with Live Server</em>. The page opens in the browser.</p>
+        </div>
+    </div>
+
+    <div class="result-box">
+        <p data-lang="ru">Вы увидите:</p>
+        <p data-lang="en">You will see:</p>
+        <ul data-lang="ru">
+            <li>Заголовок <strong>«Hello, JavaScript!»</strong> (не «Загружаю...» — JS заменил текст!)</li>
+            <li>Кнопку, которая при нажатии показывает всплывающее окно</li>
+            <li>В консоли (F12 → Console) — сообщение «Привет из JavaScript!»</li>
+        </ul>
+        <ul data-lang="en">
+            <li>The heading <strong>"Hello, JavaScript!"</strong> (not "Loading..." — JS replaced the text!)</li>
+            <li>A button that shows an alert on click</li>
+            <li>In the console (F12 → Console) — the message "Привет из JavaScript!"</li>
+        </ul>
+    </div>
+
+    <p data-lang="ru"><strong>Поздравляю!</strong> Вы только что написали свой первый настоящий JS-скрипт. Не важно, что вы пока не понимаете, что такое <code>document.getElementById</code> или <code>addEventListener</code> — мы подробно разберём их позже. Сегодня важно одно: <em>оно работает</em>.</p>
+    <p data-lang="en"><strong>Congratulations!</strong> You just wrote your first real JS script. It doesn't matter that you don't yet understand <code>document.getElementById</code> or <code>addEventListener</code> — we'll cover them in detail later. Today only one thing matters: <em>it works</em>.</p>
+
+    <hr>
+
+    <div class="summary">
+        <ul data-lang="ru">
+            <li><strong>JavaScript</strong> — высокоуровневый, мультипарадигменный, динамически-типизированный, интерпретируемый язык, реализующий спецификацию <strong>ECMAScript</strong>.</li>
+            <li>Создан <strong>Бренданом Айком</strong> в 1995 году за 10 дней для браузера Netscape.</li>
+            <li>Поддерживает <strong>ООП, императивный и функциональный</strong> стили — и позволяет их смешивать.</li>
+            <li>Работает в <strong>браузере</strong>, на <strong>сервере</strong> (Node.js), в <strong>мобильных</strong> (React Native) и <strong>десктопных</strong> (Electron) приложениях.</li>
+            <li>Каждый браузер имеет свой JS-движок: <strong>V8, SpiderMonkey, JavaScriptCore</strong>.</li>
+            <li>Подключается к HTML тремя способами, лучший — <strong>external</strong> с <code>defer</code>.</li>
+            <li><code>console.log()</code> — ваш главный отладочный инструмент.</li>
+            <li>Для работы нужны только <strong>браузер + VS Code + Live Server</strong> — всё бесплатно.</li>
+        </ul>
+        <ul data-lang="en">
+            <li><strong>JavaScript</strong> is a high-level, multi-paradigm, dynamically-typed, interpreted language implementing the <strong>ECMAScript</strong> specification.</li>
+            <li>Created by <strong>Brendan Eich</strong> in 1995 in 10 days for the Netscape browser.</li>
+            <li>Supports <strong>OOP, imperative, and functional</strong> styles — and allows mixing them.</li>
+            <li>Runs in the <strong>browser</strong>, on the <strong>server</strong> (Node.js), in <strong>mobile</strong> (React Native), and <strong>desktop</strong> (Electron) apps.</li>
+            <li>Every browser has its own JS engine: <strong>V8, SpiderMonkey, JavaScriptCore</strong>.</li>
+            <li>Three ways to link to HTML; the best is <strong>external</strong> with <code>defer</code>.</li>
+            <li><code>console.log()</code> is your main debugging tool.</li>
+            <li>All you need to start is <strong>a browser + VS Code + Live Server</strong> — all free.</li>
+        </ul>
+    </div>
+
+    <div class="quiz">
+        <ol data-lang="ru">
+            <li>Кто создал JavaScript и за сколько дней?</li>
+            <li>В чём разница между JavaScript и ECMAScript?</li>
+            <li>Назовите три парадигмы, которые поддерживает JS.</li>
+            <li>Что делает атрибут <code>defer</code> у тега <code>&lt;script&gt;</code>?</li>
+            <li>Как открыть консоль в браузере?</li>
+            <li>Почему JavaScript называют «динамически-типизированным»?</li>
+            <li>Как называется движок JavaScript в Chrome?</li>
+        </ol>
+        <ol data-lang="en">
+            <li>Who created JavaScript and in how many days?</li>
+            <li>What's the difference between JavaScript and ECMAScript?</li>
+            <li>Name three paradigms that JS supports.</li>
+            <li>What does the <code>defer</code> attribute on <code>&lt;script&gt;</code> do?</li>
+            <li>How do you open the console in a browser?</li>
+            <li>Why is JavaScript called "dynamically-typed"?</li>
+            <li>What is the name of the JavaScript engine in Chrome?</li>
+        </ol>
+    </div>
+
+</div>
+
+</body>
+</html>

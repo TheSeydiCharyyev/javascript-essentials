@@ -143,6 +143,7 @@ hr {
 }
 html[lang="ru"] .homework::before { content: '\1F4DA  ДОМАШНЕЕ ЗАДАНИЕ'; }
 html[lang="en"] .homework::before { content: '\1F4DA  HOMEWORK'; }
+html[lang="tk"] .homework::before { content: '\1F4DA  ÖÝ IŞI'; }
 
 /* ========== REMEMBER ========== */
 .remember {
@@ -160,3 +161,4 @@ html[lang="en"] .homework::before { content: '\1F4DA  HOMEWORK'; }
 }
 html[lang="ru"] .remember::before { content: '\2757  Запомни:'; }
 html[lang="en"] .remember::before { content: '\2757  Remember:'; }
+html[lang="tk"] .remember::before { content: '\2757  Ýatda saklaň:'; }

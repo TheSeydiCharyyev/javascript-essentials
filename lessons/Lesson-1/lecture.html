@@ -25,31 +25,44 @@
 <div class="lesson-nav">
     <a href="../../index.html" class="nav-home" data-lang="ru">&#8592; Главная</a>
     <a href="../../index.html" class="nav-home" data-lang="en">&#8592; Home</a>
+    <a href="../../index.html" class="nav-home" data-lang="tk">&#8592; Baş sahypa</a>
     <span class="nav-sep">|</span>
     <span class="nav-title" data-lang="ru">Занятие 1: Введение в JavaScript</span>
     <span class="nav-title" data-lang="en">Lesson 1: Introduction to JavaScript</span>
+    <span class="nav-title" data-lang="tk">1-nji sapak: JavaScript-e giriş</span>
     <span class="nav-sep">|</span>
     <span class="nav-active" data-lang="ru">&#x1F468;&#x200D;&#x1F3EB; Лекция</span>
     <span class="nav-active" data-lang="en">&#x1F468;&#x200D;&#x1F3EB; Lecture</span>
+    <span class="nav-active" data-lang="tk">&#x1F468;&#x200D;&#x1F3EB; Leksiýa</span>
     <a href="student.html" class="nav-link" data-lang="ru">&#x1F468;&#x200D;&#x1F393; Конспект</a>
     <a href="student.html" class="nav-link" data-lang="en">&#x1F468;&#x200D;&#x1F393; Notes</a>
+    <a href="student.html" class="nav-link" data-lang="tk">&#x1F468;&#x200D;&#x1F393; Konspekt</a>
     <a href="tasks.html" class="nav-link" data-lang="ru">&#x1F4CB; Задания</a>
     <a href="tasks.html" class="nav-link" data-lang="en">&#x1F4CB; Tasks</a>
-    <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
+    <a href="tasks.html" class="nav-link" data-lang="tk">&#x1F4CB; Tabşyryklar</a>
+    <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" class="lang-opt" data-set-lang="ru" onclick="setLang('ru')">RU</button>
+        <button type="button" class="lang-opt" data-set-lang="en" onclick="setLang('en')">EN</button>
+        <button type="button" class="lang-opt" data-set-lang="tk" onclick="setLang('tk')">TM</button>
+    </div>
 </div>
 
 <div class="container">
 
     <h1 data-lang="ru">Занятие 1: Введение в JavaScript</h1>
     <h1 data-lang="en">Lesson 1: Introduction to JavaScript</h1>
+    <h1 data-lang="tk">1-nji sapak: JavaScript-e giriş</h1>
     <p class="subtitle" data-lang="ru">История языка, где он используется, как устроен и как написать свой первый скрипт</p>
     <p class="subtitle" data-lang="en">The history of the language, where it is used, how it works, and how to write your first script</p>
+    <p class="subtitle" data-lang="tk">Diliň taryhy, onuň nirede ulanylýandygy, nähili gurlandygy we ilkinji skriptiňizi nädip ýazmalydygy</p>
 
     <div class="why">
         <p data-lang="ru">Это ваше <strong>первое занятие по JavaScript</strong> — и оно задаёт фундамент. Прежде чем писать код, важно понять: откуда взялся язык, что это вообще такое, где он работает и какое место занимает в мире программирования. Без этой картины вы будете учить синтаксис «вслепую», не понимая контекста.</p>
         <p data-lang="en">This is your <strong>first JavaScript lesson</strong> — it lays the foundation. Before writing code, it's important to understand where the language came from, what it actually is, where it runs, and its place in the programming world. Without that big picture, you'll be learning syntax blindly, without context.</p>
+        <p data-lang="tk">Bu siziň <strong>JavaScript boýunça ilkinji sapagyňyz</strong> — ol esas goýýar. Kod ýazmazdan öň şulara düşünmek möhüm: dil nireden peýda boldy, ol aslynda näme, nirede işleýär we programmirleme dünýäsinde nähili orny eýeleýär. Bu umumy düşünje bolmasa, siz sintaksisi kontekste düşünmän, «kör-körüne» öwrenersiňiz.</p>
         <p data-lang="ru"><strong>После этого занятия вы сможете:</strong></p>
         <p data-lang="en"><strong>After this lesson you will be able to:</strong></p>
+        <p data-lang="tk"><strong>Bu sapakdan soň siz şulary başararsyňyz:</strong></p>
         <ul data-lang="ru">
             <li>Объяснить, что такое JavaScript и чем он отличается от Java</li>
             <li>Рассказать историю языка (от 10 дней Брендана Айка до современного ES)</li>
@@ -70,11 +83,22 @@
             <li>Use <code>console.log</code> and open DevTools</li>
             <li>Write your first "Hello, JavaScript!" script</li>
         </ul>
+        <ul data-lang="tk">
+            <li>JavaScript-iň näme bolýandygyny we onuň Java-dan tapawudyny düşündirmek</li>
+            <li>Diliň taryhyny gürrüň bermek (Brendan Aýkyň 10 gününden häzirki ES-e çenli)</li>
+            <li>ECMAScript-iň näme bolýandygyna we onuň JS bilen nähili baglanyşyklydygyna düşünmek</li>
+            <li>JavaScript-iň brauzerden başga nirelerde işleýändigini aýtmak</li>
+            <li>Köp paradigmaly we dinamiki tipli diliň näme aňladýandygyny düşündirmek</li>
+            <li>JS-i HTML sahypa üç usul bilen birikdirmek</li>
+            <li><code>console.log</code> ulanmak we DevTools-y açmak</li>
+            <li>Ilkinji «Hello, JavaScript!» skriptiňizi ýazmak</li>
+        </ul>
     </div>
 
     <div class="toc">
         <div class="toc-title" data-lang="ru">Содержание</div>
         <div class="toc-title" data-lang="en">Contents</div>
+        <div class="toc-title" data-lang="tk">Mazmuny</div>
         <ol data-lang="ru">
             <li><a href="#history">Краткая история JavaScript</a></li>
             <li><a href="#brendan">Кто такой Брендан Айк</a></li>
@@ -99,120 +123,161 @@
             <li><a href="#tools">What you need to start</a></li>
             <li><a href="#first">Your first script: Hello, JavaScript!</a></li>
         </ol>
+        <ol data-lang="tk">
+            <li><a href="#history">JavaScript-iň gysgaça taryhy</a></li>
+            <li><a href="#brendan">Brendan Aýk kim?</a></li>
+            <li><a href="#what-is-js">JavaScript näme?</a></li>
+            <li><a href="#where">JavaScript nirede işleýär</a></li>
+            <li><a href="#how-works">JS brauzerde nähili işleýär</a></li>
+            <li><a href="#linking">JS-i HTML-e birikdirmegiň üç usuly</a></li>
+            <li><a href="#console">console.log we DevTools Console</a></li>
+            <li><a href="#vs">JavaScript beýleki diller bilen deňeşdirilende</a></li>
+            <li><a href="#tools">Işlemek üçin näme gerek</a></li>
+            <li><a href="#first">Siziň ilkinji skriptiňiz: Hello, JavaScript!</a></li>
+        </ol>
     </div>
 
     <hr>
 
     <h2 id="history" data-lang="ru">1. Краткая история JavaScript</h2>
     <h2 id="history" data-lang="en">1. A brief history of JavaScript</h2>
+    <h2 id="history" data-lang="tk">1. JavaScript-iň gysgaça taryhy</h2>
 
     <p data-lang="ru">JavaScript — один из самых популярных языков программирования в мире. Но он появился не сразу и не просто так. Понимание истории поможет вам увидеть, почему язык устроен именно так, а не иначе.</p>
     <p data-lang="en">JavaScript is one of the most popular programming languages in the world. But it didn't appear out of nowhere. Understanding its history helps you see why the language is designed the way it is.</p>
+    <p data-lang="tk">JavaScript — dünýäde iň meşhur programmirleme dilleriniň biri. Emma ol birden we tötänden peýda bolmady. Taryhyny bilmek diliň näme üçin edil şeýle gurlandygyna düşünmäge kömek eder.</p>
 
     <div class="timeline">
         <div class="timeline-item">
             <div class="timeline-year" data-lang="ru">1995 — Рождение языка</div>
             <div class="timeline-year" data-lang="en">1995 — The birth of the language</div>
+            <div class="timeline-year" data-lang="tk">1995 — Diliň dünýä inmegi</div>
             <p data-lang="ru">Компания <strong>Netscape</strong> выпускала самый популярный на тот момент браузер — Netscape Navigator. Им был нужен «лёгкий» язык, чтобы веб-страницы могли хоть как-то «оживать»: проверять формы, показывать всплывающие окна. Руководство поручило создать такой язык программисту <strong>Брендану Айку (Brendan Eich)</strong> — и дало ему всего <strong>10 дней</strong>. За эти 10 дней родился прототип языка под названием <strong>Mocha</strong>, который вскоре переименовали в <strong>LiveScript</strong>, а затем, на волне популярности Java, — в <strong>JavaScript</strong>.</p>
             <p data-lang="en"><strong>Netscape</strong> made the most popular browser at the time — Netscape Navigator. They needed a "light" language so that web pages could come alive: validate forms, show popups. Management assigned programmer <strong>Brendan Eich</strong> to create such a language — and gave him just <strong>10 days</strong>. In those 10 days a prototype was born called <strong>Mocha</strong>, later renamed to <strong>LiveScript</strong>, and then — riding on Java's fame — to <strong>JavaScript</strong>.</p>
+            <p data-lang="tk"><strong>Netscape</strong> kompaniýasy şol döwrüň iň meşhur brauzerini — Netscape Navigator-y çykarýardy. Olara web sahypalaryň azda-kän «janlanmagy» üçin — formalary barlamak, açylýan penjireleri görkezmek üçin «ýeňil» dil gerekdi. Ýolbaşçylar şeýle dili döretmegi programmist <strong>Brendan Aýka (Brendan Eich)</strong> tabşyrdy we oňa bary-ýogy <strong>10 gün</strong> berdi. Şol 10 günde <strong>Mocha</strong> atly diliň prototipi döredi, ol tiz wagtda <strong>LiveScript</strong>, soňra bolsa Java-nyň meşhurlygyndan peýdalanyp, <strong>JavaScript</strong> diýlip atlandyryldy.</p>
         </div>
 
         <div class="timeline-item">
             <div class="timeline-year" data-lang="ru">1996 — JavaScript против JScript</div>
             <div class="timeline-year" data-lang="en">1996 — JavaScript vs JScript</div>
+            <div class="timeline-year" data-lang="tk">1996 — JavaScript we JScript</div>
             <p data-lang="ru">Microsoft выпустила свою копию языка под названием <strong>JScript</strong> для браузера Internet Explorer. Началась «война браузеров»: в каждом браузере свой JS, код, написанный для одного, ломался в другом.</p>
             <p data-lang="en">Microsoft released its own clone called <strong>JScript</strong> for Internet Explorer. The "browser wars" began: each browser had its own JS, and code written for one broke in another.</p>
+            <p data-lang="tk">Microsoft Internet Explorer brauzeri üçin diliň öz nusgasyny — <strong>JScript</strong>-i çykardy. «Brauzerler urşy» başlandy: her brauzerde öz JS-i bardy, biri üçin ýazylan kod beýlekisinde işlemeýärdi.</p>
         </div>
 
         <div class="timeline-item">
             <div class="timeline-year" data-lang="ru">1997 — Стандарт ECMAScript</div>
             <div class="timeline-year" data-lang="en">1997 — The ECMAScript standard</div>
+            <div class="timeline-year" data-lang="tk">1997 — ECMAScript standarty</div>
             <p data-lang="ru">Чтобы прекратить хаос, язык передали международной организации <strong>Ecma International</strong>, которая выпустила первый стандарт — <strong>ECMAScript 1 (ES1)</strong>. С этого момента <em>JavaScript</em> — это конкретная реализация спецификации <em>ECMAScript</em>. Запомните эту разницу: мы о ней ещё поговорим в разделе 3.</p>
             <p data-lang="en">To end the chaos, the language was handed to the international body <strong>Ecma International</strong>, which released the first standard — <strong>ECMAScript 1 (ES1)</strong>. From this point on, <em>JavaScript</em> is a specific implementation of the <em>ECMAScript</em> specification. Remember this distinction — we'll return to it in section 3.</p>
+            <p data-lang="tk">Bu bulam-bujarlyga soňuny goýmak üçin dil halkara gurama — <strong>Ecma International</strong>-a berildi, ol ilkinji standarty — <strong>ECMAScript 1 (ES1)</strong>-i çykardy. Şu wagtdan başlap <em>JavaScript</em> — <em>ECMAScript</em> spesifikasiýasynyň anyk amala aşyrylyşy. Bu tapawudy ýatda saklaň: biz 3-nji bölümde bu barada ýene gürleşeris.</p>
         </div>
 
         <div class="timeline-item">
             <div class="timeline-year" data-lang="ru">2005 — AJAX и возрождение</div>
             <div class="timeline-year" data-lang="en">2005 — AJAX and rebirth</div>
+            <div class="timeline-year" data-lang="tk">2005 — AJAX we täzeden dikelmek</div>
             <p data-lang="ru">Появилась технология <strong>AJAX</strong> — возможность загружать данные с сервера без перезагрузки страницы. Именно благодаря ей стали возможны такие сервисы, как <strong>Google Maps</strong> и <strong>Gmail</strong>. Это вернуло интерес к JavaScript, и он начал стремительно развиваться.</p>
             <p data-lang="en"><strong>AJAX</strong> appeared — the ability to load data from a server without reloading the page. Thanks to it, services like <strong>Google Maps</strong> and <strong>Gmail</strong> became possible. This revived interest in JavaScript and the language started evolving rapidly.</p>
+            <p data-lang="tk"><strong>AJAX</strong> tehnologiýasy peýda boldy — sahypany täzeden ýüklemezden serwerden maglumat almak mümkinçiligi. Hut şonuň netijesinde <strong>Google Maps</strong> we <strong>Gmail</strong> ýaly hyzmatlar mümkin boldy. Bu JavaScript-e bolan gyzyklanmany gaýtaryp getirdi we dil çalt ösüp başlady.</p>
         </div>
 
         <div class="timeline-item">
             <div class="timeline-year" data-lang="ru">2009 — Node.js: JS вне браузера</div>
             <div class="timeline-year" data-lang="en">2009 — Node.js: JS outside the browser</div>
+            <div class="timeline-year" data-lang="tk">2009 — Node.js: brauzerden daşarda JS</div>
             <p data-lang="ru"><strong>Райан Даль (Ryan Dahl)</strong> создал <strong>Node.js</strong> — среду исполнения JavaScript, работающую прямо в операционной системе, без браузера. С этого момента на JS стало можно писать серверы, CLI-утилиты, скрипты автоматизации. Это был переломный момент: JS перестал быть «только языком для кнопок».</p>
             <p data-lang="en"><strong>Ryan Dahl</strong> created <strong>Node.js</strong> — a JavaScript runtime that works directly on the operating system, without a browser. From this moment on, you could write servers, CLI tools, and automation scripts in JS. It was a turning point: JS stopped being "just a language for buttons".</p>
+            <p data-lang="tk"><strong>Raýan Dal (Ryan Dahl)</strong> <strong>Node.js</strong>-i döretdi — brauzersiz, göni operasion ulgamda işleýän JavaScript ýerine ýetiriş gurşawy. Şondan başlap JS-de serwerleri, CLI-gurallary, awtomatlaşdyryş skriptlerini ýazmak mümkin boldy. Bu öwrülişikli pursat boldy: JS «diňe düwmeler üçin dil» bolmakdan galdy.</p>
         </div>
 
         <div class="timeline-item">
             <div class="timeline-year" data-lang="ru">2015 — ES6 (ES2015): большой скачок</div>
             <div class="timeline-year" data-lang="en">2015 — ES6 (ES2015): the big leap</div>
+            <div class="timeline-year" data-lang="tk">2015 — ES6 (ES2015): uly böküş</div>
             <p data-lang="ru">Вышла версия <strong>ECMAScript 6</strong> — самое крупное обновление в истории языка. Появились <code>let</code>/<code>const</code>, стрелочные функции, классы, модули, деструктуризация, промисы. После ES6 новые версии стандарта выходят <strong>каждый год</strong> (ES2016, ES2017, … ES2025).</p>
             <p data-lang="en"><strong>ECMAScript 6</strong> was released — the largest update in the language's history. It introduced <code>let</code>/<code>const</code>, arrow functions, classes, modules, destructuring, promises. After ES6, new versions of the standard are released <strong>every year</strong> (ES2016, ES2017, … ES2025).</p>
+            <p data-lang="tk"><strong>ECMAScript 6</strong> wersiýasy çykdy — diliň taryhyndaky iň uly täzelenme. <code>let</code>/<code>const</code>, ok funksiýalary (arrow functions), klaslar, modullar, destrukturizasiýa, promisler peýda boldy. ES6-dan soň standartyň täze wersiýalary <strong>her ýyl</strong> çykýar (ES2016, ES2017, … ES2025).</p>
         </div>
 
         <div class="timeline-item">
             <div class="timeline-year" data-lang="ru">Сегодня</div>
             <div class="timeline-year" data-lang="en">Today</div>
+            <div class="timeline-year" data-lang="tk">Häzirki wagtda</div>
             <p data-lang="ru">JavaScript — язык №1 на GitHub по количеству репозиториев, обязательный навык для любого веб-разработчика. На нём написаны фронтенды всех крупных сайтов, серверы Netflix, PayPal, LinkedIn, мобильные приложения Facebook и Instagram (через React Native), даже некоторые десктопные программы — VS Code, Slack, Discord (через Electron).</p>
             <p data-lang="en">JavaScript is the #1 language on GitHub by repository count and a must-have skill for any web developer. Frontends of all major sites, servers at Netflix, PayPal, LinkedIn, mobile apps of Facebook and Instagram (via React Native), and even desktop apps — VS Code, Slack, Discord (via Electron) — are written in JS.</p>
+            <p data-lang="tk">JavaScript — repozitoriýalaryň sany boýunça GitHub-da №1 dil we islendik web işläp düzüji üçin hökmany başarnyk. Onda ähli iri saýtlaryň frontendleri, Netflix, PayPal, LinkedIn-iň serwerleri, Facebook-yň we Instagram-yň mobil programmalary (React Native arkaly), hatda käbir desktop programmalary — VS Code, Slack, Discord (Electron arkaly) ýazylan.</p>
         </div>
     </div>
 
     <div class="fun-fact">
         <p data-lang="ru">Название <strong>JavaScript</strong> — чисто маркетинговое решение. Netscape договорилась с компанией Sun (создателем Java) назвать язык похожим именем, чтобы «прокатиться» на волне популярности Java. На самом деле <strong>JavaScript и Java — это совершенно разные языки</strong>, у них почти ничего общего. Как говорят разработчики: «Java относится к JavaScript так же, как автомобиль (car) к ковру (carpet)».</p>
         <p data-lang="en">The name <strong>JavaScript</strong> is purely a marketing move. Netscape made a deal with Sun (creator of Java) to give the language a similar name, riding on Java's popularity. In reality, <strong>JavaScript and Java are completely different languages</strong> with almost nothing in common. As developers say: "Java is to JavaScript what a car is to a carpet."</p>
+        <p data-lang="tk"><strong>JavaScript</strong> ady — diňe marketing çözgüdi. Netscape Java-nyň meşhurlygyndan peýdalanmak üçin dili meňzeş at bilen atlandyrmak barada Sun kompaniýasy (Java-nyň döredijisi) bilen ylalaşdy. Aslynda <strong>JavaScript we Java — düýbünden başga diller</strong>, olaryň umumy tarapy ýok diýen ýaly. Işläp düzüjileriň aýdyşy ýaly: «Java-nyň JavaScript bilen baglanyşygy awtoulagyň (car) haly (carpet) bilen baglanyşygy ýalydyr».</p>
     </div>
 
     <hr>
 
     <h2 id="brendan" data-lang="ru">2. Кто такой Брендан Айк</h2>
     <h2 id="brendan" data-lang="en">2. Who is Brendan Eich</h2>
+    <h2 id="brendan" data-lang="tk">2. Brendan Aýk kim?</h2>
 
     <div class="person-card">
         <div class="info">
             <div class="name">Brendan Eich</div>
             <div class="role" data-lang="ru">Создатель JavaScript</div>
             <div class="role" data-lang="en">Creator of JavaScript</div>
+            <div class="role" data-lang="tk">JavaScript-iň döredijisi</div>
             <p data-lang="ru" style="margin-top:8px;">Американский программист, родился в 1961 году. В 1995-м, работая в Netscape, за <strong>10 дней</strong> создал прототип языка JavaScript. Позднее стал CTO компании Mozilla, участвовал в создании браузера Firefox. В 2016 году основал компанию <strong>Brave Software</strong>, которая делает браузер Brave, ориентированный на приватность. Сегодня продолжает активно участвовать в развитии веб-технологий.</p>
             <p data-lang="en" style="margin-top:8px;">An American programmer born in 1961. In 1995, while working at Netscape, he created the JavaScript prototype in <strong>10 days</strong>. Later he became CTO of Mozilla and co-founded Firefox. In 2016 he founded <strong>Brave Software</strong>, making the privacy-focused Brave browser. He remains active in shaping web technologies today.</p>
+            <p data-lang="tk" style="margin-top:8px;">Amerikaly programmist, 1961-nji ýylda dünýä indi. 1995-nji ýylda Netscape-de işläp ýörkä, <strong>10 günde</strong> JavaScript diliniň prototipini döretdi. Soňra Mozilla kompaniýasynyň CTO-sy boldy, Firefox brauzeriniň döredilmegine gatnaşdy. 2016-njy ýylda gizlinlige ünsi gönükdirýän Brave brauzerini döredýän <strong>Brave Software</strong> kompaniýasyny esaslandyrdy. Häzir hem web tehnologiýalarynyň ösüşine işjeň gatnaşýar.</p>
         </div>
     </div>
 
     <div class="analogy">
         <p data-lang="ru">Представьте: вам дают 10 дней, чтобы спроектировать язык, который потом будут использовать <em>миллиарды людей</em> 30 лет подряд. Именно поэтому в JS есть странности и «причуды» — Брендан делал то, что успевал. Многие из них мы увидим позже (например, <code>typeof null === 'object'</code>). Но именно эти «причуды» — часть истории языка.</p>
         <p data-lang="en">Imagine: you have 10 days to design a language that <em>billions of people</em> will use for 30 years. That's why JS has quirks — Eich did what he could in the time given. We'll see many of them later (e.g., <code>typeof null === 'object'</code>). But those quirks are part of the language's story.</p>
+        <p data-lang="tk">Göz öňüne getiriň: size <em>milliardlarça adamyň</em> 30 ýyllap ulanjak dilini taslamak üçin 10 gün berilýär. Hut şonuň üçin JS-de geňlikler we «tärsiklikler» bar — Brendan ýetişen zadyny etdi. Olaryň köpüsini soňra göreris (mysal üçin, <code>typeof null === 'object'</code>). Emma hut şu «tärsiklikler» diliň taryhynyň bir bölegi.</p>
     </div>
 
     <hr>
 
     <h2 id="what-is-js" data-lang="ru">3. Что такое JavaScript</h2>
     <h2 id="what-is-js" data-lang="en">3. What is JavaScript</h2>
+    <h2 id="what-is-js" data-lang="tk">3. JavaScript näme?</h2>
 
     <div style="background:#fffbeb;border:1px solid #fde047;padding:16px 20px;border-radius:8px;margin:16px 0;">
         <p data-lang="ru"><strong>JavaScript</strong> — это <strong>высокоуровневый, мультипарадигменный, динамически-типизированный, интерпретируемый язык программирования</strong>, являющийся реализацией спецификации <strong>ECMAScript</strong>. Изначально создан для добавления интерактивности веб-страницам, но сегодня используется везде — от серверов до космических аппаратов.</p>
         <p data-lang="en"><strong>JavaScript</strong> is a <strong>high-level, multi-paradigm, dynamically-typed, interpreted programming language</strong>, which is an implementation of the <strong>ECMAScript</strong> specification. Originally created to add interactivity to web pages, today it's used everywhere — from servers to spacecraft.</p>
+        <p data-lang="tk"><strong>JavaScript</strong> — bu <strong>ECMAScript</strong> spesifikasiýasynyň amala aşyrylyşy bolan <strong>ýokary derejeli, köp paradigmaly, dinamiki tipli, interpretirlenýän programmirleme dili</strong>. Ilkibaşda web sahypalara interaktiwlik goşmak üçin döredilipdi, emma häzir hemme ýerde — serwerlerden kosmos enjamlaryna çenli ulanylýar.</p>
     </div>
 
     <p data-lang="ru">Это определение звучит сложно, но его легко разобрать на части. Разберём каждый термин.</p>
     <p data-lang="en">This definition sounds complex, but it's easy to break down. Let's go through each term.</p>
+    <p data-lang="tk">Bu kesgitleme çylşyrymly eşidilýär, ýöne ony böleklere bölmek aňsat. Her bir adalgany seljereliň.</p>
 
     <h3 data-lang="ru">3.1. Высокоуровневый язык (high-level)</h3>
     <h3 data-lang="en">3.1. High-level language</h3>
+    <h3 data-lang="tk">3.1. Ýokary derejeli dil (high-level)</h3>
 
     <p data-lang="ru">«Высокоуровневый» означает, что язык <strong>далёк от «железа»</strong> компьютера. Вам не нужно думать о регистрах процессора, управлении памятью, указателях. Все эти детали скрыты от вас — вы просто пишете <code>let x = 5</code>, а движок сам решает, где и как хранить число в памяти. Противоположность — «низкоуровневые» языки вроде <strong>C</strong> или <strong>Ассемблер</strong>, где вы работаете с памятью вручную.</p>
     <p data-lang="en">"High-level" means the language is <strong>far from the computer's hardware</strong>. You don't need to think about CPU registers, memory management, or pointers. All those details are hidden — you just write <code>let x = 5</code>, and the engine decides where and how to store the number in memory. The opposite is "low-level" languages like <strong>C</strong> or <strong>Assembly</strong>, where you manage memory by hand.</p>
+    <p data-lang="tk">«Ýokary derejeli» diýmek diliň kompýuteriň <strong>«demir» böleginden uzakdygyny</strong> aňladýar. Prosessoryň registrleri, ýady dolandyrmak, görkezijiler (pointers) barada pikir etmek gerek däl. Bu jikme-jiklikleriň hemmesi sizden gizlenendir — siz diňe <code>let x = 5</code> ýazýarsyňyz, hereketlendiriji (engine) bolsa sany ýatda nirede we nähili saklamalydygyny özi çözýär. Munuň tersi — ýat bilen el bilen işlenýän <strong>C</strong> ýa-da <strong>Assembler</strong> ýaly «pes derejeli» diller.</p>
 
     <h3 data-lang="ru">3.2. Мультипарадигменный язык</h3>
     <h3 data-lang="en">3.2. Multi-paradigm language</h3>
+    <h3 data-lang="tk">3.2. Köp paradigmaly dil</h3>
 
     <p data-lang="ru"><strong>Парадигма программирования</strong> — это стиль или подход к написанию программ. JavaScript называют <em>мультипарадигменным</em>, потому что он поддерживает сразу <strong>несколько стилей</strong>, и программист сам выбирает, как писать код. Три основных стиля:</p>
     <p data-lang="en">A <strong>programming paradigm</strong> is a style or approach to writing programs. JavaScript is called <em>multi-paradigm</em> because it supports <strong>several styles at once</strong>, and the programmer chooses how to write code. Three main styles:</p>
+    <p data-lang="tk"><strong>Programmirleme paradigmasy</strong> — programma ýazmagyň stili ýa-da çemeleşmesi. JavaScript-e <em>köp paradigmaly</em> diýilýär, sebäbi ol birbada <strong>birnäçe stili</strong> goldaýar we programmist kody nähili ýazmalydygyny özi saýlaýar. Üç esasy stil:</p>
 
     <table>
         <thead data-lang="ru"><tr><th>Парадигма</th><th>Суть</th><th>Пример на JS</th></tr></thead>
         <thead data-lang="en"><tr><th>Paradigm</th><th>Essence</th><th>JS example</th></tr></thead>
+        <thead data-lang="tk"><tr><th>Paradigma</th><th>Manysy</th><th>JS-de mysal</th></tr></thead>
         <tbody data-lang="ru">
             <tr><td><strong>Императивная</strong></td><td>«Пошагово описываем, <em>как</em> делать»: присваиваем переменные, пишем циклы, условия.</td><td><code>for (let i = 0; i &lt; 5; i++) { ... }</code></td></tr>
             <tr><td><strong>Объектно-ориентированная (ООП)</strong></td><td>Программа — это набор <em>объектов</em>, которые взаимодействуют. У каждого объекта есть свойства и методы.</td><td><code>class User { ... } const u = new User();</code></td></tr>
@@ -223,10 +288,16 @@
             <tr><td><strong>Object-oriented (OOP)</strong></td><td>A program is a set of <em>objects</em> interacting with each other. Each object has properties and methods.</td><td><code>class User { ... } const u = new User();</code></td></tr>
             <tr><td><strong>Functional</strong></td><td>A program is a set of <em>functions</em> passing data between each other. Functions are "first-class citizens".</td><td><code>[1,2,3].map(x =&gt; x * 2)</code></td></tr>
         </tbody>
+        <tbody data-lang="tk">
+            <tr><td><strong>Imperatiw</strong></td><td>«Işiň <em>nähili</em> edilmelidigini ädimme-ädim beýan edýäris»: üýtgeýänlere baha berýäris, sikller we şertler ýazýarys.</td><td><code>for (let i = 0; i &lt; 5; i++) { ... }</code></td></tr>
+            <tr><td><strong>Obýekte gönükdirilen (OOP)</strong></td><td>Programma — biri-biri bilen täsirleşýän <em>obýektleriň</em> toplumy. Her obýektiň häsiýetleri we usullary bar.</td><td><code>class User { ... } const u = new User();</code></td></tr>
+            <tr><td><strong>Funksional</strong></td><td>Programma — maglumatlary biri-birine geçirýän <em>funksiýalaryň</em> toplumy. Funksiýalar — «birinji derejeli obýektler».</td><td><code>[1,2,3].map(x =&gt; x * 2)</code></td></tr>
+        </tbody>
     </table>
 
     <p data-lang="ru">На одном и том же языке одну и ту же задачу можно решить по-разному. Например, посчитать сумму массива чисел:</p>
     <p data-lang="en">The same task can be solved in different ways in the same language. For example, summing an array of numbers:</p>
+    <p data-lang="tk">Şol bir dilde şol bir meseläni dürli usullar bilen çözüp bolýar. Mysal üçin, sanlar massiwiniň jemini hasaplamak:</p>
 
     <pre><code>// Императивный стиль
 let sum = 0;
@@ -240,13 +311,16 @@ const sum = nums.reduce((a, b) =&gt; a + b, 0);</code></pre>
     <div class="pro-tip">
         <p data-lang="ru">На практике профессиональные разработчики <strong>смешивают парадигмы</strong>. Например, в React компоненты часто пишутся в функциональном стиле, но состояние внутри обновляется императивно. Умение выбирать подходящий стиль под задачу — признак зрелого программиста.</p>
         <p data-lang="en">In practice, professional developers <strong>mix paradigms</strong>. For example, React components are often written functionally, but state inside is updated imperatively. Picking the right style for the task is the mark of a mature programmer.</p>
+        <p data-lang="tk">Amalda hünärmen işläp düzüjiler <strong>paradigmalary garyşdyrýarlar</strong>. Mysal üçin, React-da komponentler köplenç funksional stilde ýazylýar, emma içindäki ýagdaý (state) imperatiw täzelenýär. Meselä görä laýyk stili saýlap bilmek — kämil programmistiň alamaty.</p>
     </div>
 
     <h3 data-lang="ru">3.3. Динамически-типизированный (dynamically-typed)</h3>
     <h3 data-lang="en">3.3. Dynamically-typed</h3>
+    <h3 data-lang="tk">3.3. Dinamiki tipli (dynamically-typed)</h3>
 
     <p data-lang="ru"><strong>Тип</strong> — это то, какие данные хранит переменная: число, строка, объект и т. д. В <em>статически-типизированных</em> языках (Java, C++, TypeScript) тип переменной указывается заранее и не может меняться. В <em>динамически-типизированных</em> (JavaScript, Python, Ruby) — тип определяется автоматически во время выполнения и может меняться «на лету»:</p>
     <p data-lang="en">A <strong>type</strong> is the kind of data a variable stores: a number, a string, an object, etc. In <em>statically-typed</em> languages (Java, C++, TypeScript), the type is declared in advance and cannot change. In <em>dynamically-typed</em> languages (JavaScript, Python, Ruby), the type is determined automatically at runtime and can change on the fly:</p>
+    <p data-lang="tk"><strong>Tip</strong> — üýtgeýän ululygyň haýsy maglumaty saklaýandygy: san, setir, obýekt we ş.m. <em>Statiki tipli</em> dillerde (Java, C++, TypeScript) üýtgeýäniň tipi öňünden görkezilýär we üýtgäp bilmeýär. <em>Dinamiki tipli</em> dillerde (JavaScript, Python, Ruby) tip ýerine ýetiriliş wagtynda awtomatik kesgitlenýär we işiň dowamynda üýtgäp bilýär:</p>
 
     <pre><code>let x = 42;              // тип: number
 x = "hello";             // стал string — JS не ругается
@@ -256,37 +330,47 @@ x = { name: "Seydi" };   // теперь object — OK</code></pre>
     <div class="mistake">
         <p data-lang="ru"><strong>Динамическая типизация = свобода и риск.</strong> С одной стороны, писать код быстрее. С другой — легко случайно смешать типы и получить баг. Например: <code>"5" + 3</code> даёт <code>"53"</code> (строка), а <code>"5" - 3</code> даёт <code>2</code> (число). Именно поэтому придумали <strong>TypeScript</strong> — «надстройку» над JS со статическими типами. Но это тема отдельного занятия.</p>
         <p data-lang="en"><strong>Dynamic typing = freedom and risk.</strong> On one hand, you write code faster. On the other, it's easy to accidentally mix types and get a bug. For example: <code>"5" + 3</code> gives <code>"53"</code> (string), but <code>"5" - 3</code> gives <code>2</code> (number). That's exactly why <strong>TypeScript</strong> was invented — a "superset" over JS with static types. But that's a topic for another lesson.</p>
+        <p data-lang="tk"><strong>Dinamiki tipleşdirme = erkinlik we töwekgelçilik.</strong> Bir tarapdan, kod ýazmak çaltlaşýar. Beýleki tarapdan, tipleri tötänleýin garyşdyryp, ýalňyşlyk (bug) almak aňsat. Mysal üçin: <code>"5" + 3</code> <code>"53"</code> (setir) berýär, <code>"5" - 3</code> bolsa <code>2</code> (san) berýär. Hut şonuň üçin statiki tipli, JS-iň üstündäki «goşmaça gatlak» — <strong>TypeScript</strong> oýlanyp tapyldy. Emma bu aýratyn sapagyň temasy.</p>
     </div>
 
     <h3 data-lang="ru">3.4. Интерпретируемый (interpreted)</h3>
     <h3 data-lang="en">3.4. Interpreted</h3>
+    <h3 data-lang="tk">3.4. Interpretirlenýän (interpreted)</h3>
 
     <p data-lang="ru">Существует два больших способа исполнять код:</p>
     <p data-lang="en">There are two broad ways to execute code:</p>
+    <p data-lang="tk">Kody ýerine ýetirmegiň iki uly usuly bar:</p>
 
     <div class="compare">
         <div class="wrong">
             <div class="label" data-lang="ru">Компилируемые языки (C, Rust, Go)</div>
             <div class="label" data-lang="en">Compiled languages (C, Rust, Go)</div>
+            <div class="label" data-lang="tk">Kompilirlenýän diller (C, Rust, Go)</div>
             <p data-lang="ru">Сначала <em>компилятор</em> переводит весь код в машинные инструкции и создаёт исполняемый файл (<code>.exe</code>). Потом этот файл запускается. Медленная сборка, но быстрый запуск.</p>
             <p data-lang="en">First a <em>compiler</em> translates the whole code into machine instructions and creates an executable file (<code>.exe</code>). Then this file runs. Slow build, fast execution.</p>
+            <p data-lang="tk">Ilki <em>kompilýator</em> ähli kody maşyn görkezmelerine öwürýär we ýerine ýetirilýän faýl (<code>.exe</code>) döredýär. Soňra şol faýl işledilýär. Ýygnamak haýal, emma işe girizmek çalt.</p>
         </div>
         <div class="right">
             <div class="label" data-lang="ru">Интерпретируемые (JS, Python, Ruby)</div>
             <div class="label" data-lang="en">Interpreted (JS, Python, Ruby)</div>
+            <div class="label" data-lang="tk">Interpretirlenýän diller (JS, Python, Ruby)</div>
             <p data-lang="ru">Программа (<em>интерпретатор</em>) читает код построчно и сразу его выполняет. Ничего заранее компилировать не надо. Быстрый старт, удобно для веба.</p>
             <p data-lang="en">A program (the <em>interpreter</em>) reads code line by line and executes it on the fly. No pre-compilation needed. Quick to start, convenient for the web.</p>
+            <p data-lang="tk">Programma (<em>interpretator</em>) kody setirme-setir okaýar we derrew ýerine ýetirýär. Öňünden hiç zady kompilirlemek gerek däl. Çalt başlaýar, web üçin amatly.</p>
         </div>
     </div>
 
     <p data-lang="ru">На практике современные движки JavaScript (например, <strong>V8</strong> в Chrome) используют <strong>JIT-компиляцию</strong> (Just-In-Time) — они <em>на лету</em> превращают куски JS в машинный код для скорости. То есть формально JS интерпретируемый, но фактически работает почти так же быстро, как компилируемые языки.</p>
     <p data-lang="en">In practice modern JavaScript engines (like <strong>V8</strong> in Chrome) use <strong>JIT compilation</strong> (Just-In-Time) — they convert chunks of JS into machine code on the fly for speed. So formally JS is interpreted, but in practice it runs nearly as fast as compiled languages.</p>
+    <p data-lang="tk">Amalda häzirki JavaScript hereketlendirijileri (mysal üçin, Chrome-daky <strong>V8</strong>) <strong>JIT-kompilýasiýany</strong> (Just-In-Time) ulanýarlar — olar tizlik üçin JS böleklerini <em>ýerine ýetiriş wagtynda</em> maşyn koduna öwürýärler. Ýagny, resmi taýdan JS interpretirlenýän dil, emma hakykatda kompilirlenýän diller ýaly çalt diýen ýaly işleýär.</p>
 
     <h3 data-lang="ru">3.5. JavaScript и ECMAScript — в чём разница?</h3>
     <h3 data-lang="en">3.5. JavaScript and ECMAScript — what's the difference?</h3>
+    <h3 data-lang="tk">3.5. JavaScript we ECMAScript — tapawudy näme?</h3>
 
     <p data-lang="ru">Это, пожалуй, самое важное, что нужно понять из этого раздела.</p>
     <p data-lang="en">This is perhaps the most important takeaway from this section.</p>
+    <p data-lang="tk">Bu, belki, şu bölümden düşünmeli iň möhüm zat.</p>
 
     <ul data-lang="ru">
         <li><strong>ECMAScript (ES)</strong> — это <em>спецификация</em>, то есть <strong>формальный документ</strong>, который описывает, как должен вести себя язык: какие есть ключевые слова, как работает <code>if</code>, как устроены числа и т. д. Это <em>«закон»</em>.</li>
@@ -296,32 +380,43 @@ x = { name: "Seydi" };   // теперь object — OK</code></pre>
         <li><strong>ECMAScript (ES)</strong> is a <em>specification</em>, a <strong>formal document</strong> describing how the language should behave: what keywords exist, how <code>if</code> works, how numbers are represented, etc. It's the <em>"law"</em>.</li>
         <li><strong>JavaScript</strong> is an <em>implementation</em> of that specification — the <strong>actual language</strong> we use. It's the <em>"enforcement of the law"</em>.</li>
     </ul>
+    <ul data-lang="tk">
+        <li><strong>ECMAScript (ES)</strong> — bu <em>spesifikasiýa</em>, ýagny diliň özüni nähili alyp barmalydygyny beýan edýän <strong>resmi resminama</strong>: haýsy açar sözler bar, <code>if</code> nähili işleýär, sanlar nähili gurlan we ş.m. Bu <em>«kanun»</em>.</li>
+        <li><strong>JavaScript</strong> — bu şol spesifikasiýanyň <em>amala aşyrylyşy</em>, ýagny biziň ulanýan <strong>hakyky dilimiz</strong>. Bu <em>«kanunyň ýerine ýetirilişi»</em>.</li>
+    </ul>
 
     <div class="analogy">
         <p data-lang="ru">Аналогия: <strong>ECMAScript</strong> — как правила футбола (написанные в книжке ФИФА). <strong>JavaScript</strong> — это реальный футбольный матч, который играют команды по этим правилам. Правила — одни, а матчей с этими правилами может быть много. Разные движки (V8 в Chrome, SpiderMonkey в Firefox, JavaScriptCore в Safari) — это разные «команды», которые играют по одним и тем же правилам ECMAScript.</p>
         <p data-lang="en">Analogy: <strong>ECMAScript</strong> is like the rules of football (written in the FIFA book). <strong>JavaScript</strong> is an actual football match played by teams according to those rules. The rules are the same, but many matches can be played. Different engines (V8 in Chrome, SpiderMonkey in Firefox, JavaScriptCore in Safari) are different "teams" playing by the same ECMAScript rules.</p>
+        <p data-lang="tk">Meňzetme: <strong>ECMAScript</strong> — futbolyň düzgünleri ýaly (FIFA-nyň kitabynda ýazylan). <strong>JavaScript</strong> — toparlaryň şol düzgünler boýunça oýnaýan hakyky futbol duşuşygy. Düzgünler birdir, emma şol düzgünler bilen oýnalýan duşuşyk köp bolup biler. Dürli hereketlendirijiler (Chrome-da V8, Firefox-da SpiderMonkey, Safari-de JavaScriptCore) — şol bir ECMAScript düzgünleri boýunça oýnaýan dürli «toparlar».</p>
     </div>
 
     <p data-lang="ru">Когда вы слышите «ES6», «ES2020», «ES2024» — это версии <em>спецификации</em>. Каждая новая версия добавляет новые возможности в язык. Мы в этом курсе будем использовать <strong>современный JavaScript</strong> — код, соответствующий ES2015 (ES6) и выше.</p>
     <p data-lang="en">When you hear "ES6", "ES2020", "ES2024" — those are versions of the <em>specification</em>. Each new version adds new features. In this course we'll use <strong>modern JavaScript</strong> — code compliant with ES2015 (ES6) and above.</p>
+    <p data-lang="tk">«ES6», «ES2020», «ES2024» diýen sözleri eşideniňizde — bular <em>spesifikasiýanyň</em> wersiýalary. Her täze wersiýa dile täze mümkinçilikler goşýar. Bu kursda biz <strong>häzirki zaman JavaScript-ini</strong> — ES2015 (ES6) we ondan ýokary wersiýalara laýyk gelýän kody ulanarys.</p>
 
     <h3 data-lang="ru">3.6. Однопоточный (single-threaded)</h3>
     <h3 data-lang="en">3.6. Single-threaded</h3>
+    <h3 data-lang="tk">3.6. Bir akymly (single-threaded)</h3>
 
     <p data-lang="ru">JavaScript выполняет код <strong>по одной операции за раз</strong>. Нет параллельного исполнения из коробки, как в Java. Зато есть <strong>цикл событий (event loop)</strong> и <strong>асинхронность</strong>, которые позволяют не блокировать программу при долгих операциях (например, запросах к серверу). Об этом — в разделе 5 и подробно в занятии 24 («Промисы»).</p>
     <p data-lang="en">JavaScript executes code <strong>one operation at a time</strong>. There's no built-in parallel execution like in Java. Instead, there's the <strong>event loop</strong> and <strong>asynchronous programming</strong>, which let the program avoid blocking during long operations (like server requests). More in section 5 and in detail in Lesson 24 ("Promises").</p>
+    <p data-lang="tk">JavaScript kody <strong>bir wagtda bir amal</strong> edip ýerine ýetirýär. Java-daky ýaly taýýar parallel ýerine ýetiriş ýok. Onuň ýerine uzak dowam edýän amallarda (mysal üçin, serwere ýüzlenmelerde) programmanyň petiklenmegine ýol bermeýän <strong>wakalar sikli (event loop)</strong> we <strong>asinhronlyk</strong> bar. Bu barada — 5-nji bölümde we jikme-jik 24-nji sapakda («Promisler»).</p>
 
     <hr>
 
     <h2 id="where" data-lang="ru">4. Где работает JavaScript</h2>
     <h2 id="where" data-lang="en">4. Where JavaScript runs</h2>
+    <h2 id="where" data-lang="tk">4. JavaScript nirede işleýär</h2>
 
     <p data-lang="ru">Многие думают, что JavaScript — это «язык для браузера». Это правда, но только часть правды. Сегодня JS работает почти везде:</p>
     <p data-lang="en">Many people think JavaScript is "the browser language". That's true, but only part of the truth. Today JS runs almost everywhere:</p>
+    <p data-lang="tk">Köp adamlar JavaScript-i «brauzer üçin dil» diýip pikir edýärler. Bu dogry, ýöne hakykatyň diňe bir bölegi. Häzir JS hemme ýerde diýen ýaly işleýär:</p>
 
     <table>
         <thead data-lang="ru"><tr><th>Где</th><th>Что делает</th><th>Технологии</th></tr></thead>
         <thead data-lang="en"><tr><th>Where</th><th>What it does</th><th>Technologies</th></tr></thead>
+        <thead data-lang="tk"><tr><th>Nirede</th><th>Näme edýär</th><th>Tehnologiýalar</th></tr></thead>
         <tbody data-lang="ru">
             <tr><td><strong>Браузер</strong> (фронтенд)</td><td>Интерактивные сайты, SPA, формы, анимации</td><td>React, Vue, Angular, Svelte</td></tr>
             <tr><td><strong>Сервер</strong> (бэкенд)</td><td>API, работа с БД, авторизация</td><td>Node.js, Express, NestJS, Deno</td></tr>
@@ -340,20 +435,32 @@ x = { name: "Seydi" };   // теперь object — OK</code></pre>
             <tr><td><strong>Embedded / IoT</strong></td><td>Smart devices, microcontrollers</td><td>Espruino, Johnny-Five</td></tr>
             <tr><td><strong>CLI tools</strong></td><td>Terminal utilities</td><td>npm packages, Commander</td></tr>
         </tbody>
+        <tbody data-lang="tk">
+            <tr><td><strong>Brauzer</strong> (frontend)</td><td>Interaktiw saýtlar, SPA, formalar, animasiýalar</td><td>React, Vue, Angular, Svelte</td></tr>
+            <tr><td><strong>Serwer</strong> (backend)</td><td>API, maglumatlar bazasy bilen işlemek, awtorizasiýa</td><td>Node.js, Express, NestJS, Deno</td></tr>
+            <tr><td><strong>Mobil programmalar</strong></td><td>Bir kod bilen iOS / Android</td><td>React Native, Expo, Ionic</td></tr>
+            <tr><td><strong>Desktop programmalar</strong></td><td>Windows/Mac/Linux üçin programmalar</td><td>Electron, Tauri, NW.js</td></tr>
+            <tr><td><strong>Oýunlar</strong></td><td>Brauzer we köp platformaly oýunlar</td><td>Phaser, Three.js, Babylon.js</td></tr>
+            <tr><td><strong>Içine gurlan ulgamlar / IoT</strong></td><td>Akylly enjamlar, mikrokontrollerler</td><td>Espruino, Johnny-Five</td></tr>
+            <tr><td><strong>CLI-gurallar</strong></td><td>Terminal üçin gurallar</td><td>npm-paketler, Commander</td></tr>
+        </tbody>
     </table>
 
     <div class="real-world">
         <p data-lang="ru">Именно поэтому JavaScript — такая ценная инвестиция. Выучили один язык — открыли дверь во все эти миры. Научились писать кнопку на сайте? Сможете написать и сервер, и мобильное приложение, и даже игру — используя <em>те же самые знания синтаксиса</em>.</p>
         <p data-lang="en">That's why JavaScript is such a valuable investment. Learn one language — open doors to all these worlds. You learned to write a button on a website? You can also write a server, a mobile app, and even a game — using <em>the same syntax knowledge</em>.</p>
+        <p data-lang="tk">Hut şonuň üçin JavaScript — şeýle gymmatly maýa goýum. Bir dili öwrendiňiz — bu dünýäleriň hemmesine gapy açdyňyz. Saýtda düwme ýazmagy öwrendiňizmi? Onda <em>şol bir sintaksis bilimlerini</em> ulanyp, serweri hem, mobil programmany hem, hatda oýny hem ýazyp bilersiňiz.</p>
     </div>
 
     <hr>
 
     <h2 id="how-works" data-lang="ru">5. Как JavaScript работает в браузере</h2>
     <h2 id="how-works" data-lang="en">5. How JavaScript works in the browser</h2>
+    <h2 id="how-works" data-lang="tk">5. JavaScript brauzerde nähili işleýär</h2>
 
     <p data-lang="ru">В каждом современном браузере встроен <strong>движок JavaScript</strong> — специальная программа, которая читает ваш JS-код и выполняет его. У каждого браузера — свой движок:</p>
     <p data-lang="en">Every modern browser has a built-in <strong>JavaScript engine</strong> — a special program that reads your JS code and executes it. Each browser has its own engine:</p>
+    <p data-lang="tk">Her bir häzirki zaman brauzerinde <strong>JavaScript hereketlendirijisi</strong> (engine) gurlandyr — siziň JS kodyňyzy okaýan we ýerine ýetirýän ýörite programma. Her brauzeriň öz hereketlendirijisi bar:</p>
 
     <ul data-lang="ru">
         <li><strong>V8</strong> — Chrome, Edge, Opera, <em>а также Node.js</em> (самый известный, разработан Google)</li>
@@ -365,15 +472,22 @@ x = { name: "Seydi" };   // теперь object — OK</code></pre>
         <li><strong>SpiderMonkey</strong> — Firefox (the first JS engine ever, created by Brendan Eich)</li>
         <li><strong>JavaScriptCore (Nitro)</strong> — Safari and all iOS browsers</li>
     </ul>
+    <ul data-lang="tk">
+        <li><strong>V8</strong> — Chrome, Edge, Opera, <em>şeýle hem Node.js</em> (iň meşhury, Google tarapyndan işlenip düzüldi)</li>
+        <li><strong>SpiderMonkey</strong> — Firefox (taryhdaky ilkinji JS hereketlendirijisi, Brendan Aýk tarapyndan döredildi)</li>
+        <li><strong>JavaScriptCore (Nitro)</strong> — Safari, iOS-daky ähli brauzerler</li>
+    </ul>
 
     <h3 data-lang="ru">Что делает движок, когда вы открываете страницу</h3>
     <h3 data-lang="en">What the engine does when you open a page</h3>
+    <h3 data-lang="tk">Sahypany açanyňyzda hereketlendiriji näme edýär</h3>
 
     <div class="step">
         <div class="step-number">1</div>
         <div>
             <p data-lang="ru"><strong>Скачивает JS-файл</strong> (либо из тега <code>&lt;script src="..."&gt;</code>, либо из inline-кода в HTML).</p>
             <p data-lang="en"><strong>Downloads the JS file</strong> (either from <code>&lt;script src="..."&gt;</code> or inline code in HTML).</p>
+            <p data-lang="tk"><strong>JS faýly ýükleýär</strong> (ýa <code>&lt;script src="..."&gt;</code> tegi arkaly, ýa-da HTML-iň içindäki inline koddan).</p>
         </div>
     </div>
     <div class="step">
@@ -381,6 +495,7 @@ x = { name: "Seydi" };   // теперь object — OK</code></pre>
         <div>
             <p data-lang="ru"><strong>Парсит код</strong> — разбирает текст и превращает его в структуру данных (абстрактное синтаксическое дерево, AST).</p>
             <p data-lang="en"><strong>Parses the code</strong> — turns the text into a data structure (an Abstract Syntax Tree, AST).</p>
+            <p data-lang="tk"><strong>Kody seljerýär (parsing)</strong> — teksti böleklere bölýär we ony maglumat gurluşyna (abstrakt sintaksis agajyna, AST) öwürýär.</p>
         </div>
     </div>
     <div class="step">
@@ -388,6 +503,7 @@ x = { name: "Seydi" };   // теперь object — OK</code></pre>
         <div>
             <p data-lang="ru"><strong>Компилирует в машинный код</strong> (JIT-компиляция) — для скорости.</p>
             <p data-lang="en"><strong>Compiles to machine code</strong> (JIT compilation) — for speed.</p>
+            <p data-lang="tk"><strong>Maşyn koduna kompilirleýär</strong> (JIT-kompilýasiýa) — tizlik üçin.</p>
         </div>
     </div>
     <div class="step">
@@ -395,11 +511,13 @@ x = { name: "Seydi" };   // теперь object — OK</code></pre>
         <div>
             <p data-lang="ru"><strong>Исполняет</strong> — строка за строкой, реагируя на события пользователя (клики, ввод текста, скролл).</p>
             <p data-lang="en"><strong>Executes</strong> line by line, reacting to user events (clicks, typing, scrolling).</p>
+            <p data-lang="tk"><strong>Ýerine ýetirýär</strong> — setirme-setir, ulanyjynyň hereketlerine (klikler, tekst girizmek, sahypany aýlamak) jogap berip.</p>
         </div>
     </div>
 
     <h3 data-lang="ru">Что JS умеет делать в браузере</h3>
     <h3 data-lang="en">What JS can do in the browser</h3>
+    <h3 data-lang="tk">JS brauzerde näme edip bilýär</h3>
 
     <ul data-lang="ru">
         <li>Изменять содержимое HTML-страницы (через <strong>DOM</strong>)</li>
@@ -417,10 +535,19 @@ x = { name: "Seydi" };   // теперь object — OK</code></pre>
         <li>Store data right in the browser (<code>localStorage</code>, <code>cookies</code>)</li>
         <li>Show notifications, access camera and microphone (with user's permission)</li>
     </ul>
+    <ul data-lang="tk">
+        <li>HTML sahypanyň mazmunyny üýtgetmek (<strong>DOM</strong> arkaly)</li>
+        <li>CSS stillerini üýtgetmek</li>
+        <li>Kliklere, tekst girizilmegine, sahypanyň aýlanmagyna, kursoryň getirilmegine jogap bermek</li>
+        <li>Sahypany täzeden ýüklemezden serwerden maglumat almak (<strong>AJAX / fetch</strong>)</li>
+        <li>Maglumatlary göni brauzerde saklamak (<code>localStorage</code>, <code>cookies</code>)</li>
+        <li>Bildirişleri görkezmek, kamera we mikrofon bilen işlemek (ulanyjynyň rugsady bilen)</li>
+    </ul>
 
     <div class="important">
         <p data-lang="ru"><strong>Чего JS в браузере делать НЕ может</strong> (по соображениям безопасности):</p>
         <p data-lang="en"><strong>What JS in the browser CANNOT do</strong> (for security reasons):</p>
+        <p data-lang="tk"><strong>JS brauzerde näme edip BILMEÝÄR</strong> (howpsuzlyk sebäpli):</p>
         <ul data-lang="ru">
             <li>Читать/записывать произвольные файлы на вашем диске</li>
             <li>Запускать программы на компьютере</li>
@@ -431,26 +558,36 @@ x = { name: "Seydi" };   // теперь object — OK</code></pre>
             <li>Run programs on your computer</li>
             <li>Freely talk to other websites (<strong>CORS</strong> restriction)</li>
         </ul>
+        <ul data-lang="tk">
+            <li>Diskiňizdäki islendik faýllary okamak/ýazmak</li>
+            <li>Kompýuterde programmalary işletmek</li>
+            <li>Beýleki saýtlara erkin ýüzlenmek (<strong>CORS</strong> çäklendirmesi)</li>
+        </ul>
     </div>
 
     <hr>
 
     <h2 id="linking" data-lang="ru">6. Три способа подключения JavaScript к HTML</h2>
     <h2 id="linking" data-lang="en">6. Three ways to link JavaScript to HTML</h2>
+    <h2 id="linking" data-lang="tk">6. JavaScript-i HTML-e birikdirmegiň üç usuly</h2>
 
     <p data-lang="ru">Чтобы браузер выполнил ваш JS-код, его нужно «подключить» к HTML-странице. Есть три способа.</p>
     <p data-lang="en">For the browser to execute your JS code, it needs to be "linked" to an HTML page. There are three ways.</p>
+    <p data-lang="tk">Brauzeriň siziň JS kodyňyzy ýerine ýetirmegi üçin ony HTML sahypa «birikdirmeli». Munuň üç usuly bar.</p>
 
     <h3 data-lang="ru">Способ 1: Inline (внутри атрибута тега)</h3>
     <h3 data-lang="en">Method 1: Inline (inside a tag attribute)</h3>
+    <h3 data-lang="tk">1-nji usul: Inline (teg atributynyň içinde)</h3>
 
     <pre><code>&lt;button onclick="alert('Привет!')"&gt;Нажми меня&lt;/button&gt;</code></pre>
 
     <p data-lang="ru">Код пишется прямо в атрибут <code>onclick</code>, <code>onmouseover</code> и т. п. <strong>Так делать не надо</strong> — это смешивает HTML и JS, делает код трудно поддерживаемым. Упоминаем только, чтобы вы знали, что так бывает.</p>
     <p data-lang="en">Code is written directly into an <code>onclick</code>, <code>onmouseover</code>, etc. attribute. <strong>Don't do this</strong> — it mixes HTML and JS and makes code hard to maintain. We mention it only so you know it exists.</p>
+    <p data-lang="tk">Kod göni <code>onclick</code>, <code>onmouseover</code> we ş.m. atributlaryň içine ýazylýar. <strong>Beýle etmeli däl</strong> — bu HTML-i we JS-i garyşdyrýar, kody goldamagy kynlaşdyrýar. Munuň bardygyny bilmegiňiz üçin diňe agzap geçýäris.</p>
 
     <h3 data-lang="ru">Способ 2: Internal (тег &lt;script&gt; внутри HTML)</h3>
     <h3 data-lang="en">Method 2: Internal (&lt;script&gt; tag inside HTML)</h3>
+    <h3 data-lang="tk">2-nji usul: Internal (HTML-iň içindäki &lt;script&gt; tegi)</h3>
 
     <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -467,9 +604,11 @@ x = { name: "Seydi" };   // теперь object — OK</code></pre>
 
     <p data-lang="ru">Код пишется прямо в <code>&lt;script&gt;...&lt;/script&gt;</code>. Подходит для маленьких страничек или когда скрипт нужен только на этой странице.</p>
     <p data-lang="en">Code is written directly inside <code>&lt;script&gt;...&lt;/script&gt;</code>. Good for small pages or when the script is only used on this page.</p>
+    <p data-lang="tk">Kod göni <code>&lt;script&gt;...&lt;/script&gt;</code> içine ýazylýar. Kiçi sahypalar üçin ýa-da skript diňe şu sahypada gerek bolanda laýyk gelýär.</p>
 
     <h3 data-lang="ru">Способ 3: External (отдельный .js-файл) — рекомендуемый</h3>
     <h3 data-lang="en">Method 3: External (separate .js file) — recommended</h3>
+    <h3 data-lang="tk">3-nji usul: External (aýratyn .js faýl) — maslahat berilýär</h3>
 
     <pre><code>&lt;!-- index.html --&gt;
 &lt;body&gt;
@@ -482,16 +621,20 @@ console.log('Скрипт из отдельного файла!');</code></pre>
 
     <p data-lang="ru">JavaScript выносится в отдельный файл с расширением <code>.js</code>, а в HTML подключается через <code>&lt;script src="..."&gt;</code>. Это <strong>правильный способ</strong> для любого серьёзного проекта: HTML занимается структурой, CSS — стилями, JS — логикой.</p>
     <p data-lang="en">JavaScript goes into a separate file with the <code>.js</code> extension and is linked via <code>&lt;script src="..."&gt;</code>. This is the <strong>right way</strong> for any serious project: HTML for structure, CSS for styles, JS for logic.</p>
+    <p data-lang="tk">JavaScript <code>.js</code> giňeltmeli aýratyn faýla çykarylýar, HTML-de bolsa <code>&lt;script src="..."&gt;</code> arkaly birikdirilýär. Bu islendik çynlakaý taslama üçin <strong>dogry usul</strong>: HTML gurluş bilen, CSS stiller bilen, JS bolsa logika bilen meşgullanýar.</p>
 
     <h3 data-lang="ru">Где размещать &lt;script&gt; и зачем нужны defer и async</h3>
     <h3 data-lang="en">Where to place &lt;script&gt; and why defer and async exist</h3>
+    <h3 data-lang="tk">&lt;script&gt; tegini nirede ýerleşdirmeli we defer bilen async näme üçin gerek</h3>
 
     <p data-lang="ru">Браузер читает HTML сверху вниз. Если тег <code>&lt;script&gt;</code> встретится в <code>&lt;head&gt;</code>, он <strong>остановит</strong> парсинг страницы, пока скрипт не скачается и не выполнится. Страница будет «зависать». Чтобы этого избежать, есть три варианта:</p>
     <p data-lang="en">The browser reads HTML top to bottom. If <code>&lt;script&gt;</code> is encountered in <code>&lt;head&gt;</code>, the browser <strong>pauses</strong> parsing until the script is downloaded and executed. The page will "freeze". To avoid that, you have three options:</p>
+    <p data-lang="tk">Brauzer HTML-i ýokardan aşak okaýar. Eger <code>&lt;script&gt;</code> tegi <code>&lt;head&gt;</code>-de duşsa, ol skript ýüklenip we ýerine ýetirilip gutarýança sahypanyň parsingini <strong>saklaýar</strong>. Sahypa «doňup galar». Munuň öňüni almak üçin üç wariant bar:</p>
 
     <table>
         <thead data-lang="ru"><tr><th>Вариант</th><th>Что делает</th><th>Когда использовать</th></tr></thead>
         <thead data-lang="en"><tr><th>Option</th><th>What it does</th><th>When to use</th></tr></thead>
+        <thead data-lang="tk"><tr><th>Wariant</th><th>Näme edýär</th><th>Haçan ulanmaly</th></tr></thead>
         <tbody data-lang="ru">
             <tr><td><code>&lt;script src="app.js"&gt;</code> в конце <code>&lt;body&gt;</code></td><td>HTML успевает прогрузиться до выполнения скрипта</td><td>Простые страницы</td></tr>
             <tr><td><code>&lt;script defer src="app.js"&gt;</code> в <code>&lt;head&gt;</code></td><td>Скрипт скачивается параллельно, выполняется после парсинга HTML, в порядке появления</td><td><strong>Рекомендуемый вариант</strong></td></tr>
@@ -502,15 +645,22 @@ console.log('Скрипт из отдельного файла!');</code></pre>
             <tr><td><code>&lt;script defer src="app.js"&gt;</code> in <code>&lt;head&gt;</code></td><td>Downloads in parallel, runs after HTML is parsed, in order</td><td><strong>Recommended</strong></td></tr>
             <tr><td><code>&lt;script async src="app.js"&gt;</code> in <code>&lt;head&gt;</code></td><td>Downloads in parallel, runs as soon as ready (any order)</td><td>Independent scripts (analytics)</td></tr>
         </tbody>
+        <tbody data-lang="tk">
+            <tr><td><code>&lt;body&gt;</code>-iň ahyrynda <code>&lt;script src="app.js"&gt;</code></td><td>Skript ýerine ýetirilmezden öň HTML ýüklenip ýetişýär</td><td>Ýönekeý sahypalar</td></tr>
+            <tr><td><code>&lt;head&gt;</code>-de <code>&lt;script defer src="app.js"&gt;</code></td><td>Skript parallel ýüklenýär, HTML parsing edilenden soň, duşýan tertibinde ýerine ýetirilýär</td><td><strong>Maslahat berilýän wariant</strong></td></tr>
+            <tr><td><code>&lt;head&gt;</code>-de <code>&lt;script async src="app.js"&gt;</code></td><td>Parallel ýüklenýär, ýüklenen badyna ýerine ýetirilýär (islendik tertipde)</td><td>Garaşsyz skriptler (analitika)</td></tr>
+        </tbody>
     </table>
 
     <hr>
 
     <h2 id="console" data-lang="ru">7. console.log и DevTools Console</h2>
     <h2 id="console" data-lang="en">7. console.log and DevTools Console</h2>
+    <h2 id="console" data-lang="tk">7. console.log we DevTools Console</h2>
 
     <p data-lang="ru"><code>console.log()</code> — ваш лучший друг в первые месяцы программирования. Это функция, которая <strong>выводит информацию в консоль</strong> — специальную панель разработчика в браузере.</p>
     <p data-lang="en"><code>console.log()</code> will be your best friend in the first months of programming. It's a function that <strong>prints information to the console</strong> — a special developer panel in the browser.</p>
+    <p data-lang="tk"><code>console.log()</code> — programmirlemäniň ilkinji aýlarynda siziň iň gowy dostuňyz. Bu <strong>maglumaty konsola çykarýan</strong> funksiýa; konsol — brauzerdäki işläp düzüjiler üçin ýörite panel.</p>
 
     <pre><code>console.log("Hello, JavaScript!");
 console.log(42);
@@ -519,6 +669,7 @@ console.log("Меня зовут", "Сейди");</code></pre>
 
     <h3 data-lang="ru">Как открыть консоль</h3>
     <h3 data-lang="en">How to open the console</h3>
+    <h3 data-lang="tk">Konsoly nädip açmaly</h3>
 
     <ul data-lang="ru">
         <li>Откройте любой сайт в Chrome/Edge/Firefox</li>
@@ -532,19 +683,28 @@ console.log("Меня зовут", "Сейди");</code></pre>
         <li>In the DevTools panel, go to the <strong>Console</strong> tab</li>
         <li>Type <code>2 + 2</code> there and press Enter — you'll get <code>4</code></li>
     </ul>
+    <ul data-lang="tk">
+        <li>Chrome/Edge/Firefox-da islendik saýty açyň</li>
+        <li><span class="kbd">F12</span> düwmesine basyň (ýa-da <span class="kbd">Ctrl</span>+<span class="kbd">Shift</span>+<span class="kbd">I</span>)</li>
+        <li>Açylan DevTools panelinde <strong>Console</strong> goýmasyna geçiň</li>
+        <li>Şol ýerde <code>2 + 2</code> ýazyp, Enter-e basyp bilersiňiz — <code>4</code> alarsyňyz</li>
+    </ul>
 
     <div class="try-it">
         <p data-lang="ru">Откройте консоль прямо сейчас (<span class="kbd">F12</span>) и напишите:</p>
         <p data-lang="en">Open the console right now (<span class="kbd">F12</span>) and type:</p>
+        <p data-lang="tk">Konsoly şu wagt açyň (<span class="kbd">F12</span>) we şuny ýazyň:</p>
         <pre><code>console.log("Меня зовут " + "Сейди");
 2 ** 10;
 new Date();</code></pre>
         <p data-lang="ru">Попробуйте каждую строку — и посмотрите, что выведется.</p>
         <p data-lang="en">Try each line and see what gets printed.</p>
+        <p data-lang="tk">Her setiri synap görüň — we näme çykýandygyna serediň.</p>
     </div>
 
     <h3 data-lang="ru">Полезные варианты console</h3>
     <h3 data-lang="en">Other useful console methods</h3>
+    <h3 data-lang="tk">console-yň beýleki peýdaly usullary</h3>
 
     <pre><code>console.log("обычное сообщение");
 console.warn("⚠️ предупреждение");
@@ -555,10 +715,12 @@ console.table([{ name: "Ann", age: 25 }, { name: "Bob", age: 30 }]);</code></pre
 
     <h2 id="vs" data-lang="ru">8. JavaScript против других языков</h2>
     <h2 id="vs" data-lang="en">8. JavaScript vs other languages</h2>
+    <h2 id="vs" data-lang="tk">8. JavaScript beýleki diller bilen deňeşdirilende</h2>
 
     <table>
         <thead data-lang="ru"><tr><th>Признак</th><th>JavaScript</th><th>Python</th><th>Java</th><th>C++</th></tr></thead>
         <thead data-lang="en"><tr><th>Feature</th><th>JavaScript</th><th>Python</th><th>Java</th><th>C++</th></tr></thead>
+        <thead data-lang="tk"><tr><th>Alamat</th><th>JavaScript</th><th>Python</th><th>Java</th><th>C++</th></tr></thead>
         <tbody data-lang="ru">
             <tr><td>Типизация</td><td>Динамическая</td><td>Динамическая</td><td>Статическая</td><td>Статическая</td></tr>
             <tr><td>Исполнение</td><td>Интерпретация + JIT</td><td>Интерпретация</td><td>Компиляция в байт-код</td><td>Компиляция</td></tr>
@@ -573,20 +735,30 @@ console.table([{ name: "Ann", age: 25 }, { name: "Bob", age: 30 }]);</code></pre
             <tr><td>Syntax</td><td>C-like</td><td>Minimalist</td><td>Verbose</td><td>Complex</td></tr>
             <tr><td>Garbage collector</td><td>Yes</td><td>Yes</td><td>Yes</td><td>No (manual)</td></tr>
         </tbody>
+        <tbody data-lang="tk">
+            <tr><td>Tipleşdirme</td><td>Dinamiki</td><td>Dinamiki</td><td>Statiki</td><td>Statiki</td></tr>
+            <tr><td>Ýerine ýetiriliş</td><td>Interpretasiýa + JIT</td><td>Interpretasiýa</td><td>Baýt-koda kompilýasiýa</td><td>Kompilýasiýa</td></tr>
+            <tr><td>Esasy ulanylýan ýeri</td><td>Brauzer + serwer</td><td>Ylym, emeli aň, backend</td><td>Korporatiw ulgamlar</td><td>Ulgamlar, oýunlar</td></tr>
+            <tr><td>Sintaksis</td><td>C-ä meňzeş</td><td>Minimalistik</td><td>Köp sözli</td><td>Çylşyrymly</td></tr>
+            <tr><td>Zibil ýygnaýjy (garbage collector)</td><td>Hawa</td><td>Hawa</td><td>Hawa</td><td>Ýok (el bilen)</td></tr>
+        </tbody>
     </table>
 
     <div class="fun-fact">
         <p data-lang="ru">Согласно опросу <em>Stack Overflow Developer Survey</em>, JavaScript <strong>12+ лет подряд</strong> занимает первое место по популярности среди разработчиков. Его знают даже те, кто «специализируется» на Python или Go — потому что рано или поздно в любой команде нужен фронтенд.</p>
         <p data-lang="en">According to the <em>Stack Overflow Developer Survey</em>, JavaScript has held <strong>first place</strong> in developer popularity for <strong>12+ years in a row</strong>. Even developers who "specialize" in Python or Go know it — because sooner or later every team needs a frontend.</p>
+        <p data-lang="tk"><em>Stack Overflow Developer Survey</em> soragnamasyna görä, JavaScript <strong>12+ ýyl yzly-yzyna</strong> işläp düzüjileriň arasynda meşhurlyk boýunça birinji orny eýeleýär. Ony hatda Python ýa-da Go boýunça «ýöriteleşen» işläp düzüjiler hem bilýärler — sebäbi islendik toparda ir-u-giç frontend gerek bolýar.</p>
     </div>
 
     <hr>
 
     <h2 id="tools" data-lang="ru">9. Что нужно для работы с JavaScript</h2>
     <h2 id="tools" data-lang="en">9. What you need to start working with JavaScript</h2>
+    <h2 id="tools" data-lang="tk">9. JavaScript bilen işlemek üçin näme gerek</h2>
 
     <p data-lang="ru">Хорошая новость: для старта <strong>ничего платного не нужно</strong>. Весь набор — бесплатный и открытый.</p>
     <p data-lang="en">Good news: to start, you need <strong>nothing paid</strong>. The entire toolkit is free and open-source.</p>
+    <p data-lang="tk">Hoş habar: başlamak üçin <strong>hiç hili tölegli zat gerek däl</strong>. Ähli toplum mugt we açyk.</p>
 
     <ol data-lang="ru">
         <li><strong>Браузер</strong> — Chrome, Edge или Firefox (любой современный). В нём встроены DevTools и движок JavaScript.</li>
@@ -600,25 +772,35 @@ console.table([{ name: "Ann", age: 25 }, { name: "Bob", age: 30 }]);</code></pre
         <li><strong>Live Server extension</strong> for VS Code — auto-reloads the page in the browser when you save a file. Installs in 10 seconds.</li>
         <li><strong>(Later) Node.js</strong> — to run JS outside the browser. We'll install it in Lesson 2.</li>
     </ol>
+    <ol data-lang="tk">
+        <li><strong>Brauzer</strong> — Chrome, Edge ýa-da Firefox (islendik häzirki zaman brauzeri). Onda DevTools we JavaScript hereketlendirijisi gurlandyr.</li>
+        <li><strong>Kod redaktory</strong> — <strong>VS Code</strong> (maslahat berilýär). Mugt, çalt, müňlerçe giňeltmeli. Ýüklemek: <code>code.visualstudio.com</code></li>
+        <li>VS Code üçin <strong>Live Server giňeltmesi</strong> — faýly ýatda saklanyňyzda brauzerdäki sahypany awtomatik täzeleýär. 10 sekuntda gurnalýar.</li>
+        <li><strong>(Soňra) Node.js</strong> — JS-i brauzerden daşarda işletmek üçin. Ony 2-nji sapakda gurnarys.</li>
+    </ol>
 
     <div class="pro-tip">
         <p data-lang="ru">Вторым браузером поставьте <strong>Firefox</strong> (или наоборот, если основной — Firefox, то Chrome). Периодически проверяйте, как ваш код работает в разных браузерах — это поможет ловить «кроссбраузерные» проблемы ещё на раннем этапе.</p>
         <p data-lang="en">Install <strong>Firefox</strong> as your second browser (or Chrome if your primary is Firefox). Periodically test your code in different browsers — it helps catch cross-browser issues early.</p>
+        <p data-lang="tk">Ikinji brauzer hökmünde <strong>Firefox</strong> gurnaň (ýa-da tersine, esasy brauzeriňiz Firefox bolsa, Chrome gurnaň). Kodyňyzyň dürli brauzerlerde nähili işleýändigini wagtal-wagtal barlaň — bu «brauzerara» meseleleri irki tapgyrda tapmaga kömek eder.</p>
     </div>
 
     <hr>
 
     <h2 id="first" data-lang="ru">10. Твой первый скрипт: Hello, JavaScript!</h2>
     <h2 id="first" data-lang="en">10. Your first script: Hello, JavaScript!</h2>
+    <h2 id="first" data-lang="tk">10. Siziň ilkinji skriptiňiz: Hello, JavaScript!</h2>
 
     <p data-lang="ru">Сейчас мы напишем самый простой «живой» JS. Нам понадобится HTML-страница и пара строк кода.</p>
     <p data-lang="en">Now we'll write the simplest "alive" JS. We'll need an HTML page and a few lines of code.</p>
+    <p data-lang="tk">Häzir biz iň ýönekeý «janly» JS ýazarys. Bize HTML sahypa we birnäçe setir kod gerek bolar.</p>
 
     <div class="step">
         <div class="step-number">1</div>
         <div>
             <p data-lang="ru"><strong>Создайте папку</strong> <code>hello-js/</code> на рабочем столе.</p>
             <p data-lang="en"><strong>Create a folder</strong> <code>hello-js/</code> on your desktop.</p>
+            <p data-lang="tk">Iş stolunda <code>hello-js/</code> <strong>bukjasyny dörediň</strong>.</p>
         </div>
     </div>
 
@@ -627,6 +809,7 @@ console.table([{ name: "Ann", age: 25 }, { name: "Bob", age: 30 }]);</code></pre
         <div>
             <p data-lang="ru"><strong>Откройте папку в VS Code</strong> (File → Open Folder).</p>
             <p data-lang="en"><strong>Open the folder in VS Code</strong> (File → Open Folder).</p>
+            <p data-lang="tk"><strong>Bukjany VS Code-da açyň</strong> (File → Open Folder).</p>
         </div>
     </div>
 
@@ -635,6 +818,7 @@ console.table([{ name: "Ann", age: 25 }, { name: "Bob", age: 30 }]);</code></pre
         <div>
             <p data-lang="ru"><strong>Создайте файл</strong> <code>index.html</code> и вставьте:</p>
             <p data-lang="en"><strong>Create a file</strong> <code>index.html</code> and paste:</p>
+            <p data-lang="tk"><code>index.html</code> <strong>faýlyny dörediň</strong> we şuny goýuň:</p>
             <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="ru"&gt;
 &lt;head&gt;
@@ -656,6 +840,7 @@ console.table([{ name: "Ann", age: 25 }, { name: "Bob", age: 30 }]);</code></pre
         <div>
             <p data-lang="ru"><strong>Создайте файл</strong> <code>app.js</code> и вставьте:</p>
             <p data-lang="en"><strong>Create a file</strong> <code>app.js</code> and paste:</p>
+            <p data-lang="tk"><code>app.js</code> <strong>faýlyny dörediň</strong> we şuny goýuň:</p>
             <pre><code>console.log("Привет из JavaScript!");
 
 const title = document.getElementById("title");
@@ -673,12 +858,14 @@ btn.addEventListener("click", function () {
         <div>
             <p data-lang="ru"><strong>Запустите Live Server:</strong> правый клик по <code>index.html</code> → <em>Open with Live Server</em>. В браузере откроется страница.</p>
             <p data-lang="en"><strong>Start Live Server:</strong> right-click <code>index.html</code> → <em>Open with Live Server</em>. The page opens in the browser.</p>
+            <p data-lang="tk"><strong>Live Server-i işlediň:</strong> <code>index.html</code> faýlyna sag düwme bilen basyň → <em>Open with Live Server</em>. Brauzerde sahypa açylar.</p>
         </div>
     </div>
 
     <div class="result-box">
         <p data-lang="ru">Вы увидите:</p>
         <p data-lang="en">You will see:</p>
+        <p data-lang="tk">Siz şulary görersiňiz:</p>
         <ul data-lang="ru">
             <li>Заголовок <strong>«Hello, JavaScript!»</strong> (не «Загружаю...» — JS заменил текст!)</li>
             <li>Кнопку, которая при нажатии показывает всплывающее окно</li>
@@ -689,10 +876,16 @@ btn.addEventListener("click", function () {
             <li>A button that shows an alert on click</li>
             <li>In the console (F12 → Console) — the message "Привет из JavaScript!"</li>
         </ul>
+        <ul data-lang="tk">
+            <li><strong>«Hello, JavaScript!»</strong> sözbaşysy («Загружаю...» däl — JS teksti çalşyrdy!)</li>
+            <li>Basylanda açylýan penjiräni görkezýän düwme</li>
+            <li>Konsolda (F12 → Console) — «Привет из JavaScript!» habary</li>
+        </ul>
     </div>
 
     <p data-lang="ru"><strong>Поздравляю!</strong> Вы только что написали свой первый настоящий JS-скрипт. Не важно, что вы пока не понимаете, что такое <code>document.getElementById</code> или <code>addEventListener</code> — мы подробно разберём их позже. Сегодня важно одно: <em>оно работает</em>.</p>
     <p data-lang="en"><strong>Congratulations!</strong> You just wrote your first real JS script. It doesn't matter that you don't yet understand <code>document.getElementById</code> or <code>addEventListener</code> — we'll cover them in detail later. Today only one thing matters: <em>it works</em>.</p>
+    <p data-lang="tk"><strong>Gutlaýaryn!</strong> Siz ilkinji hakyky JS skriptiňizi ýazdyňyz. <code>document.getElementById</code> ýa-da <code>addEventListener</code>-iň näme bolýandygyna entek düşünmeýändigiňiz möhüm däl — olary soňra jikme-jik seljereris. Şu gün diňe bir zat möhüm: <em>ol işleýär</em>.</p>
 
     <hr>
 
@@ -717,6 +910,16 @@ btn.addEventListener("click", function () {
             <li><code>console.log()</code> is your main debugging tool.</li>
             <li>All you need to start is <strong>a browser + VS Code + Live Server</strong> — all free.</li>
         </ul>
+        <ul data-lang="tk">
+            <li><strong>JavaScript</strong> — <strong>ECMAScript</strong> spesifikasiýasyny amala aşyrýan ýokary derejeli, köp paradigmaly, dinamiki tipli, interpretirlenýän dil.</li>
+            <li>1995-nji ýylda <strong>Brendan Aýk</strong> tarapyndan Netscape brauzeri üçin 10 günde döredildi.</li>
+            <li><strong>OOP, imperatiw we funksional</strong> stilleri goldaýar — we olary garyşdyrmaga mümkinçilik berýär.</li>
+            <li><strong>Brauzerde</strong>, <strong>serwerde</strong> (Node.js), <strong>mobil</strong> (React Native) we <strong>desktop</strong> (Electron) programmalarda işleýär.</li>
+            <li>Her brauzeriň öz JS hereketlendirijisi bar: <strong>V8, SpiderMonkey, JavaScriptCore</strong>.</li>
+            <li>HTML-e üç usul bilen birikdirilýär, iň gowusy — <code>defer</code> bilen <strong>external</strong>.</li>
+            <li><code>console.log()</code> — siziň esasy sazlaýyş (debug) guralyňyz.</li>
+            <li>Işlemek üçin diňe <strong>brauzer + VS Code + Live Server</strong> gerek — hemmesi mugt.</li>
+        </ul>
     </div>
 
     <div class="quiz">
@@ -737,6 +940,15 @@ btn.addEventListener("click", function () {
             <li>How do you open the console in a browser?</li>
             <li>Why is JavaScript called "dynamically-typed"?</li>
             <li>What is the name of the JavaScript engine in Chrome?</li>
+        </ol>
+        <ol data-lang="tk">
+            <li>JavaScript-i kim we näçe günde döretdi?</li>
+            <li>JavaScript bilen ECMAScript-iň arasynda näme tapawut bar?</li>
+            <li>JS-iň goldaýan üç paradigmasyny aýdyň.</li>
+            <li><code>&lt;script&gt;</code> tegindäki <code>defer</code> atributy näme edýär?</li>
+            <li>Brauzerde konsoly nädip açmaly?</li>
+            <li>Näme üçin JavaScript-e «dinamiki tipli» diýilýär?</li>
+            <li>Chrome-daky JavaScript hereketlendirijisiniň ady näme?</li>
         </ol>
     </div>
 

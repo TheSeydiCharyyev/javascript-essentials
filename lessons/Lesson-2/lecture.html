@@ -23,31 +23,44 @@
 <div class="lesson-nav">
     <a href="../../index.html" class="nav-home" data-lang="ru">&#8592; Главная</a>
     <a href="../../index.html" class="nav-home" data-lang="en">&#8592; Home</a>
+    <a href="../../index.html" class="nav-home" data-lang="tk">&#8592; Baş sahypa</a>
     <span class="nav-sep">|</span>
     <span class="nav-title" data-lang="ru">Занятие 2: Установка инструментов и первый скрипт</span>
     <span class="nav-title" data-lang="en">Lesson 2: Tools Setup &amp; First Script</span>
+    <span class="nav-title" data-lang="tk">2-nji sapak: Gurallary gurnamak we ilkinji skript</span>
     <span class="nav-sep">|</span>
     <span class="nav-active" data-lang="ru">&#x1F468;&#x200D;&#x1F3EB; Лекция</span>
     <span class="nav-active" data-lang="en">&#x1F468;&#x200D;&#x1F3EB; Lecture</span>
+    <span class="nav-active" data-lang="tk">&#x1F468;&#x200D;&#x1F3EB; Leksiýa</span>
     <a href="student.html" class="nav-link" data-lang="ru">&#x1F468;&#x200D;&#x1F393; Конспект</a>
     <a href="student.html" class="nav-link" data-lang="en">&#x1F468;&#x200D;&#x1F393; Notes</a>
+    <a href="student.html" class="nav-link" data-lang="tk">&#x1F468;&#x200D;&#x1F393; Konspekt</a>
     <a href="tasks.html" class="nav-link" data-lang="ru">&#x1F4CB; Задания</a>
     <a href="tasks.html" class="nav-link" data-lang="en">&#x1F4CB; Tasks</a>
-    <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
+    <a href="tasks.html" class="nav-link" data-lang="tk">&#x1F4CB; Tabşyryklar</a>
+    <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" class="lang-opt" data-set-lang="ru" onclick="setLang('ru')">RU</button>
+        <button type="button" class="lang-opt" data-set-lang="en" onclick="setLang('en')">EN</button>
+        <button type="button" class="lang-opt" data-set-lang="tk" onclick="setLang('tk')">TM</button>
+    </div>
 </div>
 
 <div class="container">
 
     <h1 data-lang="ru">Занятие 2: Установка инструментов и первый скрипт</h1>
     <h1 data-lang="en">Lesson 2: Tools Setup &amp; First Script</h1>
+    <h1 data-lang="tk">2-nji sapak: Gurallary gurnamak we ilkinji skript</h1>
     <p class="subtitle" data-lang="ru">Настраиваем рабочее место разработчика: VS Code, расширения, Live Server, Node.js — и пишем первое полноценное приложение</p>
     <p class="subtitle" data-lang="en">Setting up a developer's workstation: VS Code, extensions, Live Server, Node.js — and writing our first real application</p>
+    <p class="subtitle" data-lang="tk">Işläp düzüjiniň iş ýerini sazlaýarys: VS Code, giňeltmeler, Live Server, Node.js — we ilkinji doly programmany ýazýarys</p>
 
     <div class="why">
         <p data-lang="ru">В прошлом занятии мы разобрались, <em>что такое</em> JavaScript. Сегодня — настроим рабочее место, чтобы писать на нём было удобно. Хороший редактор и правильные инструменты экономят <strong>часы</strong> времени каждую неделю. Без них программирование превращается в мучение.</p>
         <p data-lang="en">In the previous lesson we understood <em>what</em> JavaScript is. Today — we'll set up a workspace where writing JS is comfortable. A good editor and the right tools save you <strong>hours</strong> every week. Without them, programming becomes a chore.</p>
+        <p data-lang="tk">Geçen sapakda biz JavaScript-iň <em>näme</em> bolýandygyna düşündik. Şu gün onda ýazmak amatly bolar ýaly iş ýerini sazlarys. Gowy redaktor we dogry gurallar her hepde <strong>sagatlarça</strong> wagty tygşytlaýar. Olarsyz programmirleme horluga öwrülýär.</p>
         <p data-lang="ru"><strong>После этого занятия вы сможете:</strong></p>
         <p data-lang="en"><strong>After this lesson you will be able to:</strong></p>
+        <p data-lang="tk"><strong>Bu sapakdan soň siz şulary başararsyňyz:</strong></p>
         <ul data-lang="ru">
             <li>Установить и настроить VS Code с нуля</li>
             <li>Поставить 5 обязательных расширений для JS-разработчика</li>
@@ -68,11 +81,22 @@
             <li>Use VS Code shortcuts and Emmet to type faster</li>
             <li>Write a "Guess the number" mini-game from scratch</li>
         </ul>
+        <ul data-lang="tk">
+            <li>VS Code-y noldan gurnamak we sazlamak</li>
+            <li>JS işläp düzüji üçin 5 hökmany giňeltmäni gurnamak</li>
+            <li>Kody awtomatik ýatda saklamagy we awtomatik formatlamagy sazlamak</li>
+            <li>HTML sahypany Live Server arkaly işletmek</li>
+            <li>Node.js gurnamak we JS faýly terminalda işletmek</li>
+            <li>JS-i brauzerde we Node.js-de işletmegiň tapawudyny düşündirmek</li>
+            <li>Ýazmagy çaltlaşdyrmak üçin VS Code-yň gyzgyn düwmelerini we Emmet-i ulanmak</li>
+            <li>«Sany tap» mini-oýnuny noldan ýazmak</li>
+        </ul>
     </div>
 
     <div class="toc">
         <div class="toc-title" data-lang="ru">Содержание</div>
         <div class="toc-title" data-lang="en">Contents</div>
+        <div class="toc-title" data-lang="tk">Mazmuny</div>
         <ol data-lang="ru">
             <li><a href="#vscode">Установка VS Code</a></li>
             <li><a href="#extensions">Полезные расширения для JS-разработчика</a></li>
@@ -93,6 +117,16 @@
             <li><a href="#shortcuts">Shortcuts and Emmet</a></li>
             <li><a href="#game">Mini-project "Guess the number"</a></li>
         </ol>
+        <ol data-lang="tk">
+            <li><a href="#vscode">VS Code-y gurnamak</a></li>
+            <li><a href="#extensions">JS işläp düzüji üçin peýdaly giňeltmeler</a></li>
+            <li><a href="#settings">VS Code-y özüňize laýyklap sazlamak</a></li>
+            <li><a href="#liveserver">Live Server — sahypany awtomatik täzelemek</a></li>
+            <li><a href="#node">Node.js we npm — bu näme we näme üçin gerek</a></li>
+            <li><a href="#run-node">JS-i Node.js arkaly ilkinji gezek işletmek</a></li>
+            <li><a href="#shortcuts">Gyzgyn düwmeler we Emmet</a></li>
+            <li><a href="#game">«Sany tap» mini-taslamasy</a></li>
+        </ol>
     </div>
 
     <hr>
@@ -100,23 +134,28 @@
     <!-- ============================================================ -->
     <h2 id="vscode" data-lang="ru">1. Установка VS Code</h2>
     <h2 id="vscode" data-lang="en">1. Installing VS Code</h2>
+    <h2 id="vscode" data-lang="tk">1. VS Code-y gurnamak</h2>
 
     <p data-lang="ru"><strong>Visual Studio Code</strong> (или просто VS Code) — самый популярный редактор кода в мире. Его используют более <strong>70% разработчиков</strong>. Он бесплатный, быстрый, кросс-платформенный (Windows, Mac, Linux) и с огромным количеством расширений. Именно его мы будем использовать весь курс.</p>
     <p data-lang="en"><strong>Visual Studio Code</strong> (or just VS Code) is the most popular code editor in the world. Over <strong>70% of developers</strong> use it. It's free, fast, cross-platform (Windows, Mac, Linux), and has a huge ecosystem of extensions. We'll use it throughout the course.</p>
+    <p data-lang="tk"><strong>Visual Studio Code</strong> (ýa-da diňe VS Code) — dünýäde iň meşhur kod redaktory. Ony <strong>işläp düzüjileriň 70%-den gowragy</strong> ulanýar. Ol mugt, çalt, köp platformaly (Windows, Mac, Linux) we onuň üçin giňeltmeleriň ägirt köp sany bar. Biz tutuş kursuň dowamynda hut şony ulanarys.</p>
 
     <div class="important">
         <p data-lang="ru">Не путайте <strong>VS Code</strong> с <strong>Visual Studio</strong>. Это разные продукты Microsoft. Visual Studio — тяжёлая среда для C#/C++, нам она не нужна. Нам нужен <strong>VS Code</strong> — лёгкий редактор.</p>
         <p data-lang="en">Don't confuse <strong>VS Code</strong> with <strong>Visual Studio</strong>. These are different Microsoft products. Visual Studio is a heavy IDE for C#/C++ and we don't need it. We need <strong>VS Code</strong> — a lightweight editor.</p>
+        <p data-lang="tk"><strong>VS Code</strong>-y <strong>Visual Studio</strong> bilen garjaşdyrmaň. Bular Microsoft-yň dürli önümleri. Visual Studio — C#/C++ üçin agyr gurşaw, ol bize gerek däl. Bize <strong>VS Code</strong> — ýeňil redaktor gerek.</p>
     </div>
 
     <h3 data-lang="ru">Пошаговая установка</h3>
     <h3 data-lang="en">Step-by-step installation</h3>
+    <h3 data-lang="tk">Ädimme-ädim gurnamak</h3>
 
     <div class="step">
         <div class="step-number">1</div>
         <div>
             <p data-lang="ru">Откройте в браузере сайт <strong>code.visualstudio.com</strong></p>
             <p data-lang="en">Open <strong>code.visualstudio.com</strong> in your browser</p>
+            <p data-lang="tk">Brauzerde <strong>code.visualstudio.com</strong> saýtyny açyň</p>
         </div>
     </div>
     <div class="step">
@@ -124,6 +163,7 @@
         <div>
             <p data-lang="ru">Нажмите большую синюю кнопку <strong>Download</strong> — сайт сам определит вашу операционную систему.</p>
             <p data-lang="en">Click the big blue <strong>Download</strong> button — the site will auto-detect your operating system.</p>
+            <p data-lang="tk">Uly gök <strong>Download</strong> düwmesine basyň — saýt operasion ulgamyňyzy özi kesgitlär.</p>
         </div>
     </div>
     <div class="step">
@@ -131,6 +171,7 @@
         <div>
             <p data-lang="ru">Запустите скачанный установщик. В мастере установки поставьте галочки:</p>
             <p data-lang="en">Run the downloaded installer. In the setup wizard, check these options:</p>
+            <p data-lang="tk">Ýüklenen gurnaýjyny işlediň. Gurnamak ussadynda şu belgileri goýuň:</p>
             <ul data-lang="ru">
                 <li><strong>Add "Open with Code" action to Windows Explorer file context menu</strong> — позволит открывать файлы правым кликом</li>
                 <li><strong>Add "Open with Code" action to Windows Explorer directory context menu</strong> — то же для папок</li>
@@ -141,6 +182,11 @@
                 <li><strong>Add "Open with Code" action to Windows Explorer directory context menu</strong> — same for folders</li>
                 <li><strong>Add to PATH</strong> — lets you launch VS Code from terminal with <code>code .</code></li>
             </ul>
+            <ul data-lang="tk">
+                <li><strong>Add "Open with Code" action to Windows Explorer file context menu</strong> — faýllary sag düwme bilen açmaga mümkinçilik berer</li>
+                <li><strong>Add "Open with Code" action to Windows Explorer directory context menu</strong> — bukjalar üçin hem şonuň ýaly</li>
+                <li><strong>Add to PATH</strong> — VS Code-y terminaldan <code>code .</code> buýrugy bilen işletmäge mümkinçilik berer</li>
+            </ul>
         </div>
     </div>
     <div class="step">
@@ -148,14 +194,17 @@
         <div>
             <p data-lang="ru">Дождитесь окончания установки и запустите VS Code. При первом запуске вам предложат выбрать тему (светлая/тёмная) — выбирайте то, что нравится, это можно поменять позже.</p>
             <p data-lang="en">Wait for installation to finish and launch VS Code. On the first run you'll be asked to pick a theme (light/dark) — choose what you like, it can be changed later.</p>
+            <p data-lang="tk">Gurnamagyň tamamlanmagyna garaşyň we VS Code-y işlediň. Ilkinji gezek işledeniňizde size tema saýlamak teklip ediler (açyk/garaňky) — halanyňyzy saýlaň, muny soňra üýtgedip bolýar.</p>
         </div>
     </div>
 
     <h3 data-lang="ru">Знакомство с интерфейсом</h3>
     <h3 data-lang="en">Getting familiar with the interface</h3>
+    <h3 data-lang="tk">Interfeýs bilen tanyşlyk</h3>
 
     <p data-lang="ru">Окно VS Code состоит из четырёх основных частей:</p>
     <p data-lang="en">The VS Code window has four main parts:</p>
+    <p data-lang="tk">VS Code penjiresi dört esasy bölekden ybarat:</p>
 
     <ul data-lang="ru">
         <li><strong>Activity Bar</strong> (левая полоска с иконками) — Files, Search, Source Control (Git), Debug, Extensions</li>
@@ -171,10 +220,18 @@
         <li><strong>Status Bar</strong> (bottom) — file info: language, encoding, Git branch, cursor position</li>
         <li><strong>Terminal</strong> (opens with <span class="kbd">Ctrl</span>+<span class="kbd">`</span>) — built-in command line</li>
     </ul>
+    <ul data-lang="tk">
+        <li><strong>Activity Bar</strong> (nyşanly çep zolak) — Files, Search, Source Control (Git), Debug, Extensions</li>
+        <li><strong>Side Bar</strong> — taslamaňyzyň faýllarynyň agaç görnüşli gurluşy</li>
+        <li><strong>Editor</strong> — kod ýazýan esasy penjiräňiz</li>
+        <li><strong>Status Bar</strong> (aşakda) — faýl barada maglumat: dil, kodlama, Git şahasy, kursoryň ýagdaýy</li>
+        <li><strong>Terminal</strong> (<span class="kbd">Ctrl</span>+<span class="kbd">`</span> bilen açylýar) — içine gurlan buýruk setiri</li>
+    </ul>
 
     <div class="pro-tip">
         <p data-lang="ru">Работайте с <strong>папкой проекта</strong>, а не с отдельными файлами. <em>File → Open Folder</em> (или <em>File → Open...</em> на Mac). Тогда VS Code показывает всю структуру проекта в Side Bar, а расширения (Git, Live Server) работают правильно.</p>
         <p data-lang="en">Work with a <strong>project folder</strong>, not individual files. <em>File → Open Folder</em> (or <em>File → Open...</em> on Mac). This way VS Code shows the entire project structure in the Side Bar and extensions (Git, Live Server) work correctly.</p>
+        <p data-lang="tk">Aýry faýllar bilen däl-de, <strong>taslamanyň bukjasy</strong> bilen işläň. <em>File → Open Folder</em> (Mac-da <em>File → Open...</em>). Şonda VS Code Side Bar-da taslamanyň ähli gurluşyny görkezýär, giňeltmeler (Git, Live Server) bolsa dogry işleýär.</p>
     </div>
 
     <hr>
@@ -182,13 +239,16 @@
     <!-- ============================================================ -->
     <h2 id="extensions" data-lang="ru">2. Полезные расширения для JS-разработчика</h2>
     <h2 id="extensions" data-lang="en">2. Useful extensions for a JS developer</h2>
+    <h2 id="extensions" data-lang="tk">2. JS işläp düzüji üçin peýdaly giňeltmeler</h2>
 
     <p data-lang="ru">Расширения превращают VS Code из «текстового редактора» в мощный инструмент. Вот 5 обязательных расширений для начинающего JS-разработчика:</p>
     <p data-lang="en">Extensions turn VS Code from a "text editor" into a powerful tool. Here are the 5 must-have extensions for a beginner JS developer:</p>
+    <p data-lang="tk">Giňeltmeler VS Code-y «tekst redaktoryndan» güýçli gurala öwürýär. Başlangyç JS işläp düzüji üçin 5 hökmany giňeltme:</p>
 
     <table>
         <thead data-lang="ru"><tr><th>Расширение</th><th>Что делает</th><th>Зачем нужно</th></tr></thead>
         <thead data-lang="en"><tr><th>Extension</th><th>What it does</th><th>Why you need it</th></tr></thead>
+        <thead data-lang="tk"><tr><th>Giňeltme</th><th>Näme edýär</th><th>Näme üçin gerek</th></tr></thead>
         <tbody data-lang="ru">
             <tr><td><strong>Live Server</strong><br><small>ritwickdey.LiveServer</small></td><td>Локальный сервер с авто-перезагрузкой страницы при сохранении файла</td><td>Не надо каждый раз вручную обновлять браузер</td></tr>
             <tr><td><strong>Prettier</strong><br><small>esbenp.prettier-vscode</small></td><td>Авто-форматирование кода (пробелы, отступы, кавычки)</td><td>Код всегда выглядит одинаково аккуратно</td></tr>
@@ -203,16 +263,25 @@
             <tr><td><strong>JavaScript (ES6) code snippets</strong><br><small>xabikos.JavaScriptSnippets</small></td><td>Quick snippets: <code>clg</code> → <code>console.log()</code>, <code>fn</code> → function</td><td>Write code 3x faster</td></tr>
             <tr><td><strong>Auto Rename Tag</strong><br><small>formulahendry.auto-rename-tag</small></td><td>Rename an opening tag — the closing tag renames automatically</td><td>Saves time when editing HTML</td></tr>
         </tbody>
+        <tbody data-lang="tk">
+            <tr><td><strong>Live Server</strong><br><small>ritwickdey.LiveServer</small></td><td>Faýl ýatda saklananda sahypany awtomatik täzeden ýükleýän ýerli serwer</td><td>Brauzeri her gezek el bilen täzelemek gerek däl</td></tr>
+            <tr><td><strong>Prettier</strong><br><small>esbenp.prettier-vscode</small></td><td>Kody awtomatik formatlamak (boşluklar, setir başyndaky boşluklar, dyrnaklar)</td><td>Kod elmydama birmeňzeş tertipli görünýär</td></tr>
+            <tr><td><strong>Error Lens</strong><br><small>usernamehw.errorlens</small></td><td>Ýalňyşlyklary göni kod setiriniň içinde görkezýär</td><td>Gyzyl çyzylan ýere kursor getirmek gerek däl — ýalňyşlyk derrew görünýär</td></tr>
+            <tr><td><strong>JavaScript (ES6) code snippets</strong><br><small>xabikos.JavaScriptSnippets</small></td><td>Çalt şablonlar (snippets): <code>clg</code> → <code>console.log()</code>, <code>fn</code> → funksiýa</td><td>Kody 3 esse çalt ýazýarsyňyz</td></tr>
+            <tr><td><strong>Auto Rename Tag</strong><br><small>formulahendry.auto-rename-tag</small></td><td>Açýan tegiň adyny üýtgedeniňizde ýapýan teg awtomatik üýtgeýär</td><td>HTML redaktirlenende wagt tygşytlaýar</td></tr>
+        </tbody>
     </table>
 
     <h3 data-lang="ru">Как установить расширение</h3>
     <h3 data-lang="en">How to install an extension</h3>
+    <h3 data-lang="tk">Giňeltmäni nädip gurnamaly</h3>
 
     <div class="step">
         <div class="step-number">1</div>
         <div>
             <p data-lang="ru">Нажмите на иконку <strong>Extensions</strong> в Activity Bar (или <span class="kbd">Ctrl</span>+<span class="kbd">Shift</span>+<span class="kbd">X</span>).</p>
             <p data-lang="en">Click the <strong>Extensions</strong> icon in the Activity Bar (or <span class="kbd">Ctrl</span>+<span class="kbd">Shift</span>+<span class="kbd">X</span>).</p>
+            <p data-lang="tk">Activity Bar-daky <strong>Extensions</strong> nyşanyna basyň (ýa-da <span class="kbd">Ctrl</span>+<span class="kbd">Shift</span>+<span class="kbd">X</span>).</p>
         </div>
     </div>
     <div class="step">
@@ -220,6 +289,7 @@
         <div>
             <p data-lang="ru">В строке поиска введите название, например <code>Live Server</code>.</p>
             <p data-lang="en">In the search box, type the name, e.g. <code>Live Server</code>.</p>
+            <p data-lang="tk">Gözleg setirine adyny ýazyň, mysal üçin <code>Live Server</code>.</p>
         </div>
     </div>
     <div class="step">
@@ -227,12 +297,14 @@
         <div>
             <p data-lang="ru">Выберите нужное (обычно первое в списке) и нажмите <strong>Install</strong>. Проверьте, что установили именно то расширение — по имени автора (см. таблицу выше).</p>
             <p data-lang="en">Pick the right one (usually the first result) and click <strong>Install</strong>. Check the author name matches the table above.</p>
+            <p data-lang="tk">Gerekli giňeltmäni saýlaň (adatça sanawda birinji) we <strong>Install</strong> basyň. Hut şol giňeltmäni gurnandygyňyzy awtoryň ady boýunça barlaň (ýokardaky tablisa serediň).</p>
         </div>
     </div>
 
     <div class="mistake">
         <p data-lang="ru">Не ставьте <strong>все подряд</strong> расширения, которые попадаются. Каждое расширение замедляет VS Code. Хорошее правило: ставьте только то, что реально используете. Остальное — удаляйте через кнопку <em>Uninstall</em>.</p>
         <p data-lang="en">Don't install <strong>every extension</strong> you come across. Each extension slows down VS Code. Good rule: install only what you actually use. Remove the rest via the <em>Uninstall</em> button.</p>
+        <p data-lang="tk">Duşan <strong>ähli giňeltmeleri yzly-yzyna</strong> gurnamaň. Her giňeltme VS Code-y haýalladýar. Gowy düzgün: diňe hakykatdan ulanýan zadyňyzy gurnaň. Galanlaryny <em>Uninstall</em> düwmesi arkaly aýyryň.</p>
     </div>
 
     <hr>
@@ -240,12 +312,15 @@
     <!-- ============================================================ -->
     <h2 id="settings" data-lang="ru">3. Настройка VS Code под себя</h2>
     <h2 id="settings" data-lang="en">3. Customizing VS Code</h2>
+    <h2 id="settings" data-lang="tk">3. VS Code-y özüňize laýyklap sazlamak</h2>
 
     <p data-lang="ru">Чтобы открыть настройки: <span class="kbd">Ctrl</span>+<span class="kbd">,</span> (или <em>File → Preferences → Settings</em> на Windows, <em>Code → Settings</em> на Mac).</p>
     <p data-lang="en">To open settings: <span class="kbd">Ctrl</span>+<span class="kbd">,</span> (or <em>File → Preferences → Settings</em> on Windows, <em>Code → Settings</em> on Mac).</p>
+    <p data-lang="tk">Sazlamalary açmak üçin: <span class="kbd">Ctrl</span>+<span class="kbd">,</span> (ýa-da Windows-da <em>File → Preferences → Settings</em>, Mac-da <em>Code → Settings</em>).</p>
 
     <h3 data-lang="ru">Минимальный набор настроек для JS</h3>
     <h3 data-lang="en">Minimum settings for JS</h3>
+    <h3 data-lang="tk">JS üçin iň az zerur sazlamalar</h3>
 
     <ol data-lang="ru">
         <li><strong>Auto Save</strong> → выберите <code>onFocusChange</code> (сохранять при переключении на другое окно). Больше не потеряете несохранённое!</li>
@@ -263,17 +338,28 @@
         <li><strong>Font Family</strong> → <code>Fira Code</code> or <code>JetBrains Mono</code> (monospace fonts with ligatures).</li>
         <li><strong>Font Ligatures</strong> → <code>true</code> — symbols like <code>=&gt;</code>, <code>!=</code>, <code>===</code> will render beautifully.</li>
     </ol>
+    <ol data-lang="tk">
+        <li><strong>Auto Save</strong> → <code>onFocusChange</code> saýlaň (başga penjirä geçilende ýatda saklamak). Indi ýatda saklanmadyk zady ýitirmersiňiz!</li>
+        <li><strong>Format On Save</strong> → belgi goýuň. Her ýatda saklanyňyzda kod Prettier bilen awtomatik formatlanar.</li>
+        <li><strong>Default Formatter</strong> → <code>Prettier - Code formatter</code> saýlaň.</li>
+        <li><strong>Tab Size</strong> → 2 (JS jemgyýetiniň standarty) ýa-da 4 (öwrenişen bolsaňyz).</li>
+        <li><strong>Font Family</strong> → <code>Fira Code</code> ýa-da <code>JetBrains Mono</code> (ligaturaly, birmeňzeş giňlikli şriftler).</li>
+        <li><strong>Font Ligatures</strong> → <code>true</code> — <code>=&gt;</code>, <code>!=</code>, <code>===</code> nyşanlary owadan çekiler.</li>
+    </ol>
 
     <div class="analogy">
         <p data-lang="ru">Настройка редактора — как настройка рабочего стола дома. Можно работать за любым, но за <em>своим</em>, удобным — производительность в 2 раза выше. Один раз потратьте 20 минут — и следующий год будете радоваться.</p>
         <p data-lang="en">Setting up your editor is like setting up your desk at home. You can work at any desk, but at <em>your own</em>, comfortable one — productivity is 2x higher. Spend 20 minutes once — and enjoy it for the next year.</p>
+        <p data-lang="tk">Redaktory sazlamak — öýde iş stoluňyzy sazlamak ýaly. Islendik stolda işläp bolýar, emma <em>özüňiziň</em> amatly stoluňyzda öndürijilik 2 esse ýokary. Bir gezek 20 minut sarp ediň — we tutuş ýyl muňa begenersiňiz.</p>
     </div>
 
     <h3 data-lang="ru">Темы оформления</h3>
     <h3 data-lang="en">Color themes</h3>
+    <h3 data-lang="tk">Bezeg temalary</h3>
 
     <p data-lang="ru">Тему меняют через <span class="kbd">Ctrl</span>+<span class="kbd">K</span>, <span class="kbd">Ctrl</span>+<span class="kbd">T</span> или <em>File → Preferences → Color Theme</em>. Популярные бесплатные темы:</p>
     <p data-lang="en">Change theme via <span class="kbd">Ctrl</span>+<span class="kbd">K</span>, <span class="kbd">Ctrl</span>+<span class="kbd">T</span> or <em>File → Preferences → Color Theme</em>. Popular free themes:</p>
+    <p data-lang="tk">Temany <span class="kbd">Ctrl</span>+<span class="kbd">K</span>, <span class="kbd">Ctrl</span>+<span class="kbd">T</span> ýa-da <em>File → Preferences → Color Theme</em> arkaly üýtgedýärler. Meşhur mugt temalar:</p>
 
     <ul data-lang="ru">
         <li><strong>One Dark Pro</strong> — классика, тёмная</li>
@@ -289,21 +375,32 @@
         <li><strong>GitHub Theme</strong> — light/dark GitHub-style</li>
         <li><strong>Default Dark Modern</strong> — built-in, minimalist</li>
     </ul>
+    <ul data-lang="tk">
+        <li><strong>One Dark Pro</strong> — klassika, garaňky</li>
+        <li><strong>Dracula Official</strong> — goýy gyrmyzy, owadan</li>
+        <li><strong>Material Theme</strong> — bir giňeltmede köp wariant</li>
+        <li><strong>GitHub Theme</strong> — GitHub stilinde açyk/garaňky</li>
+        <li><strong>Default Dark Modern</strong> — içine gurlan, minimalistik</li>
+    </ul>
 
     <hr>
 
     <!-- ============================================================ -->
     <h2 id="liveserver" data-lang="ru">4. Live Server — авто-обновление страницы</h2>
     <h2 id="liveserver" data-lang="en">4. Live Server — auto-reload</h2>
+    <h2 id="liveserver" data-lang="tk">4. Live Server — sahypany awtomatik täzelemek</h2>
 
     <p data-lang="ru">В прошлом занятии вы узнали, что такое Live Server. Сегодня разберём, <strong>зачем</strong> он нужен и <strong>как работает</strong>.</p>
     <p data-lang="en">In the last lesson you learned what Live Server is. Today we'll understand <strong>why</strong> it's needed and <strong>how it works</strong>.</p>
+    <p data-lang="tk">Geçen sapakda siz Live Server-iň näme bolýandygyny öwrendiňiz. Şu gün onuň <strong>näme üçin</strong> gerekdigini we <strong>nähili işleýändigini</strong> seljereris.</p>
 
     <h3 data-lang="ru">Проблема без Live Server</h3>
     <h3 data-lang="en">The problem without Live Server</h3>
+    <h3 data-lang="tk">Live Server bolmasa ýüze çykýan mesele</h3>
 
     <p data-lang="ru">Обычно, чтобы увидеть HTML-страницу, вы делаете двойной клик по файлу — браузер открывает её через <code>file:///</code>. Это работает, но:</p>
     <p data-lang="en">Normally, to see an HTML page, you double-click the file — the browser opens it via <code>file:///</code>. This works, but:</p>
+    <p data-lang="tk">Adatça HTML sahypany görmek üçin faýla iki gezek basýarsyňyz — brauzer ony <code>file:///</code> arkaly açýar. Bu işleýär, ýöne:</p>
 
     <ul data-lang="ru">
         <li>После каждой правки надо <strong>вручную</strong> обновлять браузер (<span class="kbd">F5</span>)</li>
@@ -315,28 +412,40 @@
         <li>Some things (like loading JSON via <code>fetch</code>) work <strong>only over HTTP</strong>, not from a file</li>
         <li>ES6 modules (<code>import/export</code>) require HTTP and fail when opened directly</li>
     </ul>
+    <ul data-lang="tk">
+        <li>Her üýtgetmeden soň brauzeri <strong>el bilen</strong> täzelemeli (<span class="kbd">F5</span>)</li>
+        <li>Käbir zatlar (mysal üçin, <code>fetch</code> arkaly JSON ýüklemek) faýldan däl-de, <strong>diňe HTTP arkaly</strong> işleýär</li>
+        <li>ES6 modullary (<code>import/export</code>) HTTP talap edýär we göni açylanda işlemeýär</li>
+    </ul>
 
     <h3 data-lang="ru">Решение: Live Server</h3>
     <h3 data-lang="en">Solution: Live Server</h3>
+    <h3 data-lang="tk">Çözgüt: Live Server</h3>
 
     <p data-lang="ru">Расширение Live Server поднимает у вас на компьютере <strong>маленький HTTP-сервер</strong> и открывает страницу по адресу вроде <code>http://127.0.0.1:5500</code>. При каждом сохранении файла страница автоматически перезагружается — без нажатия F5.</p>
     <p data-lang="en">Live Server starts a <strong>tiny HTTP server</strong> on your machine and opens the page at an address like <code>http://127.0.0.1:5500</code>. When you save a file, the page auto-reloads — no F5 needed.</p>
+    <p data-lang="tk">Live Server giňeltmesi kompýuteriňizde <strong>kiçijik HTTP serwer</strong> işledýär we sahypany <code>http://127.0.0.1:5500</code> ýaly salgyda açýar. Faýly her gezek ýatda saklanyňyzda sahypa F5 basmazdan awtomatik täzeden ýüklenýär.</p>
 
     <h3 data-lang="ru">Как запустить</h3>
     <h3 data-lang="en">How to launch it</h3>
+    <h3 data-lang="tk">Nädip işletmeli</h3>
 
     <p data-lang="ru"><strong>Способ 1:</strong> Правый клик по <code>index.html</code> в VS Code → <em>Open with Live Server</em>.</p>
     <p data-lang="en"><strong>Method 1:</strong> Right-click <code>index.html</code> in VS Code → <em>Open with Live Server</em>.</p>
+    <p data-lang="tk"><strong>1-nji usul:</strong> VS Code-da <code>index.html</code> faýlyna sag düwme bilen basyň → <em>Open with Live Server</em>.</p>
 
     <p data-lang="ru"><strong>Способ 2:</strong> Внизу справа в VS Code появится кнопка <strong>Go Live</strong> — нажмите на неё.</p>
     <p data-lang="en"><strong>Method 2:</strong> Bottom-right of VS Code has a <strong>Go Live</strong> button — click it.</p>
+    <p data-lang="tk"><strong>2-nji usul:</strong> VS Code-yň aşaky sag burçunda <strong>Go Live</strong> düwmesi peýda bolar — oňa basyň.</p>
 
     <p data-lang="ru"><strong>Остановить сервер:</strong> ещё раз нажать на ту же кнопку (теперь она называется <strong>Port: 5500</strong>).</p>
     <p data-lang="en"><strong>Stop the server:</strong> click the same button again (now labeled <strong>Port: 5500</strong>).</p>
+    <p data-lang="tk"><strong>Serweri saklamak:</strong> şol düwmä ýene bir gezek basyň (indi onuň ady <strong>Port: 5500</strong>).</p>
 
     <div class="try-it">
         <p data-lang="ru">Создайте папку <code>live-test/</code> с файлом <code>index.html</code>:</p>
         <p data-lang="en">Create a folder <code>live-test/</code> with an <code>index.html</code> file:</p>
+        <p data-lang="tk"><code>index.html</code> faýly bolan <code>live-test/</code> bukjasyny dörediň:</p>
         <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;body&gt;
@@ -345,6 +454,7 @@
 &lt;/html&gt;</code></pre>
         <p data-lang="ru">Запустите Live Server. Затем поменяйте текст заголовка на «<em>Моя крутая страница</em>», сохраните (Ctrl+S). Страница обновится сама — без F5!</p>
         <p data-lang="en">Start Live Server. Then change the heading to "<em>My cool page</em>" and save (Ctrl+S). The page reloads by itself — no F5!</p>
+        <p data-lang="tk">Live Server-i işlediň. Soňra sözbaşynyň tekstini «<em>Meniň ajaýyp sahypam</em>» diýip üýtgediň we ýatda saklaň (Ctrl+S). Sahypa F5-siz özi täzelener!</p>
     </div>
 
     <hr>
@@ -352,35 +462,44 @@
     <!-- ============================================================ -->
     <h2 id="node" data-lang="ru">5. Node.js и npm — что это и зачем</h2>
     <h2 id="node" data-lang="en">5. Node.js and npm — what and why</h2>
+    <h2 id="node" data-lang="tk">5. Node.js we npm — bu näme we näme üçin gerek</h2>
 
     <p data-lang="ru">До 2009 года JavaScript жил только в браузере. Потом Райан Даль взял движок <strong>V8</strong> из Chrome и упаковал его в отдельную программу, которая работает в операционной системе. Так появился <strong>Node.js</strong>.</p>
     <p data-lang="en">Before 2009, JavaScript lived only in the browser. Then Ryan Dahl took the <strong>V8</strong> engine from Chrome and wrapped it in a standalone program that runs in the operating system. That's how <strong>Node.js</strong> was born.</p>
+    <p data-lang="tk">2009-njy ýyla çenli JavaScript diňe brauzerde ýaşaýardy. Soňra Raýan Dal Chrome-dan <strong>V8</strong> hereketlendirijisini alyp, ony operasion ulgamda işleýän aýratyn programma salyp gaplady. Şeýdip <strong>Node.js</strong> peýda boldy.</p>
 
     <div style="background:#fffbeb;border:1px solid #fde047;padding:16px 20px;border-radius:8px;margin:16px 0;">
         <p data-lang="ru"><strong>Node.js</strong> — это <strong>среда исполнения JavaScript</strong>, которая работает вне браузера. Использует тот же движок V8, что и Chrome. Позволяет запускать JS-файлы командой <code>node filename.js</code> в терминале.</p>
         <p data-lang="en"><strong>Node.js</strong> is a <strong>JavaScript runtime</strong> that runs outside the browser. It uses the same V8 engine as Chrome. It lets you run JS files with <code>node filename.js</code> in the terminal.</p>
+        <p data-lang="tk"><strong>Node.js</strong> — brauzerden daşarda işleýän <strong>JavaScript ýerine ýetiriş gurşawy</strong>. Chrome bilen şol bir V8 hereketlendirijisini ulanýar. JS faýllaryny terminalda <code>node filename.js</code> buýrugy bilen işletmäge mümkinçilik berýär.</p>
     </div>
 
     <h3 data-lang="ru">Зачем нам Node.js на этом этапе</h3>
     <h3 data-lang="en">Why we need Node.js at this stage</h3>
+    <h3 data-lang="tk">Node.js bize şu tapgyrda näme üçin gerek</h3>
 
     <p data-lang="ru">Сейчас — чтобы <strong>быстро проверять маленькие куски кода</strong> без лишней возни с HTML-страницей. Написал <code>test.js</code>, выполнил <code>node test.js</code> в терминале — сразу увидел результат. В будущем Node понадобится для установки библиотек через npm, сборки проектов, создания серверов.</p>
     <p data-lang="en">Right now — to <strong>quickly test small chunks of code</strong> without the hassle of an HTML page. You write <code>test.js</code>, run <code>node test.js</code> in the terminal — and instantly see the result. Later Node will be needed for installing libraries via npm, building projects, and creating servers.</p>
+    <p data-lang="tk">Häzir — HTML sahypa bilen artykmaç hysyrdysyz <strong>kiçi kod böleklerini çalt barlamak</strong> üçin. <code>test.js</code> ýazdyňyz, terminalda <code>node test.js</code> ýerine ýetirdiňiz — netijäni derrew gördüňiz. Geljekde Node npm arkaly kitaphanalary gurnamak, taslamalary ýygnamak we serwerleri döretmek üçin gerek bolar.</p>
 
     <h3 data-lang="ru">Что такое npm</h3>
     <h3 data-lang="en">What is npm</h3>
+    <h3 data-lang="tk">npm näme</h3>
 
     <p data-lang="ru"><strong>npm</strong> (Node Package Manager) — это менеджер пакетов, который устанавливается <strong>вместе с Node.js</strong>. Через него вы скачиваете и подключаете готовые библиотеки: React, Express, Lodash и ещё более миллиона. В мире JavaScript npm — это «магазин приложений» для разработчиков.</p>
     <p data-lang="en"><strong>npm</strong> (Node Package Manager) is a package manager that installs <strong>together with Node.js</strong>. Through it you download and use ready-made libraries: React, Express, Lodash, and over a million others. In the JS world, npm is the "app store" for developers.</p>
+    <p data-lang="tk"><strong>npm</strong> (Node Package Manager) — <strong>Node.js bilen bilelikde</strong> gurnalýan paket dolandyryjy. Onuň üsti bilen taýýar kitaphanalary ýükläp, birikdirýärsiňiz: React, Express, Lodash we ýene bir milliondan gowragy. JavaScript dünýäsinde npm — işläp düzüjiler üçin «programmalar dükany».</p>
 
     <h3 data-lang="ru">Установка Node.js</h3>
     <h3 data-lang="en">Installing Node.js</h3>
+    <h3 data-lang="tk">Node.js-i gurnamak</h3>
 
     <div class="step">
         <div class="step-number">1</div>
         <div>
             <p data-lang="ru">Откройте сайт <strong>nodejs.org</strong>.</p>
             <p data-lang="en">Open <strong>nodejs.org</strong>.</p>
+            <p data-lang="tk"><strong>nodejs.org</strong> saýtyny açyň.</p>
         </div>
     </div>
     <div class="step">
@@ -388,6 +507,7 @@
         <div>
             <p data-lang="ru">Скачайте версию <strong>LTS</strong> (Long Term Support) — она стабильная и рекомендуется для большинства пользователей. Не берите «Current» — там могут быть сырые фичи.</p>
             <p data-lang="en">Download the <strong>LTS</strong> (Long Term Support) version — it's stable and recommended for most users. Don't pick "Current" — it may contain raw features.</p>
+            <p data-lang="tk"><strong>LTS</strong> (Long Term Support) wersiýasyny ýükläň — ol durnukly we ulanyjylaryň köpüsine maslahat berilýär. «Current» wersiýany almaň — onda doly taýýar bolmadyk aýratynlyklar bolup biler.</p>
         </div>
     </div>
     <div class="step">
@@ -395,6 +515,7 @@
         <div>
             <p data-lang="ru">Запустите установщик, соглашайтесь с лицензией, оставьте все галочки по умолчанию. npm установится автоматически.</p>
             <p data-lang="en">Run the installer, accept the license, keep all defaults. npm installs automatically.</p>
+            <p data-lang="tk">Gurnaýjyny işlediň, ygtyýarnama bilen razylaşyň, ähli belgileri üýtgetmän galdyryň. npm awtomatik gurnalar.</p>
         </div>
     </div>
     <div class="step">
@@ -402,16 +523,19 @@
         <div>
             <p data-lang="ru">Проверьте установку. Откройте терминал (в VS Code: <span class="kbd">Ctrl</span>+<span class="kbd">`</span>) и выполните:</p>
             <p data-lang="en">Verify the installation. Open a terminal (in VS Code: <span class="kbd">Ctrl</span>+<span class="kbd">`</span>) and run:</p>
+            <p data-lang="tk">Gurnalyşy barlaň. Terminaly açyň (VS Code-da: <span class="kbd">Ctrl</span>+<span class="kbd">`</span>) we şuny ýerine ýetiriň:</p>
             <pre><code>node --version
 npm --version</code></pre>
             <p data-lang="ru">Если увидите что-то вроде <code>v20.11.0</code> и <code>10.2.4</code> — всё установлено правильно.</p>
             <p data-lang="en">If you see something like <code>v20.11.0</code> and <code>10.2.4</code> — everything is installed correctly.</p>
+            <p data-lang="tk">Eger <code>v20.11.0</code> we <code>10.2.4</code> ýaly bir zat görseňiz — hemme zat dogry gurnalypdyr.</p>
         </div>
     </div>
 
     <div class="mistake">
         <p data-lang="ru">Если команды <code>node</code> и <code>npm</code> <strong>не распознаются</strong> — скорее всего, Node установился, но не добавлен в <em>PATH</em>. Решение: закрыть и заново открыть терминал (в VS Code достаточно закрыть и заново открыть вкладку терминала). Если не помогло — переустановите Node.js, убедившись, что в установщике стоит галочка «Add to PATH».</p>
         <p data-lang="en">If <code>node</code> and <code>npm</code> commands are <strong>not recognized</strong> — Node likely installed but isn't in <em>PATH</em>. Fix: close and reopen the terminal (in VS Code just close and reopen the terminal tab). If that doesn't help — reinstall Node, making sure "Add to PATH" is checked.</p>
+        <p data-lang="tk">Eger <code>node</code> we <code>npm</code> buýruklary <strong>tanalmasa</strong> — Node, ähtimal, gurnalandyr, emma <em>PATH</em>-e goşulmandyr. Çözgüt: terminaly ýapyp, täzeden açyň (VS Code-da terminal goýmasyny ýapyp, täzeden açmak ýeterlik). Kömek etmese — gurnaýjyda «Add to PATH» belgisiniň goýlandygyna göz ýetirip, Node.js-i gaýtadan gurnaň.</p>
     </div>
 
     <hr>
@@ -419,12 +543,14 @@ npm --version</code></pre>
     <!-- ============================================================ -->
     <h2 id="run-node" data-lang="ru">6. Первый запуск JS через Node.js</h2>
     <h2 id="run-node" data-lang="en">6. Running JS via Node.js</h2>
+    <h2 id="run-node" data-lang="tk">6. JS-i Node.js arkaly ilkinji gezek işletmek</h2>
 
     <div class="step">
         <div class="step-number">1</div>
         <div>
             <p data-lang="ru">Создайте папку <code>node-test/</code> и откройте её в VS Code.</p>
             <p data-lang="en">Create a folder <code>node-test/</code> and open it in VS Code.</p>
+            <p data-lang="tk"><code>node-test/</code> bukjasyny dörediň we ony VS Code-da açyň.</p>
         </div>
     </div>
     <div class="step">
@@ -432,6 +558,7 @@ npm --version</code></pre>
         <div>
             <p data-lang="ru">Создайте файл <code>hello.js</code>:</p>
             <p data-lang="en">Create a file <code>hello.js</code>:</p>
+            <p data-lang="tk"><code>hello.js</code> faýlyny dörediň:</p>
             <pre><code>console.log("Hello from Node.js!");
 console.log("2 + 2 =", 2 + 2);
 console.log("Сейчас:", new Date().toLocaleString());</code></pre>
@@ -442,6 +569,7 @@ console.log("Сейчас:", new Date().toLocaleString());</code></pre>
         <div>
             <p data-lang="ru">Откройте терминал в VS Code (<span class="kbd">Ctrl</span>+<span class="kbd">`</span>) и выполните:</p>
             <p data-lang="en">Open the terminal in VS Code (<span class="kbd">Ctrl</span>+<span class="kbd">`</span>) and run:</p>
+            <p data-lang="tk">VS Code-da terminaly açyň (<span class="kbd">Ctrl</span>+<span class="kbd">`</span>) we şuny ýerine ýetiriň:</p>
             <pre><code>node hello.js</code></pre>
         </div>
     </div>
@@ -449,6 +577,7 @@ console.log("Сейчас:", new Date().toLocaleString());</code></pre>
     <div class="result-box">
         <p data-lang="ru">В терминале вы увидите:</p>
         <p data-lang="en">You'll see in the terminal:</p>
+        <p data-lang="tk">Terminalda şuny görersiňiz:</p>
         <pre><code>Hello from Node.js!
 2 + 2 = 4
 Сейчас: 13.04.2026, 15:32:10</code></pre>
@@ -456,13 +585,16 @@ console.log("Сейчас:", new Date().toLocaleString());</code></pre>
 
     <h3 data-lang="ru">JS в браузере vs JS в Node.js</h3>
     <h3 data-lang="en">JS in the browser vs JS in Node.js</h3>
+    <h3 data-lang="tk">Brauzerdäki JS vs Node.js-däki JS</h3>
 
     <p data-lang="ru">Язык один и тот же, но среда исполнения разная. Поэтому доступны разные встроенные возможности:</p>
     <p data-lang="en">The language is the same, but the runtime differs. Different built-in features are available:</p>
+    <p data-lang="tk">Dil şol bir, emma ýerine ýetiriş gurşawy başga. Şonuň üçin dürli içine gurlan mümkinçilikler elýeterli:</p>
 
     <table>
         <thead data-lang="ru"><tr><th>Что</th><th>Браузер</th><th>Node.js</th></tr></thead>
         <thead data-lang="en"><tr><th>What</th><th>Browser</th><th>Node.js</th></tr></thead>
+        <thead data-lang="tk"><tr><th>Näme</th><th>Brauzer</th><th>Node.js</th></tr></thead>
         <tbody data-lang="ru">
             <tr><td><code>window</code>, <code>document</code></td><td>✅ Есть</td><td>❌ Нет</td></tr>
             <tr><td><code>alert</code>, <code>prompt</code>, <code>confirm</code></td><td>✅ Есть</td><td>❌ Нет</td></tr>
@@ -481,11 +613,21 @@ console.log("Сейчас:", new Date().toLocaleString());</code></pre>
             <tr><td><code>console.log</code>, <code>setTimeout</code>, <code>JSON</code></td><td>✅ Yes</td><td>✅ Yes</td></tr>
             <tr><td>Global object</td><td><code>window</code></td><td><code>global</code> / <code>globalThis</code></td></tr>
         </tbody>
+        <tbody data-lang="tk">
+            <tr><td><code>window</code>, <code>document</code></td><td>✅ Bar</td><td>❌ Ýok</td></tr>
+            <tr><td><code>alert</code>, <code>prompt</code>, <code>confirm</code></td><td>✅ Bar</td><td>❌ Ýok</td></tr>
+            <tr><td>DOM, klik wakalary</td><td>✅ Bar</td><td>❌ Ýok</td></tr>
+            <tr><td>Faýllary okamak/ýazmak (<code>fs</code>)</td><td>❌ Ýok</td><td>✅ Bar</td></tr>
+            <tr><td>HTTP serwerler</td><td>❌ Ýok</td><td>✅ Bar</td></tr>
+            <tr><td><code>console.log</code>, <code>setTimeout</code>, <code>JSON</code></td><td>✅ Bar</td><td>✅ Bar</td></tr>
+            <tr><td>Global obýekt</td><td><code>window</code></td><td><code>global</code> / <code>globalThis</code></td></tr>
+        </tbody>
     </table>
 
     <div class="pro-tip">
         <p data-lang="ru">Для обучения и тренировки чистого JS (переменные, функции, массивы, циклы) <strong>удобнее Node.js</strong> — быстрее запуск, понятнее ошибки. Для всего, что связано со страницей и пользователем — нужен <strong>браузер</strong> и DOM. В этом курсе мы будем использовать обе среды.</p>
         <p data-lang="en">For learning and practicing pure JS (variables, functions, arrays, loops), <strong>Node.js is more convenient</strong> — faster to run, clearer errors. For anything involving the page and user — you need the <strong>browser</strong> and DOM. In this course we'll use both.</p>
+        <p data-lang="tk">Arassa JS-i (üýtgeýänler, funksiýalar, massiwler, sikller) öwrenmek we türgenleşmek üçin <strong>Node.js has amatly</strong> — çalt işledilýär, ýalňyşlyklar has düşnükli. Sahypa we ulanyjy bilen baglanyşykly ähli zat üçin <strong>brauzer</strong> we DOM gerek. Bu kursda biz iki gurşawy hem ulanarys.</p>
     </div>
 
     <hr>
@@ -493,16 +635,20 @@ console.log("Сейчас:", new Date().toLocaleString());</code></pre>
     <!-- ============================================================ -->
     <h2 id="shortcuts" data-lang="ru">7. Горячие клавиши и Emmet</h2>
     <h2 id="shortcuts" data-lang="en">7. Shortcuts and Emmet</h2>
+    <h2 id="shortcuts" data-lang="tk">7. Gyzgyn düwmeler we Emmet</h2>
 
     <p data-lang="ru">Профессиональный разработчик почти не тратит время на набор «руками». Он использует <strong>горячие клавиши</strong> и <strong>автокомплит</strong>. Это кажется мелочью, но за год экономит недели времени.</p>
     <p data-lang="en">A professional developer barely types "by hand". They use <strong>shortcuts</strong> and <strong>autocomplete</strong>. It seems minor, but saves weeks of time over a year.</p>
+    <p data-lang="tk">Hünärmen işläp düzüji «el bilen» ýazmaga wagt sarp etmeýär diýen ýaly. Ol <strong>gyzgyn düwmeleri</strong> we <strong>awtomatik doldurmagy</strong> ulanýar. Bu ownuk zat ýaly görünýär, emma bir ýylda hepdeläp wagty tygşytlaýar.</p>
 
     <h3 data-lang="ru">Топ-10 горячих клавиш VS Code</h3>
     <h3 data-lang="en">Top 10 VS Code shortcuts</h3>
+    <h3 data-lang="tk">VS Code-yň iň gerekli 10 gyzgyn düwmesi</h3>
 
     <table class="shortcut-table">
         <thead data-lang="ru"><tr><th>Клавиши</th><th>Что делает</th></tr></thead>
         <thead data-lang="en"><tr><th>Keys</th><th>What it does</th></tr></thead>
+        <thead data-lang="tk"><tr><th>Düwmeler</th><th>Näme edýär</th></tr></thead>
         <tbody data-lang="ru">
             <tr><td><span class="kbd">Ctrl</span>+<span class="kbd">S</span></td><td>Сохранить файл</td></tr>
             <tr><td><span class="kbd">Ctrl</span>+<span class="kbd">D</span></td><td>Выделить следующее вхождение слова (мульти-курсор)</td></tr>
@@ -527,20 +673,36 @@ console.log("Сейчас:", new Date().toLocaleString());</code></pre>
             <tr><td><span class="kbd">Ctrl</span>+<span class="kbd">B</span></td><td>Toggle Side Bar</td></tr>
             <tr><td><span class="kbd">F2</span></td><td>Rename variable/function throughout the file</td></tr>
         </tbody>
+        <tbody data-lang="tk">
+            <tr><td><span class="kbd">Ctrl</span>+<span class="kbd">S</span></td><td>Faýly ýatda saklamak</td></tr>
+            <tr><td><span class="kbd">Ctrl</span>+<span class="kbd">D</span></td><td>Sözüň indiki gabat gelşini saýlamak (köp kursor)</td></tr>
+            <tr><td><span class="kbd">Alt</span>+<span class="kbd">&#8593;</span> / <span class="kbd">&#8595;</span></td><td>Setiri ýokary/aşak geçirmek</td></tr>
+            <tr><td><span class="kbd">Shift</span>+<span class="kbd">Alt</span>+<span class="kbd">&#8595;</span></td><td>Setiriň nusgasyny aşakda döretmek</td></tr>
+            <tr><td><span class="kbd">Ctrl</span>+<span class="kbd">/</span></td><td>Setiri teswire öwürmek / teswirden çykarmak</td></tr>
+            <tr><td><span class="kbd">Ctrl</span>+<span class="kbd">P</span></td><td>Faýly ady boýunça çalt gözlemek</td></tr>
+            <tr><td><span class="kbd">Ctrl</span>+<span class="kbd">Shift</span>+<span class="kbd">P</span></td><td>Command Palette (VS Code-yň islendik buýrugy)</td></tr>
+            <tr><td><span class="kbd">Ctrl</span>+<span class="kbd">`</span></td><td>Içine gurlan terminaly açmak/ýapmak</td></tr>
+            <tr><td><span class="kbd">Ctrl</span>+<span class="kbd">B</span></td><td>Side Bar-y görkezmek/gizlemek</td></tr>
+            <tr><td><span class="kbd">F2</span></td><td>Üýtgeýäniň/funksiýanyň adyny tutuş faýlda üýtgetmek</td></tr>
+        </tbody>
     </table>
 
     <p data-lang="ru"><em>На Mac заменяйте <span class="kbd">Ctrl</span> на <span class="kbd">Cmd</span>.</em></p>
     <p data-lang="en"><em>On Mac, replace <span class="kbd">Ctrl</span> with <span class="kbd">Cmd</span>.</em></p>
+    <p data-lang="tk"><em>Mac-da <span class="kbd">Ctrl</span> düwmesini <span class="kbd">Cmd</span> bilen çalşyň.</em></p>
 
     <h3 data-lang="ru">Emmet — супер-быстрый набор HTML</h3>
     <h3 data-lang="en">Emmet — lightning-fast HTML typing</h3>
+    <h3 data-lang="tk">Emmet — HTML-i örän çalt ýazmak</h3>
 
     <p data-lang="ru"><strong>Emmet</strong> встроен в VS Code. Это «магическое» сокращение: вы пишете короткий код, нажимаете <span class="kbd">Tab</span> — и он разворачивается в полноценный HTML.</p>
     <p data-lang="en"><strong>Emmet</strong> is built into VS Code. It's a "magical" shorthand: you type a short pattern, press <span class="kbd">Tab</span>, and it expands into full HTML.</p>
+    <p data-lang="tk"><strong>Emmet</strong> VS Code-a gurlandyr. Bu «jadyly» gysgaltma: siz gysga kod ýazýarsyňyz, <span class="kbd">Tab</span> basýarsyňyz — we ol doly HTML-e öwrülýär.</p>
 
     <table>
         <thead data-lang="ru"><tr><th>Наберите</th><th>Нажмите Tab — получите</th></tr></thead>
         <thead data-lang="en"><tr><th>Type</th><th>Press Tab — get</th></tr></thead>
+        <thead data-lang="tk"><tr><th>Ýazyň</th><th>Tab basyň — alarsyňyz</th></tr></thead>
         <tbody>
             <tr><td><code>html:5</code></td><td>Полный шаблон HTML5</td></tr>
             <tr><td><code>ul&gt;li*5</code></td><td><code>&lt;ul&gt;</code> с пятью <code>&lt;li&gt;</code></td></tr>
@@ -554,6 +716,7 @@ console.log("Сейчас:", new Date().toLocaleString());</code></pre>
     <div class="try-it">
         <p data-lang="ru">В любом <code>.html</code>-файле наберите <code>html:5</code> и нажмите Tab. За полсекунды появится полноценный скелет HTML-документа. Попробуйте прямо сейчас.</p>
         <p data-lang="en">In any <code>.html</code> file, type <code>html:5</code> and press Tab. In half a second a full HTML skeleton appears. Try it right now.</p>
+        <p data-lang="tk">Islendik <code>.html</code> faýlynda <code>html:5</code> ýazyň we Tab basyň. Ýarym sekuntda HTML resminamasynyň doly karkasy peýda bolar. Şu wagt synap görüň.</p>
     </div>
 
     <hr>
@@ -561,15 +724,18 @@ console.log("Сейчас:", new Date().toLocaleString());</code></pre>
     <!-- ============================================================ -->
     <h2 id="game" data-lang="ru">8. Мини-проект «Угадай число»</h2>
     <h2 id="game" data-lang="en">8. Mini-project "Guess the number"</h2>
+    <h2 id="game" data-lang="tk">8. «Sany tap» mini-taslamasy</h2>
 
     <p data-lang="ru">Теперь — пишем первое настоящее приложение. Это классическая игра: компьютер загадывает число от 1 до 100, вы его отгадываете, он подсказывает «больше» или «меньше», считает количество попыток.</p>
     <p data-lang="en">Now — we write our first real application. A classic game: the computer picks a number from 1 to 100, you guess it, it hints "higher" or "lower", and counts your attempts.</p>
+    <p data-lang="tk">Indi — ilkinji hakyky programmany ýazýarys. Bu klassiki oýun: kompýuter 1-den 100-e çenli bir san saýlaýar, siz ony tapýarsyňyz, ol «has uly» ýa-da «has kiçi» diýip ugrukdyrýar we synanyşyklaryň sanyny hasaplaýar.</p>
 
     <div class="step">
         <div class="step-number">1</div>
         <div>
             <p data-lang="ru">Создайте папку <code>guess-number/</code>, в ней файлы <code>index.html</code> и <code>game.js</code>.</p>
             <p data-lang="en">Create a folder <code>guess-number/</code> with files <code>index.html</code> and <code>game.js</code>.</p>
+            <p data-lang="tk"><code>guess-number/</code> bukjasyny, onuň içinde <code>index.html</code> we <code>game.js</code> faýllaryny dörediň.</p>
         </div>
     </div>
 
@@ -578,6 +744,7 @@ console.log("Сейчас:", new Date().toLocaleString());</code></pre>
         <div>
             <p data-lang="ru"><strong>index.html</strong> (наберите через Emmet <code>html:5</code> и добавьте подключение скрипта):</p>
             <p data-lang="en"><strong>index.html</strong> (type <code>html:5</code> with Emmet and add the script tag):</p>
+            <p data-lang="tk"><strong>index.html</strong> (Emmet bilen <code>html:5</code> ýazyň we skripti birikdirýän setiri goşuň):</p>
             <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="ru"&gt;
 &lt;head&gt;
@@ -598,6 +765,7 @@ console.log("Сейчас:", new Date().toLocaleString());</code></pre>
         <div>
             <p data-lang="ru"><strong>game.js</strong> — основной код:</p>
             <p data-lang="en"><strong>game.js</strong> — the main logic:</p>
+            <p data-lang="tk"><strong>game.js</strong> — esasy kod:</p>
             <pre><code>// Компьютер загадывает число от 1 до 100
 const secret = Math.floor(Math.random() * 100) + 1;
 let attempts = 0;
@@ -635,11 +803,13 @@ while (guess !== secret) {
         <div>
             <p data-lang="ru">Запустите через <em>Open with Live Server</em>. В браузере появится окно с приглашением ввести число. После каждого ввода консоль (F12) показывает подсказку.</p>
             <p data-lang="en">Run via <em>Open with Live Server</em>. An input prompt appears in the browser. After each input the console (F12) shows a hint.</p>
+            <p data-lang="tk"><em>Open with Live Server</em> arkaly işlediň. Brauzerde san girizmegi teklip edýän penjire peýda bolar. Her girizmeden soň konsol (F12) ugrukdyryjy maslahat görkezýär.</p>
         </div>
     </div>
 
     <h3 data-lang="ru">Разбор кода</h3>
     <h3 data-lang="en">Code walkthrough</h3>
+    <h3 data-lang="tk">Kodyň seljermesi</h3>
 
     <ul data-lang="ru">
         <li><code>Math.random()</code> — возвращает случайное число от 0 до 1 (например, 0.7342).</li>
@@ -661,10 +831,21 @@ while (guess !== secret) {
         <li><code>while (guess !== secret)</code> — loop runs until guessed.</li>
         <li><code>attempts++</code> — increments the attempt counter by 1.</li>
     </ul>
+    <ul data-lang="tk">
+        <li><code>Math.random()</code> — 0-dan 1-e çenli tötänleýin san gaýtarýar (mysal üçin, 0.7342).</li>
+        <li><code>* 100</code> — ony 0-dan 100-e çenli sana öwürýäris.</li>
+        <li><code>Math.floor(...)</code> — aşak tegelekläp, bitin sana öwürýäris (0-dan 99-a çenli).</li>
+        <li><code>+ 1</code> — 1-den 100-e çenli aralygy alýarys.</li>
+        <li><code>prompt(...)</code> — brauzerde girizmek penjiresini görkezýär, setir ýa-da <code>null</code> gaýtarýar («Cancel» basylan bolsa).</li>
+        <li><code>Number(input)</code> — setiri sana öwürýäris.</li>
+        <li><code>while (guess !== secret)</code> — san tapylýança sikl işleýär.</li>
+        <li><code>attempts++</code> — synanyşyklaryň sanaýjysyny 1-e artdyrýarys.</li>
+    </ul>
 
     <div class="important">
         <p data-lang="ru">Не волнуйтесь, если пока не понимаете каждую строку — <code>while</code>, <code>Math.floor</code>, <code>prompt</code>. Мы подробно разберём их в следующих занятиях: переменные, условия, циклы, функции. Сегодня важно увидеть, что <strong>настоящая программа</strong> — это просто последовательность понятных команд.</p>
         <p data-lang="en">Don't worry if you don't understand every line yet — <code>while</code>, <code>Math.floor</code>, <code>prompt</code>. We'll cover them in detail in the next lessons: variables, conditionals, loops, functions. What matters today is seeing that a <strong>real program</strong> is just a sequence of clear commands.</p>
+        <p data-lang="tk">Eger häzirlikçe her setire — <code>while</code>, <code>Math.floor</code>, <code>prompt</code> — düşünmeýän bolsaňyz, alada etmäň. Olary indiki sapaklarda jikme-jik seljereris: üýtgeýänler, şertler, sikller, funksiýalar. Şu gün <strong>hakyky programmanyň</strong> diňe düşnükli buýruklaryň yzygiderliligidigini görmek möhüm.</p>
     </div>
 
     <hr>
@@ -691,6 +872,16 @@ while (guess !== secret) {
             <li>Top shortcuts: <span class="kbd">Ctrl</span>+<span class="kbd">D</span>, <span class="kbd">Alt</span>+<span class="kbd">&#8593;</span>/<span class="kbd">&#8595;</span>, <span class="kbd">Ctrl</span>+<span class="kbd">/</span>, <span class="kbd">F2</span>.</li>
             <li>Built our first real app — the "Guess the number" game.</li>
         </ul>
+        <ul data-lang="tk">
+            <li><strong>VS Code</strong> + 5 giňeltme gurnadyk: Live Server, Prettier, Error Lens, JS snippets, Auto Rename Tag.</li>
+            <li><strong>Auto Save</strong>, <strong>Format on Save</strong>, ligaturaly şrifti we amatly temany sazladyk.</li>
+            <li><strong>Live Server</strong> ýatda saklananda brauzerdäki sahypany awtomatik täzeleýär.</li>
+            <li><strong>Node.js</strong> JS-i brauzerden daşarda işletmäge mümkinçilik berýär: <code>node file.js</code>.</li>
+            <li>Node.js-de <code>window</code>, <code>document</code>, DOM <strong>ýok</strong> — emma <code>fs</code>, <code>global</code>, HTTP serwerler bar.</li>
+            <li><strong>Emmet</strong>: <code>html:5</code> + Tab — bir sekuntda doly HTML şablon.</li>
+            <li>Iň gerekli gyzgyn düwmeler: <span class="kbd">Ctrl</span>+<span class="kbd">D</span>, <span class="kbd">Alt</span>+<span class="kbd">&#8593;</span>/<span class="kbd">&#8595;</span>, <span class="kbd">Ctrl</span>+<span class="kbd">/</span>, <span class="kbd">F2</span>.</li>
+            <li>Ilkinji hakyky programmany — «Sany tap» oýnuny ýazdyk.</li>
+        </ul>
     </div>
 
     <div class="quiz">
@@ -713,6 +904,16 @@ while (guess !== secret) {
             <li>What does <code>Math.random()</code> return?</li>
             <li>What happens if the user clicks "Cancel" in the "Guess the number" game?</li>
             <li>Which shortcut opens the integrated terminal in VS Code?</li>
+        </ol>
+        <ol data-lang="tk">
+            <li><strong>VS Code</strong> <strong>Visual Studio</strong>-dan näme bilen tapawutlanýar?</li>
+            <li>Haýsy giňeltme ýatda saklananda sahypany awtomatik täzeleýär?</li>
+            <li>Terminalda Node.js-iň wersiýasyny haýsy buýruk barlaýar?</li>
+            <li>JS-i brauzerde we Node.js-de işletmegiň arasynda näme tapawut bar (2 tapawudy aýdyň)?</li>
+            <li><code>ul&gt;li*5</code> Emmet buýrugy näme edýär?</li>
+            <li><code>Math.random()</code> näme gaýtarýar?</li>
+            <li>«Sany tap» oýnunda ulanyjy «Cancel» bassa, näme bolar?</li>
+            <li>VS Code-da içine gurlan terminaly haýsy gyzgyn düwme açýar?</li>
         </ol>
     </div>
 

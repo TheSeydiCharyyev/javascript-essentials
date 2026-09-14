@@ -13,25 +13,36 @@
 <div class="lesson-nav">
     <a href="../../index.html" class="nav-home" data-lang="ru">&#8592; Главная</a>
     <a href="../../index.html" class="nav-home" data-lang="en">&#8592; Home</a>
+    <a href="../../index.html" class="nav-home" data-lang="tk">&#8592; Baş sahypa</a>
     <span class="nav-sep">|</span>
     <span class="nav-title" data-lang="ru">Занятие 2: Установка инструментов и первый скрипт</span>
     <span class="nav-title" data-lang="en">Lesson 2: Tools Setup &amp; First Script</span>
+    <span class="nav-title" data-lang="tk">2-nji sapak: Gurallary gurnamak we ilkinji skript</span>
     <span class="nav-sep">|</span>
     <a href="lecture.html" class="nav-link" data-lang="ru">&#x1F468;&#x200D;&#x1F3EB; Лекция</a>
     <a href="lecture.html" class="nav-link" data-lang="en">&#x1F468;&#x200D;&#x1F3EB; Lecture</a>
+    <a href="lecture.html" class="nav-link" data-lang="tk">&#x1F468;&#x200D;&#x1F3EB; Leksiýa</a>
     <a href="student.html" class="nav-link" data-lang="ru">&#x1F468;&#x200D;&#x1F393; Конспект</a>
     <a href="student.html" class="nav-link" data-lang="en">&#x1F468;&#x200D;&#x1F393; Notes</a>
+    <a href="student.html" class="nav-link" data-lang="tk">&#x1F468;&#x200D;&#x1F393; Konspekt</a>
     <span class="nav-active" data-lang="ru">&#x1F4CB; Задания</span>
     <span class="nav-active" data-lang="en">&#x1F4CB; Tasks</span>
-    <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
+    <span class="nav-active" data-lang="tk">&#x1F4CB; Tabşyryklar</span>
+    <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" class="lang-opt" data-set-lang="ru" onclick="setLang('ru')">RU</button>
+        <button type="button" class="lang-opt" data-set-lang="en" onclick="setLang('en')">EN</button>
+        <button type="button" class="lang-opt" data-set-lang="tk" onclick="setLang('tk')">TM</button>
+    </div>
 </div>
 
 <div class="container">
 
     <h1 data-lang="ru">&#x1F4DD; ПРАКТИЧЕСКИЕ ЗАДАНИЯ</h1>
     <h1 data-lang="en">&#x1F4DD; PRACTICAL TASKS</h1>
+    <h1 data-lang="tk">&#x1F4DD; AMALY TABŞYRYKLAR</h1>
     <p class="subtitle" data-lang="ru">Занятие 2: Установка инструментов и первый скрипт &mdash; 6 заданий</p>
     <p class="subtitle" data-lang="en">Lesson 2: Tools Setup &amp; First Script &mdash; 6 tasks</p>
+    <p class="subtitle" data-lang="tk">2-nji sapak: Gurallary gurnamak we ilkinji skript &mdash; 6 tabşyryk</p>
 
     <hr>
 
@@ -40,9 +51,11 @@
         <div class="task-header">
             <div class="task-title" data-lang="ru">Задание 1. Установка VS Code и расширений</div>
             <div class="task-title" data-lang="en">Task 1. Install VS Code and extensions</div>
+            <div class="task-title" data-lang="tk">1-nji tabşyryk. VS Code-y we giňeltmeleri gurnamak</div>
             <div class="task-meta">
                 <span class="badge badge-easy" data-lang="ru">Легко</span>
                 <span class="badge badge-easy" data-lang="en">Easy</span>
+                <span class="badge badge-easy" data-lang="tk">Aňsat</span>
                 <span class="badge badge-time">20 мин</span>
             </div>
         </div>
@@ -50,10 +63,12 @@
         <div class="task-goal">
             <span data-lang="ru">Полностью подготовить VS Code к работе с JavaScript: установить редактор и 5 обязательных расширений.</span>
             <span data-lang="en">Fully prepare VS Code for JavaScript work: install the editor and 5 must-have extensions.</span>
+            <span data-lang="tk">VS Code-y JavaScript bilen işlemäge doly taýýarlamak: redaktory we 5 hökmany giňeltmäni gurnamak.</span>
         </div>
 
         <p data-lang="ru"><strong>Шаги:</strong></p>
         <p data-lang="en"><strong>Steps:</strong></p>
+        <p data-lang="tk"><strong>Ädimler:</strong></p>
         <ol data-lang="ru">
             <li>Скачайте и установите VS Code с <code>code.visualstudio.com</code> (поставьте галочки «Add to PATH» и «Add context menu»).</li>
             <li>Запустите VS Code. Откройте панель Extensions (<span class="kbd">Ctrl</span>+<span class="kbd">Shift</span>+<span class="kbd">X</span>).</li>
@@ -65,6 +80,12 @@
             <li>Launch VS Code. Open the Extensions panel (<span class="kbd">Ctrl</span>+<span class="kbd">Shift</span>+<span class="kbd">X</span>).</li>
             <li>Find and install: <strong>Live Server, Prettier, Error Lens, JavaScript (ES6) code snippets, Auto Rename Tag</strong>.</li>
             <li>Take a screenshot of the "Installed" section showing all five extensions.</li>
+        </ol>
+        <ol data-lang="tk">
+            <li>VS Code-y <code>code.visualstudio.com</code> saýtyndan ýükläň we gurnaň («Add to PATH» we «Add context menu» belgilerini goýuň).</li>
+            <li>VS Code-y işlediň. Extensions panelini açyň (<span class="kbd">Ctrl</span>+<span class="kbd">Shift</span>+<span class="kbd">X</span>).</li>
+            <li>Şulary tapyň we gurnaň: <strong>Live Server, Prettier, Error Lens, JavaScript (ES6) code snippets, Auto Rename Tag</strong>.</li>
+            <li>Bäş giňeltme görünýän «Installed» bölüminiň skrinşotyny alyň.</li>
         </ol>
 
         <div class="criteria">
@@ -78,6 +99,11 @@
                 <li>All 5 extensions installed</li>
                 <li>Screenshot of installed extensions exists</li>
             </ul>
+            <ul data-lang="tk">
+                <li>VS Code gurnaldy we açylýar</li>
+                <li>5 giňeltmäniň hemmesi gurnaldy</li>
+                <li>Gurnalan giňeltmeleriň skrinşoty bar</li>
+            </ul>
         </div>
     </div>
 
@@ -86,9 +112,11 @@
         <div class="task-header">
             <div class="task-title" data-lang="ru">Задание 2. Настройка VS Code</div>
             <div class="task-title" data-lang="en">Task 2. Configure VS Code</div>
+            <div class="task-title" data-lang="tk">2-nji tabşyryk. VS Code-y sazlamak</div>
             <div class="task-meta">
                 <span class="badge badge-easy" data-lang="ru">Легко</span>
                 <span class="badge badge-easy" data-lang="en">Easy</span>
+                <span class="badge badge-easy" data-lang="tk">Aňsat</span>
                 <span class="badge badge-time">15 мин</span>
             </div>
         </div>
@@ -96,10 +124,12 @@
         <div class="task-goal">
             <span data-lang="ru">Настроить редактор под JavaScript-разработку: автосохранение, авто-форматирование, шрифт и тема.</span>
             <span data-lang="en">Configure the editor for JavaScript work: auto-save, auto-format, font, and theme.</span>
+            <span data-lang="tk">Redaktory JavaScript bilen işlemek üçin sazlamak: awtomatik ýatda saklamak, awtomatik formatlamak, şrift we tema.</span>
         </div>
 
         <p data-lang="ru"><strong>Что сделать:</strong></p>
         <p data-lang="en"><strong>What to do:</strong></p>
+        <p data-lang="tk"><strong>Näme etmeli:</strong></p>
         <ol data-lang="ru">
             <li>Откройте настройки (<span class="kbd">Ctrl</span>+<span class="kbd">,</span>).</li>
             <li>Включите <strong>Auto Save</strong> → <code>onFocusChange</code>.</li>
@@ -120,13 +150,25 @@
             <li>Enable <strong>Font Ligatures</strong>.</li>
             <li>Pick a color theme (<span class="kbd">Ctrl</span>+<span class="kbd">K</span>, <span class="kbd">Ctrl</span>+<span class="kbd">T</span>).</li>
         </ol>
+        <ol data-lang="tk">
+            <li>Sazlamalary açyň (<span class="kbd">Ctrl</span>+<span class="kbd">,</span>).</li>
+            <li><strong>Auto Save</strong> → <code>onFocusChange</code> işjeňleşdiriň.</li>
+            <li><strong>Format On Save</strong> işjeňleşdiriň.</li>
+            <li><strong>Default Formatter</strong> → <code>Prettier</code> belläň.</li>
+            <li><strong>Tab Size</strong> → 2 belläň.</li>
+            <li><strong>Fira Code</strong> ýa-da <strong>JetBrains Mono</strong> şriftini ýükläp gurnaň, ony <em>Font Family</em>-de görkeziň.</li>
+            <li><strong>Font Ligatures</strong> işjeňleşdiriň.</li>
+            <li>Reňk temasyny saýlaň (<span class="kbd">Ctrl</span>+<span class="kbd">K</span>, <span class="kbd">Ctrl</span>+<span class="kbd">T</span>).</li>
+        </ol>
 
         <div class="example">
             <p data-lang="ru"><strong>Как проверить, что Prettier работает:</strong> создайте файл <code>test.js</code>, намеренно испортите отступы:</p>
             <p data-lang="en"><strong>How to verify Prettier works:</strong> create <code>test.js</code> and intentionally mess up indentation:</p>
+            <p data-lang="tk"><strong>Prettier-iň işleýändigini nädip barlamaly:</strong> <code>test.js</code> faýlyny dörediň we setir başyndaky boşluklary bilkastlaýyn bozuň:</p>
             <pre><code>function  test(  a,b   ){return a+b;}</code></pre>
             <p data-lang="ru">Сохраните (Ctrl+S). Код автоматически отформатируется:</p>
             <p data-lang="en">Save (Ctrl+S). The code auto-formats to:</p>
+            <p data-lang="tk">Ýatda saklaň (Ctrl+S). Kod awtomatik formatlanar:</p>
             <pre><code>function test(a, b) {
   return a + b;
 }</code></pre>
@@ -143,6 +185,11 @@
                 <li>Prettier actually formats code on save</li>
                 <li>Ligatures are visible (<code>=&gt;</code> renders as a nice arrow)</li>
             </ul>
+            <ul data-lang="tk">
+                <li>8 sazlamanyň hemmesi ulanyldy</li>
+                <li>Prettier ýatda saklananda kody hakykatdan formatlaýar</li>
+                <li>Redaktorda ligaturaly şrift görünýär (<code>=&gt;</code> nyşany ok ýaly çekilýär)</li>
+            </ul>
         </div>
     </div>
 
@@ -151,9 +198,11 @@
         <div class="task-header">
             <div class="task-title" data-lang="ru">Задание 3. Установка Node.js и первый скрипт в терминале</div>
             <div class="task-title" data-lang="en">Task 3. Install Node.js and run your first terminal script</div>
+            <div class="task-title" data-lang="tk">3-nji tabşyryk. Node.js-i gurnamak we terminalda ilkinji skript</div>
             <div class="task-meta">
                 <span class="badge badge-easy" data-lang="ru">Легко</span>
                 <span class="badge badge-easy" data-lang="en">Easy</span>
+                <span class="badge badge-easy" data-lang="tk">Aňsat</span>
                 <span class="badge badge-time">20 мин</span>
             </div>
         </div>
@@ -161,10 +210,12 @@
         <div class="task-goal">
             <span data-lang="ru">Установить Node.js и убедиться, что JS работает вне браузера.</span>
             <span data-lang="en">Install Node.js and verify that JS runs outside the browser.</span>
+            <span data-lang="tk">Node.js-i gurnamak we JS-iň brauzerden daşarda işleýändigine göz ýetirmek.</span>
         </div>
 
         <p data-lang="ru"><strong>Шаги:</strong></p>
         <p data-lang="en"><strong>Steps:</strong></p>
+        <p data-lang="tk"><strong>Ädimler:</strong></p>
         <ol data-lang="ru">
             <li>Скачайте <strong>Node.js LTS</strong> с <code>nodejs.org</code> и установите.</li>
             <li>Откройте терминал в VS Code (<span class="kbd">Ctrl</span>+<span class="kbd">`</span>).</li>
@@ -176,6 +227,12 @@
             <li>Open the terminal in VS Code (<span class="kbd">Ctrl</span>+<span class="kbd">`</span>).</li>
             <li>Verify the install with <code>node --version</code> and <code>npm --version</code>. Write down the versions.</li>
             <li>Create a folder <code>node-first/</code> and open it in VS Code. Inside create <code>about.js</code>:</li>
+        </ol>
+        <ol data-lang="tk">
+            <li><strong>Node.js LTS</strong> wersiýasyny <code>nodejs.org</code> saýtyndan ýükläň we gurnaň.</li>
+            <li>VS Code-da terminaly açyň (<span class="kbd">Ctrl</span>+<span class="kbd">`</span>).</li>
+            <li>Gurnalyşy <code>node --version</code> we <code>npm --version</code> buýruklary bilen barlaň. Wersiýalary ýazyň.</li>
+            <li><code>node-first/</code> bukjasyny dörediň we ony VS Code-da açyň. Içinde <code>about.js</code> faýlyny dörediň:</li>
         </ol>
 
         <pre><code>const name = "Твоё имя";
@@ -190,6 +247,7 @@ console.log("2 в 10-й степени:", 2 ** 10);</code></pre>
 
         <p data-lang="ru">В терминале запустите: <code>node about.js</code>.</p>
         <p data-lang="en">In the terminal run: <code>node about.js</code>.</p>
+        <p data-lang="tk">Terminalda işlediň: <code>node about.js</code>.</p>
 
         <div class="criteria">
             <ul data-lang="ru">
@@ -202,11 +260,17 @@ console.log("2 в 10-й степени:", 2 ** 10);</code></pre>
                 <li>The <code>about.js</code> file runs successfully via <code>node about.js</code></li>
                 <li>All 5 lines of output are visible in the terminal</li>
             </ul>
+            <ul data-lang="tk">
+                <li><code>node</code> we <code>npm</code> buýruklary terminalda işleýär</li>
+                <li><code>about.js</code> faýly <code>node about.js</code> arkaly üstünlikli işleýär</li>
+                <li>Terminalda 5 setirlik çykyşyň hemmesi görünýär</li>
+            </ul>
         </div>
 
         <div class="hint">
             <p data-lang="ru">Если терминал говорит «node не распознаётся» — закройте VS Code полностью и откройте заново. Если не помогло — переустановите Node с галочкой «Add to PATH».</p>
             <p data-lang="en">If the terminal says "node is not recognized" — close VS Code fully and reopen. If it still fails — reinstall Node with "Add to PATH" checked.</p>
+            <p data-lang="tk">Eger terminal «node tanalmaýar» diýse — VS Code-y doly ýapyp, täzeden açyň. Kömek etmese — Node-y «Add to PATH» belgisi bilen gaýtadan gurnaň.</p>
         </div>
     </div>
 
@@ -215,9 +279,11 @@ console.log("2 в 10-й степени:", 2 ** 10);</code></pre>
         <div class="task-header">
             <div class="task-title" data-lang="ru">Задание 4. Браузер vs Node.js — в чём разница</div>
             <div class="task-title" data-lang="en">Task 4. Browser vs Node.js — what's the difference</div>
+            <div class="task-title" data-lang="tk">4-nji tabşyryk. Brauzer vs Node.js — tapawudy näme</div>
             <div class="task-meta">
                 <span class="badge badge-medium" data-lang="ru">Средне</span>
                 <span class="badge badge-medium" data-lang="en">Medium</span>
+                <span class="badge badge-medium" data-lang="tk">Orta</span>
                 <span class="badge badge-time">20 мин</span>
             </div>
         </div>
@@ -225,15 +291,20 @@ console.log("2 в 10-й степени:", 2 ** 10);</code></pre>
         <div class="task-goal">
             <span data-lang="ru">Увидеть на практике, что одни и те же строки кода работают по-разному в браузере и в Node.js.</span>
             <span data-lang="en">See in practice that the same lines of code behave differently in the browser and in Node.js.</span>
+            <span data-lang="tk">Şol bir kod setirleriniň brauzerde we Node.js-de dürli işleýändigini amalda görmek.</span>
         </div>
 
         <p data-lang="ru"><strong>Шаги:</strong></p>
         <p data-lang="en"><strong>Steps:</strong></p>
+        <p data-lang="tk"><strong>Ädimler:</strong></p>
         <ol data-lang="ru">
             <li>Создайте файл <code>compare.js</code> со следующим кодом:</li>
         </ol>
         <ol data-lang="en">
             <li>Create <code>compare.js</code> with this code:</li>
+        </ol>
+        <ol data-lang="tk">
+            <li>Aşakdaky kod bilen <code>compare.js</code> faýlyny dörediň:</li>
         </ol>
 
         <pre><code>console.log("1. console.log работает везде");
@@ -259,6 +330,11 @@ console.log("8. typeof process:", typeof process);</code></pre>
             <li>Create <code>compare.html</code> and link the same <code>compare.js</code> via <code>&lt;script src="compare.js"&gt;&lt;/script&gt;</code>. Open via Live Server and see the same 8 lines in the browser console (F12).</li>
             <li>Compare: which lines give different results?</li>
         </ol>
+        <ol data-lang="tk" start="2">
+            <li><code>compare.js</code>-i terminalda <code>node compare.js</code> arkaly işlediň. 8 setiriň hemmesiniň näme çykarandygyny depderiňize ýazyň.</li>
+            <li><code>compare.html</code> dörediň we şol bir <code>compare.js</code>-i <code>&lt;script src="compare.js"&gt;&lt;/script&gt;</code> arkaly birikdiriň. Live Server arkaly açyň we brauzeriň konsolynda (F12) şol 8 setire serediň.</li>
+            <li>Deňeşdiriň: haýsy setirler dürli netije berýär?</li>
+        </ol>
 
         <div class="criteria">
             <ul data-lang="ru">
@@ -271,6 +347,11 @@ console.log("8. typeof process:", typeof process);</code></pre>
                 <li>Written down what exactly differs (at least 3 differences)</li>
                 <li>You understand: same code, different environment — different globals available</li>
             </ul>
+            <ul data-lang="tk">
+                <li>Işletmegiň iki buýrugy hem işledi</li>
+                <li>Depderde anyk näme tapawutlanýandygy ýazyldy (iň azyndan 3 tapawut)</li>
+                <li>Siz düşündiňiz: kod bir, gurşaw başga — şonuň üçin dürli global obýektler elýeterli</li>
+            </ul>
         </div>
     </div>
 
@@ -279,9 +360,11 @@ console.log("8. typeof process:", typeof process);</code></pre>
         <div class="task-header">
             <div class="task-title" data-lang="ru">Задание 5. Игра «Угадай число» + улучшение</div>
             <div class="task-title" data-lang="en">Task 5. "Guess the number" game + improvement</div>
+            <div class="task-title" data-lang="tk">5-nji tabşyryk. «Sany tap» oýny + gowulandyrma</div>
             <div class="task-meta">
                 <span class="badge badge-medium" data-lang="ru">Средне</span>
                 <span class="badge badge-medium" data-lang="en">Medium</span>
+                <span class="badge badge-medium" data-lang="tk">Orta</span>
                 <span class="badge badge-time">30 мин</span>
             </div>
         </div>
@@ -289,10 +372,12 @@ console.log("8. typeof process:", typeof process);</code></pre>
         <div class="task-goal">
             <span data-lang="ru">Написать игру «Угадай число» по примеру из лекции, а затем добавить своё улучшение.</span>
             <span data-lang="en">Build the "Guess the number" game from the lecture, then add your own improvement.</span>
+            <span data-lang="tk">Leksiýadaky mysal boýunça «Sany tap» oýnuny ýazmak, soňra oňa öz gowulandyrmaňyzy goşmak.</span>
         </div>
 
         <p data-lang="ru"><strong>Шаги:</strong></p>
         <p data-lang="en"><strong>Steps:</strong></p>
+        <p data-lang="tk"><strong>Ädimler:</strong></p>
         <ol data-lang="ru">
             <li>Создайте папку <code>guess-game/</code> с файлами <code>index.html</code> и <code>game.js</code> по примеру из лекции.</li>
             <li>Запустите через Live Server и сыграйте минимум 3 раза.</li>
@@ -315,10 +400,22 @@ console.log("8. typeof process:", typeof process);</code></pre>
                 </ul>
             </li>
         </ol>
+        <ol data-lang="tk">
+            <li>Leksiýadaky mysal boýunça <code>index.html</code> we <code>game.js</code> faýllary bolan <code>guess-game/</code> bukjasyny dörediň.</li>
+            <li>Live Server arkaly işlediň we iň azyndan 3 gezek oýnaň.</li>
+            <li><strong>Gowulandyrmalaryň birini</strong> goşuň (saýlamak üçin):
+                <ul>
+                    <li><strong>A.</strong> Synanyşyklaryň sanyny 10 bilen çäklendiriň. 10 synanyşykda tapmasa — «Utuldyň! Men X sanyny saýlapdym» diýip çykaryň.</li>
+                    <li><strong>B.</strong> 1-100 aralygyň ýerine oýnuň başynda ulanyjydan aralygy soraň (<code>prompt</code>).</li>
+                    <li><strong>C.</strong> Ýeňişden soň «Ýene oýnalyňmy? (hawa/ýok)» diýip soraň we «hawa» jogabynda täze oýun başladyň.</li>
+                </ul>
+            </li>
+        </ol>
 
         <div class="hint">
             <p data-lang="ru">Для варианта <strong>A</strong>: добавьте условие <code>if (attempts &gt;= 10)</code> внутри цикла и используйте <code>break</code>. Для <strong>B</strong>: вызовите <code>prompt</code> до цикла для <code>min</code> и <code>max</code>. Для <strong>C</strong>: оберните всю игру в цикл <code>while (true)</code> и добавьте <code>break</code> после ответа «нет».</p>
             <p data-lang="en">For option <strong>A</strong>: add <code>if (attempts &gt;= 10)</code> inside the loop and use <code>break</code>. For <strong>B</strong>: call <code>prompt</code> before the loop for <code>min</code> and <code>max</code>. For <strong>C</strong>: wrap the whole game in <code>while (true)</code> and <code>break</code> on "no".</p>
+            <p data-lang="tk"><strong>A</strong> wariant üçin: sikliň içine <code>if (attempts &gt;= 10)</code> şertini goşuň we <code>break</code> ulanyň. <strong>B</strong> üçin: siklden öň <code>min</code> we <code>max</code> üçin <code>prompt</code> çagyryň. <strong>C</strong> üçin: tutuş oýny <code>while (true)</code> sikliniň içine salyň we «ýok» jogabyndan soň <code>break</code> goşuň.</p>
         </div>
 
         <div class="criteria">
@@ -332,6 +429,11 @@ console.log("8. typeof process:", typeof process);</code></pre>
                 <li>One of the A/B/C improvements implemented</li>
                 <li>No errors in the console</li>
             </ul>
+            <ul data-lang="tk">
+                <li>Esasy oýun işleýär («az»/«köp» çykarýar, synanyşyklary sanaýar, ýeňşe begenýär)</li>
+                <li>A/B/C gowulandyrmalaryň biri amala aşyryldy</li>
+                <li>Konsolda ýalňyşlyk ýok</li>
+            </ul>
         </div>
     </div>
 
@@ -340,9 +442,11 @@ console.log("8. typeof process:", typeof process);</code></pre>
         <div class="task-header">
             <div class="task-title" data-lang="ru">Задание 6. Тренировка Emmet и горячих клавиш</div>
             <div class="task-title" data-lang="en">Task 6. Emmet and shortcuts practice</div>
+            <div class="task-title" data-lang="tk">6-njy tabşyryk. Emmet we gyzgyn düwmeler boýunça türgenleşik</div>
             <div class="task-meta">
                 <span class="badge badge-hard" data-lang="ru">Сложно</span>
                 <span class="badge badge-hard" data-lang="en">Hard</span>
+                <span class="badge badge-hard" data-lang="tk">Kyn</span>
                 <span class="badge badge-time">25 мин</span>
             </div>
         </div>
@@ -350,10 +454,12 @@ console.log("8. typeof process:", typeof process);</code></pre>
         <div class="task-goal">
             <span data-lang="ru">Отработать Emmet и горячие клавиши на реальной странице — тренировка на скорость.</span>
             <span data-lang="en">Practice Emmet and shortcuts on a real page — a speed drill.</span>
+            <span data-lang="tk">Emmet-i we gyzgyn düwmeleri hakyky sahypada işläp görmek — tizlige türgenleşik.</span>
         </div>
 
         <p data-lang="ru"><strong>Создайте HTML-страницу, используя ТОЛЬКО Emmet</strong> (без набора руками полных тегов). Страница должна содержать:</p>
         <p data-lang="en"><strong>Build an HTML page using ONLY Emmet</strong> (no typing full tags by hand). The page must contain:</p>
+        <p data-lang="tk"><strong>DIŇE Emmet ulanyp HTML sahypa dörediň</strong> (doly tegleri el bilen ýazmazdan). Sahypada şular bolmaly:</p>
 
         <ol data-lang="ru">
             <li>Скелет HTML5 (<code>html:5</code>)</li>
@@ -369,13 +475,22 @@ console.log("8. typeof process:", typeof process);</code></pre>
             <li>Three blocks with class <code>card</code>, each with <code>h3</code> and <code>p</code> (<code>.card&gt;h3+p</code>, times 3)</li>
             <li>A form with two inputs (text, email) and a submit button</li>
         </ol>
+        <ol data-lang="tk">
+            <li>HTML5 karkasy (<code>html:5</code>)</li>
+            <li><code>title</code> klasly <code>h1</code> sözbaşy (<code>h1.title</code>)</li>
+            <li>Menýu: id-si <code>menu</code> bolan <code>ul</code> we <code>item</code> klasly 5 <code>li</code> (<code>ul#menu&gt;li.item*5</code>)</li>
+            <li><code>card</code> klasly üç blok, her birinde <code>h3</code> we <code>p</code> bar (<code>.card&gt;h3+p</code>, 3-e köpeltmek)</li>
+            <li>Iki input (text, email) we submit düwmeli forma</li>
+        </ol>
 
         <p data-lang="ru"><strong>В процессе используйте минимум 3 горячие клавиши</strong> (например, дублирование строк, комментирование, перемещение).</p>
         <p data-lang="en"><strong>During this, use at least 3 shortcuts</strong> (e.g., line duplication, commenting, line movement).</p>
+        <p data-lang="tk"><strong>Bu işde iň azyndan 3 gyzgyn düwme ulanyň</strong> (mysal üçin, setiriň nusgasyny döretmek, teswire öwürmek, setiri geçirmek).</p>
 
         <div class="example">
             <p data-lang="ru">Пример Emmet-выражения: <code>.card*3&gt;h3{Заголовок $}+p{Текст карточки}</code> развернётся в три блока с автоматической нумерацией заголовков.</p>
             <p data-lang="en">Example Emmet expression: <code>.card*3&gt;h3{Title $}+p{Card text}</code> expands into three blocks with auto-numbered headings.</p>
+            <p data-lang="tk">Emmet aňlatmasynyň mysaly: <code>.card*3&gt;h3{Sözbaşy $}+p{Kartoçkanyň teksti}</code> sözbaşylary awtomatik belgilenen üç bloga öwrüler.</p>
         </div>
 
         <div class="criteria">
@@ -391,6 +506,12 @@ console.log("8. typeof process:", typeof process);</code></pre>
                 <li>You used at least 3 shortcuts — write down which ones</li>
                 <li>Page is valid (opens in the browser without errors)</li>
             </ul>
+            <ul data-lang="tk">
+                <li>Sahypa doly Emmet buýruklary arkaly döredildi</li>
+                <li>5 elementiň hemmesi bar</li>
+                <li>Siz iň azyndan 3 gyzgyn düwme ulandyňyz — haýsylaryny ulanandygyňyzy ýazyň</li>
+                <li>Sahypa dogry (brauzerde ýalňyşsyz açylýar)</li>
+            </ul>
         </div>
     </div>
 
@@ -399,6 +520,7 @@ console.log("8. typeof process:", typeof process);</code></pre>
     <div class="write-box">
         <p data-lang="ru">Запишите: какие задания были проще всего, а какие — сложнее; какую горячую клавишу уже запомнили наизусть:</p>
         <p data-lang="en">Write down: which tasks were easiest and which hardest; which shortcut you already memorized:</p>
+        <p data-lang="tk">Ýazyň: haýsy tabşyryklar iň aňsat, haýsylary has kyn boldy; haýsy gyzgyn düwmäni eýýäm ýatdan bilýärsiňiz:</p>
     </div>
 
 </div>

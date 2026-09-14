@@ -19,52 +19,69 @@
 <div class="lesson-nav">
     <a href="../../index.html" class="nav-home" data-lang="ru">&#8592; Главная</a>
     <a href="../../index.html" class="nav-home" data-lang="en">&#8592; Home</a>
+    <a href="../../index.html" class="nav-home" data-lang="tk">&#8592; Baş sahypa</a>
     <span class="nav-sep">|</span>
     <span class="nav-title" data-lang="ru">Занятие 3: Синтаксис и консоль</span>
     <span class="nav-title" data-lang="en">Lesson 3: Syntax &amp; Console</span>
+    <span class="nav-title" data-lang="tk">3-nji sapak: Sintaksis we konsol</span>
     <span class="nav-sep">|</span>
     <a href="lecture.html" class="nav-link" data-lang="ru">&#x1F468;&#x200D;&#x1F3EB; Лекция</a>
     <a href="lecture.html" class="nav-link" data-lang="en">&#x1F468;&#x200D;&#x1F3EB; Lecture</a>
+    <a href="lecture.html" class="nav-link" data-lang="tk">&#x1F468;&#x200D;&#x1F3EB; Leksiýa</a>
     <span class="nav-active" data-lang="ru">&#x1F468;&#x200D;&#x1F393; Конспект</span>
     <span class="nav-active" data-lang="en">&#x1F468;&#x200D;&#x1F393; Notes</span>
+    <span class="nav-active" data-lang="tk">&#x1F468;&#x200D;&#x1F393; Konspekt</span>
     <a href="tasks.html" class="nav-link" data-lang="ru">&#x1F4CB; Задания</a>
     <a href="tasks.html" class="nav-link" data-lang="en">&#x1F4CB; Tasks</a>
-    <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
+    <a href="tasks.html" class="nav-link" data-lang="tk">&#x1F4CB; Tabşyryklar</a>
+    <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" class="lang-opt" data-set-lang="ru" onclick="setLang('ru')">RU</button>
+        <button type="button" class="lang-opt" data-set-lang="en" onclick="setLang('en')">EN</button>
+        <button type="button" class="lang-opt" data-set-lang="tk" onclick="setLang('tk')">TM</button>
+    </div>
 </div>
 
 <div class="container">
 
     <h1 data-lang="ru">&#x1F4D3; КОНСПЕКТ УЧЕНИКА</h1>
     <h1 data-lang="en">&#x1F4D3; STUDENT NOTES</h1>
+    <h1 data-lang="tk">&#x1F4D3; OKUWÇYNYŇ KONSPEKTI</h1>
     <p class="subtitle" data-lang="ru">Занятие 3: Синтаксис и консоль</p>
     <p class="subtitle" data-lang="en">Lesson 3: Syntax &amp; Console</p>
+    <p class="subtitle" data-lang="tk">3-nji sapak: Sintaksis we konsol</p>
     <p class="date-line" data-lang="ru">Дата: _______________</p>
     <p class="date-line" data-lang="en">Date: _______________</p>
+    <p class="date-line" data-lang="tk">Sene: _______________</p>
 
     <hr>
 
     <h2 data-lang="ru">1. Инструкции и выражения</h2>
     <h2 data-lang="en">1. Statements and expressions</h2>
+    <h2 data-lang="tk">1. Instruksiýalar we aňlatmalar</h2>
 
     <div class="definition">
         <p data-lang="ru"><strong>Выражение (expression)</strong> — производит значение: <code>2 + 2</code>, <code>"hello"</code>, <code>Math.random()</code>.</p>
         <p data-lang="en"><strong>Expression</strong> — produces a value: <code>2 + 2</code>, <code>"hello"</code>, <code>Math.random()</code>.</p>
+        <p data-lang="tk"><strong>Aňlatma (expression)</strong> — baha döredýär: <code>2 + 2</code>, <code>"hello"</code>, <code>Math.random()</code>.</p>
     </div>
 
     <div class="definition">
         <p data-lang="ru"><strong>Инструкция (statement)</strong> — действие, обычно заканчивается <code>;</code>: <code>let x = 5;</code>, <code>console.log("hi");</code>.</p>
         <p data-lang="en"><strong>Statement</strong> — action, usually ends with <code>;</code>: <code>let x = 5;</code>, <code>console.log("hi");</code>.</p>
+        <p data-lang="tk"><strong>Instruksiýa (statement)</strong> — hereket, adatça <code>;</code> bilen gutarýar: <code>let x = 5;</code>, <code>console.log("hi");</code>.</p>
     </div>
 
     <div class="key-point">
         <p data-lang="ru"><strong>ASI</strong> — Automatic Semicolon Insertion. JS сам ставит <code>;</code>, если забыли, но не всегда корректно. Всегда ставьте сами (или через Prettier).</p>
         <p data-lang="en"><strong>ASI</strong> — Automatic Semicolon Insertion. JS inserts <code>;</code> if you forgot, but not always correctly. Always add them (or rely on Prettier).</p>
+        <p data-lang="tk"><strong>ASI</strong> — Automatic Semicolon Insertion. Ýatdan çykarsaňyz, JS <code>;</code> belgisini özi goýýar, emma elmydama dogry däl. Elmydama özüňiz goýuň (ýa-da Prettier arkaly).</p>
     </div>
 
     <hr>
 
     <h2 data-lang="ru">2. Комментарии</h2>
     <h2 data-lang="en">2. Comments</h2>
+    <h2 data-lang="tk">2. Teswirler</h2>
 
     <pre><code>// однострочный
 
@@ -81,12 +98,14 @@
     <div class="key-point">
         <p data-lang="ru">Закомментировать/раскомментировать строку: <span class="kbd">Ctrl</span>+<span class="kbd">/</span>. Пишите <strong>зачем</strong> что-то сделано, а не <strong>что</strong> — имя переменной уже говорит «что».</p>
         <p data-lang="en">Toggle comment: <span class="kbd">Ctrl</span>+<span class="kbd">/</span>. Write <strong>why</strong> something was done, not <strong>what</strong> — the variable name already tells "what".</p>
+        <p data-lang="tk">Setiri teswire öwürmek/teswirden çykarmak: <span class="kbd">Ctrl</span>+<span class="kbd">/</span>. Bir zadyň <strong>näme</strong> edilendigini däl-de, <strong>näme üçin</strong> edilendigini ýazyň — «nämäni» üýtgeýäniň ady eýýäm aýdýar.</p>
     </div>
 
     <hr>
 
     <h2 data-lang="ru">3. Правила синтаксиса</h2>
     <h2 data-lang="en">3. Syntax rules</h2>
+    <h2 data-lang="tk">3. Sintaksis düzgünleri</h2>
 
     <ul data-lang="ru">
         <li><strong>Регистр важен:</strong> <code>name</code> ≠ <code>Name</code> ≠ <code>NAME</code></li>
@@ -100,14 +119,22 @@
         <li><strong>Strings:</strong> <code>"double"</code>, <code>'single'</code>, <code>`template`</code></li>
         <li>Prettier unifies style on save</li>
     </ul>
+    <ul data-lang="tk">
+        <li><strong>Harplaryň ululygy möhüm:</strong> <code>name</code> ≠ <code>Name</code> ≠ <code>NAME</code></li>
+        <li><strong>Boşluklar we setir başyndaky boşluklar</strong> — adamlar üçin, hereketlendiriji üçin tapawudy ýok. Standart: 2 boşluk</li>
+        <li><strong>Setirler:</strong> <code>"goşa"</code>, <code>'ýeke'</code>, <code>`şablon`</code></li>
+        <li>Prettier ýatda saklananda stili özi birmeňzeşleşdirýär</li>
+    </ul>
 
     <hr>
 
     <h2 data-lang="ru">4. Идентификаторы</h2>
     <h2 data-lang="en">4. Identifiers</h2>
+    <h2 data-lang="tk">4. Identifikatorlar</h2>
 
     <h3 data-lang="ru">Правила</h3>
     <h3 data-lang="en">Rules</h3>
+    <h3 data-lang="tk">Düzgünler</h3>
     <ul data-lang="ru">
         <li>Буквы, цифры, <code>_</code>, <code>$</code></li>
         <li>❌ Нельзя начинать с цифры</li>
@@ -120,12 +147,20 @@
         <li>❌ No spaces or hyphens</li>
         <li>❌ No keywords</li>
     </ul>
+    <ul data-lang="tk">
+        <li>Harplar, sanlar, <code>_</code>, <code>$</code></li>
+        <li>❌ San bilen başlamak bolmaýar</li>
+        <li>❌ Boşluklar we defisler bolmaýar</li>
+        <li>❌ Açar sözler bolmaýar</li>
+    </ul>
 
     <h3 data-lang="ru">Соглашения</h3>
     <h3 data-lang="en">Conventions</h3>
+    <h3 data-lang="tk">Ylalaşyklar</h3>
     <table>
         <thead data-lang="ru"><tr><th>Стиль</th><th>Для чего</th><th>Пример</th></tr></thead>
         <thead data-lang="en"><tr><th>Style</th><th>For what</th><th>Example</th></tr></thead>
+        <thead data-lang="tk"><tr><th>Stil</th><th>Näme üçin</th><th>Mysal</th></tr></thead>
         <tbody data-lang="ru">
             <tr><td><code>camelCase</code></td><td>Переменные, функции</td><td><code>userName</code>, <code>calculateTotal</code></td></tr>
             <tr><td><code>PascalCase</code></td><td>Классы</td><td><code>User</code>, <code>HttpClient</code></td></tr>
@@ -136,10 +171,16 @@
             <tr><td><code>PascalCase</code></td><td>Classes</td><td><code>User</code>, <code>HttpClient</code></td></tr>
             <tr><td><code>UPPER_SNAKE</code></td><td>Config constants</td><td><code>MAX_USERS</code></td></tr>
         </tbody>
+        <tbody data-lang="tk">
+            <tr><td><code>camelCase</code></td><td>Üýtgeýänler, funksiýalar</td><td><code>userName</code>, <code>calculateTotal</code></td></tr>
+            <tr><td><code>PascalCase</code></td><td>Klaslar</td><td><code>User</code>, <code>HttpClient</code></td></tr>
+            <tr><td><code>UPPER_SNAKE</code></td><td>Sazlama konstantalary</td><td><code>MAX_USERS</code></td></tr>
+        </tbody>
     </table>
 
     <h3 data-lang="ru">Ключевые слова (нельзя как имена)</h3>
     <h3 data-lang="en">Keywords (can't be names)</h3>
+    <h3 data-lang="tk">Açar sözler (at bolup bilmeýär)</h3>
     <div class="diagram">let  const  var  function  class  if  else  for  while
 do  switch  case  default  break  continue  return
 new  this  super  true  false  null  typeof  import  export
@@ -149,6 +190,7 @@ async  await  try  catch  finally  throw</div>
 
     <h2 data-lang="ru">5. Методы console</h2>
     <h2 data-lang="en">5. console methods</h2>
+    <h2 data-lang="tk">5. console usullary</h2>
 
     <pre><code>console.log("обычно");
 console.info("инфо");
@@ -173,10 +215,12 @@ console.log("%c большой!", "color: red; font-size: 20px");</code></pre>
 
     <h2 data-lang="ru">6. Три типа ошибок</h2>
     <h2 data-lang="en">6. Three error types</h2>
+    <h2 data-lang="tk">6. Ýalňyşlyklaryň üç görnüşi</h2>
 
     <table>
         <thead data-lang="ru"><tr><th>Ошибка</th><th>Когда</th><th>Пример</th></tr></thead>
         <thead data-lang="en"><tr><th>Error</th><th>When</th><th>Example</th></tr></thead>
+        <thead data-lang="tk"><tr><th>Ýalňyşlyk</th><th>Haçan</th><th>Mysal</th></tr></thead>
         <tbody data-lang="ru">
             <tr><td><strong>SyntaxError</strong></td><td>Сломан синтаксис, скрипт вообще не запустится</td><td><code>let x = ;</code></td></tr>
             <tr><td><strong>ReferenceError</strong></td><td>Переменной не существует (часто опечатка)</td><td><code>console.log(userNmae);</code></td></tr>
@@ -187,37 +231,47 @@ console.log("%c большой!", "color: red; font-size: 20px");</code></pre>
             <tr><td><strong>ReferenceError</strong></td><td>Variable doesn't exist (often a typo)</td><td><code>console.log(userNmae);</code></td></tr>
             <tr><td><strong>TypeError</strong></td><td>Wrong data type</td><td><code>(5).toUpperCase()</code></td></tr>
         </tbody>
+        <tbody data-lang="tk">
+            <tr><td><strong>SyntaxError</strong></td><td>Sintaksis bozulan, skript asla işlemez</td><td><code>let x = ;</code></td></tr>
+            <tr><td><strong>ReferenceError</strong></td><td>Üýtgeýän ýok (köplenç ýazuw ýalňyşlygy)</td><td><code>console.log(userNmae);</code></td></tr>
+            <tr><td><strong>TypeError</strong></td><td>Maglumatyň tipi nädogry</td><td><code>(5).toUpperCase()</code></td></tr>
+        </tbody>
     </table>
 
     <div class="key-point">
         <p data-lang="ru">Формат: <code>ТипОшибки: описание<br>    at функция (файл:строка:символ)</code>. Кликните по ссылке — браузер откроет проблемное место.</p>
         <p data-lang="en">Format: <code>ErrorType: description<br>    at function (file:line:col)</code>. Click the link — browser opens the problem spot.</p>
+        <p data-lang="tk">Formaty: <code>ÝalňyşlygyňGörnüşi: beýany<br>    at funksiýa (faýl:setir:nyşan)</code>. Salgylanma basyň — brauzer meseleli ýeri açar.</p>
     </div>
 
     <hr>
 
     <h2 data-lang="ru">7. alert, prompt, confirm</h2>
     <h2 data-lang="en">7. alert, prompt, confirm</h2>
+    <h2 data-lang="tk">7. alert, prompt, confirm</h2>
 
     <table>
         <thead data-lang="ru"><tr><th>Функция</th><th>Что делает</th><th>Возвращает</th></tr></thead>
         <thead data-lang="en"><tr><th>Function</th><th>What it does</th><th>Returns</th></tr></thead>
+        <thead data-lang="tk"><tr><th>Funksiýa</th><th>Näme edýär</th><th>Näme gaýtarýar</th></tr></thead>
         <tbody>
-            <tr><td><code>alert("...")</code></td><td data-lang="ru">Окно с текстом и OK</td><td data-lang="ru"><code>undefined</code></td><td data-lang="en">Modal with text and OK</td><td data-lang="en"><code>undefined</code></td></tr>
-            <tr><td><code>prompt("...")</code></td><td data-lang="ru">Окно с полем ввода</td><td data-lang="ru">строку или <code>null</code></td><td data-lang="en">Modal with input field</td><td data-lang="en">string or <code>null</code></td></tr>
-            <tr><td><code>confirm("...")</code></td><td data-lang="ru">Окно с OK/Cancel</td><td data-lang="ru"><code>true</code> / <code>false</code></td><td data-lang="en">Modal with OK/Cancel</td><td data-lang="en"><code>true</code> / <code>false</code></td></tr>
+            <tr><td><code>alert("...")</code></td><td data-lang="ru">Окно с текстом и OK</td><td data-lang="ru"><code>undefined</code></td><td data-lang="en">Modal with text and OK</td><td data-lang="tk">Tekstli we OK düwmeli penjire</td><td data-lang="en"><code>undefined</code></td><td data-lang="tk"><code>undefined</code></td></tr>
+            <tr><td><code>prompt("...")</code></td><td data-lang="ru">Окно с полем ввода</td><td data-lang="ru">строку или <code>null</code></td><td data-lang="en">Modal with input field</td><td data-lang="tk">Girizmek meýdançaly penjire</td><td data-lang="en">string or <code>null</code></td><td data-lang="tk">setir ýa-da <code>null</code></td></tr>
+            <tr><td><code>confirm("...")</code></td><td data-lang="ru">Окно с OK/Cancel</td><td data-lang="ru"><code>true</code> / <code>false</code></td><td data-lang="en">Modal with OK/Cancel</td><td data-lang="tk">OK/Cancel düwmeli penjire</td><td data-lang="en"><code>true</code> / <code>false</code></td><td data-lang="tk"><code>true</code> / <code>false</code></td></tr>
         </tbody>
     </table>
 
     <div class="remember">
         <p data-lang="ru"><code>prompt</code> <strong>всегда возвращает строку</strong>, даже если ввели число. Для числа оборачивайте: <code>Number(prompt("..."))</code>.</p>
         <p data-lang="en"><code>prompt</code> <strong>always returns a string</strong>, even if a number was typed. Wrap in <code>Number(prompt("..."))</code>.</p>
+        <p data-lang="tk"><code>prompt</code> <strong>elmydama setir gaýtarýar</strong>, san girizilen hem bolsa. San üçin şeýle ýazyň: <code>Number(prompt("..."))</code>.</p>
     </div>
 
     <hr>
 
     <h2 data-lang="ru">8. Приветствующий (мини-проект)</h2>
     <h2 data-lang="en">8. Greeter (mini-project)</h2>
+    <h2 data-lang="tk">8. Salamlaşyjy (mini-taslama)</h2>
 
     <pre><code>alert("Привет! Познакомимся 👋");
 const name = prompt("Как тебя зовут?");
@@ -259,6 +313,15 @@ if (name === null || name.trim() === "") {
             <li><code>prompt</code> returns a string — use <code>Number(...)</code> for numbers.</li>
             <li>Dialogs work only in the browser, not Node.</li>
         </ul>
+        <ul data-lang="tk">
+            <li>JS <strong>harplaryň ululygyna duýgur</strong>: <code>age</code> ≠ <code>Age</code>.</li>
+            <li>Instruksiýanyň ahyrynda elmydama <code>;</code> goýuň (Prettier özi eder).</li>
+            <li>Teswirler — «näme» däl, «näme üçin».</li>
+            <li>Üýtgeýänler — <code>camelCase</code>, klaslar — <code>PascalCase</code>.</li>
+            <li>Ýalňyşlyklaryň üç görnüşi: Syntax, Reference, Type.</li>
+            <li><code>prompt</code> setir gaýtarýar — san üçin <code>Number(...)</code> ulanyň.</li>
+            <li>Dialoglar diňe brauzerde işleýär, Node-da olar ýok.</li>
+        </ul>
     </div>
 
     <div class="homework">
@@ -277,6 +340,14 @@ if (name === null || name.trim() === "") {
             <li>Write code using at least 4 different console methods (log, warn, error, table, group, time — any 4).</li>
             <li>Build your own "Greeter" with 5+ questions and at least one <code>confirm</code>.</li>
             <li>Learn the keyword list — try creating <code>let let = 5;</code>, see what the console says.</li>
+        </ol>
+        <ol data-lang="tk">
+            <li>Kod ýazyň we her setire <strong>manyly</strong> teswir goşuň («näme» däl, «näme üçin»).</li>
+            <li>Erbet üýtgeýän atlaryny gowy atlara öwrüň: <code>x</code>, <code>tmp</code>, <code>data1</code>, <code>d</code>.</li>
+            <li>Ýalňyşlyklaryň üç görnüşiniň (SyntaxError, ReferenceError, TypeError) <strong>her biri</strong> üçin mysal ýazyň — we konsolyň näme diýendigini ýazyň.</li>
+            <li>Konsolyň iň azyndan 4 dürli usulyny ulanyp kod ýazyň (log, warn, error, table, group, time — islendik 4-si).</li>
+            <li>5-den köp soragly we iň azyndan bir <code>confirm</code> bilen «Salamlaşyjynyň» öz wersiýaňyzy ýasaň.</li>
+            <li>Açar sözleriň sanawyny öwreniň — <code>let let = 5;</code> üýtgeýänini döredip görüň, konsolyň haýsy ýalňyşlygy görkezýändigine serediň.</li>
         </ol>
     </div>
 

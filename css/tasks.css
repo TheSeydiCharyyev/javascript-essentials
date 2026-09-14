@@ -100,6 +100,7 @@ h3 {
 }
 html[lang="ru"] .task-goal::before { content: '\1F3AF  Цель: '; }
 html[lang="en"] .task-goal::before { content: '\1F3AF  Goal: '; }
+html[lang="tk"] .task-goal::before { content: '\1F3AF  Maksat: '; }
 
 /* ========== CODE ========== */
 pre {
@@ -161,6 +162,7 @@ hr {
 }
 html[lang="ru"] .criteria::before { content: '\2705  Критерии оценки:'; }
 html[lang="en"] .criteria::before { content: '\2705  Evaluation criteria:'; }
+html[lang="tk"] .criteria::before { content: '\2705  Baha bermegiň ölçegleri:'; }
 
 /* ========== EXAMPLE ========== */
 .example {
@@ -178,6 +180,7 @@ html[lang="en"] .criteria::before { content: '\2705  Evaluation criteria:'; }
 }
 html[lang="ru"] .example::before { content: '\1F4CB  Пример выполнения:'; }
 html[lang="en"] .example::before { content: '\1F4CB  Example:'; }
+html[lang="tk"] .example::before { content: '\1F4CB  Ýerine ýetirmegiň mysaly:'; }
 
 /* ========== HINT ========== */
 .hint {
@@ -195,6 +198,7 @@ html[lang="en"] .example::before { content: '\1F4CB  Example:'; }
 }
 html[lang="ru"] .hint::before { content: '\1F4A1  Подсказка:'; }
 html[lang="en"] .hint::before { content: '\1F4A1  Hint:'; }
+html[lang="tk"] .hint::before { content: '\1F4A1  Kömek:'; }
 
 /* ========== WRITE BOX ========== */
 .write-box {
@@ -213,3 +217,4 @@ html[lang="en"] .hint::before { content: '\1F4A1  Hint:'; }
 }
 html[lang="ru"] .write-box::before { content: '\270F\FE0F  Запиши в тетрадь:'; }
 html[lang="en"] .write-box::before { content: '\270F\FE0F  Write in your notebook:'; }
+html[lang="tk"] .write-box::before { content: '\270F\FE0F  Depderiňize ýazyň:'; }

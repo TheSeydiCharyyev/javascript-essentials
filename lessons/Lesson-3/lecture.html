@@ -20,31 +20,44 @@
 <div class="lesson-nav">
     <a href="../../index.html" class="nav-home" data-lang="ru">&#8592; Главная</a>
     <a href="../../index.html" class="nav-home" data-lang="en">&#8592; Home</a>
+    <a href="../../index.html" class="nav-home" data-lang="tk">&#8592; Baş sahypa</a>
     <span class="nav-sep">|</span>
     <span class="nav-title" data-lang="ru">Занятие 3: Синтаксис и консоль</span>
     <span class="nav-title" data-lang="en">Lesson 3: Syntax &amp; Console</span>
+    <span class="nav-title" data-lang="tk">3-nji sapak: Sintaksis we konsol</span>
     <span class="nav-sep">|</span>
     <span class="nav-active" data-lang="ru">&#x1F468;&#x200D;&#x1F3EB; Лекция</span>
     <span class="nav-active" data-lang="en">&#x1F468;&#x200D;&#x1F3EB; Lecture</span>
+    <span class="nav-active" data-lang="tk">&#x1F468;&#x200D;&#x1F3EB; Leksiýa</span>
     <a href="student.html" class="nav-link" data-lang="ru">&#x1F468;&#x200D;&#x1F393; Конспект</a>
     <a href="student.html" class="nav-link" data-lang="en">&#x1F468;&#x200D;&#x1F393; Notes</a>
+    <a href="student.html" class="nav-link" data-lang="tk">&#x1F468;&#x200D;&#x1F393; Konspekt</a>
     <a href="tasks.html" class="nav-link" data-lang="ru">&#x1F4CB; Задания</a>
     <a href="tasks.html" class="nav-link" data-lang="en">&#x1F4CB; Tasks</a>
-    <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
+    <a href="tasks.html" class="nav-link" data-lang="tk">&#x1F4CB; Tabşyryklar</a>
+    <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" class="lang-opt" data-set-lang="ru" onclick="setLang('ru')">RU</button>
+        <button type="button" class="lang-opt" data-set-lang="en" onclick="setLang('en')">EN</button>
+        <button type="button" class="lang-opt" data-set-lang="tk" onclick="setLang('tk')">TM</button>
+    </div>
 </div>
 
 <div class="container">
 
     <h1 data-lang="ru">Занятие 3: Синтаксис и консоль</h1>
     <h1 data-lang="en">Lesson 3: Syntax &amp; Console</h1>
+    <h1 data-lang="tk">3-nji sapak: Sintaksis we konsol</h1>
     <p class="subtitle" data-lang="ru">Правила языка, комментарии, работа с консолью, чтение ошибок и первые диалоги с пользователем</p>
     <p class="subtitle" data-lang="en">Language rules, comments, working with the console, reading errors, and first dialogs with the user</p>
+    <p class="subtitle" data-lang="tk">Diliň düzgünleri, teswirler, konsol bilen işlemek, ýalňyşlyklary okamak we ulanyjy bilen ilkinji dialoglar</p>
 
     <div class="why">
         <p data-lang="ru">До этого мы говорили о JavaScript <em>вокруг</em> кода: история, инструменты, где запускается. Сегодня — погружаемся <em>внутрь</em>. Мы разберём, из чего состоит программа на JS, научимся комментировать код, использовать консоль на полную и — что важнее всего — <strong>читать ошибки</strong>. Без этого навыка вы будете тонуть в первых же сложных задачах.</p>
         <p data-lang="en">Until now we talked <em>around</em> the code: history, tools, where it runs. Today we go <em>inside</em>. We'll break down what a JS program is made of, learn to comment code, use the console to its fullest, and — most importantly — <strong>read errors</strong>. Without this skill you'll drown in the first complex tasks.</p>
+        <p data-lang="tk">Şu wagta çenli biz JavaScript barada koduň <em>daşyndan</em> gürleşdik: taryhy, gurallary, nirede işledilýändigi. Şu gün koduň <em>içine</em> girýäris. JS programmasynyň nämelerden ybaratdygyny seljereris, kody teswirlemegi, konsoly doly güýjünde ulanmagy we — iň möhümi — <strong>ýalňyşlyklary okamagy</strong> öwreneris. Bu başarnyk bolmasa, ilkinji çylşyrymly meselelerde gark bolarsyňyz.</p>
         <p data-lang="ru"><strong>После этого занятия вы сможете:</strong></p>
         <p data-lang="en"><strong>After this lesson you will be able to:</strong></p>
+        <p data-lang="tk"><strong>Bu sapakdan soň siz şulary başararsyňyz:</strong></p>
         <ul data-lang="ru">
             <li>Объяснить, что такое инструкция (statement) и выражение (expression)</li>
             <li>Писать комментарии трёх типов и понимать, когда они полезны</li>
@@ -63,11 +76,21 @@
             <li>Use <code>alert</code>, <code>prompt</code>, <code>confirm</code> for user dialogs</li>
             <li>Write an interactive program that asks questions and reacts</li>
         </ul>
+        <ul data-lang="tk">
+            <li>Instruksiýanyň (statement) we aňlatmanyň (expression) näme bolýandygyny düşündirmek</li>
+            <li>Üç görnüşli teswir ýazmak we olaryň haçan peýdalydygyna düşünmek</li>
+            <li>Üýtgeýänleri atlandyrmagyň düzgünlerini we JS-iň açar sözlerini aýtmak</li>
+            <li><code>console.log</code>, <code>warn</code>, <code>error</code>, <code>table</code>, <code>group</code>, <code>time</code> ulanmak</li>
+            <li>Ýalňyşlyklaryň üç esasy görnüşini okamak we olara düşünmek: Syntax, Reference, Type</li>
+            <li>Ulanyjy bilen dialog üçin <code>alert</code>, <code>prompt</code>, <code>confirm</code> ulanmak</li>
+            <li>Sorag berýän we jogaplara täsir edýän interaktiw programma ýazmak</li>
+        </ul>
     </div>
 
     <div class="toc">
         <div class="toc-title" data-lang="ru">Содержание</div>
         <div class="toc-title" data-lang="en">Contents</div>
+        <div class="toc-title" data-lang="tk">Mazmuny</div>
         <ol data-lang="ru">
             <li><a href="#statements">Инструкции и выражения</a></li>
             <li><a href="#comments">Комментарии</a></li>
@@ -88,6 +111,16 @@
             <li><a href="#dialogs">Dialog boxes: alert, prompt, confirm</a></li>
             <li><a href="#project">Mini-project "Interactive Greeter"</a></li>
         </ol>
+        <ol data-lang="tk">
+            <li><a href="#statements">Instruksiýalar we aňlatmalar</a></li>
+            <li><a href="#comments">Teswirler</a></li>
+            <li><a href="#syntax-rules">Sintaksis düzgünleri</a></li>
+            <li><a href="#identifiers">Identifikatorlar we açar sözler</a></li>
+            <li><a href="#console">Console-yň ähli mümkinçilikleri</a></li>
+            <li><a href="#errors">Konsoldaky ýalňyşlyklary nädip okamaly</a></li>
+            <li><a href="#dialogs">Dialog penjireleri: alert, prompt, confirm</a></li>
+            <li><a href="#project">«Interaktiw salamlaşyjy» mini-taslamasy</a></li>
+        </ol>
     </div>
 
     <hr>
@@ -95,9 +128,11 @@
     <!-- ============================================================ -->
     <h2 id="statements" data-lang="ru">1. Инструкции и выражения</h2>
     <h2 id="statements" data-lang="en">1. Statements and expressions</h2>
+    <h2 id="statements" data-lang="tk">1. Instruksiýalar we aňlatmalar</h2>
 
     <p data-lang="ru">Программа на JavaScript — это <strong>последовательность инструкций</strong> (<em>statements</em>), которые движок выполняет по очереди, сверху вниз. Каждая инструкция — это «шаг» программы: создать переменную, вызвать функцию, сделать проверку.</p>
     <p data-lang="en">A JavaScript program is a <strong>sequence of statements</strong>, which the engine executes in order, top to bottom. Each statement is a "step" of the program: create a variable, call a function, make a check.</p>
+    <p data-lang="tk">JavaScript programmasy — hereketlendirijiniň ýokardan aşak, yzly-yzyna ýerine ýetirýän <strong>instruksiýalarynyň yzygiderligi</strong> (<em>statements</em>). Her instruksiýa programmanyň bir «ädimi»: üýtgeýän döretmek, funksiýany çagyrmak, barlag geçirmek.</p>
 
     <pre><code>let name = "Seydi";      // инструкция 1 — создать переменную
 console.log(name);       // инструкция 2 — вывести её
@@ -106,6 +141,7 @@ console.log(age + 5);    // инструкция 4 — вывести age + 5</c
 
     <h3 data-lang="ru">Инструкция vs выражение</h3>
     <h3 data-lang="en">Statement vs expression</h3>
+    <h3 data-lang="tk">Instruksiýa vs aňlatma</h3>
 
     <ul data-lang="ru">
         <li><strong>Выражение (expression)</strong> — это что-то, что <em>производит значение</em>. Например: <code>2 + 2</code>, <code>"hello"</code>, <code>Math.random()</code>.</li>
@@ -115,22 +151,30 @@ console.log(age + 5);    // инструкция 4 — вывести age + 5</c
         <li><strong>Expression</strong> — something that <em>produces a value</em>. E.g., <code>2 + 2</code>, <code>"hello"</code>, <code>Math.random()</code>.</li>
         <li><strong>Statement</strong> — an <em>action</em> that does something. Usually ends with a semicolon. E.g., <code>let x = 5;</code>, <code>console.log("hi");</code>.</li>
     </ul>
+    <ul data-lang="tk">
+        <li><strong>Aňlatma (expression)</strong> — <em>baha döredýän</em> zat. Mysal üçin: <code>2 + 2</code>, <code>"hello"</code>, <code>Math.random()</code>.</li>
+        <li><strong>Instruksiýa (statement)</strong> — bir zat edýän <em>hereket</em>. Adatça nokatly otur bilen gutarýar. Mysal üçin: <code>let x = 5;</code>, <code>console.log("hi");</code>.</li>
+    </ul>
 
     <div class="analogy">
         <p data-lang="ru">Аналогия: выражение — это <em>слово или словосочетание</em> («три», «два плюс два», «синий цвет»). Инструкция — это <em>целое предложение с точкой</em> («Иди домой.»). Из выражений строятся инструкции. Из инструкций — вся программа.</p>
         <p data-lang="en">Analogy: an expression is a <em>word or phrase</em> ("three", "two plus two", "the color blue"). A statement is a <em>full sentence with a period</em> ("Go home."). Statements are built from expressions. Programs are built from statements.</p>
+        <p data-lang="tk">Meňzetme: aňlatma — <em>söz ýa-da söz düzümi</em> («üç», «iki goşmak iki», «gök reňk»). Instruksiýa — <em>nokatly doly sözlem</em> («Öýe git.»). Instruksiýalar aňlatmalardan gurulýar. Tutuş programma bolsa instruksiýalardan.</p>
     </div>
 
     <h3 data-lang="ru">Точка с запятой и ASI</h3>
     <h3 data-lang="en">Semicolons and ASI</h3>
+    <h3 data-lang="tk">Nokatly otur we ASI</h3>
 
     <p data-lang="ru">Каждая инструкция <strong>должна</strong> заканчиваться точкой с запятой <code>;</code>. Но у JS есть <strong>ASI</strong> (Automatic Semicolon Insertion) — если вы забыли, движок попытается поставить сам. Это не всегда работает правильно.</p>
     <p data-lang="en">Each statement <strong>should</strong> end with a semicolon <code>;</code>. JS has <strong>ASI</strong> (Automatic Semicolon Insertion) — if you forget, the engine tries to insert one. But it doesn't always work right.</p>
+    <p data-lang="tk">Her instruksiýa nokatly otur <code>;</code> bilen <strong>gutarmaly</strong>. Emma JS-de <strong>ASI</strong> (Automatic Semicolon Insertion) bar — eger ýatdan çykarsaňyz, hereketlendiriji ony özi goýmaga synanyşar. Bu elmydama dogry işlemeýär.</p>
 
     <div class="compare">
         <div class="right">
             <div class="label" data-lang="ru">С точкой с запятой (надёжно)</div>
             <div class="label" data-lang="en">With semicolons (safe)</div>
+            <div class="label" data-lang="tk">Nokatly otur bilen (ygtybarly)</div>
             <pre><code>let x = 5;
 let y = 10;
 console.log(x + y);</code></pre>
@@ -138,6 +182,7 @@ console.log(x + y);</code></pre>
         <div class="wrong">
             <div class="label" data-lang="ru">Без (рискованно)</div>
             <div class="label" data-lang="en">Without (risky)</div>
+            <div class="label" data-lang="tk">Nokatly otursyz (töwekgelçilikli)</div>
             <pre><code>let x = 5
 let y = 10
 console.log(x + y)</code></pre>
@@ -147,6 +192,7 @@ console.log(x + y)</code></pre>
     <div class="pro-tip">
         <p data-lang="ru">Включённый <strong>Prettier</strong> (из прошлого занятия) расставит точки с запятой сам при каждом сохранении. Поэтому просто пишите код и сохраняйте — всё будет чисто.</p>
         <p data-lang="en">With <strong>Prettier</strong> enabled (from the last lesson), semicolons are added automatically on every save. Just write code and save — it stays clean.</p>
+        <p data-lang="tk">Işjeň <strong>Prettier</strong> (geçen sapakdan) her ýatda saklanyňyzda nokatly oturlary özi goýar. Şonuň üçin diňe kod ýazyň we ýatda saklaň — hemme zat arassa bolar.</p>
     </div>
 
     <hr>
@@ -154,17 +200,21 @@ console.log(x + y)</code></pre>
     <!-- ============================================================ -->
     <h2 id="comments" data-lang="ru">2. Комментарии</h2>
     <h2 id="comments" data-lang="en">2. Comments</h2>
+    <h2 id="comments" data-lang="tk">2. Teswirler</h2>
 
     <p data-lang="ru"><strong>Комментарий</strong> — это текст, который движок JS <em>игнорирует</em>. Он не влияет на работу программы, но помогает <em>людям</em> понимать, что делает код. В JS есть три вида комментариев:</p>
     <p data-lang="en">A <strong>comment</strong> is text that the JS engine <em>ignores</em>. It doesn't affect the program, but helps <em>people</em> understand the code. JS has three kinds of comments:</p>
+    <p data-lang="tk"><strong>Teswir</strong> — JS hereketlendirijisiniň <em>äsgermezlik edýän</em> teksti. Ol programmanyň işine täsir etmeýär, emma kodyň näme edýändigine <em>adamlaryň</em> düşünmegine kömek edýär. JS-de teswirleriň üç görnüşi bar:</p>
 
     <h3 data-lang="ru">Однострочный</h3>
     <h3 data-lang="en">Single-line</h3>
+    <h3 data-lang="tk">Bir setirli</h3>
     <pre><code>// Это однострочный комментарий
 let price = 100; // можно писать в конце строки тоже</code></pre>
 
     <h3 data-lang="ru">Многострочный</h3>
     <h3 data-lang="en">Multi-line</h3>
+    <h3 data-lang="tk">Köp setirli</h3>
     <pre><code>/*
     Это комментарий из нескольких строк.
     Полезен для длинных объяснений,
@@ -174,6 +224,7 @@ let x = 10;</code></pre>
 
     <h3 data-lang="ru">JSDoc (документация функций)</h3>
     <h3 data-lang="en">JSDoc (function documentation)</h3>
+    <h3 data-lang="tk">JSDoc (funksiýalaryň resminamasy)</h3>
     <pre><code>/**
  * Складывает два числа и возвращает результат.
  * @param {number} a — первое число
@@ -186,9 +237,11 @@ function sum(a, b) {
 
     <p data-lang="ru">JSDoc-комментарии VS Code «понимает» и показывает подсказку при наведении на функцию. Очень полезная привычка для командной работы.</p>
     <p data-lang="en">VS Code "understands" JSDoc comments and shows a hint when hovering over a function. A very useful habit for teamwork.</p>
+    <p data-lang="tk">JSDoc teswirlerine VS Code «düşünýär» we funksiýanyň üstüne kursor getirilende maslahat görkezýär. Toparlaýyn iş üçin örän peýdaly endik.</p>
 
     <h3 data-lang="ru">Когда писать комментарии</h3>
     <h3 data-lang="en">When to write comments</h3>
+    <h3 data-lang="tk">Teswirleri haçan ýazmaly</h3>
 
     <ul data-lang="ru">
         <li>✅ Когда код делает что-то неочевидное (<em>«почему именно так?»</em>)</li>
@@ -204,38 +257,53 @@ function sum(a, b) {
         <li>❌ <strong>DON'T state the obvious:</strong> <code>let x = 5; // assign 5 to x</code> — noise</li>
         <li>❌ DON'T comment out old code — delete it, Git keeps history</li>
     </ul>
+    <ul data-lang="tk">
+        <li>✅ Kod düşnüksiz bir zat edýän bolsa (<em>«näme üçin edil şeýle?»</em>)</li>
+        <li>✅ Aýratyn ýagdaý ýa-da ýalňyşlygy aýlanyp geçmek bar bolsa</li>
+        <li>✅ TODO belliklerini ýazmak üçin: <code>// TODO: email barlagyny goşmak</code></li>
+        <li>❌ <strong>Düşnükli zatlary ÝAZMAŇ:</strong> <code>let x = 5; // x üýtgeýänine 5 bahany berýäris</code> — bu zibil</li>
+        <li>❌ Köne kody teswire ÖWÜRMÄŇ — ony pozuň, Git taryhy saklar</li>
+    </ul>
 
     <div class="mistake">
         <p data-lang="ru">Комментарии — это не замена <strong>хорошим названиям переменных</strong>. Плохо: <code>let d = 5; // количество дней</code>. Хорошо: <code>let days = 5;</code> (вообще без комментария).</p>
         <p data-lang="en">Comments are not a substitute for <strong>good variable names</strong>. Bad: <code>let d = 5; // number of days</code>. Good: <code>let days = 5;</code> (no comment at all).</p>
+        <p data-lang="tk">Teswirler <strong>gowy üýtgeýän atlarynyň</strong> ornuny tutmaýar. Erbet: <code>let d = 5; // günleriň sany</code>. Gowy: <code>let days = 5;</code> (asla teswirsiz).</p>
     </div>
 
     <h3 data-lang="ru">Горячая клавиша комментирования</h3>
     <h3 data-lang="en">Comment shortcut</h3>
+    <h3 data-lang="tk">Teswirlemegiň gyzgyn düwmesi</h3>
 
     <p data-lang="ru"><span class="kbd">Ctrl</span>+<span class="kbd">/</span> — VS Code закомментирует/раскомментирует текущую строку или выделение. Очень полезно для быстрого «выключения» кода при отладке.</p>
     <p data-lang="en"><span class="kbd">Ctrl</span>+<span class="kbd">/</span> — VS Code toggles the comment for the current line or selection. Very handy for temporarily "disabling" code during debugging.</p>
+    <p data-lang="tk"><span class="kbd">Ctrl</span>+<span class="kbd">/</span> — VS Code häzirki setiri ýa-da saýlanan bölegi teswire öwürer/teswirden çykarar. Sazlamak (debug) wagtynda kody çalt «öçürmek» üçin örän peýdaly.</p>
 
     <hr>
 
     <!-- ============================================================ -->
     <h2 id="syntax-rules" data-lang="ru">3. Правила синтаксиса</h2>
     <h2 id="syntax-rules" data-lang="en">3. Syntax rules</h2>
+    <h2 id="syntax-rules" data-lang="tk">3. Sintaksis düzgünleri</h2>
 
     <h3 data-lang="ru">Регистр символов важен (case-sensitive)</h3>
     <h3 data-lang="en">Case sensitivity</h3>
+    <h3 data-lang="tk">Harplaryň ululygy möhüm (case-sensitive)</h3>
 
     <p data-lang="ru">JavaScript <strong>различает большие и маленькие буквы</strong>. <code>name</code>, <code>Name</code> и <code>NAME</code> — это три <em>разные</em> переменные.</p>
     <p data-lang="en">JavaScript <strong>distinguishes upper and lower case</strong>. <code>name</code>, <code>Name</code>, and <code>NAME</code> are three <em>different</em> variables.</p>
+    <p data-lang="tk">JavaScript <strong>baş we setir harplaryny tapawutlandyrýar</strong>. <code>name</code>, <code>Name</code> we <code>NAME</code> — bular üç <em>dürli</em> üýtgeýän.</p>
 
     <pre><code>let age = 25;
 console.log(Age);  // ❌ ReferenceError: Age is not defined</code></pre>
 
     <h3 data-lang="ru">Пробелы и отступы</h3>
     <h3 data-lang="en">Whitespace and indentation</h3>
+    <h3 data-lang="tk">Boşluklar we setir başyndaky boşluklar</h3>
 
     <p data-lang="ru">Для движка JS <strong>пробелы и отступы не важны</strong> — он одинаково понимает все три варианта ниже:</p>
     <p data-lang="en">For the JS engine, <strong>whitespace and indentation don't matter</strong> — all three below are equivalent:</p>
+    <p data-lang="tk">JS hereketlendirijisi üçin <strong>boşluklaryň we setir başyndaky boşluklaryň ähmiýeti ýok</strong> — ol aşakdaky üç wariantyň hemmesine birmeňzeş düşünýär:</p>
 
     <pre><code>let x=5;let y=10;console.log(x+y);
 
@@ -249,9 +317,11 @@ console.log ( x + y ) ;</code></pre>
 
     <p data-lang="ru">Но для <strong>человека</strong>, который будет читать код (в том числе для вас через месяц), аккуратное форматирование с отступами — это <em>жизненно важно</em>. Стандарт: 2 пробела отступа, пробелы вокруг <code>=</code>, после запятых.</p>
     <p data-lang="en">But for a <strong>human</strong> reading the code (including you a month from now), neat formatting with indentation is <em>vital</em>. Standard: 2-space indent, spaces around <code>=</code>, after commas.</p>
+    <p data-lang="tk">Emma kody okajak <strong>adam</strong> üçin (şol sanda bir aýdan soňky özüňiz üçin) setir başyndaky boşluklar bilen tertipli formatlamak — <em>örän möhüm</em>. Standart: setir başynda 2 boşluk, <code>=</code> belgisiniň iki tarapynda we otudan soň boşluk.</p>
 
     <h3 data-lang="ru">Строки в кавычках — три варианта</h3>
     <h3 data-lang="en">Strings in quotes — three variants</h3>
+    <h3 data-lang="tk">Dyrnakdaky setirler — üç wariant</h3>
 
     <pre><code>let a = "двойные кавычки";
 let b = 'одинарные кавычки';
@@ -259,10 +329,12 @@ let c = `обратные кавычки (шаблонные строки)`;</co
 
     <p data-lang="ru">Первые два варианта работают одинаково. Третий — <strong>шаблонная строка</strong> — позволяет вставлять выражения через <code>${ }</code>. Мы её подробно разберём в занятии 10, а пока знаем, что такая есть.</p>
     <p data-lang="en">The first two are equivalent. The third — a <strong>template literal</strong> — lets you embed expressions via <code>${ }</code>. We'll cover it in detail in Lesson 10; for now just know it exists.</p>
+    <p data-lang="tk">Ilkinji iki wariant birmeňzeş işleýär. Üçünjisi — <strong>şablon setir</strong> — <code>${ }</code> arkaly aňlatmalary goýmaga mümkinçilik berýär. Ony 10-njy sapakda jikme-jik seljereris, häzirlikçe onuň bardygyny bilýäris.</p>
 
     <div class="pro-tip">
         <p data-lang="ru"><strong>Консистентность важнее выбора.</strong> Выберите один стиль кавычек и используйте везде. Prettier сам приведёт всё к одному виду — по умолчанию к двойным.</p>
         <p data-lang="en"><strong>Consistency beats the choice itself.</strong> Pick one quote style and use it everywhere. Prettier will unify them — defaults to double.</p>
+        <p data-lang="tk"><strong>Yzygiderlilik saýlawdan möhüm.</strong> Dyrnaklaryň bir stilini saýlaň we hemme ýerde ulanyň. Prettier hemme zady bir görnüşe getirer — adatça goşa dyrnaga.</p>
     </div>
 
     <hr>
@@ -270,16 +342,20 @@ let c = `обратные кавычки (шаблонные строки)`;</co
     <!-- ============================================================ -->
     <h2 id="identifiers" data-lang="ru">4. Идентификаторы и ключевые слова</h2>
     <h2 id="identifiers" data-lang="en">4. Identifiers and keywords</h2>
+    <h2 id="identifiers" data-lang="tk">4. Identifikatorlar we açar sözler</h2>
 
     <p data-lang="ru"><strong>Идентификатор</strong> — это имя, которое вы даёте переменной, функции, классу. Например, <code>age</code>, <code>calculateTotal</code>, <code>User</code>.</p>
     <p data-lang="en">An <strong>identifier</strong> is a name you give to a variable, function, or class. E.g., <code>age</code>, <code>calculateTotal</code>, <code>User</code>.</p>
+    <p data-lang="tk"><strong>Identifikator</strong> — üýtgeýäne, funksiýa, klasa berýän adyňyz. Mysal üçin, <code>age</code>, <code>calculateTotal</code>, <code>User</code>.</p>
 
     <h3 data-lang="ru">Правила именования</h3>
     <h3 data-lang="en">Naming rules</h3>
+    <h3 data-lang="tk">Atlandyrmagyň düzgünleri</h3>
 
     <table>
         <thead data-lang="ru"><tr><th>Правило</th><th>Пример</th></tr></thead>
         <thead data-lang="en"><tr><th>Rule</th><th>Example</th></tr></thead>
+        <thead data-lang="tk"><tr><th>Düzgün</th><th>Mysal</th></tr></thead>
         <tbody data-lang="ru">
             <tr><td>Можно буквы (a-z, A-Z), цифры, <code>_</code>, <code>$</code></td><td><code>age</code>, <code>_name</code>, <code>$total</code>, <code>user2</code></td></tr>
             <tr><td><strong>Нельзя</strong> начинать с цифры</td><td>❌ <code>2user</code>, ✅ <code>user2</code></td></tr>
@@ -294,10 +370,18 @@ let c = `обратные кавычки (шаблонные строки)`;</co
             <tr><td><strong>Not allowed</strong>: reserved keywords</td><td>❌ <code>let let = 5;</code></td></tr>
             <tr><td>Unicode letters allowed</td><td><code>имя</code>, <code>возраст</code> (but English is preferred)</td></tr>
         </tbody>
+        <tbody data-lang="tk">
+            <tr><td>Harplar (a-z, A-Z), sanlar, <code>_</code>, <code>$</code> bolup biler</td><td><code>age</code>, <code>_name</code>, <code>$total</code>, <code>user2</code></td></tr>
+            <tr><td>San bilen başlamak <strong>bolmaýar</strong></td><td>❌ <code>2user</code>, ✅ <code>user2</code></td></tr>
+            <tr><td>Boşluklary we defisleri ulanmak <strong>bolmaýar</strong></td><td>❌ <code>my name</code>, ❌ <code>my-name</code>, ✅ <code>myName</code></td></tr>
+            <tr><td>Açar sözleri ulanmak <strong>bolmaýar</strong></td><td>❌ <code>let let = 5;</code></td></tr>
+            <tr><td>Islendik Unicode harplary bolup biler</td><td><code>ady</code>, <code>ýaşy</code> (emma iňlisçe atlar gowy)</td></tr>
+        </tbody>
     </table>
 
     <h3 data-lang="ru">Соглашения по стилю (не правила языка, а общепринятые)</h3>
     <h3 data-lang="en">Style conventions (not language rules, but widely used)</h3>
+    <h3 data-lang="tk">Stil ylalaşyklary (diliň düzgünleri däl, umumy kabul edilenler)</h3>
 
     <ul data-lang="ru">
         <li><code>camelCase</code> — переменные и функции: <code>userName</code>, <code>calculateTotal</code></li>
@@ -311,12 +395,20 @@ let c = `обратные кавычки (шаблонные строки)`;</co
         <li><code>UPPER_SNAKE_CASE</code> — config constants: <code>MAX_USERS</code>, <code>API_URL</code></li>
         <li>Names should be <strong>descriptive</strong>: <code>userAge</code>, not <code>ua</code> or <code>x</code></li>
     </ul>
+    <ul data-lang="tk">
+        <li><code>camelCase</code> — üýtgeýänler we funksiýalar: <code>userName</code>, <code>calculateTotal</code></li>
+        <li><code>PascalCase</code> — klaslar we «konstruktorlar»: <code>User</code>, <code>HttpClient</code></li>
+        <li><code>UPPER_SNAKE_CASE</code> — sazlama konstantalary: <code>MAX_USERS</code>, <code>API_URL</code></li>
+        <li>Atlar <strong>manyly</strong> bolmaly: <code>ua</code> ýa-da <code>x</code> däl-de, <code>userAge</code></li>
+    </ul>
 
     <h3 data-lang="ru">Ключевые (зарезервированные) слова</h3>
     <h3 data-lang="en">Reserved keywords</h3>
+    <h3 data-lang="tk">Açar (bellenen) sözler</h3>
 
     <p data-lang="ru">Эти слова имеют особое значение в языке — их <strong>нельзя</strong> использовать как имена переменных:</p>
     <p data-lang="en">These words have special meaning in the language — you <strong>cannot</strong> use them as variable names:</p>
+    <p data-lang="tk">Bu sözleriň dilde aýratyn manysy bar — olary üýtgeýänleriň ady hökmünde ulanmak <strong>bolmaýar</strong>:</p>
 
     <div class="diagram">break   case       catch     class    const     continue  debugger
 default delete     do        else     export    extends   false
@@ -328,6 +420,7 @@ with    yield      await     async</div>
     <div class="important">
         <p data-lang="ru">Не пугайтесь — заучивать список наизусть <strong>не нужно</strong>. VS Code сразу подчеркнёт ошибку красным, если вы случайно попытаетесь использовать ключевое слово. Со временем список запомнится сам.</p>
         <p data-lang="en">Don't panic — you <strong>don't need</strong> to memorize this list. VS Code will instantly underline an error in red if you accidentally use a keyword. Over time the list becomes second nature.</p>
+        <p data-lang="tk">Gorkmaň — sanawy ýatdan öwrenmek <strong>gerek däl</strong>. Eger tötänleýin açar sözi ulanmaga synanyşsaňyz, VS Code ýalňyşlygy derrew gyzyl bilen çyzar. Wagtyň geçmegi bilen sanaw özi ýatda galar.</p>
     </div>
 
     <hr>
@@ -335,12 +428,15 @@ with    yield      await     async</div>
     <!-- ============================================================ -->
     <h2 id="console" data-lang="ru">5. Console во всей красе</h2>
     <h2 id="console" data-lang="en">5. Console in depth</h2>
+    <h2 id="console" data-lang="tk">5. Console-yň ähli mümkinçilikleri</h2>
 
     <p data-lang="ru">В занятии 1 мы использовали только <code>console.log()</code>. На самом деле у объекта <code>console</code> есть более <strong>20 методов</strong>. Разберём самые полезные.</p>
     <p data-lang="en">In Lesson 1 we only used <code>console.log()</code>. Actually, <code>console</code> has over <strong>20 methods</strong>. Let's cover the most useful.</p>
+    <p data-lang="tk">1-nji sapakda biz diňe <code>console.log()</code> ulandyk. Aslynda <code>console</code> obýektiniň <strong>20-den gowrak usuly</strong> bar. Iň peýdalylaryny seljereliň.</p>
 
     <h3 data-lang="ru">Основные методы</h3>
     <h3 data-lang="en">Main methods</h3>
+    <h3 data-lang="tk">Esasy usullar</h3>
 
     <pre><code>console.log("обычное сообщение");      // белое
 console.info("информационное");        // синяя иконка
@@ -350,9 +446,11 @@ console.debug("для отладки");          // мелкое</code></pre>
 
     <p data-lang="ru">Все пять выводят текст в консоль, но <strong>разного цвета</strong>. Это удобно, когда в консоли много вывода — ошибки сразу бросаются в глаза.</p>
     <p data-lang="en">All five print to the console, but in <strong>different colors</strong>. Useful when the console is busy — errors stand out.</p>
+    <p data-lang="tk">Bäşisi hem teksti konsola çykarýar, emma <strong>dürli reňkde</strong>. Konsolda çykyş köp bolanda bu amatly — ýalňyşlyklar derrew göze ilýär.</p>
 
     <h3 data-lang="ru">console.table — красивая таблица</h3>
     <h3 data-lang="en">console.table — a nice table</h3>
+    <h3 data-lang="tk">console.table — owadan tablisa</h3>
 
     <pre><code>const users = [
     { name: "Anna", age: 25, city: "London" },
@@ -364,9 +462,11 @@ console.table(users);</code></pre>
 
     <p data-lang="ru">Вывод — аккуратная таблица в консоли. Незаменимо, когда смотришь массивы объектов (результаты API, пользователей).</p>
     <p data-lang="en">Output — a neat table in the console. Invaluable when inspecting arrays of objects (API results, users).</p>
+    <p data-lang="tk">Netije — konsolda tertipli tablisa. Obýektleriň massiwlerine (API netijelerine, ulanyjylara) seredeniňizde çalşyp bolmajak gural.</p>
 
     <h3 data-lang="ru">console.group — группировка сообщений</h3>
     <h3 data-lang="en">console.group — grouping messages</h3>
+    <h3 data-lang="tk">console.group — habarlary toparlamak</h3>
 
     <pre><code>console.group("Пользователь Anna");
     console.log("Возраст: 25");
@@ -381,9 +481,11 @@ console.groupEnd();</code></pre>
 
     <p data-lang="ru">В консоли появятся две сворачиваемые группы. Удобно для отчётов с большим количеством логов.</p>
     <p data-lang="en">The console shows two collapsible groups. Handy for reports with lots of logs.</p>
+    <p data-lang="tk">Konsolda iki sany ýygnalýan topar peýda bolar. Köp logy bolan hasabatlar üçin amatly.</p>
 
     <h3 data-lang="ru">console.time — измерение времени</h3>
     <h3 data-lang="en">console.time — measuring time</h3>
+    <h3 data-lang="tk">console.time — wagty ölçemek</h3>
 
     <pre><code>console.time("Мой таймер");
 
@@ -395,9 +497,11 @@ console.timeEnd("Мой таймер");  // Мой таймер: 4.2 ms</code></
 
     <p data-lang="ru">Позволяет узнать, <strong>сколько миллисекунд</strong> занял кусок кода. Имя таймера (<code>"Мой таймер"</code>) должно совпадать в <code>time</code> и <code>timeEnd</code>.</p>
     <p data-lang="en">Shows how many <strong>milliseconds</strong> a block of code took. The timer name (<code>"My timer"</code>) must match in <code>time</code> and <code>timeEnd</code>.</p>
+    <p data-lang="tk">Kodyň bir böleginiň <strong>näçe millisekunt</strong> dowam edendigini bilmäge mümkinçilik berýär. Taýmeriň ady (<code>"Мой таймер"</code>) <code>time</code> we <code>timeEnd</code>-de gabat gelmeli.</p>
 
     <h3 data-lang="ru">Форматирование с подстановками</h3>
     <h3 data-lang="en">Formatting with placeholders</h3>
+    <h3 data-lang="tk">Ornuna goýmak bilen formatlamak</h3>
 
     <pre><code>let name = "Seydi";
 let age = 25;
@@ -415,6 +519,7 @@ console.log("%c🎉 Победа!", "color: green; font-size: 20px; font-weight:
     <div class="try-it">
         <p data-lang="ru">Откройте консоль (F12) и выполните каждый из примеров выше. Посмотрите, как разные методы выглядят в вашем браузере.</p>
         <p data-lang="en">Open the console (F12) and run each example above. See how different methods look in your browser.</p>
+        <p data-lang="tk">Konsoly açyň (F12) we ýokardaky mysallaryň her birini ýerine ýetiriň. Dürli usullaryň brauzeriňizde nähili görünýändigine serediň.</p>
     </div>
 
     <hr>
@@ -422,15 +527,19 @@ console.log("%c🎉 Победа!", "color: green; font-size: 20px; font-weight:
     <!-- ============================================================ -->
     <h2 id="errors" data-lang="ru">6. Как читать ошибки в консоли</h2>
     <h2 id="errors" data-lang="en">6. Reading console errors</h2>
+    <h2 id="errors" data-lang="tk">6. Konsoldaky ýalňyşlyklary nädip okamaly</h2>
 
     <p data-lang="ru">Ошибки в консоли — это <strong>не враг</strong>, а ваш главный помощник. Они точно говорят, где и почему всё сломалось. Научиться читать ошибки — важнейший навык программиста.</p>
     <p data-lang="en">Console errors are <strong>not your enemy</strong> but your main helper. They tell you exactly where and why things broke. Learning to read them is a core dev skill.</p>
+    <p data-lang="tk">Konsoldaky ýalňyşlyklar — <strong>duşman däl</strong>, eýsem siziň esasy kömekçiňiz. Olar hemme zadyň nirede we näme üçin döwlendigini takyk aýdýar. Ýalňyşlyklary okamagy öwrenmek — programmistiň iň möhüm başarnygy.</p>
 
     <h3 data-lang="ru">Анатомия ошибки</h3>
     <h3 data-lang="en">Anatomy of an error</h3>
+    <h3 data-lang="tk">Ýalňyşlygyň anatomiýasy</h3>
 
     <p data-lang="ru">В консоли ошибка выглядит примерно так:</p>
     <p data-lang="en">In the console, an error looks roughly like this:</p>
+    <p data-lang="tk">Konsolda ýalňyşlyk takmynan şeýle görünýär:</p>
 
     <div class="diagram">ReferenceError: userName is not defined
     at greet (app.js:5:15)
@@ -446,18 +555,26 @@ console.log("%c🎉 Победа!", "color: green; font-size: 20px; font-weight:
         <li><strong>userName is not defined</strong> — description</li>
         <li><strong>app.js:5:15</strong> — <em>call stack</em>: file <code>app.js</code>, line <strong>5</strong>, column <strong>15</strong></li>
     </ul>
+    <ul data-lang="tk">
+        <li><strong>ReferenceError</strong> — ýalňyşlygyň görnüşi</li>
+        <li><strong>userName is not defined</strong> — beýany («userName üýtgeýäni kesgitlenmedik»)</li>
+        <li><strong>app.js:5:15</strong> — <em>çagyryşlar steki</em>: <code>app.js</code> faýly, <strong>5</strong>-nji setir, <strong>15</strong>-nji nyşan</li>
+    </ul>
 
     <div class="pro-tip">
         <p data-lang="ru">Кликните по синей ссылке <code>app.js:5:15</code> в консоли — браузер откроет файл и поставит курсор прямо на проблемное место. Магия.</p>
         <p data-lang="en">Click the blue <code>app.js:5:15</code> link in the console — the browser opens the file and positions the cursor right at the problem. Magic.</p>
+        <p data-lang="tk">Konsoldaky gök <code>app.js:5:15</code> salgylanmasyna basyň — brauzer faýly açar we kursory göni meseleli ýere goýar. Jady.</p>
     </div>
 
     <h3 data-lang="ru">Три главных типа ошибок</h3>
     <h3 data-lang="en">Three main error types</h3>
+    <h3 data-lang="tk">Ýalňyşlyklaryň üç esasy görnüşi</h3>
 
     <table>
         <thead data-lang="ru"><tr><th>Тип</th><th>Что значит</th><th>Пример</th></tr></thead>
         <thead data-lang="en"><tr><th>Type</th><th>Meaning</th><th>Example</th></tr></thead>
+        <thead data-lang="tk"><tr><th>Görnüşi</th><th>Manysy</th><th>Mysal</th></tr></thead>
         <tbody data-lang="ru">
             <tr>
                 <td><strong>SyntaxError</strong></td>
@@ -492,13 +609,32 @@ console.log("%c🎉 Победа!", "color: green; font-size: 20px; font-weight:
                 <td><code>let x = 5; x();</code></td>
             </tr>
         </tbody>
+        <tbody data-lang="tk">
+            <tr>
+                <td><strong>SyntaxError</strong></td>
+                <td>Sintaksis bozulan — hereketlendiriji kody <em>okap bilmeýär</em>. Skript asla işlemez.</td>
+                <td><code>let x = ;</code> ýa-da <code>if (x { ... }</code></td>
+            </tr>
+            <tr>
+                <td><strong>ReferenceError</strong></td>
+                <td>Siz <em>ýok</em> üýtgeýäne ýüzlendiňiz. Köplenç — adyndaky ýazuw ýalňyşlygy.</td>
+                <td><code>console.log(userNmae);</code></td>
+            </tr>
+            <tr>
+                <td><strong>TypeError</strong></td>
+                <td>Siz maglumatlar bilen olara laýyk gelmeýän bir zat edýärsiňiz (mysal üçin, sany funksiýa hökmünde çagyrýarsyňyz).</td>
+                <td><code>let x = 5; x();</code></td>
+            </tr>
+        </tbody>
     </table>
 
     <h3 data-lang="ru">Примеры и как чинить</h3>
     <h3 data-lang="en">Examples and fixes</h3>
+    <h3 data-lang="tk">Mysallar we nädip düzetmeli</h3>
 
     <h4 data-lang="ru">SyntaxError: «Забыл закрыть скобку»</h4>
     <h4 data-lang="en">SyntaxError: "Forgot to close a brace"</h4>
+    <h4 data-lang="tk">SyntaxError: «Ýaýy ýapmagy ýatdan çykardym»</h4>
 
     <pre><code>// ❌ Сломано
 if (age &gt; 18 {
@@ -513,6 +649,7 @@ if (age &gt; 18) {
 
     <h4 data-lang="ru">ReferenceError: «Опечатка»</h4>
     <h4 data-lang="en">ReferenceError: "Typo"</h4>
+    <h4 data-lang="tk">ReferenceError: «Ýazuw ýalňyşlygy»</h4>
 
     <pre><code>let userName = "Seydi";
 console.log(userNmae);   // ❌ опечатка
@@ -523,6 +660,7 @@ console.log(userName);</code></pre>
 
     <h4 data-lang="ru">TypeError: «Неправильный тип»</h4>
     <h4 data-lang="en">TypeError: "Wrong type"</h4>
+    <h4 data-lang="tk">TypeError: «Nädogry tip»</h4>
 
     <pre><code>let num = 42;
 num.toUpperCase();       // ❌ у числа нет метода toUpperCase
@@ -534,6 +672,7 @@ String(num).toUpperCase();</code></pre>
     <div class="real-world">
         <p data-lang="ru">Опытные разработчики <strong>первым делом</strong> смотрят в консоль браузера, когда что-то не работает. Красная строка в DevTools — это не катастрофа, это подсказка, которая обычно на 80% решает задачу.</p>
         <p data-lang="en">Experienced developers <strong>first look</strong> at the browser console when something breaks. A red line in DevTools isn't a disaster — it's a hint that usually solves 80% of the problem.</p>
+        <p data-lang="tk">Tejribeli işläp düzüjiler bir zat işlemese, <strong>ilki bilen</strong> brauzeriň konsolyna seredýärler. DevTools-daky gyzyl setir — betbagtçylyk däl, köplenç meseläniň 80%-ini çözýän maslahat.</p>
     </div>
 
     <hr>
@@ -541,20 +680,25 @@ String(num).toUpperCase();</code></pre>
     <!-- ============================================================ -->
     <h2 id="dialogs" data-lang="ru">7. Диалоговые окна: alert, prompt, confirm</h2>
     <h2 id="dialogs" data-lang="en">7. Dialog boxes: alert, prompt, confirm</h2>
+    <h2 id="dialogs" data-lang="tk">7. Dialog penjireleri: alert, prompt, confirm</h2>
 
     <p data-lang="ru">Пока мы не изучили DOM (это занятие 16), у нас есть только <strong>три встроенных функции</strong> для общения с пользователем. Они работают <em>только в браузере</em> (не в Node.js).</p>
     <p data-lang="en">Until we learn the DOM (Lesson 16), we only have <strong>three built-in functions</strong> for talking to the user. They work <em>only in the browser</em> (not Node.js).</p>
+    <p data-lang="tk">DOM-y öwrenýänçäk (bu 16-njy sapak), bizde ulanyjy bilen aragatnaşyk üçin diňe <strong>üç sany içine gurlan funksiýa</strong> bar. Olar <em>diňe brauzerde</em> işleýär (Node.js-de däl).</p>
 
     <h3 data-lang="ru">alert — показать сообщение</h3>
     <h3 data-lang="en">alert — show a message</h3>
+    <h3 data-lang="tk">alert — habar görkezmek</h3>
 
     <pre><code>alert("Привет! Это моё первое сообщение.");</code></pre>
 
     <p data-lang="ru">Выведет модальное окно с текстом и кнопкой OK. Пока пользователь не нажмёт OK — скрипт <em>приостановлен</em>.</p>
     <p data-lang="en">Shows a modal with text and an OK button. Until the user clicks OK, the script is <em>paused</em>.</p>
+    <p data-lang="tk">Tekstli we OK düwmeli modal penjire çykarar. Ulanyjy OK basmaýança skript <em>saklanyp durýar</em>.</p>
 
     <h3 data-lang="ru">prompt — запросить ввод</h3>
     <h3 data-lang="en">prompt — ask for input</h3>
+    <h3 data-lang="tk">prompt — maglumat girizmegi soramak</h3>
 
     <pre><code>let name = prompt("Как тебя зовут?");
 console.log("Привет, " + name + "!");
@@ -564,6 +708,7 @@ let age = prompt("Сколько тебе лет?", "18");</code></pre>
 
     <p data-lang="ru">Возвращает:</p>
     <p data-lang="en">Returns:</p>
+    <p data-lang="tk">Gaýtarýar:</p>
     <ul data-lang="ru">
         <li><strong>Строку</strong>, если пользователь ввёл текст и нажал OK</li>
         <li><code>null</code>, если нажал «Отмена» или Esc</li>
@@ -572,14 +717,20 @@ let age = prompt("Сколько тебе лет?", "18");</code></pre>
         <li>A <strong>string</strong> if the user entered text and clicked OK</li>
         <li><code>null</code> if they clicked Cancel or Esc</li>
     </ul>
+    <ul data-lang="tk">
+        <li>Ulanyjy tekst girizip, OK bassa — <strong>setir</strong></li>
+        <li>«Cancel» ýa-da Esc bassa — <code>null</code></li>
+    </ul>
 
     <div class="important">
         <p data-lang="ru"><strong>prompt всегда возвращает строку!</strong> Даже если пользователь ввёл число. Чтобы получить число, оборачивайте: <code>Number(prompt("Возраст:"))</code>.</p>
         <p data-lang="en"><strong>prompt always returns a string!</strong> Even if the user typed a number. Wrap it to get a number: <code>Number(prompt("Age:"))</code>.</p>
+        <p data-lang="tk"><strong>prompt elmydama setir gaýtarýar!</strong> Ulanyjy san girizen hem bolsa. San almak üçin şeýle ýazyň: <code>Number(prompt("Ýaşyňyz:"))</code>.</p>
     </div>
 
     <h3 data-lang="ru">confirm — задать вопрос «да/нет»</h3>
     <h3 data-lang="en">confirm — ask a yes/no question</h3>
+    <h3 data-lang="tk">confirm — «hawa/ýok» soragyny bermek</h3>
 
     <pre><code>let answer = confirm("Ты готов учить JavaScript?");
 
@@ -591,10 +742,12 @@ if (answer) {
 
     <p data-lang="ru">Возвращает <code>true</code> (OK) или <code>false</code> (Отмена).</p>
     <p data-lang="en">Returns <code>true</code> (OK) or <code>false</code> (Cancel).</p>
+    <p data-lang="tk"><code>true</code> (OK) ýa-da <code>false</code> (Cancel) gaýtarýar.</p>
 
     <div class="mistake">
         <p data-lang="ru">Диалоги — <strong>простые, но неудобные</strong>: блокируют страницу, выглядят некрасиво, нельзя стилизовать. В реальных проектах их почти не используют — делают свои формы на HTML/CSS. Но для учёбы (пока мы не изучили DOM) — идеально.</p>
         <p data-lang="en">Dialogs are <strong>simple but clunky</strong>: they block the page, look ugly, can't be styled. Real projects rarely use them — custom HTML/CSS forms are used instead. But for learning (until we cover the DOM) — they're perfect.</p>
+        <p data-lang="tk">Dialoglar — <strong>ýönekeý, emma oňaýsyz</strong>: sahypany petikleýär, owadan görünmeýär, stil berip bolmaýar. Hakyky taslamalarda olary ulanmaýarlar diýen ýaly — HTML/CSS-de öz formalaryny ýasaýarlar. Emma okuw üçin (DOM-y öwrenýänçäk) — ajaýyp.</p>
     </div>
 
     <hr>
@@ -602,15 +755,18 @@ if (answer) {
     <!-- ============================================================ -->
     <h2 id="project" data-lang="ru">8. Мини-проект «Интерактивный приветствующий»</h2>
     <h2 id="project" data-lang="en">8. Mini-project "Interactive Greeter"</h2>
+    <h2 id="project" data-lang="tk">8. «Interaktiw salamlaşyjy» mini-taslamasy</h2>
 
     <p data-lang="ru">Соберём всё изученное в маленькую программу, которая знакомится с пользователем, задаёт несколько вопросов и реагирует на ответы.</p>
     <p data-lang="en">Let's combine everything we learned into a small program that introduces itself to the user, asks a few questions, and reacts to the answers.</p>
+    <p data-lang="tk">Öwrenen zatlarymyzyň hemmesini ulanyjy bilen tanyşýan, birnäçe sorag berýän we jogaplara täsir edýän kiçijik programmada jemläliň.</p>
 
     <div class="step">
         <div class="step-number">1</div>
         <div>
             <p data-lang="ru">Создайте папку <code>greeter/</code> с файлами <code>index.html</code> и <code>app.js</code>.</p>
             <p data-lang="en">Create folder <code>greeter/</code> with <code>index.html</code> and <code>app.js</code>.</p>
+            <p data-lang="tk"><code>index.html</code> we <code>app.js</code> faýllary bolan <code>greeter/</code> bukjasyny dörediň.</p>
         </div>
     </div>
 
@@ -619,6 +775,7 @@ if (answer) {
         <div>
             <p data-lang="ru"><strong>index.html</strong>:</p>
             <p data-lang="en"><strong>index.html</strong>:</p>
+            <p data-lang="tk"><strong>index.html</strong>:</p>
             <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="ru"&gt;
 &lt;head&gt;
@@ -638,6 +795,7 @@ if (answer) {
         <div>
             <p data-lang="ru"><strong>app.js</strong>:</p>
             <p data-lang="en"><strong>app.js</strong>:</p>
+            <p data-lang="tk"><strong>app.js</strong>:</p>
             <pre><code>// ====== Приветствие ======
 alert("Привет! Сейчас мы познакомимся 👋");
 
@@ -680,11 +838,13 @@ if (name === null || name.trim() === "") {
         <div>
             <p data-lang="ru">Запустите через <em>Open with Live Server</em>. Откройте консоль (F12) — параллельно с диалогами будут появляться записи.</p>
             <p data-lang="en">Run via <em>Open with Live Server</em>. Open the console (F12) — log entries will appear alongside the dialogs.</p>
+            <p data-lang="tk"><em>Open with Live Server</em> arkaly işlediň. Konsoly açyň (F12) — dialoglar bilen bir wagtda ýazgylar peýda bolar.</p>
         </div>
     </div>
 
     <h3 data-lang="ru">Что нового в этом коде</h3>
     <h3 data-lang="en">What's new in this code</h3>
+    <h3 data-lang="tk">Bu kodda näme täze</h3>
 
     <ul data-lang="ru">
         <li><code>name.trim()</code> — убирает пробелы в начале и конце строки (чтобы пустой ввод с пробелами тоже распознать)</li>
@@ -699,6 +859,13 @@ if (name === null || name.trim() === "") {
         <li><code>console.group / groupEnd</code> — a nice collapsible group in the console</li>
         <li><code>%c</code> in <code>console.log</code> — text styling (green, large)</li>
         <li><code>if (likesJS) { ... } else { ... }</code> — branch on the answer</li>
+    </ul>
+    <ul data-lang="tk">
+        <li><code>name.trim()</code> — setiriň başyndaky we ahyryndaky boşluklary aýyrýar (boşluklardan ybarat boş girizmäni hem tanamak üçin)</li>
+        <li><code>name === null</code> — berk deňeşdirme: ulanyjy «Cancel» basdy</li>
+        <li><code>console.group / groupEnd</code> — konsolda owadan ýygnalýan topar</li>
+        <li><code>console.log</code>-daky <code>%c</code> — teksti bezemek (ýaşyl, iri)</li>
+        <li><code>if (likesJS) { ... } else { ... }</code> — jogaba görä şahalanma</li>
     </ul>
 
     <hr>
@@ -729,6 +896,18 @@ if (name === null || name.trim() === "") {
             <li>Dialogs: <code>alert</code> (show), <code>prompt</code> (input), <code>confirm</code> (yes/no). Browser only.</li>
             <li><code>prompt</code> always returns a <strong>string</strong> — wrap in <code>Number(...)</code> for numbers.</li>
         </ul>
+        <ul data-lang="tk">
+            <li>Programma — <strong>instruksiýalaryň yzygiderligi</strong>, olaryň her biri adatça <code>;</code> bilen gutarýar.</li>
+            <li>Teswirleriň üç görnüşi: <code>//</code>, <code>/* */</code>, <code>/** */</code> (JSDoc).</li>
+            <li>JS <strong>harplaryň ululygyny tapawutlandyrýar</strong>: <code>name</code> ≠ <code>Name</code>.</li>
+            <li>Boşluklar we setir başyndaky boşluklar — hereketlendiriji üçin däl, adamlar üçin. Standart: <strong>2 boşluk</strong>.</li>
+            <li>Identifikatorlar: harplar/sanlar/<code>_</code>/<code>$</code>, <strong>san bilen başlanmaýar</strong>, <strong>boşluksyz</strong>, açar söz däl.</li>
+            <li>Stiller: <code>camelCase</code> (üýtgeýänler), <code>PascalCase</code> (klaslar), <code>UPPER_SNAKE_CASE</code> (konstantalar).</li>
+            <li>Konsol diňe <code>log</code> däl: <code>warn</code>, <code>error</code>, <code>table</code>, <code>group</code>, <code>time</code> hem bar.</li>
+            <li>Üç esasy ýalňyşlyk: <strong>SyntaxError</strong> (sintaksis bozulan), <strong>ReferenceError</strong> (üýtgeýän ýok), <strong>TypeError</strong> (nädogry tip).</li>
+            <li>Dialoglar: <code>alert</code> (görkezmek), <code>prompt</code> (girizmek), <code>confirm</code> (hawa/ýok). Diňe brauzerde işleýär.</li>
+            <li><code>prompt</code> elmydama <strong>setir</strong> gaýtarýar — sanlar üçin <code>Number(...)</code> bilen ýazyň.</li>
+        </ul>
     </div>
 
     <div class="quiz">
@@ -753,6 +932,17 @@ if (name === null || name.trim() === "") {
             <li>What does <code>prompt</code> return if the user clicks "Cancel"?</li>
             <li>Which console method displays an array of objects as a table?</li>
             <li>Can you use <code>alert</code> in Node.js? Why?</li>
+        </ol>
+        <ol data-lang="tk">
+            <li>Instruksiýa (statement) bilen aňlatmanyň (expression) arasynda näme tapawut bar?</li>
+            <li>JS-de teswirleriň haýsy üç görnüşi bar?</li>
+            <li>VS Code-da haýsy gyzgyn düwme setiri teswire öwürýär?</li>
+            <li>Näme üçin üýtgeýäni <code>2user</code> diýip atlandyryp bolmaýar?</li>
+            <li>Üýtgeýänler haýsy stilde, klaslar bolsa haýsy stilde atlandyrylýar?</li>
+            <li><strong>SyntaxError</strong> näme we ol <strong>ReferenceError</strong>-dan näme bilen tapawutlanýar?</li>
+            <li>Ulanyjy «Cancel» bassa, <code>prompt</code> näme gaýtarýar?</li>
+            <li>Konsolyň haýsy usuly obýektleriň massiwini tablisa görnüşinde görkezýär?</li>
+            <li><code>alert</code>-i Node.js-de ulanyp bolýarmy? Näme üçin?</li>
         </ol>
     </div>
 

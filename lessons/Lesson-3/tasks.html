@@ -13,25 +13,36 @@
 <div class="lesson-nav">
     <a href="../../index.html" class="nav-home" data-lang="ru">&#8592; Главная</a>
     <a href="../../index.html" class="nav-home" data-lang="en">&#8592; Home</a>
+    <a href="../../index.html" class="nav-home" data-lang="tk">&#8592; Baş sahypa</a>
     <span class="nav-sep">|</span>
     <span class="nav-title" data-lang="ru">Занятие 3: Синтаксис и консоль</span>
     <span class="nav-title" data-lang="en">Lesson 3: Syntax &amp; Console</span>
+    <span class="nav-title" data-lang="tk">3-nji sapak: Sintaksis we konsol</span>
     <span class="nav-sep">|</span>
     <a href="lecture.html" class="nav-link" data-lang="ru">&#x1F468;&#x200D;&#x1F3EB; Лекция</a>
     <a href="lecture.html" class="nav-link" data-lang="en">&#x1F468;&#x200D;&#x1F3EB; Lecture</a>
+    <a href="lecture.html" class="nav-link" data-lang="tk">&#x1F468;&#x200D;&#x1F3EB; Leksiýa</a>
     <a href="student.html" class="nav-link" data-lang="ru">&#x1F468;&#x200D;&#x1F393; Конспект</a>
     <a href="student.html" class="nav-link" data-lang="en">&#x1F468;&#x200D;&#x1F393; Notes</a>
+    <a href="student.html" class="nav-link" data-lang="tk">&#x1F468;&#x200D;&#x1F393; Konspekt</a>
     <span class="nav-active" data-lang="ru">&#x1F4CB; Задания</span>
     <span class="nav-active" data-lang="en">&#x1F4CB; Tasks</span>
-    <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
+    <span class="nav-active" data-lang="tk">&#x1F4CB; Tabşyryklar</span>
+    <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" class="lang-opt" data-set-lang="ru" onclick="setLang('ru')">RU</button>
+        <button type="button" class="lang-opt" data-set-lang="en" onclick="setLang('en')">EN</button>
+        <button type="button" class="lang-opt" data-set-lang="tk" onclick="setLang('tk')">TM</button>
+    </div>
 </div>
 
 <div class="container">
 
     <h1 data-lang="ru">&#x1F4DD; ПРАКТИЧЕСКИЕ ЗАДАНИЯ</h1>
     <h1 data-lang="en">&#x1F4DD; PRACTICAL TASKS</h1>
+    <h1 data-lang="tk">&#x1F4DD; AMALY TABŞYRYKLAR</h1>
     <p class="subtitle" data-lang="ru">Занятие 3: Синтаксис и консоль &mdash; 6 заданий</p>
     <p class="subtitle" data-lang="en">Lesson 3: Syntax &amp; Console &mdash; 6 tasks</p>
+    <p class="subtitle" data-lang="tk">3-nji sapak: Sintaksis we konsol &mdash; 6 tabşyryk</p>
 
     <hr>
 
@@ -40,9 +51,11 @@
         <div class="task-header">
             <div class="task-title" data-lang="ru">Задание 1. Хорошие имена переменных</div>
             <div class="task-title" data-lang="en">Task 1. Good variable names</div>
+            <div class="task-title" data-lang="tk">1-nji tabşyryk. Gowy üýtgeýän atlary</div>
             <div class="task-meta">
                 <span class="badge badge-easy" data-lang="ru">Легко</span>
                 <span class="badge badge-easy" data-lang="en">Easy</span>
+                <span class="badge badge-easy" data-lang="tk">Aňsat</span>
                 <span class="badge badge-time">10 мин</span>
             </div>
         </div>
@@ -50,10 +63,12 @@
         <div class="task-goal">
             <span data-lang="ru">Научиться превращать плохие имена переменных в хорошие.</span>
             <span data-lang="en">Learn to turn bad variable names into good ones.</span>
+            <span data-lang="tk">Erbet üýtgeýän atlaryny gowy atlara öwürmegi öwrenmek.</span>
         </div>
 
         <p data-lang="ru">Для каждой пары ниже запишите хорошее имя переменной (по правилам camelCase) и объясните, <em>почему</em> оригинал плохой.</p>
         <p data-lang="en">For each pair below, write a good variable name (camelCase) and explain <em>why</em> the original is bad.</p>
+        <p data-lang="tk">Aşakdaky her jübüt üçin gowy üýtgeýän adyny ýazyň (camelCase düzgünlerine görä) we asyl adyň <em>näme üçin</em> erbetdigini düşündiriň.</p>
 
         <pre><code>// Что хранит переменная          // Плохое имя     // Ваше хорошее имя
 Возраст пользователя                let a = 25;       ?
@@ -66,6 +81,7 @@ URL сайта API                       let str = "...";  ?</code></pre>
 
         <p data-lang="ru">А также — отметьте, <strong>какие из этих имён</strong> нарушают правила JS (не переименование, а синтаксические ошибки):</p>
         <p data-lang="en">Also mark which of these names <strong>violate JS rules</strong> (not style, but actual syntax errors):</p>
+        <p data-lang="tk">Şeýle hem — bu atlaryň <strong>haýsylarynyň</strong> JS düzgünlerini bozýandygyny belläň (adyny üýtgetmek däl, sintaksis ýalňyşlyklary):</p>
 
         <pre><code>let user-name = "Anna";
 let 1stPlace = "gold";
@@ -86,6 +102,11 @@ let user name = "Charlie";</code></pre>
                 <li>Identified which of the 7 in the second group <em>don't work in JS</em></li>
                 <li>Brief explanation of why each broken one fails</li>
             </ul>
+            <ul data-lang="tk">
+                <li>7 üýtgeýäniň hemmesine gowy at berildi</li>
+                <li>Ikinji toparyň 7 adynyň haýsylarynyň <em>JS-de işlemeýändigi</em> bellendi</li>
+                <li>Olaryň näme üçin işlemeýändigi gysgaça düşündirildi</li>
+            </ul>
         </div>
     </div>
 
@@ -94,9 +115,11 @@ let user name = "Charlie";</code></pre>
         <div class="task-header">
             <div class="task-title" data-lang="ru">Задание 2. Полный набор console</div>
             <div class="task-title" data-lang="en">Task 2. Full console set</div>
+            <div class="task-title" data-lang="tk">2-nji tabşyryk. console-yň doly toplumy</div>
             <div class="task-meta">
                 <span class="badge badge-easy" data-lang="ru">Легко</span>
                 <span class="badge badge-easy" data-lang="en">Easy</span>
+                <span class="badge badge-easy" data-lang="tk">Aňsat</span>
                 <span class="badge badge-time">15 мин</span>
             </div>
         </div>
@@ -104,10 +127,12 @@ let user name = "Charlie";</code></pre>
         <div class="task-goal">
             <span data-lang="ru">Опробовать на практике <strong>все 7 методов</strong> объекта console из лекции.</span>
             <span data-lang="en">Try all <strong>7 console methods</strong> from the lecture in practice.</span>
+            <span data-lang="tk">Leksiýadaky console obýektiniň <strong>7 usulynyň hemmesini</strong> amalda synap görmek.</span>
         </div>
 
         <p data-lang="ru">Создайте файл <code>console-test.js</code>. Напишите в нём код, который использует все семь:</p>
         <p data-lang="en">Create a file <code>console-test.js</code>. Use all seven methods:</p>
+        <p data-lang="tk"><code>console-test.js</code> faýlyny dörediň. Onda ýedisiniň hemmesini ulanýan kod ýazyň:</p>
 
         <ol data-lang="ru">
             <li><code>console.log</code> — обычное сообщение</li>
@@ -127,13 +152,24 @@ let user name = "Charlie";</code></pre>
             <li><code>console.group / console.groupEnd</code> — group 3 messages</li>
             <li><code>console.time / console.timeEnd</code> — measure time of a 1 to 100000 loop</li>
         </ol>
+        <ol data-lang="tk">
+            <li><code>console.log</code> — adaty habar</li>
+            <li><code>console.info</code> — maglumat</li>
+            <li><code>console.warn</code> — duýduryş</li>
+            <li><code>console.error</code> — ýalňyşlyk (gyzyl fony görmek üçin «Hemme zat gowy!» çykaryň)</li>
+            <li><code>console.table</code> — 3 obýektden ybarat massiwi çykaryň (mysal üçin, dostlaryňyzy ady we ýaşy bilen)</li>
+            <li><code>console.group / console.groupEnd</code> — 3 habary toparlaň</li>
+            <li><code>console.time / console.timeEnd</code> — 1-den 100000-e çenli sikliň wagtyny ölçäň</li>
+        </ol>
 
         <p data-lang="ru">Запустите файл через Live Server и проверьте в консоли браузера (F12). Также попробуйте запустить через <code>node console-test.js</code> — посмотрите, что отличается.</p>
         <p data-lang="en">Run the file via Live Server and check the browser console (F12). Also run it via <code>node console-test.js</code> — note the differences.</p>
+        <p data-lang="tk">Faýly Live Server arkaly işlediň we brauzeriň konsolynda (F12) barlaň. Şeýle hem ony <code>node console-test.js</code> arkaly işledip görüň — näme tapawutlanýandygyna serediň.</p>
 
         <div class="hint">
             <p data-lang="ru">Цикл для замера времени: <code>let sum = 0; for (let i = 0; i &lt; 100000; i++) sum += i;</code>.</p>
             <p data-lang="en">Timing loop: <code>let sum = 0; for (let i = 0; i &lt; 100000; i++) sum += i;</code>.</p>
+            <p data-lang="tk">Wagty ölçemek üçin sikl: <code>let sum = 0; for (let i = 0; i &lt; 100000; i++) sum += i;</code>.</p>
         </div>
 
         <div class="criteria">
@@ -149,6 +185,12 @@ let user name = "Charlie";</code></pre>
                 <li>Table and group display correctly</li>
                 <li>Time recorded in ms (written down)</li>
             </ul>
+            <ul data-lang="tk">
+                <li>7 usulyň hemmesi ulanyldy</li>
+                <li>Konsolda dürli reňkler/stiller görünýär</li>
+                <li>Tablisa we topar dogry görkezilýär</li>
+                <li>Wagt … ms (depderde ýazyldy)</li>
+            </ul>
         </div>
     </div>
 
@@ -157,9 +199,11 @@ let user name = "Charlie";</code></pre>
         <div class="task-header">
             <div class="task-title" data-lang="ru">Задание 3. Ловец ошибок</div>
             <div class="task-title" data-lang="en">Task 3. Error hunter</div>
+            <div class="task-title" data-lang="tk">3-nji tabşyryk. Ýalňyşlyk awçysy</div>
             <div class="task-meta">
                 <span class="badge badge-medium" data-lang="ru">Средне</span>
                 <span class="badge badge-medium" data-lang="en">Medium</span>
+                <span class="badge badge-medium" data-lang="tk">Orta</span>
                 <span class="badge badge-time">20 мин</span>
             </div>
         </div>
@@ -167,29 +211,38 @@ let user name = "Charlie";</code></pre>
         <div class="task-goal">
             <span data-lang="ru">Научиться специально создавать каждый из трёх типов ошибок и <strong>правильно читать</strong> сообщения консоли.</span>
             <span data-lang="en">Learn to deliberately create each of the three error types and <strong>read console messages correctly</strong>.</span>
+            <span data-lang="tk">Üç görnüşli ýalňyşlygyň her birini bilkastlaýyn döretmegi we konsol habarlaryny <strong>dogry okamagy</strong> öwrenmek.</span>
         </div>
 
         <p data-lang="ru">Для каждого типа ошибки создайте <strong>по 2 разных примера</strong> (всего 6). Запустите, запишите полный текст ошибки из консоли, укажите номер строки.</p>
         <p data-lang="en">For each error type, create <strong>2 different examples</strong> (6 total). Run each, write down the full error text from the console, note the line number.</p>
+        <p data-lang="tk">Ýalňyşlygyň her görnüşi üçin <strong>2 dürli mysal</strong> dörediň (jemi 6). Işlediň, konsoldaky ýalňyşlygyň doly tekstini ýazyň, setiriň belgisini görkeziň.</p>
 
         <h4 data-lang="ru">SyntaxError (2 примера):</h4>
         <h4 data-lang="en">SyntaxError (2 examples):</h4>
+        <h4 data-lang="tk">SyntaxError (2 mysal):</h4>
         <p data-lang="ru">Подсказки: пропущенная скобка, лишняя запятая, забытые кавычки.</p>
         <p data-lang="en">Hints: missing brace, extra comma, forgotten quote.</p>
+        <p data-lang="tk">Maslahatlar: ýapylmadyk ýaý, artykmaç otur, ýatdan çykan dyrnaklar.</p>
 
         <h4 data-lang="ru">ReferenceError (2 примера):</h4>
         <h4 data-lang="en">ReferenceError (2 examples):</h4>
+        <h4 data-lang="tk">ReferenceError (2 mysal):</h4>
         <p data-lang="ru">Подсказки: опечатка в имени, использование переменной до объявления, неверный регистр.</p>
         <p data-lang="en">Hints: typo in name, use before declaration, wrong case.</p>
+        <p data-lang="tk">Maslahatlar: adyndaky ýazuw ýalňyşlygy, üýtgeýäni yglan etmezden öň ulanmak, nädogry harp ululygy.</p>
 
         <h4 data-lang="ru">TypeError (2 примера):</h4>
         <h4 data-lang="en">TypeError (2 examples):</h4>
+        <h4 data-lang="tk">TypeError (2 mysal):</h4>
         <p data-lang="ru">Подсказки: вызов числа как функции, метод строки у числа, свойство у <code>null</code>.</p>
         <p data-lang="en">Hints: call a number as function, string method on number, property of <code>null</code>.</p>
+        <p data-lang="tk">Maslahatlar: sany funksiýa hökmünde çagyrmak, sanda setir usulyny ulanmak, <code>null</code>-yň häsiýetine ýüzlenmek.</p>
 
         <div class="example">
             <p data-lang="ru"><strong>Оформление ответа:</strong></p>
             <p data-lang="en"><strong>Answer format:</strong></p>
+            <p data-lang="tk"><strong>Jogabyň görnüşi:</strong></p>
             <pre><code>Пример 1 (SyntaxError):
 Код: if (age &gt; 18 { console.log("ok"); }
 Ошибка: Uncaught SyntaxError: Unexpected token '{'
@@ -208,6 +261,11 @@ let user name = "Charlie";</code></pre>
                 <li>Full console error text recorded for each</li>
                 <li>Fix described for each</li>
             </ul>
+            <ul data-lang="tk">
+                <li>6 mysal (her görnüş üçin 2)</li>
+                <li>Her biri üçin konsoldaky ýalňyşlygyň doly teksti ýazyldy</li>
+                <li>Nädip düzetmelidigi görkezildi</li>
+            </ul>
         </div>
     </div>
 
@@ -216,9 +274,11 @@ let user name = "Charlie";</code></pre>
         <div class="task-header">
             <div class="task-title" data-lang="ru">Задание 4. Комментируй разумно</div>
             <div class="task-title" data-lang="en">Task 4. Comment wisely</div>
+            <div class="task-title" data-lang="tk">4-nji tabşyryk. Akylly teswirläň</div>
             <div class="task-meta">
                 <span class="badge badge-medium" data-lang="ru">Средне</span>
                 <span class="badge badge-medium" data-lang="en">Medium</span>
+                <span class="badge badge-medium" data-lang="tk">Orta</span>
                 <span class="badge badge-time">15 мин</span>
             </div>
         </div>
@@ -226,10 +286,12 @@ let user name = "Charlie";</code></pre>
         <div class="task-goal">
             <span data-lang="ru">Понять разницу между «комментарий-мусор» и «комментарий-польза».</span>
             <span data-lang="en">Understand the difference between "noise comments" and "useful comments".</span>
+            <span data-lang="tk">«Zibil teswir» bilen «peýdaly teswiriň» arasyndaky tapawuda düşünmek.</span>
         </div>
 
         <p data-lang="ru"><strong>Перепишите</strong> код ниже так, чтобы:</p>
         <p data-lang="en"><strong>Rewrite</strong> the code below so that:</p>
+        <p data-lang="tk">Aşakdaky kody şeýle <strong>täzeden ýazyň</strong>:</p>
         <ul data-lang="ru">
             <li>Плохие комментарии («что») — убраны, а имена переменных сделаны осмысленными.</li>
             <li>Где действительно нужно — оставлен или добавлен полезный комментарий («зачем», бизнес-правило, неочевидное решение).</li>
@@ -237,6 +299,10 @@ let user name = "Charlie";</code></pre>
         <ul data-lang="en">
             <li>Bad "what" comments are removed, and variables renamed to be self-explanatory.</li>
             <li>Where truly needed, a useful "why" comment (business rule, non-obvious decision) remains or is added.</li>
+        </ul>
+        <ul data-lang="tk">
+            <li>Erbet teswirler («näme») aýryldy, üýtgeýänleriň atlary bolsa manyly edildi.</li>
+            <li>Hakykatdan gerek ýerde peýdaly teswir («näme üçin», iş düzgüni, düşnüksiz çözgüt) galdyryldy ýa-da goşuldy.</li>
         </ul>
 
         <pre><code>// ======= ИСХОДНЫЙ КОД =======
@@ -271,6 +337,12 @@ console.log(final);  // выводим финальную цену</code></pre>
                 <li>Kept or added <strong>one</strong> useful comment (hint: the discount rule isn't obvious from code)</li>
                 <li>Code still works</li>
             </ul>
+            <ul data-lang="tk">
+                <li>Üýtgeýänlere manyly atlar berildi</li>
+                <li>Ähli düşnükli/zibil teswirler aýryldy</li>
+                <li><strong>Bir</strong> peýdaly teswir galdyryldy ýa-da goşuldy (maslahat: arzanladyş düzgüni koddan düşnükli däl)</li>
+                <li>Kod işleýär</li>
+            </ul>
         </div>
     </div>
 
@@ -279,9 +351,11 @@ console.log(final);  // выводим финальную цену</code></pre>
         <div class="task-header">
             <div class="task-title" data-lang="ru">Задание 5. Свой «Приветствующий 2.0»</div>
             <div class="task-title" data-lang="en">Task 5. Your own "Greeter 2.0"</div>
+            <div class="task-title" data-lang="tk">5-nji tabşyryk. Öz «Salamlaşyjy 2.0»-yňyz</div>
             <div class="task-meta">
                 <span class="badge badge-medium" data-lang="ru">Средне</span>
                 <span class="badge badge-medium" data-lang="en">Medium</span>
+                <span class="badge badge-medium" data-lang="tk">Orta</span>
                 <span class="badge badge-time">30 мин</span>
             </div>
         </div>
@@ -289,10 +363,12 @@ console.log(final);  // выводим финальную цену</code></pre>
         <div class="task-goal">
             <span data-lang="ru">Собрать своё диалоговое приложение, применив все три функции <code>alert/prompt/confirm</code>.</span>
             <span data-lang="en">Build your own dialog app using all three <code>alert/prompt/confirm</code> functions.</span>
+            <span data-lang="tk"><code>alert/prompt/confirm</code> üç funksiýasynyň hemmesini ulanyp, öz dialog programmaňyzy ýasamak.</span>
         </div>
 
         <p data-lang="ru">Приложение «Анкета путешественника» должно:</p>
         <p data-lang="en">"Traveler Survey" app must:</p>
+        <p data-lang="tk">«Syýahatçynyň anketasy» programmasy şulary etmeli:</p>
 
         <ol data-lang="ru">
             <li><strong>alert</strong>: поприветствовать и объяснить, что сейчас будет 5 вопросов.</li>
@@ -326,10 +402,27 @@ console.log(final);  // выводим финальную цену</code></pre>
             </li>
             <li><strong>alert</strong>: farewell message mentioning the user's name.</li>
         </ol>
+        <ol data-lang="tk">
+            <li><strong>alert</strong>: salamlaşmak we häzir 5 sorag boljakdygyny düşündirmek.</li>
+            <li><strong>prompt</strong> №1: «Adyňyz näme?»</li>
+            <li><strong>prompt</strong> №2: «Näçe ýurtda bolduňyz?» (jogaby sana öwürmek).</li>
+            <li><strong>prompt</strong> №3: «Iň halaýan şäheriňiz haýsy?»</li>
+            <li><strong>confirm</strong> №1: «Ýeke syýahat edýärsiňizmi?» (hawa/ýok)</li>
+            <li><strong>confirm</strong> №2: «Ýakyn ýylda täze syýahat meýilleşdirýärsiňizmi?»</li>
+            <li><strong>Konsolda</strong> <code>console.group</code> arkaly owadan hasabat çykarmak:
+                <ul>
+                    <li>Ady, ýurtlaryň sany, halaýan şäheri</li>
+                    <li>Syýahat stili (ýeke / kimdir biri bilen)</li>
+                    <li>Ýyl üçin meýilnamalar</li>
+                </ul>
+            </li>
+            <li><strong>alert</strong>: ulanyjynyň adyny agzaýan hoşlaşyk habary.</li>
+        </ol>
 
         <div class="hint">
             <p data-lang="ru">Чтобы красиво преобразовать булево в текст: <code>travelsAlone ? "один" : "с кем-то"</code>. Это называется «тернарный оператор» — мы его разберём в занятии 6, но пока можно использовать.</p>
             <p data-lang="en">To convert boolean to nice text: <code>travelsAlone ? "alone" : "with someone"</code>. This is the "ternary operator" — we'll cover it in Lesson 6, but feel free to use it now.</p>
+            <p data-lang="tk">Bulew bahany owadan tekste öwürmek üçin: <code>travelsAlone ? "ýeke" : "kimdir biri bilen"</code>. Munuň ady «üçlük operator» (ternary) — ony 6-njy sapakda seljereris, ýöne häzir hem ulanyp bilersiňiz.</p>
         </div>
 
         <div class="criteria">
@@ -345,6 +438,12 @@ console.log(final);  // выводим финальную цену</code></pre>
                 <li>Report uses <code>console.group</code></li>
                 <li>If user cancels the first prompt — the program gracefully exits with a message</li>
             </ul>
+            <ul data-lang="tk">
+                <li>Dialoglaryň 3 funksiýasynyň hemmesi (alert, prompt, confirm) ulanyldy</li>
+                <li>Ýurtlaryň sany — setir däl-de, <strong>san</strong></li>
+                <li>Hasabat <code>console.group</code> arkaly düzüldi</li>
+                <li>Ulanyjy birinji prompt-y ýatyrsa — programma bu barada dogry habar berýär we işini tamamlaýar</li>
+            </ul>
         </div>
     </div>
 
@@ -353,9 +452,11 @@ console.log(final);  // выводим финальную цену</code></pre>
         <div class="task-header">
             <div class="task-title" data-lang="ru">Задание 6. Отладка чужого кода</div>
             <div class="task-title" data-lang="en">Task 6. Debugging someone else's code</div>
+            <div class="task-title" data-lang="tk">6-njy tabşyryk. Başga biriniň kodyny sazlamak</div>
             <div class="task-meta">
                 <span class="badge badge-hard" data-lang="ru">Сложно</span>
                 <span class="badge badge-hard" data-lang="en">Hard</span>
+                <span class="badge badge-hard" data-lang="tk">Kyn</span>
                 <span class="badge badge-time">25 мин</span>
             </div>
         </div>
@@ -363,10 +464,12 @@ console.log(final);  // выводим финальную цену</code></pre>
         <div class="task-goal">
             <span data-lang="ru">Найти и исправить <strong>все ошибки</strong> в следующем коде, опираясь только на сообщения консоли.</span>
             <span data-lang="en">Find and fix <strong>all errors</strong> in the following code, relying only on console messages.</span>
+            <span data-lang="tk">Diňe konsolyň habarlaryna daýanyp, aşakdaky koddaky <strong>ähli ýalňyşlyklary</strong> tapmak we düzetmek.</span>
         </div>
 
         <p data-lang="ru">Сохраните этот код в файл <code>bugged.js</code>, запустите через Live Server, откройте консоль и исправляйте ошибку за ошибкой, пока скрипт не выполнится без красного.</p>
         <p data-lang="en">Save this code as <code>bugged.js</code>, run via Live Server, open the console, and fix errors one by one until the script runs without red output.</p>
+        <p data-lang="tk">Bu kody <code>bugged.js</code> faýlyna ýazyň, Live Server arkaly işlediň, konsoly açyň we skript gyzylsyz ýerine ýetirilýänçä ýalňyşlyklary birin-birin düzediň.</p>
 
         <pre><code>// В этом файле 5 ошибок разных типов — найди их все!
 
@@ -397,11 +500,17 @@ if (age &gt;= 18 {
                 <li>For each, recorded: <strong>error type</strong> (Syntax/Reference/Type), <strong>what's wrong</strong>, <strong>how fixed</strong></li>
                 <li>Final code runs without console errors</li>
             </ul>
+            <ul data-lang="tk">
+                <li>5 ýalňyşlygyň hemmesi tapyldy</li>
+                <li>Her biri üçin ýazyldy: <strong>ýalňyşlygyň görnüşi</strong> (Syntax/Reference/Type), <strong>näme nädogry</strong>, <strong>nädip düzedildi</strong></li>
+                <li>Jemleýji kod konsolda ýalňyşlyksyz işleýär</li>
+            </ul>
         </div>
 
         <div class="hint">
             <p data-lang="ru">Одна ошибка — в имени переменной, одна — в регистре, одна — в пропущенной скобке, одна — в несуществующем методе, и ещё одна — скрытая (подсказка: <code>const</code> + <code>Discount</code>/<code>discount</code>).</p>
             <p data-lang="en">One error is a variable name, one is case sensitivity, one is a missing brace, one is a non-existent method, and one is hidden (hint: <code>const</code> + <code>Discount</code>/<code>discount</code>).</p>
+            <p data-lang="tk">Bir ýalňyşlyk — üýtgeýäniň adynda, biri — harp ululygynda, biri — ýapylmadyk ýaýda, biri — ýok usulda, ýene biri — gizlin (maslahat: <code>const</code> + <code>Discount</code>/<code>discount</code>).</p>
         </div>
     </div>
 
@@ -410,6 +519,7 @@ if (age &gt;= 18 {
     <div class="write-box">
         <p data-lang="ru">Запишите: какая ошибка была самой запутанной и как вы её в итоге нашли? Это хорошая тренировка для будущей отладки.</p>
         <p data-lang="en">Write down: which error was most confusing and how did you eventually find it? Good practice for future debugging.</p>
+        <p data-lang="tk">Ýazyň: haýsy ýalňyşlyk iň bulaşyk boldy we ony ahyrsoňy nädip tapdyňyz? Bu geljekki sazlamak işi üçin gowy türgenleşik.</p>
     </div>
 
 </div>

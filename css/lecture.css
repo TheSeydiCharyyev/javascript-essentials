@@ -70,6 +70,7 @@ p { margin: 10px 0; }
 html[lang="ru"] .analogy::before { content: '\1F3A8  Аналогия'; }
 html[lang="en"] .analogy::before { content: '\1F3A8  Analogy'; }
 html[lang="tk"] .analogy::before { content: '\1F3A8  Meňzetme'; }
+html[lang="tr"] .analogy::before { content: '\1F3A8  Benzetme'; }
 
 .fun-fact {
     background: #fdf4ff;
@@ -87,6 +88,7 @@ html[lang="tk"] .analogy::before { content: '\1F3A8  Meňzetme'; }
 html[lang="ru"] .fun-fact::before { content: '\1F4A1  Интересный факт'; }
 html[lang="en"] .fun-fact::before { content: '\1F4A1  Fun fact'; }
 html[lang="tk"] .fun-fact::before { content: '\1F4A1  Gyzykly fakt'; }
+html[lang="tr"] .fun-fact::before { content: '\1F4A1  İlginç bilgi'; }
 
 .try-it {
     background: #ecfdf5;
@@ -104,6 +106,7 @@ html[lang="tk"] .fun-fact::before { content: '\1F4A1  Gyzykly fakt'; }
 html[lang="ru"] .try-it::before { content: '\1F527  Попробуй сам'; }
 html[lang="en"] .try-it::before { content: '\1F527  Try it yourself'; }
 html[lang="tk"] .try-it::before { content: '\1F527  Özüňiz synap görüň'; }
+html[lang="tr"] .try-it::before { content: '\1F527  Kendiniz deneyin'; }
 
 /* ========== CODE ========== */
 pre {
@@ -232,6 +235,7 @@ hr {
 html[lang="ru"] .summary::before { content: '\1F4CB  Итоги раздела'; }
 html[lang="en"] .summary::before { content: '\1F4CB  Section summary'; }
 html[lang="tk"] .summary::before { content: '\1F4CB  Bölümiň jemi'; }
+html[lang="tr"] .summary::before { content: '\1F4CB  Bölüm özeti'; }
 
 /* ========== QUIZ ========== */
 .quiz {
@@ -251,6 +255,7 @@ html[lang="tk"] .summary::before { content: '\1F4CB  Bölümiň jemi'; }
 html[lang="ru"] .quiz::before { content: '\2705  Проверь себя'; }
 html[lang="en"] .quiz::before { content: '\2705  Test yourself'; }
 html[lang="tk"] .quiz::before { content: '\2705  Özüňizi barlaň'; }
+html[lang="tr"] .quiz::before { content: '\2705  Kendinizi sınayın'; }
 
 /* ========== TABLE OF CONTENTS ========== */
 .toc {
@@ -303,6 +308,7 @@ html[lang="tk"] .quiz::before { content: '\2705  Özüňizi barlaň'; }
 html[lang="ru"] .result-box::before { content: '\1F441\FE0F  Результат в браузере:'; }
 html[lang="en"] .result-box::before { content: '\1F441\FE0F  Result in browser:'; }
 html[lang="tk"] .result-box::before { content: '\1F441\FE0F  Brauzerdäki netije:'; }
+html[lang="tr"] .result-box::before { content: '\1F441\FE0F  Tarayıcıdaki sonuç:'; }
 
 /* ========== COLOR DEMO ========== */
 .color-demo {
@@ -365,6 +371,7 @@ img.screenshot {
 html[lang="ru"] .why::before { content: '\1F914  Зачем это нужно?'; }
 html[lang="en"] .why::before { content: '\1F914  Why does this matter?'; }
 html[lang="tk"] .why::before { content: '\1F914  Bu näme üçin gerek?'; }
+html[lang="tr"] .why::before { content: '\1F914  Bu neden gerekli?'; }
 
 /* ========== MISTAKE BOX ========== */
 .mistake {
@@ -384,6 +391,7 @@ html[lang="tk"] .why::before { content: '\1F914  Bu näme üçin gerek?'; }
 html[lang="ru"] .mistake::before { content: '\1F6AB  Частая ошибка новичков'; }
 html[lang="en"] .mistake::before { content: '\1F6AB  Common beginner mistake'; }
 html[lang="tk"] .mistake::before { content: '\1F6AB  Täze başlaýanlaryň köp goýberýän ýalňyşlygy'; }
+html[lang="tr"] .mistake::before { content: '\1F6AB  Yeni başlayanların sık hatası'; }
 
 /* ========== PRO TIP BOX ========== */
 .pro-tip {
@@ -403,6 +411,7 @@ html[lang="tk"] .mistake::before { content: '\1F6AB  Täze başlaýanlaryň köp
 html[lang="ru"] .pro-tip::before { content: '\1F3C6  Совет профессионала'; }
 html[lang="en"] .pro-tip::before { content: '\1F3C6  Pro tip'; }
 html[lang="tk"] .pro-tip::before { content: '\1F3C6  Hünärmeniň maslahaty'; }
+html[lang="tr"] .pro-tip::before { content: '\1F3C6  Profesyonel tavsiyesi'; }
 
 /* ========== REAL WORLD BOX ========== */
 .real-world {
@@ -421,3 +430,4 @@ html[lang="tk"] .pro-tip::before { content: '\1F3C6  Hünärmeniň maslahaty'; }
 html[lang="ru"] .real-world::before { content: '\1F30D  В реальных проектах'; }
 html[lang="en"] .real-world::before { content: '\1F30D  In real projects'; }
 html[lang="tk"] .real-world::before { content: '\1F30D  Hakyky taslamalarda'; }
+html[lang="tr"] .real-world::before { content: '\1F30D  Gerçek projelerde'; }

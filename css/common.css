@@ -123,3 +123,28 @@
     font-size: 0.85rem;
     color: #334155;
 }
+
+/* ========== PHONES (PORTRAIT AND LANDSCAPE) ========== */
+@media (max-width: 600px), (max-height: 500px) {
+    /* not sticky; the side margins cancel the 20px side padding of body */
+    .lesson-nav {
+        position: static;
+        margin: 0 -20px 20px;
+        padding: 8px 20px;
+        gap: 6px;
+    }
+    /* the lesson title is repeated in h1 */
+    .lesson-nav .nav-title,
+    .lesson-nav .nav-sep {
+        display: none;
+    }
+    .lesson-nav .nav-home,
+    .lesson-nav .nav-link,
+    .lesson-nav .nav-active {
+        padding: 5px 10px;
+    }
+    .lang-btn,
+    .lang-opt {
+        min-height: 36px;
+    }
+}

@@ -7,8 +7,13 @@ body {
     color: #1e293b;
     background: #f8fafc;
     padding: 40px 20px;
+    overflow-wrap: break-word;
 }
 .container { max-width: 860px; margin: 0 auto; }
+/* the nav bar starts at the top edge (common.css) */
+@media (max-width: 600px), (max-height: 500px) {
+    body { padding-top: 0; }
+}
 
 h1 {
     font-size: 2.2rem;
@@ -157,6 +162,20 @@ th {
     background: #f1f5f9;
     font-weight: 600;
 }
+/* a wide table scrolls by itself, not the page;
+   the empty caption keeps the table as wide as the text column */
+@media (max-width: 900px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        container-type: inline-size;
+    }
+    table::before {
+        content: '';
+        display: table-caption;
+        width: 100cqw;
+    }
+}
 
 /* ========== LISTS ========== */
 ul, ol { margin: 10px 0 10px 24px; }
@@ -289,6 +308,8 @@ html[lang="tr"] .quiz::before { content: '\2705  Kendinizi sınayın'; }
 .compare .wrong { background: #fef2f2; border: 2px solid #fca5a5; }
 .compare .right { background: #f0fdf4; border: 2px solid #86efac; }
 .compare .label { font-weight: 700; margin-bottom: 8px; }
+/* narrower screens: a wide <pre> scrolls inside the box instead of stretching the page */
+@media (max-width: 900px) { .compare > div { min-width: 0; } }
 @media (max-width: 600px) { .compare { grid-template-columns: 1fr; } }
 
 /* ========== RESULT BOX ========== */
@@ -344,6 +365,8 @@ html[lang="tr"] .result-box::before { content: '\1F441\FE0F  Tarayıcıdaki sonu
     align-items: flex-start;
     margin: 12px 0;
 }
+/* lets a wide <pre> scroll inside the step instead of stretching it */
+.step > div { min-width: 0; }
 .step p { margin: 0; }
 
 /* ========== SCREENSHOT ========== */

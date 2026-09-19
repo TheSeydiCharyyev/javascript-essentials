@@ -1,0 +1,19 @@
+{
+  "ecma262": {
+    "edition": 2026,
+    "url": "https://tc39.es/ecma262/2026/"
+  },
+  "ecma402": {
+    "edition": 2026,
+    "url": "https://tc39.es/ecma402/2026/"
+  },
+  "mdn": {
+    "repo": "https://github.com/mdn/content",
+    "commit": "5a81c288fb7213b2ca2180cda687500981ecf9e1",
+    "commit_date": "2026-09-18T21:50:20.000Z",
+    "folders": [
+      "files/en-us/web/javascript",
+      "files/en-us/web/api"
+    ]
+  }
+}

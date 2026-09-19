@@ -4,7 +4,7 @@
 //   node tools/coverage-check.mjs                        summary of all maps
 //   node tools/coverage-check.mjs --list mdn-javascript  rows without an assignment (--limit N, default 50)
 //   node tools/coverage-check.mjs --inherit              a spec clause also counts when a parent clause is assigned
-//   node tools/coverage-check.mjs --strict               exit 1 unless the language maps are fully assigned
+//   node tools/coverage-check.mjs --strict               exit 1 unless the language and stable Web API are fully assigned
 //   node tools/coverage-check.mjs --dir <folder>         check maps in another folder
 //
 // Exit code 1 whenever a row has a wrong or incomplete assignment.
@@ -18,12 +18,13 @@ const DIR = opt('--dir') || path.join(import.meta.dirname, '..', 'docs', 'covera
 const inherit = args.includes('--inherit');
 const DEPTHS = ['подробно', 'кратко'];
 
-// language maps must be covered by courses 1-3; Web API pages may appear in any course
+// Language maps must be covered by courses 1-3. Web API pages may appear in any course; course 4
+// covers only stable pages: no MDN flag (experimental, deprecated, non-standard). Decided 19.09.2026.
 const MAPS = [
   { name: 'mdn-javascript', key: 'path', language: true, section: (r) => jsSection(r.path) },
   { name: 'ecma262', key: 'id', language: true, spec: true, section: (r) => `level ${r.level}` },
   { name: 'ecma402', key: 'id', language: true, spec: true, section: (r) => `level ${r.level}` },
-  { name: 'mdn-webapi', key: 'path', language: false, section: (r) => r.path.split('/').slice(0, 3).join('/') },
+  { name: 'mdn-webapi', key: 'path', language: false, inScope: (r) => !r.status, section: (r) => r.path.split('/').slice(0, 3).join('/') },
 ];
 
 const int = (v, lo, hi) => /^\d+$/.test(v) && Number(v) >= lo && Number(v) <= hi;
@@ -44,7 +45,7 @@ function assignment(r, language) {
 const parents = (num) => num.split('.').slice(0, -1).map((_, i, a) => a.slice(0, a.length - i).join('.'));
 
 const pct = (a, b) => (b ? ((100 * a) / b).toFixed(1) : '0.0') + '%';
-let errors = 0, langRows = 0, langDone = 0;
+let errors = 0, langRows = 0, langDone = 0, apiRows = 0, apiDone = 0;
 const listName = opt('--list');
 const limit = Number(opt('--limit') || 50);
 
@@ -63,13 +64,15 @@ for (const m of MAPS) {
   const covered = (r) => state.get(r) === 'ok' || (inherit && m.spec && parents(r.number).some((p) => assignedNumbers.has(p)));
 
   const bad = rows.filter((r) => !['ok', 'empty'].includes(state.get(r)));
-  const done = rows.filter(covered).length;
-  const direct = rows.filter((r) => state.get(r) === 'ok').length;
+  const scope = m.inScope ? rows.filter(m.inScope) : rows;
+  const done = scope.filter(covered).length;
+  const direct = scope.filter((r) => state.get(r) === 'ok').length;
   errors += bad.length;
-  if (m.language) { langRows += rows.length; langDone += done; }
+  if (m.language) { langRows += scope.length; langDone += done; } else { apiRows += scope.length; apiDone += done; }
 
-  console.log(`${`${m.name}.csv`.padEnd(20)} ${String(rows.length).padStart(5)} rows   covered ${String(done).padStart(5)} (${pct(done, rows.length)})` +
-    (inherit && m.spec ? `, directly ${direct}` : '') + (bad.length ? `   ERRORS ${bad.length}` : '') + (m.language ? '' : '   (not part of the language total)'));
+  console.log(`${`${m.name}.csv`.padEnd(20)} ${String(scope.length).padStart(5)} rows   covered ${String(done).padStart(5)} (${pct(done, scope.length)})` +
+    (inherit && m.spec ? `, directly ${direct}` : '') + (bad.length ? `   ERRORS ${bad.length}` : '') +
+    (m.inScope ? `   (+${rows.length - scope.length} pages with MDN flags, not in the course)` : ''));
   if (m.name === 'mdn-javascript') {
     const bySection = new Map();
     for (const r of rows) {
@@ -83,7 +86,7 @@ for (const m of MAPS) {
   if (bad.length > 20) console.log(`   ... and ${bad.length - 20} more`);
 
   if (listName === m.name) {
-    const open = rows.filter((r) => !covered(r));
+    const open = scope.filter((r) => !covered(r));
     console.log(`\n   not covered yet: ${open.length}${open.length > limit ? ` (first ${limit})` : ''}`);
     for (const r of open.slice(0, limit)) console.log(`   ${r[m.key]}  ${m.spec ? `${r.number} ${r.title}` : r.title}`);
     console.log('');
@@ -91,5 +94,6 @@ for (const m of MAPS) {
 }
 
 console.log(`\nLanguage (courses 1-3): ${langDone} of ${langRows} rows covered (${pct(langDone, langRows)})` + (inherit ? ', spec clauses inherit from parents' : ''));
+console.log(`Web API (stable pages): ${apiDone} of ${apiRows} rows covered (${pct(apiDone, apiRows)})`);
 if (errors) console.log(`${errors} problem(s) found`);
-process.exit(errors || (args.includes('--strict') && langDone < langRows) ? 1 : 0);
+process.exit(errors || (args.includes('--strict') && (langDone < langRows || apiDone < apiRows)) ? 1 : 0);

@@ -10,10 +10,12 @@
 | `mdn-javascript.csv` | 1341 | все страницы раздела JavaScript на MDN |
 | `ecma262.csv` | 2260 | все разделы спецификации ECMAScript (ECMA-262), редакция 2026 |
 | `ecma402.csv` | 381 | все разделы спецификации Intl (ECMA-402), редакция 2026 |
-| `mdn-webapi.csv` | 8108 | все страницы раздела Web API на MDN (для курса 4) |
+| `mdn-webapi.csv` | 8108 | все страницы раздела Web API на MDN; в курс 4 входят 6416 стабильных (см. ниже) |
 | `sources.json` | — | точные источники: коммит `mdn/content`, редакции спецификаций |
 
-Язык (курсы 1–3) — первые три файла, 3982 строки.
+Язык (курсы 1–3) — первые три файла, 3982 строки, все обязательны.
+Курс 4 — только стабильные страницы Web API: без пометок `experimental`, `deprecated`, `non-standard` в колонке `status`
+(решение 19.09.2026). Проверка считает только их; если после `--update` страница потеряет пометку, она войдёт в курс сама.
 
 ## Колонки
 
@@ -44,7 +46,7 @@
 node tools\coverage-check.mjs                          сколько покрыто, есть ли ошибки
 node tools\coverage-check.mjs --list mdn-javascript    что ещё не назначено (--limit 200 — сколько показать)
 node tools\coverage-check.mjs --inherit                раздел спецификации покрыт, если назначен его родитель
-node tools\coverage-check.mjs --strict                 код ошибки 1, пока язык покрыт не на 100%
+node tools\coverage-check.mjs --strict                 код ошибки 1, пока язык и стабильные Web API покрыты не на 100%
 
 node tools\coverage-export.mjs                         пересобрать списки по тем же источникам
 node tools\coverage-export.mjs --update                перейти на свежий MDN: новые страницы появятся пустыми строками

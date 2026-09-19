@@ -3,7 +3,6 @@
 //
 //   node tools/coverage-check.mjs                        summary of all maps
 //   node tools/coverage-check.mjs --list mdn-javascript  rows without an assignment (--limit N, default 50)
-//   node tools/coverage-check.mjs --inherit              a spec clause also counts when a parent clause is assigned
 //   node tools/coverage-check.mjs --strict               exit 1 unless the language and stable Web API are fully assigned
 //   node tools/coverage-check.mjs --dir <folder>         check maps in another folder
 //
@@ -15,8 +14,10 @@ import { jsSection } from './lib/sections.mjs';
 const args = process.argv.slice(2);
 const opt = (name) => { const i = args.indexOf(name); return i === -1 ? null : args[i + 1] ?? ''; };
 const DIR = opt('--dir') || path.join(import.meta.dirname, '..', 'docs', 'coverage');
-const inherit = args.includes('--inherit');
 const DEPTHS = ['подробно', 'кратко'];
+// Spec clauses of levels 1-3 (chapters and sections) must be assigned one by one; a deeper clause
+// counts as covered when an ancestor is assigned. Decided 19.09.2026.
+const SPEC_OWN_LEVELS = 3;
 
 // Language maps must be covered by courses 1-3. Web API pages may appear in any course; course 4
 // covers only stable pages: no MDN flag (experimental, deprecated, non-standard). Decided 19.09.2026.
@@ -61,7 +62,8 @@ for (const m of MAPS) {
     seen.set(k, r);
   }
   const assignedNumbers = new Set(rows.filter((r) => state.get(r) === 'ok').map((r) => r.number));
-  const covered = (r) => state.get(r) === 'ok' || (inherit && m.spec && parents(r.number).some((p) => assignedNumbers.has(p)));
+  const covered = (r) => state.get(r) === 'ok' ||
+    (m.spec && Number(r.level) > SPEC_OWN_LEVELS && parents(r.number).some((p) => assignedNumbers.has(p)));
 
   const bad = rows.filter((r) => !['ok', 'empty'].includes(state.get(r)));
   const scope = m.inScope ? rows.filter(m.inScope) : rows;
@@ -71,7 +73,7 @@ for (const m of MAPS) {
   if (m.language) { langRows += scope.length; langDone += done; } else { apiRows += scope.length; apiDone += done; }
 
   console.log(`${`${m.name}.csv`.padEnd(20)} ${String(scope.length).padStart(5)} rows   covered ${String(done).padStart(5)} (${pct(done, scope.length)})` +
-    (inherit && m.spec ? `, directly ${direct}` : '') + (bad.length ? `   ERRORS ${bad.length}` : '') +
+    (m.spec ? `, assigned directly ${direct}` : '') + (bad.length ? `   ERRORS ${bad.length}` : '') +
     (m.inScope ? `   (+${rows.length - scope.length} pages with MDN flags, not in the course)` : ''));
   if (m.name === 'mdn-javascript') {
     const bySection = new Map();
@@ -86,14 +88,17 @@ for (const m of MAPS) {
   if (bad.length > 20) console.log(`   ... and ${bad.length - 20} more`);
 
   if (listName === m.name) {
-    const open = scope.filter((r) => !covered(r));
-    console.log(`\n   not covered yet: ${open.length}${open.length > limit ? ` (first ${limit})` : ''}`);
+    // for specs only levels 1-3 need an assignment; deeper clauses follow their ancestors
+    const open = scope.filter((r) => !covered(r) && !(m.spec && Number(r.level) > SPEC_OWN_LEVELS));
+    console.log(`\n   not covered yet: ${open.length}${open.length > limit ? ` (first ${limit})` : ''}` +
+      (m.spec ? ` — levels 1-${SPEC_OWN_LEVELS}; deeper clauses are covered with them` : ''));
     for (const r of open.slice(0, limit)) console.log(`   ${r[m.key]}  ${m.spec ? `${r.number} ${r.title}` : r.title}`);
     console.log('');
   }
 }
 
-console.log(`\nLanguage (courses 1-3): ${langDone} of ${langRows} rows covered (${pct(langDone, langRows)})` + (inherit ? ', spec clauses inherit from parents' : ''));
+console.log(`\nLanguage (courses 1-3): ${langDone} of ${langRows} rows covered (${pct(langDone, langRows)});` +
+  ` spec clauses of level ${SPEC_OWN_LEVELS + 1}+ count through an assigned ancestor`);
 console.log(`Web API (stable pages): ${apiDone} of ${apiRows} rows covered (${pct(apiDone, apiRows)})`);
 if (errors) console.log(`${errors} problem(s) found`);
 process.exit(errors || (args.includes('--strict') && (langDone < langRows || apiDone < apiRows)) ? 1 : 0);

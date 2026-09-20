@@ -22,7 +22,8 @@
 ## Колонки
 
 Страницы MDN: `path` (адрес страницы после `https://developer.mozilla.org/en-US/docs/`), `title`, `page_type`,
-`status` (`experimental`, `deprecated`, `non-standard` — пометки MDN), `browser_compat` (ключ таблицы совместимости).
+`status` (`experimental`, `deprecated`, `non-standard` — пометки MDN), `browser_compat` (ключ таблицы совместимости);
+у Web API ещё `group` — группа MDN («Fetch API», «Canvas API»…) из `files/jsondata/GroupData.json`.
 
 Разделы спецификаций: `id` (якорь: адрес раздела = адрес спецификации + `#` + `id`), `number` (7.1.4, B.3.2),
 `title`, `level` (глубина раздела: 1 — глава), `type` (например `abstract operation`, `built-in function`),

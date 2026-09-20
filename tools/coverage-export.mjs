@@ -22,12 +22,14 @@ const SOURCES = path.join(OUT, 'sources.json');
 const MDN_REPO = 'https://github.com/mdn/content.git';
 const MDN_GIT = path.join(CACHE, 'mdn-content.git');
 const ASSIGN = ['course', 'day', 'lesson', 'depth', 'note'];
-const MDN_HEADER = ['path', 'title', 'page_type', 'status', 'browser_compat', ...ASSIGN];
+const MDN_COLS = ['path', 'title', 'page_type', 'status', 'browser_compat'];
 const SPEC_HEADER = ['id', 'number', 'title', 'level', 'type', 'flags', ...ASSIGN];
 const MDN_PARTS = [
-  { file: 'mdn-javascript.csv', folder: 'files/en-us/web/javascript' },
-  { file: 'mdn-webapi.csv', folder: 'files/en-us/web/api' },
+  { file: 'mdn-javascript.csv', folder: 'files/en-us/web/javascript', header: [...MDN_COLS, ...ASSIGN] },
+  { file: 'mdn-webapi.csv', folder: 'files/en-us/web/api', header: [...MDN_COLS, 'group', ...ASSIGN] },
 ];
+// MDN's list of Web API groups ("Fetch API", "Canvas API", ...) and their interfaces
+const GROUP_DATA = 'files/jsondata/GroupData.json';
 const SPECS = [
   { key: 'ecma262', file: 'ecma262.csv', url: (ed) => `https://tc39.es/ecma262/${ed}/` },
   { key: 'ecma402', file: 'ecma402.csv', url: (ed) => `https://tc39.es/ecma402/${ed}/` },
@@ -98,8 +100,8 @@ async function readMdn(commit) {
     console.log(`fetching mdn/content ${commit.slice(0, 12)} (without file contents)...`);
     mgit(['fetch', '--depth', '1', '--filter=blob:none', 'origin', commit]);
   }
-  const entries = mgit(['ls-tree', '-r', commit, '--', ...MDN_PARTS.map((p) => p.folder)]).trim().split('\n')
-    .map((l) => /^\d+ blob ([0-9a-f]+)\t(.*)$/.exec(l)).filter((m) => m && m[2].endsWith('/index.md'))
+  const entries = mgit(['ls-tree', '-r', commit, '--', ...MDN_PARTS.map((p) => p.folder), GROUP_DATA]).trim().split('\n')
+    .map((l) => /^\d+ blob ([0-9a-f]+)\t(.*)$/.exec(l)).filter((m) => m && (m[2].endsWith('/index.md') || m[2] === GROUP_DATA))
     .map((m) => ({ oid: m[1], path: m[2] }));
   const check = mgit(['cat-file', '--batch-check'], { input: entries.map((e) => e.oid).join('\n') + '\n' }).toString();
   const missing = [...check.matchAll(/^([0-9a-f]+) missing$/gm)].map((m) => m[1]);
@@ -143,7 +145,24 @@ function frontMatter(text, file) {
   return fm;
 }
 
+// Web API page -> MDN group: through the group's interface list, or for an overview folder like
+// "Fetch_API" through the group name.
+function apiGroups(files) {
+  const data = JSON.parse(files.get(GROUP_DATA))[0];
+  const byInterface = new Map(), byName = new Map();
+  const norm = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/api$/, '');
+  for (const [group, d] of Object.entries(data)) {
+    byName.set(norm(group), group);
+    for (const i of d.interfaces || []) if (!byInterface.has(i.toLowerCase())) byInterface.set(i.toLowerCase(), group);
+  }
+  return (slug) => {
+    const folder = slug.split('/')[2] || '';
+    return byInterface.get(folder.toLowerCase()) || byName.get(norm(folder)) || '';
+  };
+}
+
 function mdnRows(files, folder) {
+  const groupOf = folder.endsWith('/api') ? apiGroups(files) : null;
   const rows = [];
   for (const [file, text] of files) {
     if (!file.startsWith(folder + '/')) continue;
@@ -154,6 +173,7 @@ function mdnRows(files, folder) {
       page_type: fm['page-type'] || '',
       status: [].concat(fm.status || []).join(' '),
       browser_compat: [].concat(fm['browser-compat'] || []).join(' '),
+      ...(groupOf ? { group: groupOf(fm.slug) } : {}),
     });
   }
   const key = (r) => r.path.toLowerCase();
@@ -250,7 +270,8 @@ if (!only || only === 'mdn') {
   const { date, files } = await readMdn(commit);
   next.mdn = { repo: MDN_REPO.replace(/\.git$/, ''), commit, commit_date: date, folders: MDN_PARTS.map((p) => p.folder) };
   console.log(`mdn/content ${commit.slice(0, 12)} (${date})`);
-  const [js, api] = MDN_PARTS.map((p) => merge(p.file, MDN_HEADER, 'path', mdnRows(files, p.folder)));
+  const [js, api] = MDN_PARTS.map((p) => merge(p.file, p.header, 'path', mdnRows(files, p.folder)));
+  console.log(`   Web API: ${api.filter((r) => r.group).length} of ${api.length} pages belong to an MDN group`);
   summarizeJs(js);
   const top = new Set(api.map((r) => r.path.split('/').slice(0, 3).join('/').toLowerCase()));
   console.log(`   Web API: ${top.size - 1} top-level folders (interfaces and API overviews)`);

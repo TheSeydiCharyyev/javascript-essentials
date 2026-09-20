@@ -16,7 +16,7 @@ export const MODULES = [
   ['E2', 1, 5, 'Синтаксис, типы и операторы'],
   ['E3', 1, 3, 'Условия и циклы'],
   ['E4', 1, 4, 'Функции'],
-  ['E5', 1, 3, 'Строки, числа и Math'],
+  ['E5', 1, 3, 'Строки, числа, Math и основы дат'],
   ['E6', 1, 5, 'Массивы, объекты и JSON'],
   ['E7', 1, 5, 'DOM и события'],
   ['E8', 1, 2, 'Таймеры, промисы и fetch'],
@@ -104,6 +104,8 @@ const MEMBERS = [
   ['Promise', /^(all|allSettled|any|race|withResolvers|try|allKeyed|allSettledKeyed|Symbol\.species)$/, 'I8'],
   ['Symbol', /^(asyncDispose|dispose|hasInstance|isConcatSpreadable|match|matchAll|replace|search|species|split|toPrimitive|toStringTag|unscopables|Symbol\.toPrimitive)$/, 'A4'],
   ['Intl', /^(NumberFormat|DateTimeFormat)$/, 'I7'],
+  // the everyday part of Date is taught in Essentials, the rest stays with Temporal in course 2
+  ['Date', /^(Date|now|getFullYear|getMonth|getDate|getHours|getMinutes|getTime|toLocaleDateString|toLocaleTimeString)$/, 'E5'],
   ['Date', /^(getYear|setYear|toGMTString)$/, 'A8'],
   ['RegExp', /^(compile|input|lastMatch|lastParen|leftContext|rightContext|n)$/, 'A8'],
   ['Function', /^(arguments|caller|displayName)$/, 'A8'],
@@ -134,6 +136,7 @@ export function jsModule(slug) {
   if (group === 'Regular_expressions') return 'I6';
   if (group === 'Errors') return 'ERRORS';
   if (group === 'Global_Objects') {
+    if (a === 'Date' && !b) return 'E5'; // the Date page itself opens the Essentials lesson about dates
     if (b) for (const [o, re, m] of MEMBERS) if (o === a && re.test(b)) return m;
     if (/^(Big)?(Int|Uint|Float)\d+(Clamped)?Array$/.test(a)) return 'A5';
     return OBJECTS[a];

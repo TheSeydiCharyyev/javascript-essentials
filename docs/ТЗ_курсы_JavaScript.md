@@ -164,7 +164,7 @@ internal / concrete / numeric method), 527 — встроенные функци
 1. Модули курсов и распределение всех строк карты по модулям — [plan-0-overview.md](plan-0-overview.md),
    правила — `tools/plan-modules.mjs`. Утверждено 20.09.2026.
 2. Дни каждого курса по очереди, правила — `tools/plan-days.mjs`, назначения пишутся в карту покрытия:
-   - Essentials — [plan-1-essentials.md](plan-1-essentials.md), 20.09.2026: 475 строк по 30 учебным дням, 275 подробно;
+   - Essentials — [plan-1-essentials.md](plan-1-essentials.md), 20.09.2026: 487 строк по 30 учебным дням, 286 подробно;
    - Intermediate, Advanced, Web APIs — дальше.
 
 Для каждого дня:

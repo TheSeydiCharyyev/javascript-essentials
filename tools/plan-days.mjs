@@ -37,7 +37,7 @@ const DAYS_1 = [
   [14, 'E4', 'Параметры по умолчанию и остаточные параметры'],
   [15, 'E4', 'Практика: разбиваем задачу на функции (смешанный день)'],
   [16, 'E5', 'Строки и их методы'],
-  [17, 'E5', 'Числа: Number, parseInt, parseFloat'],
+  [17, 'E5', 'Числа и первые даты: Number, parseInt, Date'],
   [18, 'E5', 'Math и случайные числа'],
   [19, 'E6', 'Массивы: создание и основные методы'],
   [20, 'E6', 'Перебор массивов: forEach, map, filter, reduce'],
@@ -106,7 +106,8 @@ const RULES_1 = [
   [16, 'кратко', /^(String\/|Errors\/(Negative_repetition_count|Resulting_string_too_large|Not_a_valid_code_point))/],
   // 17. Числа
   [17, 'подробно', /^(Guide\/Numbers_and_strings|parseInt|parseFloat|isNaN|isFinite|Number|Number\/(Number|isInteger|isNaN|isFinite|parseInt|parseFloat|toFixed|toString|MAX_SAFE_INTEGER))$/],
-  [17, 'кратко', /^(Number\/|Errors\/(Bad_radix|Precision_range))/],
+  [17, 'подробно', /^Date(\/(Date|now|getFullYear|getMonth|getDate|getHours|getMinutes|getTime|toLocaleDateString|toLocaleTimeString))?$/],
+  [17, 'кратко', /^(Number\/|Errors\/(Bad_radix|Precision_range|Invalid_date))/],
   // 18. Math
   [18, 'подробно', /^(Math|Math\/(random|round|floor|ceil|abs|max|min|pow|sqrt|trunc|sign|PI))$/],
   [18, 'кратко', /^Math\//],

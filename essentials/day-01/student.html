@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>День 1 — конспект</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/student.css">
+    <link rel="stylesheet" href="../../css/book.css">
+    <script src="../../js/highlight.js" defer></script>
+    <style>
+        h1 { border-bottom-color: #f59e0b; }
+        h2 { color: #a16207; background: #fffbeb; border-left-color: #f59e0b; }
+    </style>
+</head>
+<body>
+
+<div class="lesson-nav">
+    <a href="../../index.html" class="nav-home">&#8592; Курс</a>
+    <span class="nav-sep">|</span>
+    <span class="nav-title">Essentials, день 1</span>
+    <span class="nav-sep">|</span>
+    <a href="lecture.html" class="nav-link">&#x1F468;&#x200D;&#x1F3EB; Лекция</a>
+    <span class="nav-active">&#x1F468;&#x200D;&#x1F393; Конспект</span>
+    <a href="tasks.html" class="nav-link">&#x1F4CB; Задания</a>
+</div>
+
+<div class="container">
+
+    <h1>День 1. Что такое JavaScript</h1>
+    <p class="subtitle">Короткая выжимка лекции: перечитать перед следующим занятием.</p>
+
+    <h2>Главное</h2>
+
+    <div class="definition">
+        <strong>JavaScript</strong> — язык программирования. Программа на нём — это список инструкций, которые
+        выполняются по порядку. В браузере он отвечает за <strong>поведение</strong> страницы.
+    </div>
+
+    <div class="key-point">
+        Три слоя страницы: <strong>HTML</strong> — содержимое, <strong>CSS</strong> — внешний вид,
+        <strong>JavaScript</strong> — поведение.
+    </div>
+
+    <div class="definition">
+        <strong>Движок</strong> — программа внутри браузера, которая выполняет код. V8 в Chrome и Edge,
+        SpiderMonkey в Firefox, JavaScriptCore в Safari. Движок V8 работает и без браузера — это <strong>Node.js</strong>.
+    </div>
+
+    <div class="definition">
+        <strong>ECMAScript</strong> — официальный стандарт языка. Новая редакция выходит каждый год: ES2015, ES2016
+        и так далее. Старый код при этом продолжает работать.
+    </div>
+
+    <h2>Где работает JavaScript</h2>
+
+    <ul>
+        <li>страницы и веб-приложения — в браузере;</li>
+        <li>серверы — Node.js;</li>
+        <li>приложения для телефона — React Native;</li>
+        <li>программы для компьютера — Electron (VS Code, Discord).</li>
+    </ul>
+
+    <h2>Что браузер разрешает и что запрещает</h2>
+
+    <table>
+        <thead><tr><th>Можно</th><th>Нельзя без разрешения</th></tr></thead>
+        <tbody>
+            <tr><td>менять страницу, реагировать на действия</td><td>читать файлы на диске</td></tr>
+            <tr><td>запрашивать данные с сервера</td><td>запускать программы</td></tr>
+            <tr><td>сохранять данные в браузере</td><td>включать камеру и узнавать место</td></tr>
+        </tbody>
+    </table>
+
+    <h2>Код из лекции</h2>
+
+    <pre class="code js">alert("Привет, Мары!");
+
+const name = prompt("Как вас зовут?");
+alert("Здравствуйте, " + name + "!");
+
+console.log(60 * 24 * 7); // 10080 — минут в неделе</pre>
+
+    <p>Подключение файла со скриптом к странице:</p>
+
+    <pre class="code html">&lt;script src="app.js" defer&gt;&lt;/script&gt;</pre>
+
+    <div class="remember">
+        Java и JavaScript — разные языки. Общее у них только часть названия.
+    </div>
+
+    <div class="note-box">
+        <strong>Документация.</strong> MDN Web Docs: раздел <em>Guide</em> — учебник, раздел <em>Reference</em> —
+        справочник по каждому методу. Искать так: «mdn» плюс название метода.
+    </div>
+
+    <h2>Слова, которые нужно знать</h2>
+
+    <table>
+        <thead><tr><th>Слово</th><th>Значение</th></tr></thead>
+        <tbody>
+            <tr><td>код</td><td>текст программы</td></tr>
+            <tr><td>инструкция</td><td>одна команда программы</td></tr>
+            <tr><td>консоль</td><td>окно браузера, где можно выполнить код сразу (<span class="kbd">F12</span>)</td></tr>
+            <tr><td>движок</td><td>программа, которая выполняет код</td></tr>
+            <tr><td>переменная</td><td>именованная коробочка для значения</td></tr>
+            <tr><td>функция</td><td>готовая команда с именем, вызывается со скобками</td></tr>
+        </tbody>
+    </table>
+
+    <div class="homework">
+        <ol>
+            <li>Откройте консоль и посчитайте: сколько секунд в сутках, сколько дней в 12 неделях.</li>
+            <li>Найдите на MDN страницу метода <code>console.table</code> и запишите в тетрадь одну строку
+                о том, что он делает.</li>
+            <li>Выпишите три сайта, которыми пользуетесь каждый день, и подумайте, что на них делает
+                JavaScript. Подсказка: всё, что меняется без перезагрузки страницы.</li>
+        </ol>
+    </div>
+
+    <div class="sources">
+        По материалам <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Introduction">MDN Web Docs</a>
+        (авторы — Mozilla Contributors), лицензия <a href="https://creativecommons.org/licenses/by-sa/2.5/">CC BY-SA 2.5</a>.
+    </div>
+
+</div>
+
+</body>
+</html>

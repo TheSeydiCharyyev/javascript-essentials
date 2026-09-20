@@ -1,0 +1,170 @@
+/* ========== BOOK TEMPLATE ==========
+   Added on top of common.css + lecture.css for the new day pages: chapter head, reference table,
+   SVG diagrams, spoilers, cheat sheet, self-check, sources. Old lesson pages do not use it. */
+
+/* ========== DAY HEAD ========== */
+.day-head {
+    background: linear-gradient(135deg, #1e293b, #334155);
+    color: #f8fafc;
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 20px;
+}
+.day-head .day-no {
+    display: inline-block;
+    background: #f59e0b;
+    color: #1e293b;
+    font-weight: 700;
+    border-radius: 999px;
+    padding: 2px 14px;
+    margin-bottom: 10px;
+}
+.day-head h1 {
+    color: #fff;
+    border: none;
+    margin: 0 0 8px;
+    padding: 0;
+    font-size: 2rem;
+}
+.day-head p { color: #cbd5e1; margin: 0; }
+
+/* ========== GOALS ========== */
+.goals {
+    background: #ecfdf5;
+    border: 2px solid #6ee7b7;
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 16px 0 24px;
+}
+.goals::before {
+    content: '\1F3AF  После этого урока вы сможете';
+    display: block;
+    font-weight: 700;
+    color: #047857;
+    margin-bottom: 8px;
+}
+.goals ul { margin: 0 0 0 22px; }
+
+/* ========== SVG DIAGRAM ========== */
+figure.scheme {
+    margin: 20px 0;
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px;
+    overflow-x: auto;
+}
+figure.scheme svg { display: block; max-width: 100%; height: auto; margin: 0 auto; }
+figure.scheme figcaption {
+    margin-top: 10px;
+    color: #475569;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* ========== REFERENCE TABLE ========== */
+.ref {
+    margin: 24px 0;
+}
+.ref-title {
+    font-weight: 700;
+    color: #0f172a;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+.ref-title::before { content: '\1F4D6  '; }
+.ref table { font-size: 0.95rem; }
+.ref td code, .ref th code { white-space: nowrap; }
+.ref .mark {
+    display: inline-block;
+    border-radius: 999px;
+    padding: 1px 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+.ref .mark-full { background: #dcfce7; color: #15803d; }
+.ref .mark-brief { background: #e2e8f0; color: #475569; }
+
+/* ========== CHEAT SHEET ========== */
+.cheatsheet {
+    background: #fffbeb;
+    border: 2px solid #fcd34d;
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 24px 0;
+}
+.cheatsheet::before {
+    content: '\1F4CC  Шпаргалка';
+    display: block;
+    font-weight: 700;
+    color: #b45309;
+    margin-bottom: 10px;
+}
+.cheatsheet pre { margin: 8px 0; }
+
+/* ========== SELF CHECK ========== */
+.selfcheck {
+    background: #eff6ff;
+    border: 2px solid #bfdbfe;
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 24px 0;
+}
+.selfcheck::before {
+    content: '\2753  Проверь себя';
+    display: block;
+    font-weight: 700;
+    color: #1d4ed8;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+.selfcheck ol { margin-left: 22px; }
+.selfcheck li { margin: 10px 0; }
+
+details.answer {
+    margin-top: 6px;
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+details.answer summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: #1d4ed8;
+}
+details.answer[open] summary { margin-bottom: 8px; }
+
+/* ========== SOURCES ========== */
+.sources {
+    margin: 32px 0 0;
+    padding-top: 16px;
+    border-top: 2px solid #e2e8f0;
+    color: #64748b;
+    font-size: 0.85rem;
+}
+.sources a { color: #475569; }
+
+/* ========== CODE HIGHLIGHTING ========== */
+pre.code { color: #e2e8f0; }
+.tok-com { color: #94a3b8; font-style: italic; }
+.tok-str { color: #86efac; }
+.tok-num { color: #fca5a5; }
+.tok-key { color: #93c5fd; font-weight: 600; }
+.tok-val { color: #f0abfc; }
+.tok-fn { color: #fcd34d; }
+.tok-prop { color: #7dd3fc; }
+.tok-cls { color: #fdba74; }
+.tok-id { color: #e2e8f0; }
+.tok-punc { color: #cbd5e1; }
+.tok-op { color: #f9a8d4; }
+.tok-tag { color: #93c5fd; }
+.tok-attr { color: #fcd34d; }
+
+/* ========== PHONES ========== */
+@media (max-width: 600px), (max-height: 500px) {
+    .day-head { padding: 18px; border-radius: 10px; }
+    .day-head h1 { font-size: 1.5rem; }
+    .goals, .cheatsheet, .selfcheck { padding: 14px 16px; }
+    figure.scheme { padding: 10px; }
+}

@@ -579,6 +579,7 @@ function isFive(n) { return n === 5; }</pre>
 
     <p>То же самое в обработчиках событий — день 27:</p>
 
+    <!-- ahead-ok: день 27 -->
     <pre class="code js">button.addEventListener("click", handleClick);   // передали, а вызовут потом
 
 function handleClick() {
@@ -588,6 +589,7 @@ function handleClick() {
     <div class="mistake">
         Главная ловушка с колбэками — <strong>лишние скобки</strong>. Передавать надо саму
         функцию, а не результат её вызова:
+        <!-- ahead-ok: день 27 -->
         <pre class="code js">button.addEventListener("click", handleClick);     // правильно: передали функцию
 button.addEventListener("click", handleClick());   // ошибка: вызвали сразу,
                                                    // а передали undefined</pre>

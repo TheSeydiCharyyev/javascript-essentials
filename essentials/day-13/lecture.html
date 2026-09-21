@@ -168,6 +168,7 @@ add(2, 3);   // 5</pre>
 
     <p>Где такая форма встречается чаще всего — там, где функцию сразу куда-то передают:</p>
 
+    <!-- ahead-ok: день 27 -->
     <pre class="code js">button.addEventListener("click", function () {
   console.log("нажали");
 });</pre>
@@ -187,6 +188,7 @@ add(2, 3);   // 5</pre>
     <p><strong>Второй — методы объектов.</strong> Как мы увидим в разделе 11, стрелка
     методом быть не может, а функция-выражение — вполне:</p>
 
+    <!-- ahead-ok: курс 2 -->
     <pre class="code js">const student = {
   name: "Аман",
   say: function () { return this.name; },   // работает
@@ -457,6 +459,7 @@ at app.js:16:25             &#8592; имени нет вовсе</pre>
     <div class="compare">
         <div class="wrong">
             <div class="label">В стеке — anonymous</div>
+            <!-- ahead-ok: день 27 -->
             <pre class="code js">button.addEventListener(
   "click",
   function () {
@@ -466,6 +469,7 @@ at app.js:16:25             &#8592; имени нет вовсе</pre>
         </div>
         <div class="right">
             <div class="label">В стеке — handleClick</div>
+            <!-- ahead-ok: день 27 -->
             <pre class="code js">function handleClick() {
   // двадцать строк
 }
@@ -550,6 +554,7 @@ console.log(typeof inner);   // "undefined" &#8592; снаружи имени н
 
     <p><strong>Обработчик события</strong> — день 27:</p>
 
+    <!-- ahead-ok: день 27 -->
     <pre class="code js">button.addEventListener("click", () =&gt; {
   console.log("нажали");
 });</pre>
@@ -612,6 +617,7 @@ const g = (a) =&gt;
     мы разберём в курсе 2 — это ссылка на объект, в котором вызвана функция. Пока достаточно
     увидеть разницу:</p>
 
+    <!-- ahead-ok: курс 2 -->
     <pre class="code js">const student = {
   name: "Аман",
   sayNormal() { return this.name; },        // "Аман"
@@ -634,6 +640,7 @@ const g = (a) =&gt;
 
     <p>А иногда всё-таки падает — когда после <code>this</code> идёт ещё одно обращение:</p>
 
+    <!-- ahead-ok: курс 2 -->
     <pre class="code js">const broken = {
   marks: [1, 2],
   count: () =&gt; this.marks.length,
@@ -670,6 +677,7 @@ countArrow(1, 2, 3);  // ReferenceError: arguments is not defined</pre>
     <p><strong>И третье, попутно:</strong> стрелочную функцию нельзя вызвать через
     <code>new</code>. Что это значит, станет ясно в курсе 2 вместе с классами.</p>
 
+    <!-- ahead-ok: курс 2 -->
     <pre class="code js">const F = () =&gt; { };
 new F();   // TypeError: F is not a constructor</pre>
 

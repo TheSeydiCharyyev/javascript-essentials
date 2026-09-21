@@ -152,7 +152,7 @@ report("Аман");   // хотели «Salam, Аман»</pre>
         <p class="task-goal">заменить <code>arguments</code> остаточным параметром.</p>
         <p>Вот функция, написанная до 2015 года. Она склеивает все аргументы через пробел:</p>
         <pre class="code js">function oldJoin() {
-  const parts = Array.prototype.slice.call(arguments);
+  const parts = Array.prototype.slice.call(arguments);   // курс 2
   let out = "";
   for (const p of parts) {
     out += p + " ";

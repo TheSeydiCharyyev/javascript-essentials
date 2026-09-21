@@ -529,6 +529,7 @@ if (isAdult &amp;&amp; hasTicket &amp;&amp; !user.banned) {
     <p><strong>Проверка данных: цепочка отказов.</strong> Каждое правило — отдельный
     <code>if</code> с ранним выходом, и порядок от самого грубого к самому тонкому:</p>
 
+    <!-- ahead-ok: день 16 -->
     <pre class="code js">function validate(name, age) {
   if (name.trim() === "") {
     return "введите имя";
@@ -897,6 +898,7 @@ markToWord(3);   // undefined — и дальше это поедет по пр�
     <p>Пока достаточно знать, что это тоже ветвление, просто особого рода: «попробуй сделать это,
     а если сломается — сделай вот то».</p>
 
+    <!-- ahead-ok: день 11 -->
     <pre class="code js">try {
   const data = JSON.parse(text);   // вдруг текст испорчен
 } catch (e) {
@@ -922,6 +924,7 @@ markToWord(3);   // undefined — и дальше это поедет по пр�
     берут для вещей, которые проверить нельзя: разбор чужих данных, запрос к серверу, работа
     с файлом.</p>
 
+    <!-- ahead-ok: день 11 -->
     <pre class="code js">// плохо: проверяемое прячем в try
 try {
   const half = total / count;

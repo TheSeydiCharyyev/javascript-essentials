@@ -600,7 +600,7 @@ countArrow(1, 2, 3);   // 3</pre>
     превращать в массив вручную. Эту строку вы встретите во многих старых файлах:</p>
 
     <pre class="code js">function oldSum() {
-  const numbers = Array.prototype.slice.call(arguments);
+  const numbers = Array.prototype.slice.call(arguments);   // курс 2
   let total = 0;
   for (const n of numbers) {
     total += n;

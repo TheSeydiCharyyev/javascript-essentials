@@ -61,6 +61,7 @@ const add = (a, b) =&gt; a + b;                    // стрелочная</pre>
 
     <h2>Сокращения стрелочной</h2>
 
+    <!-- ahead-ok: день 14 -->
     <pre class="code js">n =&gt; n * 2          // один простой параметр — скобки можно убрать
 (a, b) =&gt; a + b     // несколько — скобки обязательны
 () =&gt; 42            // ноль параметров — скобки обязательны
@@ -99,6 +100,7 @@ const outer = function inner(){}; // outer.name === "inner", снаружи inne
 
     <h2>Чего у стрелочных нет</h2>
 
+    <!-- ahead-ok: курс 2 -->
     <pre class="code js">const o = { name: "Аман", say: () =&gt; this.name };   // не сработает — нет this
 const f = () =&gt; arguments.length;   // ReferenceError: arguments is not defined
 new (() =&gt; {})();                   // TypeError: не конструктор</pre>

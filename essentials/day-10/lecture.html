@@ -302,6 +302,7 @@ console.log(line);   // "5, 4, 3, 5, 2, 4"</pre>
     <div class="real-world">
         Честное предупреждение на будущее. Все пять приёмов выше в настоящем коде пишут
         <strong>короче</strong> — через методы массива, которые мы разберём на дне 20:
+        <!-- ahead-ok: день 22 -->
         <pre class="code js">const sum = marks.reduce((a, b) =&gt; a + b, 0);
 const fives = marks.filter((m) =&gt; m === 5).length;
 const max = Math.max(...marks);
@@ -383,6 +384,7 @@ do {
     <p>Где это пригождается: когда действие надо сделать, а потом решить, повторять ли. Классический
     случай — спросить у пользователя, пока не введёт правильно:</p>
 
+    <!-- ahead-ok: день 28 -->
     <pre class="code js">let answer;
 
 do {
@@ -491,6 +493,7 @@ while (i &lt; 3) {
 
     <p>Бывает и нужный вечный цикл — когда выход спрятан внутри тела:</p>
 
+    <!-- ahead-ok: день 28 -->
     <pre class="code js">while (true) {
   const answer = prompt("Введите «стоп»");
   if (answer === "стоп") {

@@ -268,7 +268,11 @@ console.log(typeof null === "object" &amp;&amp; null.length);
 
 // 2
 const flag = new Boolean(false);
-console.log(flag ? "да" : "нет");
+if (flag) {
+  console.log("да");
+} else {
+  console.log("нет");
+}
 
 // 3
 console.log(null + 1, undefined + 1);

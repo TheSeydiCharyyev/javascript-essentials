@@ -118,7 +118,7 @@ const CONSTRUCTS = [
   { id: 'prototype', title: 'prototype, call, apply, bind', day: 0, where: 'курс 2', re: /\.prototype\b|\.(?:call|apply|bind)\s*\(/ },
   { id: 'map-set', title: 'Map / Set / WeakMap', day: 0, where: 'курс 2', re: /\bnew\s+(?:Map|Set|WeakMap|WeakSet)\b/ },
   { id: 'regexp', title: 'регулярное выражение', day: 0, where: 'курс 2', re: /=\s*\/(?![/*])[^\n]*\/[gimsuy]*|\.(?:test|match|matchAll)\s*\(/ },
-  { id: 'str-split', title: '.split / .replace', day: 0, where: 'курс 2', re: /\.(?:split|replace|replaceAll)\s*\(/ },
+  { id: 'str-split', title: '.split / .replace', day: 0, where: 'курс 2', re: /(?<!classList)\.(?:split|replace|replaceAll)\s*\(/ },
   { id: 'modules', title: 'import / export', day: 0, where: 'курс 2', re: /^\s*(?:import|export)\s/m },
   { id: 'generator', title: 'генератор function* / yield', day: 0, where: 'курс 2', re: /function\s*\*|\byield\b/ },
   { id: 'symbol', title: 'Symbol', day: 0, where: 'курс 3', re: /\bSymbol\s*[.(]/ },

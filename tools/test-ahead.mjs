@@ -79,7 +79,13 @@ try {
   r = only(10)(js('for (let i = 0; i &lt; 3; i++) { }'));
   check('цикл for не принят за параметр по умолчанию', r.code === 0, r.out.split('\n')[0]);
 
-  // 13. every row of the table is well formed and unique
+  // 13. classList.replace is the class-list method of day 25, not the string method of course 2
+  r = only(25)(js('el.classList.replace("absent", "late");'));
+  check('classList.replace не принят за строковый replace', r.code === 0, r.out.split('\n')[0]);
+  r = only(25)(js('const s = text.replace("a", "b");'));
+  check('строковый replace на дне 25 пойман', r.out.includes('курс 2') && r.code === 1);
+
+  // 14. every row of the table is well formed and unique
   const src = fs.readFileSync(path.join(TOOLS, 'check-ahead.mjs'), 'utf8');
   const rows = [...src.matchAll(/\{ id: '([\w-]+)', title: '([^']+)', day: (\d+),(?: from: (\d+),)?/g)];
   const ids = rows.map((m) => m[1]);
@@ -87,7 +93,7 @@ try {
   check(`таблица: ${rows.length} строк, все id разные`, new Set(ids).size === ids.length);
   check('таблица: from не бывает позже дня разбора', badFrom.length === 0, badFrom.map((m) => m[1]).join(', '));
 
-  // 14. --table prints the whole table
+  // 15. --table prints the whole table
   const table = spawnSync('node', [path.join(TOOLS, 'check-ahead.mjs'), '--table'], { encoding: 'utf8' });
   check('--table печатает все строки', table.stdout.split('\n').length >= rows.length && table.status === 0);
 } finally {

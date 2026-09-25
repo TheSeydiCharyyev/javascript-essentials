@@ -85,7 +85,13 @@ try {
   r = only(25)(js('const s = text.replace("a", "b");'));
   check('строковый replace на дне 25 пойман', r.out.includes('курс 2') && r.code === 1);
 
-  // 14. every row of the table is well formed and unique
+  // 14. built-in event constructors of day 27 are not "own constructors" of course 2
+  r = only(27)(js('const bus = new EventTarget();\nbus.dispatchEvent(new Event("ping"));'));
+  check('new Event и new EventTarget не приняты за свой конструктор', r.code === 0, r.out.split('\n')[0]);
+  r = only(27)(js('const user = new User("Аман");'));
+  check('свой конструктор по-прежнему пойман', r.out.includes('курс 2') && r.code === 1);
+
+  // 15. every row of the table is well formed and unique
   const src = fs.readFileSync(path.join(TOOLS, 'check-ahead.mjs'), 'utf8');
   const rows = [...src.matchAll(/\{ id: '([\w-]+)', title: '([^']+)', day: (\d+),(?: from: (\d+),)?/g)];
   const ids = rows.map((m) => m[1]);
@@ -93,7 +99,7 @@ try {
   check(`таблица: ${rows.length} строк, все id разные`, new Set(ids).size === ids.length);
   check('таблица: from не бывает позже дня разбора', badFrom.length === 0, badFrom.map((m) => m[1]).join(', '));
 
-  // 15. --table prints the whole table
+  // 16. --table prints the whole table
   const table = spawnSync('node', [path.join(TOOLS, 'check-ahead.mjs'), '--table'], { encoding: 'utf8' });
   check('--table печатает все строки', table.stdout.split('\n').length >= rows.length && table.status === 0);
 } finally {

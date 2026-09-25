@@ -113,7 +113,7 @@ const CONSTRUCTS = [
 
   // --- следующие курсы ---
   { id: 'class', title: 'class', day: 0, where: 'курс 2', re: /\bclass\s+[A-Za-z_$]/ },
-  { id: 'new-own', title: 'new со своим конструктором', day: 0, where: 'курс 2', re: /\bnew\s+(?!Date\b|Error\b|TypeError\b|RangeError\b|SyntaxError\b|ReferenceError\b|Promise\b|Array\b|Object\b|String\b|Number\b|Boolean\b|Function\b|Map\b|Set\b)[A-Z][\w$]*/ },
+  { id: 'new-own', title: 'new со своим конструктором', day: 0, where: 'курс 2', re: /\bnew\s+(?!Date\b|Error\b|TypeError\b|RangeError\b|SyntaxError\b|ReferenceError\b|Promise\b|Array\b|Object\b|String\b|Number\b|Boolean\b|Function\b|Map\b|Set\b|Event\b|EventTarget\b|CustomEvent\b|MouseEvent\b|KeyboardEvent\b)[A-Z][\w$]*/ },
   { id: 'this', title: 'this', day: 0, where: 'курс 2', re: /\bthis\b/ },
   { id: 'prototype', title: 'prototype, call, apply, bind', day: 0, where: 'курс 2', re: /\.prototype\b|\.(?:call|apply|bind)\s*\(/ },
   { id: 'map-set', title: 'Map / Set / WeakMap', day: 0, where: 'курс 2', re: /\bnew\s+(?:Map|Set|WeakMap|WeakSet)\b/ },

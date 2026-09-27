@@ -52,16 +52,19 @@
         того, чтобы молча прочитать половину.
     </div>
 
-    <pre class="code js">parseInt("1010", 2)   // 10  — основание указывать явно
-parseInt(day, 10)     // так пишут в надёжном коде</pre>
+    <pre class="code js">parseInt("1010", 2);   // 10  — основание указывать явно
+const day = "08";
+parseInt(day, 10);     // 8   — так пишут в надёжном коде</pre>
 
     <h2>Проверки</h2>
 
-    <pre class="code js">Number.isNaN("abc")    // false — честная проверка
-isNaN("abc")           // true  — старая, сначала превращает в число
-Number.isFinite("42")  // false;  isFinite("42") → true
-Number.isInteger(4)    // лучшая проверка «пришло целое число»
-x === NaN              // ВСЕГДА false — так не проверяют</pre>
+    <pre class="code js">Number.isNaN("abc");     // false — честная проверка
+isNaN("abc");            // true  — старая, сначала превращает в число
+Number.isFinite("42");   // false
+isFinite("42");          // true  — тоже старая
+Number.isInteger(4);     // true  — лучшая проверка «пришло целое число»
+const x = Number("пять");
+x === NaN;               // false — ВСЕГДА, так не проверяют</pre>
 
     <div class="remember">
         В новом коде — только те проверки, что <strong>с приставкой <code>Number.</code></strong>
@@ -70,25 +73,25 @@ x === NaN              // ВСЕГДА false — так не проверяют<
 
     <h2>Округление</h2>
 
-    <pre class="code js">(4.333).toFixed(2)   // "4.33" — это СТРОКА, не число
-(7).toFixed(2)       // "7.00"
-(1.005).toFixed(2)   // "1.00" — а не "1.01"
+    <pre class="code js">(4.333).toFixed(2);   // "4.33" — это СТРОКА, не число
+(7).toFixed(2);       // "7.00"
+(1.005).toFixed(2);   // "1.00" — а не "1.01"
 
-0.1 + 0.2            // 0.30000000000000004
-0.1 + 0.2 === 0.3    // false
-Math.abs(0.1 + 0.2 - 0.3) &lt; Number.EPSILON   // true</pre>
+0.1 + 0.2;            // 0.30000000000000004
+0.1 + 0.2 === 0.3;    // false
+Math.abs(0.1 + 0.2 - 0.3) &lt; Number.EPSILON;   // true</pre>
 
     <p>Дроби хранятся приблизительно — это свойство двоичной записи, а не языка. Поэтому
     деньги и оценки держат в целых, а дробь показывают только при выводе.</p>
 
     <h2>Константы и системы счисления</h2>
 
-    <pre class="code js">Number.MAX_SAFE_INTEGER   // 9007199254740991 — граница точных целых
-Number.EPSILON            // порог для сравнения дробей
+    <pre class="code js">Number.MAX_SAFE_INTEGER;   // 9007199254740991 — граница точных целых
+Number.EPSILON;            // 2.220446049250313e-16 — порог для сравнения дробей
 
-(255).toString(16)   // "ff"
-(255).toString(1)    // RangeError: toString() radix argument must be between 2 and 36
-parseInt("ff", 16)   // 255</pre>
+(255).toString(16);   // "ff"
+parseInt("ff", 16);   // 255
+// (255).toString(1)  → RangeError: toString() radix argument must be between 2 and 36</pre>
 
     <h2>Даты</h2>
 
@@ -97,37 +100,39 @@ parseInt("ff", 16)   // 255</pre>
         вычитать.
     </div>
 
-    <pre class="code js">Date.now()                     // сейчас, число
+    <pre class="code js">Date.now();                               // сейчас, число
 const d = new Date(2026, 8, 22, 14, 5);   // 22 сентября 2026, 14:05
 
-d.getFullYear()   // 2026
-d.getMonth()      // 8  — СЕНТЯБРЬ, месяцы с нуля!
-d.getDate()       // 22
-d.getHours()      // 14
-d.getMinutes()    // 5
+d.getFullYear();   // 2026
+d.getMonth();      // 8  — СЕНТЯБРЬ, месяцы с нуля!
+d.getDate();       // 22
+d.getHours();      // 14
+d.getMinutes();    // 5
 
-(end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)   // разница в днях</pre>
+const start = new Date(2026, 8, 1);
+const end = new Date(2026, 8, 22);
+(end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24);   // 21 — разница в днях</pre>
 
     <div class="remember">
         <strong>Месяцы нумеруются с нуля</strong>, а дни — с единицы. Январь — 0,
         сентябрь — 8, декабрь — 11. Месяц 12 переедет в следующий год.
     </div>
 
-    <pre class="code js">d.toLocaleDateString("ru-RU")   // "22.09.2026"
-d.toLocaleTimeString("ru-RU")   // "14:05:00"
+    <pre class="code js">d.toLocaleDateString("ru-RU");   // "22.09.2026"
+d.toLocaleTimeString("ru-RU");   // "14:05:00"
 
 const bad = new Date("не дата");
-String(bad)                     // "Invalid Date"
-bad.getTime()                   // NaN
-!Number.isNaN(bad.getTime())    // так проверяют дату</pre>
+String(bad);                     // "Invalid Date"
+bad.getTime();                   // NaN
+!Number.isNaN(bad.getTime());    // false — так проверяют дату</pre>
 
     <div class="note-box">
         <strong>Три ошибки дня, все <code>RangeError</code>:</strong> основание вне 2…36,
         слишком много знаков в <code>toFixed</code>, <code>toISOString</code> от неверной
         даты (<code>Invalid time value</code>).
-        <br><strong>Не было сегодня:</strong> разбор строк с датой, UTC-методы, сеттеры
-        и современная замена <code>Temporal</code> — всё это курс 2. Настройки вывода дат
-        (<code>Intl</code>) — курс 3.
+        <br><strong>Не было сегодня:</strong> разбор строк с датой, UTC-методы, сеттеры,
+        современная замена <code>Temporal</code> и настройки вывода дат через
+        <code>Intl</code> — всё это курс 2.
     </div>
 
     <div class="homework">

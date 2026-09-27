@@ -202,7 +202,8 @@ parseInt("08");         // 8     ноль впереди не мешает</pre>
     множество программ с датами. Сегодня такого поведения нет, но привычка осталась:
     <strong>если система счисления известна, указывайте её явно</strong>.</p>
 
-    <pre class="code js">parseInt(day, 10);   // «читай как десятичное» — так пишут в надёжном коде</pre>
+    <pre class="code js">const day = "08";
+parseInt(day, 10);   // 8 — «читай как десятичное», так пишут в надёжном коде</pre>
 
     <h2 id="nan">4. <code>NaN</code> — «не число»</h2>
 
@@ -287,10 +288,11 @@ Number.isSafeInteger(2 ** 53);   // false — за границей точнос
     <p>За этой границей соседние целые числа перестают различаться, и арифметика начинает
     тихо врать. Для оценок, цен и счётчиков это неважно, а вот для идентификаторов
     из базы данных — очень даже. Там берут строки или <code>BigInt</code>, о котором
-    речь в курсе 3.</p>
+    речь в курсе 2.</p>
 
     <p><code>Number.isInteger</code> же полезен прямо сегодня: это лучшая проверка «пришло
-    ли целое число», и она заменяет наш старый <code>typeof</code> с двумя сравнениями.</p>
+    ли целое число», и она заменяет две наши старые проверки — <code>typeof</code>
+    и <code>Number.isNaN</code>.</p>
 
     <h2 id="tofixed">7. <code>toFixed</code> и округление</h2>
 
@@ -590,7 +592,7 @@ d.toLocaleDateString("en-US");   // "9/22/2026" — в США сначала м�
     <div class="important">
         У этих методов есть ещё один аргумент — настройки: показать ли день недели, писать
         месяц словом или цифрой, нужны ли секунды. Настройки живут в объекте
-        <code>Intl</code>, и это тема курса 3. Пока нам хватает двух видов —
+        <code>Intl</code>, и это тема курса 2. Пока нам хватает двух видов —
         <code>"22.09.2026"</code> и <code>"14:05:00"</code>.
     </div>
 
@@ -639,7 +641,7 @@ function toMark(raw) {
   return Number(String(raw).trim());
 }
 
-// новое: одна проверка вместо трёх
+// новое: одна проверка вместо двух
 const isValidMark = (mark) =&gt;
   Number.isInteger(mark) &amp;&amp; mark &gt;= MIN_MARK &amp;&amp; mark &lt;= MAX_MARK;
 
@@ -730,9 +732,9 @@ console.log(line);</pre>
     строке: у «Огулджан» оценка <code>"4.5"</code> отброшена, осталось две из трёх.
     Прежняя проверка её бы пропустила и посчитала среднее по трём.</p>
 
-    <p><strong><code>Number.isInteger</code> заменил три условия сразу</strong> —
-    <code>typeof</code>, проверку на <code>NaN</code> и неявную проверку на дробность.
-    Заодно ушла и уязвимость: <code>NaN</code> от нечитаемой оценки не проходит, потому что
+    <p><strong><code>Number.isInteger</code> заменил два условия</strong> —
+    <code>typeof</code> и проверку на <code>NaN</code> — и добавил новое: оценка должна
+    быть целой. <code>NaN</code> от нечитаемой оценки по-прежнему не проходит, потому что
     <code>NaN</code> не целое число.</p>
 
     <div class="try-it">
@@ -859,41 +861,46 @@ console.log(line);</pre>
 
     <div class="cheatsheet">
         <pre class="code js">// СТРОКА → ЧИСЛО
-Number("42")     // 42    строгий: "42px" → NaN, "" → 0
-parseInt("42px") // 42    читает слева, дробную часть отбрасывает
-parseFloat("4.5кг") // 4.5
-parseInt("1010", 2) // 10  основание указывать явно
+Number("42");          // 42    строгий: "42px" → NaN, "" → 0
+parseInt("42px");      // 42    читает слева, дробную часть отбрасывает
+parseFloat("4.5кг");   // 4.5
+parseInt("1010", 2);   // 10    основание указывать явно
 
 // ПРОВЕРКИ — брать те, что с Number.
-Number.isNaN(x)      // честная: "abc" → false
-isNaN("abc")         // старая: сначала превращает → true
-Number.isFinite(42)  // true; Number.isFinite("42") → false
-Number.isInteger(4)  // лучшая проверка «пришло целое»
-x === NaN            // ВСЕГДА false, так не проверяют
+Number.isNaN("abc");     // false — честная
+isNaN("abc");            // true  — старая: сначала превращает
+Number.isFinite(42);     // true;  Number.isFinite("42") → false
+Number.isInteger(4);     // true  — лучшая проверка «пришло целое»
+const x = Number("пять");
+x === NaN;               // false — ВСЕГДА, так не проверяют
 
 // ОКРУГЛЕНИЕ
-(4.333).toFixed(2)   // "4.33" — СТРОКА, не число!
-(1.005).toFixed(2)   // "1.00" — двоичная погрешность
-0.1 + 0.2 === 0.3    // false
-Math.abs(0.1 + 0.2 - 0.3) &lt; Number.EPSILON   // true
+(4.333).toFixed(2);   // "4.33" — СТРОКА, не число!
+(1.005).toFixed(2);   // "1.00" — двоичная погрешность
+0.1 + 0.2 === 0.3;    // false
+Math.abs(0.1 + 0.2 - 0.3) &lt; Number.EPSILON;   // true
 
 // СИСТЕМЫ СЧИСЛЕНИЯ
-(255).toString(16)   // "ff";  (255).toString(1) → RangeError
-parseInt("ff", 16)   // 255
+(255).toString(16);   // "ff"
+parseInt("ff", 16);   // 255
+// (255).toString(1)  → RangeError: toString() radix argument must be between 2 and 36
 
 // ДАТА = ЧИСЛО МИЛЛИСЕКУНД
-Date.now()                        // сейчас, число
-new Date(2026, 8, 22, 14, 5)      // МЕСЯЦ С НУЛЯ: 8 = сентябрь
-d.getFullYear() d.getMonth() d.getDate() d.getHours() d.getMinutes()
-(end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)   // разница в днях
+Date.now();                                // сейчас, число
+const d = new Date(2026, 8, 22, 14, 5);    // МЕСЯЦ С НУЛЯ: 8 = сентябрь
+d.getMonth();                              // 8; ещё getFullYear, getDate, getHours, getMinutes
+const start = new Date(2026, 8, 1);
+const end = new Date(2026, 8, 22);
+(end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24);   // 21 — разница в днях
 
 // ПОКАЗАТЬ
-d.toLocaleDateString("ru-RU")   // "22.09.2026"
-d.toLocaleTimeString("ru-RU")   // "14:05:00"
+d.toLocaleDateString("ru-RU");   // "22.09.2026"
+d.toLocaleTimeString("ru-RU");   // "14:05:00"
 
 // НЕВЕРНАЯ ДАТА
-String(new Date("не дата"))     // "Invalid Date"
-!Number.isNaN(d.getTime())      // так проверяют</pre>
+const bad = new Date("не дата");
+String(bad);                     // "Invalid Date"
+!Number.isNaN(bad.getTime());    // false — так проверяют</pre>
     </div>
 
     <div class="selfcheck">

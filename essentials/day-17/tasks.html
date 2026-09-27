@@ -40,14 +40,14 @@
 
 // для каждой: Number(v), parseInt(v), parseFloat(v)</pre>
         <div class="hint">
-            Выводите через <code>JSON.stringify</code> или проверяйте <code>typeof</code>:
-            ноль и <code>NaN</code> в консоли выглядят по-разному, но перепутать их в таблице
-            легко.
+            Ноль и <code>NaN</code> в консоли выглядят по-разному, но в таблице их легко
+            перепутать. Сомневаетесь — проверьте <code>Number.isNaN</code>. <code>typeof</code>
+            тут не поможет: у <code>NaN</code> тип тоже <code>"number"</code>.
         </div>
         <div class="criteria">
             <ul>
                 <li>все пятнадцать клеток заполнены;</li>
-                <li>найдена строка, где все три ответа разные;</li>
+                <li>найдена строка, где <code>parseInt</code> разошёлся с двумя другими;</li>
                 <li>найдена строка, где <code>Number</code> даёт 0, а остальные — <code>NaN</code>;</li>
                 <li>записано, какую функцию вы возьмёте для данных из формы и почему.</li>
             </ul>
@@ -129,7 +129,8 @@ const raw = [5, "4", " 3 ", "4.5", "пять", "", null, 9, 0];</pre>
                     и причины у них разные;</li>
                 <li>объяснено, почему <code>Number.isInteger</code> сам отсекает
                     <code>NaN</code>;</li>
-                <li>записано, что вернёт <code>toMark(null)</code> и почему это опасно.</li>
+                <li>записано, что вернёт <code>toMark(null)</code>, а что — просто
+                    <code>Number(null)</code>, и почему второе опаснее.</li>
             </ul>
         </div>
     </div>

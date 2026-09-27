@@ -45,10 +45,10 @@
 
     <h2>Четыре округления</h2>
 
-    <pre class="code js">Math.round(4.5)   // 5   к ближайшему, половина ВВЕРХ
-Math.floor(4.9)   // 4   всегда вниз
-Math.ceil(4.1)    // 5   всегда вверх
-Math.trunc(4.9)   // 4   отбросить дробную часть</pre>
+    <pre class="code js">Math.round(4.5);   // 5   к ближайшему, половина ВВЕРХ
+Math.floor(4.9);   // 4   всегда вниз
+Math.ceil(4.1);    // 5   всегда вверх
+Math.trunc(4.9);   // 4   отбросить дробную часть</pre>
 
     <table>
         <thead><tr><th>Число</th><th><code>round</code></th><th><code>floor</code></th><th><code>ceil</code></th><th><code>trunc</code></th></tr></thead>
@@ -67,21 +67,26 @@ Math.trunc(4.9)   // 4   отбросить дробную часть</pre>
 
     <h2>Любой шаг округления</h2>
 
-    <pre class="code js">Math.round(price / 10) * 10     // до десятков
-Math.round(price / 100) * 100   // до сотен
-Math.floor(price / 5) * 5       // вниз до кратного пяти
-Math.round(x * 100) / 100       // до сотых — ЧИСЛОМ, не строкой</pre>
+    <pre class="code js">const price = 1234.567;
+Math.round(price / 10) * 10;     // 1230     до десятков
+Math.round(price / 100) * 100;   // 1200     до сотен
+Math.floor(price / 5) * 5;       // 1230     вниз до кратного пяти
+Math.round(price * 100) / 100;   // 1234.57  до сотых — ЧИСЛОМ, не строкой</pre>
 
     <h2>Крайние и степени</h2>
 
-    <pre class="code js">Math.abs(-5)     // 5        Math.sign(-5)    // -1
-Math.sqrt(144)   // 12       Math.pow(2, 10) === 2 ** 10
-Math.hypot(3, 4) // 5        Math.cbrt(27)    // 3
+    <pre class="code js">Math.abs(-5);        // 5
+Math.sign(-5);       // -1
+Math.sqrt(144);      // 12
+2 ** 10;             // 1024 — то же, что Math.pow(2, 10)
+Math.hypot(3, 4);    // 5
+Math.cbrt(27);       // 3
 
-Math.max(3, 7, 5)    // 7
-Math.max()           // -Infinity !
-Math.max(3, NaN, 5)  // NaN !
-Math.max(marks)      // NaN — массив это ОДИН аргумент</pre>
+Math.max(3, 7, 5);     // 7
+Math.max();            // -Infinity !
+Math.max(3, NaN, 5);   // NaN !
+const marks = [3, 5, 4];
+Math.max(marks);       // NaN — массив это ОДИН аргумент</pre>
 
     <pre class="code js">const maxOf = (numbers) =&gt; {
   let best = numbers[0];
@@ -112,15 +117,16 @@ randomInt(1, 6);   // бросок кубика</pre>
 
     <h2>Константы и углы</h2>
 
-    <pre class="code js">Math.PI   Math.E   Math.SQRT2   Math.LN2   // без скобок
+    <pre class="code js">Math.PI;   // 3.141592653589793 — без скобок; ещё Math.E, Math.SQRT2, Math.LN2
 
-const area = Math.PI * radius ** 2;
+const radius = 5;
+Math.PI * radius ** 2;          // 78.53981633974483 — площадь круга
 
 Math.sin(90 * Math.PI / 180);   // 1 — аргумент в РАДИАНАХ
-Math.sin(90);                   // 0.894 — это синус 90 радиан</pre>
+Math.sin(90);                   // 0.8939966636005579 — это синус 90 радиан</pre>
 
     <div class="note-box">
-        <strong>Тригонометрия и логарифмы</strong> — 33 страницы справочника, даны одной
+        <strong>Тригонометрия и логарифмы</strong> — девятнадцать страниц справочника, даны одной
         таблицей: разбирают их тогда, когда задача до них доходит. Из логарифмов чаще
         других нужен <code>Math.log2</code> — «сколько раз поделить пополам».
         <br><strong><code>Math.sumPrecise</code></strong> решает вчерашнюю задачу точной

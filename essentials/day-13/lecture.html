@@ -76,14 +76,14 @@
     <pre class="code js">// 1. Объявление — вчерашнее
 function add(a, b) {
   return a + b;
-}
+}</pre>
 
-// 2. Функция-выражение
+    <pre class="code js">// 2. Функция-выражение
 const add = function (a, b) {
   return a + b;
-};
+};</pre>
 
-// 3. Стрелочная функция
+    <pre class="code js">// 3. Стрелочная функция
 const add = (a, b) =&gt; a + b;</pre>
 
     <p>Все три вызываются одинаково — <code>add(2, 3)</code> — и все три возвращают 5.
@@ -148,10 +148,10 @@ const add = (a, b) =&gt; a + b;</pre>
     <p>Возьмём вчерашнее объявление и уберём имя. Получится <strong>анонимная функция</strong> —
     функция без имени:</p>
 
-    <pre class="code js">function (a, b) {
-  return a + b;
-}
-// SyntaxError: Function statements require a function name</pre>
+    <pre class="code js">// function (a, b) {
+//   return a + b;
+// }
+// → SyntaxError: Function statements require a function name</pre>
 
     <p>Сама по себе она не работает — мы видели эту ошибку вчера. Но если поставить её справа
     от <code>=</code>, всё в порядке:</p>
@@ -324,8 +324,8 @@ const h = (n) =&gt; { n * 2; };         // блок без return — вернё
 
     <p>Последняя строка заслуживает пояснения: ошибка там не та, которую ждёшь.</p>
 
-    <pre class="code js">const add = n, m =&gt; n + m;
-// SyntaxError: Missing initializer in const declaration</pre>
+    <pre class="code js">// const add = n, m =&gt; n + m;   → SyntaxError: Missing initializer in const declaration
+const add = (n, m) =&gt; n + m;    // два параметра — только в скобках</pre>
 
     <p>Язык не увидел стрелочную функцию с двумя параметрами — он увидел <strong>список
     объявлений</strong> из дня 4: сначала <code>const add = n</code>, потом через запятую
@@ -400,7 +400,8 @@ function add(a, b) {
         </div>
     </div>
 
-    <p>Объяснение целиком в дне 4. <strong>Объявление через <code>function</code> поднимается
+    <p>Сообщение слева — то, что пишет Chrome, когда код стоит в файле. В консоли оно короче:
+    <code>add is not defined</code>. Объяснение целиком в дне 4. <strong>Объявление через <code>function</code> поднимается
     вместе с телом</strong> — к моменту вызова функция уже готова. А функция-выражение,
     стрелочная или нет, — это обычная переменная: до строки объявления она в мёртвой зоне.</p>
 
@@ -431,17 +432,26 @@ console.log(myVar.name);     // "myVar"   &#8592; взялось от перем
 console.log(arrowFn.name);   // "arrowFn"</pre>
 
     <p>Язык подставляет имя переменной. Это не мелочь: <strong>имя видно в сообщениях
-    об ошибках и в стеке вызовов</strong> — том самом из дня 11. Посмотрите, чем отличаются
-    три стека при одной и той же ошибке:</p>
+    об ошибках и в стеке вызовов</strong> — том самом из дня 11. Проверим на файле
+    <code>app.js</code>: три функции бросают одну и ту же ошибку, а мы печатаем стек:</p>
 
-    <pre class="code js">// функция-объявление
-at named (app.js:12:25)
+    <pre class="code js">function named() { throw new Error("сломалось"); }
+const anon = function () { throw new Error("сломалось"); };
 
-// анонимная в переменной
-at anon (app.js:14:32)      &#8592; имя взялось от переменной
+try { named(); } catch (e) { console.log(e.stack); }
+try { anon(); } catch (e) { console.log(e.stack); }
+try { (function () { throw new Error("сломалось"); })(); } catch (e) { console.log(e.stack); }</pre>
 
-// анонимная прямо на месте
-at app.js:16:25             &#8592; имени нет вовсе</pre>
+    <p>Страница с этим файлом, открытая через Live Server, напечатает три стека. Первые строки
+    у них такие:</p>
+
+    <pre class="plain-out">at named (http://127.0.0.1:5500/app.js:1:26)   &#8592; имя функции
+at anon (http://127.0.0.1:5500/app.js:2:34)    &#8592; имя взялось от переменной
+at http://127.0.0.1:5500/app.js:6:28           &#8592; имени нет вовсе</pre>
+
+    <p>Числа после имени файла — строка и символ: <code>1:26</code> указывает на
+    <code>new Error</code> в первой строке. У третьего стека вторая строка — снова строка 6,
+    символ 54: место, где безымянную функцию вызвали. Без имени приходится искать по этим числам.</p>
 
     <p>В первых двух случаях вы сразу видите, где искать. В третьем — только номер строки,
     а если функция передана в чужую библиотеку, то и строка будет чужая.</p>
@@ -591,9 +601,9 @@ add(1)(2)(3);   // 6</pre>
     <p>Одна синтаксическая тонкость. Стрелка должна стоять <strong>на той же строке</strong>,
     что и параметры:</p>
 
-    <pre class="code js">const f = (a)
-  =&gt; a + 1;
-// SyntaxError: Unexpected token '=&gt;'</pre>
+    <pre class="code js">// const f = (a)
+//   =&gt; a + 1;   → SyntaxError: Unexpected token '=&gt;' — перенос строки перед стрелкой
+const f = (a) =&gt; a + 1;   // стрелка на той же строке, что и параметры</pre>
 
     <p>А вот после стрелки переносить можно сколько угодно:</p>
 
@@ -1016,24 +1026,24 @@ console.log(makeReport("Сапар", [5, 5, 4, 5]));</pre>
     </div>
 
     <div class="cheatsheet">
-        <pre class="code js">function add(a, b) { return a + b; }        // объявление — поднимается
-const add = function (a, b) { return a + b; };   // выражение — нет
-const add = (a, b) =&gt; a + b;                // стрелочная — нет
+        <pre class="code js">function add(a, b) { return a + b; }            // объявление — поднимается
+const sum = function (a, b) { return a + b; };  // выражение — нет
+const plus = (a, b) =&gt; a + b;                   // стрелочная — нет
 
 // сокращения
-n =&gt; n * 2          // один простой параметр — скобки можно убрать
-(a, b) =&gt; a + b     // несколько — скобки обязательны
-() =&gt; 42            // ноль параметров — скобки обязательны
+n =&gt; n * 2;          // один простой параметр — скобки можно убрать
+(a, b) =&gt; a + b;     // несколько — скобки обязательны
+() =&gt; 42;            // ноль параметров — скобки обязательны
 
-(n) =&gt; n * 2           // короткое тело: возврат подразумевается
-(n) =&gt; { return n * 2; }  // блок: return ОБЯЗАТЕЛЕН
-(n) =&gt; { n * 2; }         // блок без return → undefined!
+(n) =&gt; n * 2;               // короткое тело: возврат подразумевается
+(n) =&gt; { return n * 2; };   // блок: return ОБЯЗАТЕЛЕН
+(n) =&gt; { n * 2; };          // блок без return → undefined!
 
-() =&gt; ({ a: 1 })    // объект коротким телом — только в круглых скобках
-() =&gt; { a: 1 }      // это БЛОК, вернёт undefined
+() =&gt; ({ a: 1 });    // объект коротким телом — только в круглых скобках
+() =&gt; { a: 1 };      // это БЛОК, вернёт undefined
 
-const f = (a)
-  =&gt; a;             // SyntaxError — перенос ДО стрелки нельзя
+// const f = (a)
+//   =&gt; a;             → SyntaxError — перенос ДО стрелки нельзя
 
 // у стрелочных НЕТ: своего this, arguments, new
 // методом объекта стрелочную не делают

@@ -45,8 +45,8 @@
     <h2>Три формы</h2>
 
     <pre class="code js">function add(a, b) { return a + b; }            // объявление
-const add = function (a, b) { return a + b; };  // выражение
-const add = (a, b) =&gt; a + b;                    // стрелочная</pre>
+const sum = function (a, b) { return a + b; };  // выражение
+const plus = (a, b) =&gt; a + b;                   // стрелочная</pre>
 
     <table>
         <thead><tr><th></th><th><code>function</code></th><th>выражение</th><th>стрелка</th></tr></thead>
@@ -62,10 +62,10 @@ const add = (a, b) =&gt; a + b;                    // стрелочная</pre>
     <h2>Сокращения стрелочной</h2>
 
     <!-- ahead-ok: день 14 -->
-    <pre class="code js">n =&gt; n * 2          // один простой параметр — скобки можно убрать
-(a, b) =&gt; a + b     // несколько — скобки обязательны
-() =&gt; 42            // ноль параметров — скобки обязательны
-(n = 1) =&gt; n        // значение по умолчанию — скобки обязательны</pre>
+    <pre class="code js">n =&gt; n * 2;          // один простой параметр — скобки можно убрать
+(a, b) =&gt; a + b;     // несколько — скобки обязательны
+() =&gt; 42;            // ноль параметров — скобки обязательны
+(n = 1) =&gt; n;        // значение по умолчанию — скобки обязательны</pre>
 
     <div class="remember">
         <strong>Есть <code>{</code> после стрелки — должен быть <code>return</code>.</strong>
@@ -81,13 +81,13 @@ const add = (a, b) =&gt; a + b;                    // стрелочная</pre>
 
     <h2>Поднятие</h2>
 
-    <pre class="code js">add(2, 3);  function add(a,b){return a+b}      // работает
+    <pre class="code js">add(2, 3);  function add(a, b) { return a + b; }           // работает
 
-add(2, 3);  const add = (a,b) =&gt; a + b;
-// ReferenceError: Cannot access 'add' before initialization
+sum(2, 3);  const sum = (a, b) =&gt; a + b;
+// ReferenceError: Cannot access 'sum' before initialization (в консоли — sum is not defined)
 
-add(2, 3);  var add = function(a,b){return a+b};
-// TypeError: add is not a function ← имя есть, значение undefined</pre>
+plus(2, 3); var plus = function (a, b) { return a + b; };
+// TypeError: plus is not a function ← имя есть, значение undefined</pre>
 
     <h2>Имена</h2>
 

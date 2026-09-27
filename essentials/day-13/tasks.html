@@ -110,15 +110,13 @@ console.log(f1(5), f2(5), f3(5), f4(), f5());</pre>
         <p class="task-goal">увидеть три разных исхода при одном и том же коде.</p>
         <p>Наберите три файла, в каждом вызов стоит <strong>до</strong> определения. Запишите,
         что получилось.</p>
-        <pre class="code js">// А
+        <pre class="code js">// файл А
 add(2, 3);
-function add(a, b) { return a + b; }
-
-// Б
+function add(a, b) { return a + b; }</pre>
+        <pre class="code js">// файл Б
 add(2, 3);
-const add = (a, b) =&gt; a + b;
-
-// В
+const add = (a, b) =&gt; a + b;</pre>
+        <pre class="code js">// файл В
 add(2, 3);
 var add = function (a, b) { return a + b; };</pre>
         <div class="criteria">

@@ -52,7 +52,16 @@
         и так далее. Старый код при этом продолжает работать.
     </div>
 
-    <h2>Где работает JavaScript</h2>
+    <div class="definition">
+    <strong>Ядро и окружение.</strong> Ядро языка — числа, строки, функции, <code>Math</code>,
+    <code>JSON</code> — одинаково везде. Окружение добавляет своё: браузер — страницу
+    (<code>document</code>), окна, события; Node.js — файлы и сервер (<code>process</code>).
+</div>
+
+<pre class="code js">typeof document;   // "object" в браузере, "undefined" в Node.js
+typeof process;    // "undefined" в браузере, "object" в Node.js</pre>
+
+<h2>Где работает JavaScript</h2>
 
     <ul>
         <li>страницы и веб-приложения — в браузере;</li>
@@ -81,7 +90,29 @@ alert("Здравствуйте, " + name + "!");
 
 console.log(60 * 24 * 7); // 10080 — минут в неделе</pre>
 
-    <p>Подключение файла со скриптом к странице:</p>
+    <h2>Консоль</h2>
+
+<p>Консоль сама показывает значение последнего выражения. <code>console.log</code> печатает, но
+ничего не возвращает — поэтому после вывода консоль пишет <code>undefined</code>. Незаконченная
+строка (<code>function greet() {</code>) не выполняется по <span class="kbd">Enter</span>, а ждёт
+продолжения; перенос вручную — <span class="kbd">Shift</span> + <span class="kbd">Enter</span>.</p>
+
+<pre class="code js">3 + 5;               // 8
+console.log(3 + 5);  // печатает 8, а ниже — undefined</pre>
+
+<h2>Три первые ошибки</h2>
+
+<table>
+    <thead><tr><th>Код</th><th>Что пишет Chrome</th><th>Почему</th></tr></thead>
+    <tbody>
+        <tr><td><code>console.log(summa);</code></td><td><code>ReferenceError: summa is not defined</code></td><td>такого имени нет</td></tr>
+        <tr><td><code>console.lg("тест");</code></td><td><code>TypeError: console.lg is not a function</code></td><td>у <code>console</code> нет метода <code>lg</code></td></tr>
+        <tr><td><code>consol.log("тест");</code></td><td><code>ReferenceError: consol is not defined</code></td><td>неизвестно уже первое имя</td></tr>
+        <tr><td><code>alert("привет);</code></td><td><code>SyntaxError: Invalid or unexpected token</code></td><td>кавычка не закрыта</td></tr>
+    </tbody>
+</table>
+
+<p>Подключение файла со скриптом к странице:</p>
 
     <pre class="code html">&lt;script src="app.js" defer&gt;&lt;/script&gt;</pre>
 

@@ -87,8 +87,8 @@ localStorage.removeItem("cards:learned");   // и сразу обновить, �
 
     <p>Что показали проверки «Карточек»: два слова с одним номером уходят вместе; две вкладки
     затирают прогресс друг друга; на десяти тысячах слов <code>learned.includes</code> становится
-    заметно медленным (<code>Set</code> — курс 2); кнопки тем перемешивались вместе со словами —
-    строку <code>words = shuffle(words)</code> переносят после <code>makeTopicButtons()</code>.</p>
+    заметно медленным (<code>Set</code> — курс 2); перемешивание стоит после
+    <code>makeTopicButtons()</code>: если раньше, кнопки тем прыгают вместе со словами.</p>
 
     <pre class="code js">function testInput() {
   const saved = localStorage.getItem(KEY);

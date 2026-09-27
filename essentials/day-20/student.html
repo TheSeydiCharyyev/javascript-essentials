@@ -49,11 +49,12 @@
         </tbody>
     </table>
 
-    <pre class="code js">arr.forEach((value, index, array) =&gt; { });   // колбэк получает ТРИ аргумента
+    <pre class="code js">const marks = [5, 4, 3];
+marks.forEach((value, index, array) =&gt; { });   // колбэк получает ТРИ аргумента
 
 marks.map((m) =&gt; m * 10);       // [50, 40, 30]  — длина та же
 marks.filter((m) =&gt; m &gt;= 4);    // [5, 4]        — короче
-marks.filter((m) =&gt; m &gt;= 4).map((m) =&gt; m * 10);   // цепочка</pre>
+marks.filter((m) =&gt; m &gt;= 4).map((m) =&gt; m * 10);   // [50, 40] — цепочка</pre>
 
     <div class="key-point">
         <code>forEach</code> ничего не возвращает, и выйти из него нельзя: <code>break</code> —
@@ -77,10 +78,10 @@ marks.filter((m) =&gt; m &gt;= 4).map((m) =&gt; m * 10);   // цепочка</pr
 
     <pre class="code js">marks.find((m) =&gt; m &lt; 4);        // 3          или undefined
 marks.findIndex((m) =&gt; m &lt; 4);   // 2          или -1
-marks.findLast(...)  marks.findLastIndex(...)
+marks.findLast((m) =&gt; m &gt;= 4);   // 4 — с конца; есть и findLastIndex
 
-marks.some((m) =&gt; m === 5);      // есть хотя бы один
-marks.every((m) =&gt; m &gt;= 2);      // все подходят
+marks.some((m) =&gt; m === 5);      // true — есть хотя бы один
+marks.every((m) =&gt; m &gt;= 2);      // true — все подходят
 
 [].some(() =&gt; true);    // false
 [].every(() =&gt; false);  // true — «истинно от пустоты»</pre>
@@ -90,11 +91,11 @@ marks.every((m) =&gt; m &gt;= 2);      // все подходят
     <pre class="code js">marks.reduce((sum, mark) =&gt; sum + mark, 0);   // 12
 //            накопленное  элемент          начальное значение
 
-names.reduce((line, name) =&gt; line + name + "; ", "");   // строка
-marks.reduce((best, m) =&gt; Math.max(best, m));           // максимум
+const names = ["Аман", "Мерет", "Сапар"];
+names.reduce((line, name) =&gt; line + name + "; ", "");   // "Аман; Мерет; Сапар; "
+marks.reduce((best, m) =&gt; Math.max(best, m));           // 5 — максимум
 
-[].reduce((a, b) =&gt; a + b);
-// TypeError: Reduce of empty array with no initial value</pre>
+// [].reduce((a, b) =&gt; a + b)   → TypeError: Reduce of empty array with no initial value</pre>
 
     <div class="remember">
         <strong>Начальное значение пишите всегда.</strong> Оно защищает от пустого списка
@@ -107,11 +108,11 @@ marks.reduce((best, m) =&gt; Math.max(best, m));           // максимум
     <pre class="code js">const nums = [10, 9, 100, 2];
 
 nums.sort();                    // [10, 100, 2, 9] — КАК СТРОКИ
-nums;                           // и массив ПЕРЕСТАВЛЕН
+nums;                           // [10, 100, 2, 9] — и массив ПЕРЕСТАВЛЕН
 
-nums.sort((a, b) =&gt; a - b);     // по возрастанию
-nums.sort((a, b) =&gt; b - a);     // по убыванию
-nums.toSorted((a, b) =&gt; a - b); // копия, оригинал цел</pre>
+nums.sort((a, b) =&gt; a - b);     // [2, 9, 10, 100] — по возрастанию
+nums.sort((a, b) =&gt; b - a);     // [100, 10, 9, 2] — по убыванию
+nums.toSorted((a, b) =&gt; a - b); // [2, 9, 10, 100] — копия, оригинал цел</pre>
 
     <pre class="code js">[[1, 2], [3, [4]]].flat();               // [1, 2, 3, [4]]
 [1, 2, 3].flatMap((n) =&gt; [n, n * 10]);   // [1, 10, 2, 20, 3, 30]

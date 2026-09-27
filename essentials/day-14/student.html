@@ -86,11 +86,13 @@ addMark(4);   // [4], а не [5, 4] — каждый раз новый масс
 
     <h2>Остаточный параметр</h2>
 
-    <pre class="code js">function showArgs(first, second, ...others) { }
+    <pre class="code js">function showArgs(first, second, ...others) {
+  console.log(first, second, others);
+}
 
-showArgs("бир", "ики", "уч", "дёрт");  // others = ["уч", "дёрт"]
-showArgs("бир", "ики");                // others = []
-showArgs("бир");                       // second = undefined, others = []</pre>
+showArgs("бир", "ики", "уч", "дёрт");  // бир ики ["уч", "дёрт"]
+showArgs("бир", "ики");                // бир ики []
+showArgs("бир");                       // бир undefined []</pre>
 
     <p>Остаточный параметр — <strong>всегда массив</strong>, даже пустой. Три правила:
     он последний, он один, умолчания у него не бывает. Запятая после него — тоже ошибка.</p>
@@ -108,18 +110,18 @@ showArgs("бир");                       // second = undefined, others = []</pr
 
     <h2>Четыре ошибки</h2>
 
-    <pre class="code js">function add(x, x) { }            // в обычном режиме МОЖНО (старый код)
-function add(x, x = 1) { }
-// SyntaxError: Duplicate parameter name not allowed in this context
+    <pre class="code js">function add(x, x) { }   // МОЖНО только без "use strict", умолчаний
+                         // и остаточного (старый код); в стрелочной — ошибка
 
-function f(arg) { let arg = 1; }
-// SyntaxError: Identifier 'arg' has already been declared
+// function add(x, x = 1) { }         → SyntaxError: Duplicate parameter name not allowed in this context
+// function f(arg) { let arg = 1; }   → SyntaxError: Identifier 'arg' has already been declared
+// function f(...rest, last) { }      → SyntaxError: Rest parameter must be last formal parameter
+// function f(...rest = []) { }       → SyntaxError: Rest parameter may not have a default initializer
 
-function f(...rest, last) { }
-// SyntaxError: Rest parameter must be last formal parameter
-
-function f(...rest = []) { }
-// SyntaxError: Rest parameter may not have a default initializer</pre>
+function sum(x, y = 1) { }      // имена разные
+function f(arg) { arg = 1; }    // присвоить можно, объявить заново — нет
+function g(last, ...rest) { }   // остаточный — последним
+function h(...rest) { }         // без умолчания: и так []</pre>
 
     <div class="note-box">
         <strong>Тексты MDN другие</strong> — они по формулировкам Firefox. Искать в интернете

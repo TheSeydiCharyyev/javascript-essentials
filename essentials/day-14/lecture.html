@@ -224,7 +224,7 @@ test(0);     // 1   — а вот это уже неправда!
 test("");    // 1   — и это тоже</pre>
 
     <p>Оператор <code>||</code> смотрит не на «передали или нет», а на истинность. А ложными,
-    как мы разбирали на дне 7, считаются и <code>0</code>, и <code>""</code>, и <code>NaN</code>.
+    как мы разбирали на дне 5, считаются и <code>0</code>, и <code>""</code>, и <code>NaN</code>.
     Поэтому функция, которой честно передали ноль, молча получала единицу — ошибка, которую
     трудно заметить и ещё труднее найти.</p>
 
@@ -303,13 +303,12 @@ amanMarks;   // [5, 4]</pre>
   throw new TypeError("не передан обязательный аргумент: " + paramName);
 }
 
-function makeReport(name = required("name"), ...marks) {
-  return name + ": " + marks.length;
+function makeGreeting(name = required("name"), greeting = "Salam") {
+  return greeting + ", " + name + "!";
 }
 
-makeReport("Аман", 5, 4);   // "Аман: 2"
-makeReport();
-// TypeError: не передан обязательный аргумент: name</pre>
+makeGreeting("Аман");   // "Salam, Аман!"
+makeGreeting();         // TypeError: не передан обязательный аргумент: name</pre>
 
     <p>Сравните с проверкой из дня 12: там мы писали <code>if (name === undefined) throw ...</code>
     в теле, здесь — одно слово в заголовке. И работает это ровно тогда, когда нужно: если имя
@@ -499,26 +498,27 @@ sumAll();          // 0</pre>
     <p><strong>Первое: он последний.</strong> Остаточный параметр забирает всё до конца,
     так что стоять после него нечему:</p>
 
-    <pre class="code js">function replacer(match, ...groups, offset) { }
-// SyntaxError: Rest parameter must be last formal parameter</pre>
+    <pre class="code js">// function replacer(match, ...groups, offset) { }   → SyntaxError: Rest parameter must be last formal parameter
+function replacer(match, offset, ...groups) { }      // остаточный — последним</pre>
 
     <p><strong>Второе: он один.</strong> Два «всех остальных» в одном списке не бывает —
     первый уже забрал всё:</p>
 
-    <pre class="code js">function f(...a, ...b) { }
-// SyntaxError: Rest parameter must be last formal parameter</pre>
+    <pre class="code js">// function f(...a, ...b) { }   → SyntaxError: Rest parameter must be last formal parameter
+function f(a, ...b) { }         // один остаточный, остальные — обычные</pre>
 
     <p><strong>Третье: у него не бывает умолчания.</strong> Оно бы никогда не сработало:
     даже без аргументов остаточный параметр — пустой массив, а не <code>undefined</code>:</p>
 
-    <pre class="code js">function f(...args = []) { }
-// SyntaxError: Rest parameter may not have a default initializer</pre>
+    <pre class="code js">// function f(...args = []) { }   → SyntaxError: Rest parameter may not have a default initializer
+function f(...args) { }           // без аргументов args и так будет []</pre>
 
     <p>Есть и четвёртая мелочь: запятая после остаточного параметра тоже ошибка.
     В обычном списке висячая запятая разрешена, здесь — нет:</p>
 
-    <pre class="code js">function f(a, b,) { }      // так можно
-function f(...args,) { }   // SyntaxError: Rest parameter must be last formal parameter</pre>
+    <pre class="code js">function f(a, b,) { }          // так можно
+// function g(...args,) { }    → SyntaxError: Rest parameter must be last formal parameter
+function g(...args) { }        // без запятой</pre>
 
     <figure class="scheme">
         <svg viewBox="0 0 620 236" role="img" aria-label="Порядок параметров в списке: обязательные, с умолчаниями, остаточный">
@@ -652,8 +652,8 @@ makeLine("Аман");                   // "Аман: оценок 0"</pre>
 
     <h2 id="length">12. Сколько параметров у функции</h2>
 
-    <p>У каждой функции есть свойство <code>length</code> — число объявленных параметров.
-    Мы знаем <code>length</code> у строк и массивов; у функций он про другое:</p>
+    <p>На дне 12 мы видели свойство <code>length</code> у функции: <code>add.length</code> —
+    число объявленных параметров. С сегодняшними параметрами оно считает не всех:</p>
 
     <pre class="code js">function p1(a, b, c) { }
 function p2(a, b = 1, c) { }
@@ -666,9 +666,8 @@ p3.length;   // 1  — остаточный не считается</pre>
     <p>Правило: <code>length</code> считает параметры <strong>до первого необязательного</strong>.
     То есть отвечает на вопрос «сколько аргументов эта функция требует обязательно».</p>
 
-    <p>В своём коде это свойство нужно редко, но в чужом оно встречается — и в сообщениях
-    отладчика тоже. Полезно знать, почему у функции с шестью параметрами
-    <code>length</code> может быть единица.</p>
+    <p>В своём коде это свойство нужно редко, но в чужом оно встречается. Полезно знать,
+    почему у функции с шестью параметрами <code>length</code> может быть единица.</p>
 
     <h2 id="errors">13. Четыре ошибки про параметры</h2>
 
@@ -682,18 +681,17 @@ p3.length;   // 1  — остаточный не считается</pre>
 }
 add(1, 2);   // 2 — работает?!</pre>
 
-    <p>Это не опечатка в уроке: в обычном режиме, когда параметры простые, язык такое
-    разрешает — ради очень старого кода. Второй <code>x</code> просто заслоняет первый,
+    <p>Это не опечатка в уроке: в обычном режиме, когда параметры простые, а функция
+    не стрелочная, язык такое разрешает — ради очень старого кода. Второй <code>x</code> просто заслоняет первый,
     и добраться до первого аргумента уже нельзя.</p>
 
-    <p>Но стоит добавить что-нибудь современное — умолчание, остаточный параметр или
-    строгий режим — и это становится ошибкой:</p>
+    <p>Но стоит добавить что-нибудь современное — умолчание, остаточный параметр,
+    строгий режим или стрелку — и это становится ошибкой:</p>
 
-    <pre class="code js">function add(x, x = 1) { }
-// SyntaxError: Duplicate parameter name not allowed in this context
-
-function add(x, x, ...rest) { }
-// SyntaxError: Duplicate parameter name not allowed in this context</pre>
+    <pre class="code js">// function add(x, x = 1) { }       → SyntaxError: Duplicate parameter name not allowed in this context
+// function add(x, x, ...rest) { }   → та же SyntaxError
+// const add = (x, x) =&gt; x;          → та же SyntaxError
+function add(x, y = 1) { }          // имена разные — ошибки нет</pre>
 
     <div class="important">
         Это второй случай в курсе, когда одна и та же запись то ошибка, то нет — первый был
@@ -706,10 +704,10 @@ function add(x, x, ...rest) { }
     <p>Параметр — это уже объявленная переменная. Объявить её ещё раз через <code>let</code>
     или <code>const</code> нельзя:</p>
 
-    <pre class="code js">function f(arg) {
-  let arg = "foo";
-}
-// SyntaxError: Identifier 'arg' has already been declared</pre>
+    <pre class="code js">// function f(arg) {
+//   let arg = "foo";
+// }
+// → SyntaxError: Identifier 'arg' has already been declared</pre>
 
     <p>Если нужно изменить значение — просто присвойте, без <code>let</code>. Если нужна
     новая переменная — дайте ей другое имя:</p>
@@ -736,7 +734,7 @@ function g(arg) {
             <tr>
                 <td><code>f(x, x)</code></td>
                 <td><code>Duplicate parameter name not allowed in this context</code></td>
-                <td>только в строгом режиме или если есть умолчание / остаточный</td>
+                <td>в строгом режиме, в стрелочной или если есть умолчание / остаточный</td>
             </tr>
             <tr>
                 <td><code>f(arg) { let arg }</code></td>
@@ -844,8 +842,10 @@ verdict(3.9, undefined, 4);  // "троечник"   — пропустили п
     не переписывая её вызовы</strong>.</p>
 
     <p><strong>Последняя строка отчёта</strong> — результат <code>makeReport()</code> вообще
-    без аргументов. Раньше такой вызов падал бы на переборе <code>undefined</code>,
-    теперь выдаёт честную пустую карточку.</p>
+    без аргументов. Вчерашняя версия на таком вызове падала:
+    <code>marks</code> был <code>undefined</code>, и Chrome писал
+    <code>TypeError: Cannot read properties of undefined (reading 'filter')</code>.
+    Теперь выходит честная пустая карточка.</p>
 
     <div class="try-it">
         Три опыта.
@@ -982,10 +982,10 @@ makeReport("Аман", ...marksArray);   // день 22, но работает �
     <table>
         <thead><tr><th>День</th><th>Где пригодится</th></tr></thead>
         <tbody>
+            <tr><td>18</td><td><code>Math.max</code> и <code>Math.min</code> принимают сколько угодно аргументов, как <code>...numbers</code></td></tr>
             <tr><td>20</td><td>методы массивов принимают функции с необязательными параметрами</td></tr>
             <tr><td>22</td><td>те же три точки, но наоборот: <code>...</code> раскладывает массив в аргументы</td></tr>
-            <tr><td>27</td><td>обработчики событий: половина параметров необязательна</td></tr>
-            <tr><td>31</td><td>у <code>fetch</code> второй аргумент — необязательные настройки</td></tr>
+            <tr><td>27</td><td>у <code>addEventListener</code> третий аргумент — необязательные настройки</td></tr>
         </tbody>
     </table>
 
@@ -1011,19 +1011,19 @@ makeReport("Аман", ...marksArray);   // день 22, но работает �
     </div>
 
     <div class="cheatsheet">
-        <pre class="code js">function f(a, b = 1) { }        // b необязательный
-const g = (n = 1) =&gt; n;         // скобки ОБЯЗАТЕЛЬНЫ
+        <pre class="code js">function f(a, b = 1) { return b; }   // b необязательный
+const g = (n = 1) =&gt; n;              // скобки ОБЯЗАТЕЛЬНЫ
 
 // умолчание срабатывает ТОЛЬКО на undefined
-f(1);            // b = 1
-f(1, undefined); // b = 1
-f(1, null);      // b = null   умолчание НЕ сработало
-f(1, 0);         // b = 0      умолчание НЕ сработало
-f(1, "");        // b = ""     умолчание НЕ сработало
+f(1);            // 1
+f(1, undefined); // 1
+f(1, null);      // null   умолчание НЕ сработало
+f(1, 0);         // 0      умолчание НЕ сработало
+f(1, "");        // ""     умолчание НЕ сработало
 
-num = num || 1;  // СТАРЫЙ приём, ломается на 0 и ""
-num = num ?? 1;  // правильно, но в теле
-function c(num = 1) { }   // лучше: видно снаружи
+function a(num) { num = num || 1; return num; }   // СТАРЫЙ приём, ломается на 0 и ""
+function b(num) { num = num ?? 1; return num; }   // правильно, но в теле
+function c(num = 1) { return num; }               // лучше: видно снаружи
 
 // вычисляется при КАЖДОМ вызове
 function addMark(mark, marks = []) { marks.push(mark); return marks; }
@@ -1031,29 +1031,29 @@ addMark(5);   // [5]
 addMark(4);   // [4], а не [5, 4]
 
 // видно то, что ЛЕВЕЕ
-function greet(name, greeting, msg = greeting + " " + name) { }
+function greet(name, greeting, msg = greeting + " " + name) { return msg; }
 function bad(a = b, b = 2) { }   // ReferenceError при вызове bad()
 
 // необязательные — в конец; иначе приходится писать так:
-function bad2(x = 1, y) { }
-bad2(undefined, 7);   // «для x возьми своё», задали y
+function bad2(x = 1, y) { return [x, y]; }
+bad2(undefined, 7);   // [1, 7] — «для x возьми своё», задали y
 
 // остаточный параметр — ВСЕГДА массив
-function sumAll(...numbers) { }
-sumAll();        // numbers = []
-sumAll(5);       // numbers = [5]
-sumAll(5, 4);    // numbers = [5, 4]
+function collect(...numbers) { return numbers; }
+collect();       // []
+collect(5);      // [5]
+collect(5, 4);   // [5, 4]
 
 // три правила: последний, один, без умолчания
-function f(...rest, last) { }   // SyntaxError
-function f(...a, ...b) { }      // SyntaxError
-function f(...rest = []) { }    // SyntaxError
+// function h(...rest, last) { }   → SyntaxError
+// function h(...a, ...b) { }      → SyntaxError
+// function h(...rest = []) { }    → SyntaxError
 
 // остаточный вместо arguments
-(...args) =&gt; args.length    // массив, работает в стрелочных
-arguments.length            // не массив, в стрелочных нет
+const count = (...args) =&gt; args.length;        // массив, работает в стрелочных
+function old() { return arguments.length; }    // не массив, в стрелочных нет
 
-f.length   // параметров ДО первого умолчания; остаточный не считается</pre>
+f.length;   // 1 — параметров ДО первого умолчания; остаточный не считается</pre>
     </div>
 
     <div class="selfcheck">
@@ -1091,8 +1091,8 @@ f.length   // параметров ДО первого умолчания; ос�
                 <code>SyntaxError</code>?
                 <details class="answer"><summary>Ответ</summary>
                     В обычном режиме с простыми параметрами язык это разрешает ради старого кода:
-                    второй <code>x</code> заслоняет первый. Но в строгом режиме или если в списке
-                    есть умолчание, остаточный параметр либо деструктуризация — это ошибка.
+                    второй <code>x</code> заслоняет первый. Но в строгом режиме, в стрелочной функции
+                    или если в списке есть умолчание либо остаточный параметр — это ошибка.
                     Писать так не стоит никогда.
                 </details>
             </li>

@@ -55,13 +55,15 @@
         <p class="task-goal">увидеть, где <code>==</code> расходится с <code>===</code>.</p>
         <p>Для каждой пары предскажите два ответа — через <code>==</code> и через <code>===</code>.
         Потом проверьте.</p>
-        <pre class="code js">1 и "1"
-0 и false
-0 и ""
-null и undefined
-null и 0
-NaN и NaN
-[] и false</pre>
+        <pre class="code js">const pairs = [
+  [1, "1"],
+  [0, false],
+  [0, ""],
+  [null, undefined],
+  [null, 0],
+  [NaN, NaN],
+  [[], false],
+];</pre>
         <div class="criteria">
             <ul>
                 <li>четырнадцать предсказаний записаны до проверки;</li>
@@ -106,7 +108,7 @@ null || 0 || "" || "последний"
         <p class="task-goal">написать проверку диапазона и не попасться на типах.</p>
         <p>Напишите функцию <code>isValidMark(mark)</code>: возвращает <code>true</code>, если это
         <strong>число</strong> от 2 до 5 включительно. Проверьте на списке и запишите ответы:</p>
-        <pre class="code js">2      5      1      9      3.5      "4"      null      undefined      NaN</pre>
+        <pre class="code js">const marks = [2, 5, 1, 9, 3.5, "4", null, undefined, NaN];</pre>
         <div class="hint">
             Две ловушки. Строка <code>"4"</code> при сравнении превратится в число и пройдёт
             проверку диапазона — если её не отсечь отдельно. И <code>NaN</code> провалит любое
@@ -132,7 +134,7 @@ null || 0 || "" || "последний"
         <p class="task-goal">понять, когда какой оператор подставляет запасное значение.</p>
         <p>Для каждого значения посчитайте <code>x || "запас"</code> и <code>x ?? "запас"</code>
         и заполните таблицу.</p>
-        <pre class="code js">0      ""      false      NaN      null      undefined      "текст"      42</pre>
+        <pre class="code js">const values = [0, "", false, NaN, null, undefined, "текст", 42];</pre>
         <p>Затем решите две задачи и объясните выбор оператора в каждой:</p>
         <ul>
             <li>настройка «сколько товаров показывать на странице», по умолчанию 10, но пользователь
@@ -265,6 +267,8 @@ console.log(x !== 1 || x !== 2);</pre>
         <div class="hint">
             Один фрагмент не запустится вообще. Ещё два дают <code>true</code> там, где ожидается
             <code>false</code> — и это опаснее, потому что программа просто пойдёт не по той ветке.
+            Проверяйте фрагменты по одному: если вставить блок целиком, из-за одного фрагмента не
+            выполнится ни один.
         </div>
         <div class="criteria">
             <ul>

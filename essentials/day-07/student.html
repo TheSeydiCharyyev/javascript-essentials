@@ -54,7 +54,7 @@
 "" == 0;          // true    } == нетранзитивно: A=B, B=C, но A≠C
 "0" == "";        // false  /
 
-{ } === { };      // false   два разных объекта
+({}) === ({});    // false   два разных объекта
 [1,2] === [1,2];  // false   и два разных массива</pre>
 
     <div class="remember">
@@ -124,7 +124,7 @@ const title = user &amp;&amp; user.name; // защита от null</pre>
 "" ?? "Гость";  // ""
 false ?? 10;    // false
 
-null || undefined ?? "foo";     // SyntaxError
+// null || undefined ?? "foo";   → SyntaxError: Unexpected token '??'
 (null || undefined) ?? "foo";   // "foo" — нужны скобки</pre>
 
     <div class="remember">

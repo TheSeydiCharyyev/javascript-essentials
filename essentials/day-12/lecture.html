@@ -506,6 +506,24 @@ function withTax(price) {
         их берут снаружи, и это нормально.
     </div>
 
+    <h3>Параметр — своя переменная функции</h3>
+
+    <p>Параметр — новая переменная внутри функции, в которую при вызове положили значение
+    аргумента. Даже если её имя совпадает с внешней переменной, это другая переменная:</p>
+
+    <pre class="code js">let count = 1;
+
+function addOne(count) {
+  count = count + 1;   // меняется параметр — переменная самой функции
+  return count;
+}
+
+addOne(count);   // 2
+count;           // 1 — внешняя переменная не изменилась</pre>
+
+    <p>С массивами и объектами тоньше: в параметр попадает ссылка, и если функция поменяет
+    содержимое массива, это будет видно снаружи. Подробно — на дне 19.</p>
+
     <h2 id="hoisting">9. Вызов до объявления</h2>
 
     <p>Мы разбирали это на дне 4, но теперь тема на своём месте. Функция, объявленная словом
@@ -526,6 +544,9 @@ function greet(name) {
 
     <pre class="code js">hi();                        // ReferenceError: Cannot access 'hi' before initialization
 const hi = function () { };</pre>
+
+    <p>Так пишет Chrome, когда эти строки стоят в файле. В консоли сообщение короче —
+    <code>hi is not defined</code>, но смысл тот же: на этой строке значения ещё нет.</p>
 
     <p>Формы записи функций разберём завтра, на дне 13.</p>
 
@@ -664,11 +685,11 @@ button.addEventListener("click", handleClick());   // ошибка: вызвал
   return m &gt;= 2 &amp;&amp; m &lt;= 5;
 }
 
-function selectValid(marks) { ... }
+function selectValid(marks) { /* … */ }
 
-function average(numbers) { ... }
+function average(numbers) { /* … */ }
 
-function verdict(avg) { ... }
+function verdict(avg) { /* … */ }
 
 function report(marks) {
   const valid = selectValid(marks);

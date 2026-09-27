@@ -468,13 +468,24 @@ console.log("а сюда дойдём");   // выполнится в любом
     полезная часть ошибки: она показывает <strong>весь путь вызовов</strong>, по которому
     программа дошла до поломки.</p>
 
-    <p>Вот как выглядит стек для трёх вложенных функций из предыдущего примера:</p>
+    <p>Возьмём файл <code>app.js</code> из четырёх строк — три функции вызывают друг друга, и самая
+    глубокая ломается:</p>
 
-    <pre class="code js">RangeError: сломалось
-    at level3 (app.js:1:21)
-    at level2 (app.js:2:21)
-    at level1 (app.js:3:21)
-    at app.js:4:1</pre>
+    <pre class="code js">function level3() { throw new RangeError("сломалось"); }
+function level2() { level3(); }
+function level1() { level2(); }
+level1();</pre>
+
+    <p>Страница с этим файлом, открытая через Live Server, напечатает в консоли такой стек:</p>
+
+    <pre class="plain-out">RangeError: сломалось
+    at level3 (http://127.0.0.1:5500/app.js:1:27)
+    at level2 (http://127.0.0.1:5500/app.js:2:21)
+    at level1 (http://127.0.0.1:5500/app.js:3:21)
+    at http://127.0.0.1:5500/app.js:4:1</pre>
+
+    <p>Числа после имени файла — строка и символ. <code>1:27</code> указывает прямо на
+    <code>new RangeError</code>: там ошибку создали.</p>
 
     <p>Читается он <strong>сверху вниз, от места поломки к началу</strong>:</p>
 
@@ -1060,7 +1071,7 @@ try {
   // выполняется всегда
 }
 
-try { ... } catch { ... }         // без параметра — можно
+try { /* … */ } catch { /* … */ }   // без параметра — можно
 
 throw new Error("текст");         // не throw "текст"!
 throw new TypeError("не число");

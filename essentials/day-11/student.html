@@ -106,7 +106,7 @@ for (const key of Object.keys(user)) { }   // день 21</pre>
   // выполняется ВСЕГДА — прибраться
 }
 
-try { ... } catch { ... }     // без параметра — можно</pre>
+try { /* … */ } catch { /* … */ }   // без параметра — можно</pre>
 
     <div class="remember">
         При ошибке <strong>остаток <code>try</code> не выполняется</strong> — управление прыгает
@@ -120,7 +120,7 @@ try { ... } catch { ... }     // без параметра — можно</pre>
 throw new TypeError("не число");
 throw new RangeError("вне диапазона");
 
-if (e instanceof RangeError) { ... } else { throw e; }   // чужое пробрасываем</pre>
+if (e instanceof RangeError) { /* своё */ } else { throw e; }   // чужое пробрасываем</pre>
 
     <p>Брошенная ошибка <strong>поднимается вверх по цепочке вызовов</strong>, пока не встретит
     <code>catch</code>. Остаток всех пройденных функций не выполнится. <code>try</code> ставят

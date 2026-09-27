@@ -498,12 +498,13 @@ Infinity - Infinity;   // NaN — что тут должно получитьс�
     <h3>Минус ноль</h3>
 
     <p>Раз уж речь о делении на ноль: в JavaScript нулей на самом деле два — <code>+0</code>
-    и <code>-0</code>. Это следствие того же стандарта IEEE 754. В обычной работе разницы нет:</p>
+    и <code>-0</code>. Это следствие того же стандарта IEEE 754. В обычной работе разницы почти нет:</p>
 
-    <pre class="code js">+0 === -0;   // true — сравнение их не различает
-console.log(-0);   // 0</pre>
+    <pre class="code js">+0 === -0;         // true — сравнение их не различает
+console.log(-0);   // -0 — а консоль Chrome минус показывает
+String(-0);        // "0" — при превращении в строку минус теряется</pre>
 
-    <p>Но она проявляется ровно в одном месте — при делении:</p>
+    <p>В расчётах разница проявляется при делении:</p>
 
     <pre class="code js">console.log(42 / +0);   // Infinity
 console.log(42 / -0);   // -Infinity</pre>
@@ -528,18 +529,19 @@ if (name) {                  // тут не true и не false, а строка
     это одно из немногого, что действительно надо запомнить:</p>
 
     <div class="important">
-        <strong>Ложны ровно шесть значений:</strong> <code>false</code>, <code>0</code>,
+        <strong>Ложных значений шесть:</strong> <code>false</code>, <code>0</code> — ноль в любом
+        виде (и <code>-0</code> из прошлого раздела, и <code>0n</code> — BigInt-ноль из раздела 2),
         <code>""</code> (пустая строка), <code>NaN</code>, <code>null</code>, <code>undefined</code>.
         <br><strong>Всё остальное истинно.</strong>
     </div>
 
     <figure class="scheme">
-        <svg viewBox="0 0 620 210" role="img" aria-label="Шесть ложных значений и примеры истинных, которые выглядят пустыми">
+        <svg viewBox="0 0 620 210" role="img" aria-label="Шесть ложных значений — false, ноль в любом виде, пустая строка, NaN, null, undefined — и примеры истинных, которые выглядят пустыми">
             <rect x="8" y="26" width="296" height="148" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
-            <text x="156" y="48" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#991b1b">Ложны — ровно эти шесть</text>
+            <text x="156" y="48" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#991b1b">Ложны — только эти шесть</text>
             <text x="40" y="78" font-family="Consolas, monospace" font-size="13" fill="#991b1b">false</text>
             <text x="180" y="78" font-family="Consolas, monospace" font-size="13" fill="#991b1b">NaN</text>
-            <text x="40" y="106" font-family="Consolas, monospace" font-size="13" fill="#991b1b">0</text>
+            <text x="40" y="106" font-family="Consolas, monospace" font-size="13" fill="#991b1b">0  -0  0n</text>
             <text x="180" y="106" font-family="Consolas, monospace" font-size="13" fill="#991b1b">null</text>
             <text x="40" y="134" font-family="Consolas, monospace" font-size="13" fill="#991b1b">""</text>
             <text x="180" y="134" font-family="Consolas, monospace" font-size="13" fill="#991b1b">undefined</text>
@@ -940,7 +942,7 @@ isNaN("салам");     // true — сначала превращает, ост
 // Infinity
 1 / 0;              // Infinity      Infinity - Infinity;  // NaN
 
-// ложны только: false 0 "" NaN null undefined
+// ложны только: false, 0 (и -0, 0n), "", NaN, null, undefined
 Boolean("0");       // true      Boolean([]);   // true
 !!"текст";          // true — короткая запись
 new Boolean(false); // объект, и он ИСТИНЕН — так не пишем</pre>

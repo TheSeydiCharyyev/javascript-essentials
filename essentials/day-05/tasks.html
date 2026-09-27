@@ -38,8 +38,8 @@
         <p>Спросите <code>typeof</code> у каждого значения и запишите ответ. Затем отметьте два места,
         где ответ не совпадает с настоящим типом значения.</p>
         <!-- ahead-ok: день 17, курс 3 -->
-        <pre class="code js">42        9007199254740993n     "Мары"      true      Symbol("id")
-undefined      null      { }      [1, 2]      function () { }      new Date()</pre>
+        <pre class="code js">const values = [42, 9007199254740993n, "Мары", true, Symbol("id"),
+  undefined, null, { }, [1, 2], function () { }, new Date()];</pre>
         <div class="criteria">
             <ul>
                 <li>все одиннадцать ответов записаны;</li>
@@ -57,7 +57,7 @@ undefined      null      { }      [1, 2]      function () { }      new Date()</p
         <p class="task-goal">запомнить, что даёт каждая функция превращения.</p>
         <p>Заполните таблицу: для каждого значения примените <code>Number()</code>, <code>String()</code>
         и <code>Boolean()</code>.</p>
-        <pre class="code js">"42"      "12px"      ""      "0"      null      undefined      []      [5]      { }</pre>
+        <pre class="code js">const values = ["42", "12px", "", "0", null, undefined, [], [5], { }];</pre>
         <div class="hint">
             Два ответа в колонке <code>Number()</code> — это ноль там, где ожидается <code>NaN</code>.
             Найдите их.
@@ -120,9 +120,9 @@ new Date("blabla").getTime()</pre>
             таблицу: выражение &rarr; результат &rarr; три ответа проверок.
         </div>
         <p>Затем второй опыт. Примените обе функции не к результату, а к самим значениям:</p>
-        <pre class="code js">isNaN("салам")          Number.isNaN("салам")
-isNaN(undefined)        Number.isNaN(undefined)
-isNaN("42")             Number.isNaN("42")</pre>
+        <pre class="code js">isNaN("салам");          Number.isNaN("салам");
+isNaN(undefined);        Number.isNaN(undefined);
+isNaN("42");             Number.isNaN("42");</pre>
         <div class="criteria">
             <ul>
                 <li>найдено выражение, которое <strong>не</strong> даёт <code>NaN</code>;</li>
@@ -176,7 +176,7 @@ describe({ });       // "объект"</pre>
         <code>parseMark(input)</code>: она принимает строку, возвращает число от 2 до 5 или
         <code>null</code>, если ввод негодный.</p>
         <p>Проверьте её на списке и запишите, что вернулось для каждого:</p>
-        <pre class="code js">"5"      "пять"      ""      "  4  "      "10"      "3.5"      null</pre>
+        <pre class="code js">const inputs = ["5", "пять", "", "  4  ", "10", "3.5", null];</pre>
         <div class="hint">
             Одно из этих значений превращается в число, хотя выглядит пустым, а другое даёт число
             вне диапазона оценок. Обе ситуации функция должна отсечь.

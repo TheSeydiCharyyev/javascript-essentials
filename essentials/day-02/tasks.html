@@ -32,7 +32,7 @@
     <div class="task">
         <div class="task-header">
             <span class="task-title">1. Рабочее место</span>
-            <div class="task-meta"><span class="badge badge-easy">Легко</span><span class="badge badge-time">10 мин</span></div>
+        <div class="task-meta"><span class="badge badge-easy">Легко</span><span class="badge badge-time">7 мин</span></div>
         </div>
         <p class="task-goal">поставить редактор и завести папку курса.</p>
         <p>Установите VS Code, поставьте расширение Live Server. Создайте папку курса и внутри неё папку
@@ -49,7 +49,7 @@
     <div class="task">
         <div class="task-header">
             <span class="task-title">2. Страница и скрипт</span>
-            <div class="task-meta"><span class="badge badge-easy">Легко</span><span class="badge badge-time">10 мин</span></div>
+        <div class="task-meta"><span class="badge badge-easy">Легко</span><span class="badge badge-time">7 мин</span></div>
         </div>
         <p class="task-goal">подключить файл со скриптом к странице.</p>
         <p>Создайте <code>index.html</code> и <code>app.js</code>. В странице — заголовок «День 2» и подключение
@@ -66,11 +66,14 @@
     <div class="task">
         <div class="task-header">
             <span class="task-title">3. Четыре уровня сообщений</span>
-            <div class="task-meta"><span class="badge badge-easy">Легко</span><span class="badge badge-time">7 мин</span></div>
+        <div class="task-meta"><span class="badge badge-easy">Легко</span><span class="badge badge-time">6 мин</span></div>
         </div>
         <p class="task-goal">увидеть разницу между log, info, warn и error.</p>
-        <p>Выведите по одному сообщению каждым из четырёх методов. Затем в консоли найдите фильтр уровней
-        и оставьте только ошибки и предупреждения.</p>
+            <p>Выведите по одному сообщению каждым из четырёх методов. Затем в консоли найдите фильтр уровней
+    и оставьте только ошибки и предупреждения.</p>
+    <div class="hint">
+        Фильтр уровней — выпадающий список над сообщениями консоли, справа от строки поиска.
+    </div>
         <div class="criteria">
             <ul>
                 <li>четыре сообщения выведены;</li>
@@ -85,7 +88,7 @@
     <div class="task">
         <div class="task-header">
             <span class="task-title">4. Таблица оценок</span>
-            <div class="task-meta"><span class="badge badge-medium">Средне</span><span class="badge badge-time">12 мин</span></div>
+        <div class="task-meta"><span class="badge badge-medium">Средне</span><span class="badge badge-time">13 мин</span></div>
         </div>
         <p class="task-goal">показать список данных читаемо.</p>
         <p>Соберите список из пяти учеников с оценками и выведите его двумя способами: обычным
@@ -108,7 +111,7 @@ console.table(students);</pre>
     <div class="task">
         <div class="task-header">
             <span class="task-title">5. Группы сообщений</span>
-            <div class="task-meta"><span class="badge badge-medium">Средне</span><span class="badge badge-time">12 мин</span></div>
+        <div class="task-meta"><span class="badge badge-medium">Средне</span><span class="badge badge-time">13 мин</span></div>
         </div>
         <p class="task-goal">навести порядок в длинном выводе.</p>
         <p>Выведите расписание на три дня: каждый день — своя группа, внутри группы три предмета.
@@ -152,14 +155,15 @@ console.timeEnd("маленький");</pre>
     <div class="task">
         <div class="task-header">
             <span class="task-title">7. Счётчик вызовов</span>
-            <div class="task-meta"><span class="badge badge-medium">Средне</span><span class="badge badge-time">10 мин</span></div>
+        <div class="task-meta"><span class="badge badge-medium">Средне</span><span class="badge badge-time">12 мин</span></div>
         </div>
         <p class="task-goal">узнать, сколько раз выполняется кусок кода.</p>
         <p>Напишите функцию приветствия, которая внутри вызывает <code>console.count</code>. Вызовите её
         пять раз с разными именами, потом обнулите счётчик и вызовите ещё дважды.</p>
         <div class="criteria">
             <ul>
-                <li>счётчик дошёл до 5, обнулился и начал считать заново;</li>
+                            <li>счётчик дошёл до 5, обнулился и начал считать заново;</li>
+            <li>записано, что пишет консоль, если обнулить счётчик, которого ещё не было;</li>
                 <li>использован <code>console.countReset</code>.</li>
             </ul>
         </div>
@@ -170,7 +174,7 @@ console.timeEnd("маленький");</pre>
     <div class="task">
         <div class="task-header">
             <span class="task-title">8. Остановиться и осмотреться</span>
-            <div class="task-meta"><span class="badge badge-hard">Сложно</span><span class="badge badge-time">14 мин</span></div>
+        <div class="task-meta"><span class="badge badge-hard">Сложно</span><span class="badge badge-time">10 мин</span></div>
         </div>
         <p class="task-goal">поработать с точкой останова.</p>
         <p>Напишите код, который считает стоимость покупки: цена, количество, скидка. Поставьте точку останова
@@ -191,13 +195,13 @@ console.timeEnd("маленький");</pre>
     <div class="task">
         <div class="task-header">
             <span class="task-title">9. Сломай и почини</span>
-            <div class="task-meta"><span class="badge badge-hard">Сложно</span><span class="badge badge-time">13 мин</span></div>
+        <div class="task-meta"><span class="badge badge-hard">Сложно</span><span class="badge badge-time">10 мин</span></div>
         </div>
         <p class="task-goal">научиться читать ошибки и порядок действий при поломке.</p>
         <p>Сломайте свой проект тремя способами по очереди, каждый раз записывая текст ошибки из консоли
         и то, как вы её нашли:</p>
         <ol>
-            <li>измените в подключении имя файла на <code>App.js</code>;</li>
+                    <li>измените в подключении имя файла на <code>apps.js</code>;</li>
             <li>напишите <code>consol.log("тест")</code> с одной буквой «e»;</li>
             <li>уберите закрывающую кавычку в строке.</li>
         </ol>
@@ -205,7 +209,9 @@ console.timeEnd("маленький");</pre>
             <ul>
                 <li>для каждой поломки записан текст ошибки;</li>
                 <li>указано, в какой строке браузер нашёл проблему;</li>
-                <li>проект после всех трёх правок снова работает.</li>
+                            <li>проект после всех трёх правок снова работает;</li>
+            <li>отдельно проверено имя <code>App.js</code> с большой буквы и записано, почему на Windows
+                оно сработало.</li>
             </ul>
         </div>
     </div>

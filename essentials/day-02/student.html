@@ -55,9 +55,10 @@
 console.log("Файл подключён");</pre>
 
     <div class="remember">
-        Имена файлов — латиницей, маленькими буквами, без пробелов. <code>App.js</code> и <code>app.js</code> —
-        разные файлы.
-    </div>
+    Имена файлов — латиницей, маленькими буквами, без пробелов. На Windows <code>App.js</code> и
+    <code>app.js</code> — один файл, а на многих серверах в интернете — разные. <code>арр.js</code> с
+    русскими буквами не найдётся нигде.
+</div>
 
     <h2>Инструменты разработчика</h2>
 
@@ -92,8 +93,18 @@ console.assert(age >= 18, "мало лет");
 console.trace();
 console.clear();</pre>
 
+<p>Подстановки: <code>console.log("Ученик %s получил %d", "Аман", 5)</code> — каждая забирает
+следующее значение. В консоли <code>$_</code> хранит результат предыдущей строки. Без имени
+<code>console.count()</code> считает под именем <code>default</code>; неизвестное имя в
+<code>timeEnd</code> даёт предупреждение <code>Timer '…' does not exist</code>.</p>
+
     <div class="definition">
-        <strong>Точка останова</strong> — метка на строке кода, где браузер остановит программу, чтобы вы
+    <strong>Отладка по шагам.</strong> Не гадать, а остановиться и посмотреть: в функции среднего балла
+    на первой остановке Scope показал <code>i: 1</code> — цикл пропускал первую оценку.
+</div>
+
+<div class="definition">
+    <strong>Точка останова</strong> — метка на строке кода, где браузер остановит программу, чтобы вы
         посмотрели значения переменных. Ставится щелчком по номеру строки во вкладке Sources или словом
         <code>debugger</code> прямо в коде.
     </div>
@@ -105,8 +116,12 @@ console.clear();</pre>
         <li>проверить, сохранён ли файл;</li>
         <li>обновить страницу через <span class="kbd">Ctrl</span> + <span class="kbd">F5</span>;</li>
         <li>поставить <code>console.log("файл работает")</code> первой строкой;</li>
-        <li>прочитать имя файла и путь по буквам.</li>
-    </ol>
+            <li>прочитать имя файла и путь по буквам.</li>
+</ol>
+
+<p>Ненайденный скрипт даёт в консоли две красные строки: <code>404 (Not Found)</code> и
+<code>Refused to execute script … MIME type ('text/html')</code>. Какой адрес страница пыталась
+загрузить, покажет <code>document.scripts[0].src</code>.</p>
 
     <div class="note-box">
         <strong>Горячие клавиши VS Code:</strong> <span class="kbd">Ctrl</span> + <span class="kbd">S</span> —
@@ -124,6 +139,9 @@ console.clear();</pre>
                 Запишите результат в тетрадь.</li>
             <li>Поставьте <code>debugger</code> в середину своего кода и посмотрите значения переменных.
                 Уберите его после проверки.</li>
+        <li>Напишите в <code>&lt;script&gt;</code> имя <code>apps.js</code> вместо <code>app.js</code>, найдите
+            в консоли обе красные строки и проверьте адрес через <code>document.scripts[0].src</code>.
+            Потом верните правильное имя.</li>
         </ol>
     </div>
 

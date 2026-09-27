@@ -58,7 +58,8 @@
         <br>Возвращать, а не печатать. И всегда один и тот же тип.
     </div>
 
-    <pre class="code js">function showAverage(marks) { console.log(sum(marks) / marks.length); }
+    <pre class="code js">// sum — та же, что в «Табеле»
+function showAverage(marks) { console.log(sum(marks) / marks.length); }
 const a = showAverage([5, 4]);   // в консоли 4.5, а в a — undefined
 
 function getAverage(marks) { return sum(marks) / marks.length; }
@@ -92,11 +93,11 @@ countPresent("101");       // вошло: 101         выходит: 0 ← ош
 
     <h2>Стек вызовов</h2>
 
-    <pre class="code js">// TypeError: numbers is not iterable
-//     at sum (script.js:3:19)          ← где УПАЛО
-//     at averageMark (script.js:10:10)
-//     at makeReport (script.js:14:24)
-//     at script.js:17:13               ← где ПРИЧИНА</pre>
+    <pre class="plain-out">TypeError: numbers is not iterable
+    at sum (http://127.0.0.1:5500/app.js:3:19)            &#8592; где УПАЛО
+    at averageMark (http://127.0.0.1:5500/app.js:10:10)
+    at makeReport (http://127.0.0.1:5500/app.js:14:24)
+    at http://127.0.0.1:5500/app.js:17:13                 &#8592; где ПРИЧИНА</pre>
 
     <p>Читается снизу вверх. Идите по стеку вверх, пока не найдёте свою строку.</p>
 
@@ -111,9 +112,9 @@ countPresent("101");       // вошло: 101         выходит: 0 ← ош
     </table>
 
     <div class="remember">
-        <strong>Уменьшай вход.</strong> Падает на ста студентах — попробуйте двух, одного,
-        пустой список. Минимальный падающий вызов помещается в голове целиком, и чаще всего
-        он оказывается пустым.
+        <strong>Уменьшай вход.</strong> Падает или врёт на ста студентах — попробуйте двух,
+        одного, пустой список. Минимальный вызов с ошибкой помещается в голове целиком, и чаще
+        всего он оказывается пустым.
     </div>
 
     <h2>Часть 3. Как читать чужое</h2>
@@ -157,9 +158,9 @@ function longNames(names, minLength = 5) {   // стало, шагами: име
                 где они разошлись.</li>
             <li>Добавьте в любые три свои функции печать на границах и запустите. Запишите,
                 что вывелось, и уберите печать обратно.</li>
-            <li>Уберите <code>return</code> из <code>sum</code> в «Табеле» и запишите текст
-                ошибки вместе со стеком вызовов. Объясните, почему сообщение появилось
-                не в <code>sum</code>.</li>
+            <li>Уберите <code>return</code> из <code>sum</code> в «Табеле» и запустите.
+                Ошибки не будет — запишите, где в отчётах видна беда, и объясните её путь:
+                <code>sum</code> &#8594; <code>average</code> &#8594; <code>makeReport</code>.</li>
             <li>Найдите в своём коде за прошлые дни функцию, у которой в имени просится «и».
                 Разделите её на две и проверьте, что программа работает как прежде.</li>
         </ol>

@@ -37,7 +37,7 @@
         <p class="task-goal">увидеть все три направления на одних и тех же значениях.</p>
         <p>Для каждого значения посчитайте <code>String()</code>, <code>Number()</code>
         и <code>Boolean()</code>. Заполните таблицу 8 &times; 3.</p>
-        <pre class="code js">"0"      " "      ""      [0]      [null]      [1, 2]      null      undefined</pre>
+        <pre class="code js">const values = ["0", " ", "", [0], [null], [1, 2], null, undefined];</pre>
         <div class="hint">
             Три значения дадут в колонке <code>Number()</code> ноль, хотя выглядят пустыми
             или непохожими на ноль. Найдите их.
@@ -60,11 +60,11 @@
         <p class="task-goal">почувствовать, что результат зависит от места, а не от значения.</p>
         <p>Возьмите <code>const x = [];</code> и выполните пять строк. Для каждой запишите результат
         и <strong>в какой тип</strong> превратился массив.</p>
-        <pre class="code js">x ? "истина" : "ложь"
-`${x}`
-x + 1
-x - 1
-x == false</pre>
+        <pre class="code js">x ? "истина" : "ложь";
+`${x}`;
+x + 1;
+x - 1;
+x == false;</pre>
         <div class="criteria">
             <ul>
                 <li>пять результатов записаны;</li>
@@ -81,12 +81,12 @@ x == false</pre>
         </div>
         <p class="task-goal">проверить таблицу приоритетов на практике.</p>
         <p>Сначала предскажите, потом проверьте. Для каждой строки запишите <strong>порядок шагов</strong>.</p>
-        <pre class="code js">2 + 3 * 4
-(2 + 3) * 4
-10 - 5 - 2
-2 ** 3 ** 2
-1 + 2 === 3 &amp;&amp; 2 &gt; 1
-true || false &amp;&amp; false</pre>
+        <pre class="code js">2 + 3 * 4;
+(2 + 3) * 4;
+10 - 5 - 2;
+2 ** 3 ** 2;
+1 + 2 === 3 &amp;&amp; 2 &gt; 1;
+true || false &amp;&amp; false;</pre>
         <div class="criteria">
             <ul>
                 <li>предсказания записаны до проверки;</li>
@@ -107,13 +107,13 @@ true || false &amp;&amp; false</pre>
         <p class="task-goal">разобрать механизм <code>==</code> до конца.</p>
         <p>Для каждой пары распишите маршрут в три строки: какие типы, что во что превратилось,
         какой итог.</p>
-        <pre class="code js">"0" == 0
-"" == 0
-"0" == ""
-true == 1
-"1" == true
-null == 0
-[] == false</pre>
+        <pre class="code js">"0" == 0;
+"" == 0;
+"0" == "";
+true == 1;
+"1" == true;
+null == 0;
+[] == false;</pre>
         <div class="write-box">
             для каждой пары: типы &rarr; после приведения &rarr; результат.
         </div>
@@ -139,7 +139,7 @@ null == 0
         <p class="task-goal">написать функцию, после которой в программе ходят только годные данные.</p>
         <p>Напишите <code>toMark(input)</code>: принимает строку из поля ввода, возвращает число
         от 2 до 5 или <code>null</code>, если ввод негодный. Проверьте на списке:</p>
-        <pre class="code js">"4"      "  5  "      ""      "  "      "пять"      "9"      "3.5"      "4px"</pre>
+        <pre class="code js">const inputs = ["4", "  5  ", "", "  ", "пять", "9", "3.5", "4px"];</pre>
         <div class="hint">
             Порядок проверок важен. Пустоту ловите <strong>до</strong> <code>Number()</code> —
             иначе пустая строка станет нулём и попадёт в проверку диапазона с неверным сообщением.
@@ -219,7 +219,7 @@ console.log(name);</pre>
         <p class="task-goal">понять, когда какая функция превращения подходит.</p>
         <p>Заполните таблицу: для каждой строки посчитайте <code>Number()</code>,
         <code>parseInt()</code> и <code>parseFloat()</code>.</p>
-        <pre class="code js">"42"      "42px"      "px42"      ""      "  7  "      "3.9"      "1e3"</pre>
+        <pre class="code js">const strings = ["42", "42px", "px42", "", "  7  ", "3.9", "1e3"];</pre>
         <p>Затем решите две задачи и объясните выбор функции:</p>
         <ul>
             <li>пользователь вводит возраст в поле — нужно проверить, что введено число;</li>

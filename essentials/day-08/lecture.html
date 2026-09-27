@@ -236,15 +236,22 @@ if (Number.isNaN(age)) {       // не сработает! ноль это не 
     он честно скажет «это не число». Для <strong>вытаскивания числа из текста</strong> вроде
     <code>"16px"</code> берите <code>parseInt</code>. И обратите внимание на строку с пустой
     строкой: тут они расходятся ровно наоборот, и <code>parseInt("")</code> даёт <code>NaN</code>,
-    что для проверки ввода как раз удобнее.</p>
+        что для проверки ввода как раз удобнее.</p>
+
+    <pre class="code js">Number("42px");     // NaN — вся строка должна быть числом
+parseInt("42px");   // 42 — читает с начала, сколько получится
+parseInt("3.9");    // 3 — дробную часть отбросил
+parseFloat("3.9");  // 3.9
+parseInt("");       // NaN — а Number("") дал бы 0</pre>
 
     <h2 id="toboolean">5. Приведение к логическому</h2>
 
     <p>Самое простое из трёх, потому что правило одно и закрытое — мы выучили его на дне 5:</p>
 
     <div class="important">
-        <strong>Ложны ровно шесть значений:</strong> <code>false</code>, <code>0</code>,
-        <code>""</code>, <code>NaN</code>, <code>null</code>, <code>undefined</code>.
+                <strong>Ложны шесть значений из дня 5:</strong> <code>false</code>, <code>0</code>,
+        <code>""</code>, <code>NaN</code>, <code>null</code>, <code>undefined</code>. Строго говоря,
+        MDN добавляет к ним ещё варианты нуля: <code>-0</code> и <code>0n</code> (второй — из курса 2).
         <strong>Всё остальное истинно</strong> — включая <code>"0"</code>, <code>" "</code>,
         <code>[]</code> и <code>{ }</code>.
     </div>
@@ -252,7 +259,14 @@ if (Number.isNaN(age)) {       // не сработает! ноль это не 
     <p>Главное отличие от двух других приведений: <strong>здесь никогда не бывает ошибок
     и сюрпризов вроде <code>NaN</code></strong>. Любое значение уверенно превращается либо в «да»,
     либо в «нет». Поэтому условия в JavaScript никогда не падают — они просто иногда ведут
-    не в ту ветку.</p>
+        не в ту ветку.</p>
+
+    <pre class="code js">Boolean(0);      // false
+Boolean("0");    // true — непустая строка, хоть внутри и ноль
+Boolean(" ");    // true — пробел тоже символ
+Boolean([]);     // true — пустой массив истинен
+!!"";            // false — двойное «не» работает как Boolean
+!!"Мары";        // true</pre>
 
     <h2 id="implicit">6. Когда язык делает это сам</h2>
 
@@ -266,7 +280,7 @@ if (Number.isNaN(age)) {       // не сработает! ноль это не 
             <tr><td><code>+</code>, если рядом строка</td><td>в строку</td><td><code>"2" + 3</code> &rarr; <code>"23"</code></td></tr>
             <tr><td><code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>, <code>**</code></td><td>в число</td><td><code>"10" - 5</code> &rarr; <code>5</code></td></tr>
             <tr><td>унарные <code>+</code> и <code>-</code></td><td>в число</td><td><code>+"42"</code> &rarr; <code>42</code></td></tr>
-            <tr><td><code>++</code> и <code>--</code></td><td>в число</td><td><code>"5"++</code> &rarr; <code>6</code></td></tr>
+            <tr><td><code>++</code> и <code>--</code></td><td>в число</td><td><code>let s = "5"; s++</code> &rarr; <code>s</code> стало <code>6</code></td></tr>
             <tr><td><code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code></td><td>в число, кроме двух строк</td><td><code>"10" &gt; 9</code> &rarr; <code>true</code></td></tr>
             <tr><td><code>==</code> и <code>!=</code></td><td>по правилам (раздел 7)</td><td><code>1 == "1"</code> &rarr; <code>true</code></td></tr>
             <tr><td>шаблонные строки <code>${ }</code></td><td>в строку</td><td><code>`${[1,2]}`</code> &rarr; <code>"1,2"</code></td></tr>
@@ -275,7 +289,21 @@ if (Number.isNaN(age)) {       // не сработает! ноль это не 
 
     <p>Обратите внимание, чего в таблице <strong>нет</strong>: <code>===</code> и <code>!==</code>.
     Они не приводят ничего и никогда. Вот почему весь курс мы пишем именно их — это единственные
-    операторы сравнения, которые не требуют держать в голове таблицу правил.</p>
+        операторы сравнения, которые не требуют держать в голове таблицу правил.</p>
+
+    <p>Строки таблицы, проверенные в консоли:</p>
+
+    <pre class="code js">"2" + 3;      // "23" — рядом строка, склейка
+"10" - 5;     // 5 — минус бывает только числовой
++"42";        // 42
+"10" &gt; 9;     // true — строка стала числом 10
+"10" &gt; "9";   // false — две строки сравниваются посимвольно: "1" меньше "9"</pre>
+
+    <pre class="code js">let s = "5";
+s++;          // 5 — вернул старое значение, но уже числом
+s;            // 6
+typeof s;     // "number"
+// а "5"++ — SyntaxError: Invalid left-hand side expression in postfix operation</pre>
 
     <h3>Одно значение, четыре ответа</h3>
 
@@ -345,6 +373,10 @@ x == false;       // true        — через число: 0 == 0</pre>
         <li><code>"0" == ""</code> — <strong>обе строки</strong>. Типы совпали, приводить нечего,
             сравниваем как текст: <code>"0"</code> и <code>""</code> — разные. Ложь.</li>
     </ol>
+
+        <pre class="code js">Number("0");   // 0
+Number("");    // 0 — две разные строки, одно число
+"0" == "";     // false — а здесь до чисел не дошло: обе стороны строки</pre>
 
     <p>Весь фокус в том, что <code>Number("0")</code> и <code>Number("")</code> дают одинаковый ноль,
     хотя сами строки разные. Первые две пары этим нулём и сравниваются, а третья до чисел вообще
@@ -663,56 +695,41 @@ a = b = 7;      // сначала b = 7, потом a = 7, день 6
     из дня 4: она возникает <strong>до выполнения</strong>, и из-за неё не работает весь файл целиком.
     Если кажется, что «скрипт не подключился», — сначала ищите красное сообщение в консоли.</p>
 
-    <table>
-        <thead><tr><th>Что написали</th><th>Сообщение в Chrome</th><th>Что не так</th></tr></thead>
-        <tbody>
-            <tr>
-                <td><code>const x = 3px;</code></td>
-                <td><code>Invalid or unexpected token</code></td>
-                <td>имя сразу после числа</td>
-            </tr>
-            <tr>
-                <td><code>const c = &#8220;текст&#8221;;</code></td>
-                <td><code>Invalid or unexpected token</code></td>
-                <td>«умные» кавычки вместо прямых</td>
-            </tr>
-            <tr>
-                <td><code>const s = "первая<br>вторая";</code></td>
-                <td><code>Invalid or unexpected token</code></td>
-                <td>перенос строки внутри кавычек</td>
-            </tr>
-            <tr>
-                <td><code>3 = x;</code></td>
-                <td><code>Invalid left-hand side in assignment</code></td>
-                <td>слева от <code>=</code> не переменная</td>
-            </tr>
-            <tr>
-                <td><code>function f() {</code></td>
-                <td><code>Unexpected end of input</code></td>
-                <td>не закрыли фигурную скобку</td>
-            </tr>
-            <tr>
-                <td><code>if true) { }</code></td>
-                <td><code>Unexpected token 'true'</code></td>
-                <td>нет открывающей скобки у условия</td>
-            </tr>
-            <tr>
-                <td><code>console.log(1,,2);</code></td>
-                <td><code>Unexpected token ','</code></td>
-                <td>лишняя запятая</td>
-            </tr>
-        </tbody>
-    </table>
+        <p>Каждая — отдельным блоком: сломанная строка в комментарии, сообщение Chrome и то, как
+    правильно. Сломанную строку можно вставить в консоль и увидеть сообщение самим.</p>
+
+    <pre class="code js">// const x = 3px;   → SyntaxError: Invalid or unexpected token — имя сразу после числа
+const x = "3px";    // так правильно: это текст</pre>
+
+    <pre class="code js">// const c = &#8220;текст&#8221;;   → SyntaxError: Invalid or unexpected token — «умные» кавычки
+const c = "текст";      // прямые кавычки</pre>
+
+    <pre class="code js">// const s = "первая
+// вторая";          → SyntaxError: Invalid or unexpected token — перенос внутри кавычек
+const s = "первая\nвторая";   // перенос пишут знаком \n</pre>
+
+    <pre class="code js">// 3 = x;   → SyntaxError: Invalid left-hand side in assignment — слева не переменная
+let y = 1;
+y = 3;      // слева от = стоит переменная</pre>
+
+    <pre class="code js">// function f() {   → SyntaxError: Unexpected end of input — не закрыли фигурную скобку
+function f() { }</pre>
+
+    <pre class="code js">// if true) { }   → SyntaxError: Unexpected token 'true' — нет открывающей скобки
+if (true) { }</pre>
+
+    <pre class="code js">// console.log(1,,2);   → SyntaxError: Unexpected token ',' — лишняя запятая
+console.log(1, 2);</pre>
 
     <p>Как и на дне 4, помните: <strong>на MDN эти страницы озаглавлены формулировками Firefox</strong>,
     а Chrome говорит иначе. Firefox, например, скажет «illegal character» и «unterminated string
     literal» — понятнее, но искать вы будете по тому, что видите у себя.</p>
 
     <div class="mistake">
-        Вторая строка таблицы — самая обидная и самая частая. Она случается, когда код копируют
+                Вторая из семи ошибок — самая обидная и самая частая. Она случается, когда код копируют
         из мессенджера, из документа Word или с сайта, который «улучшает» кавычки:
         <pre class="code js">const a = "правильные прямые кавычки";
-const b = &#8220;умные кавычки из Word&#8221;;   // SyntaxError</pre>
+// const b = &#8220;умные кавычки из Word&#8221;;   → SyntaxError: Invalid or unexpected token</pre>
         На вид разница почти незаметна, а файл не работает целиком. Ещё один довод за то,
         чтобы печатать код руками, а не копировать.
     </div>
@@ -730,7 +747,7 @@ const b = &#8220;умные кавычки из Word&#8221;;   // SyntaxError</p
 
 const city = "Мары";
 console.log(city);
-// SyntaxError: Unexpected end of input &#8212; покажут на строке 6, в конце файла</pre>
+// SyntaxError: Unexpected end of input &#8212; в файле из этих пяти строк покажут строку 6, сразу за последней</pre>
 
     <p>Движок читал файл, ждал закрывающую скобку и дошёл до конца, так и не дождавшись. Сообщить
     он может только про то место, где кончился текст, — то есть про последнюю строку. А настоящая
@@ -764,7 +781,7 @@ console.log(city);
     и не вернулся — там и потеряна скобка.</p>
 
     <p><strong>Не копируйте код из мессенджеров и документов.</strong> Кавычки, тире и пробелы там
-    подменяются на похожие, но другие символы. Это та самая вторая строка таблицы.</p>
+    подменяются на похожие, но другие символы. Это та самая вторая из семи ошибок.</p>
 
     <p><strong>Сохраняйте и смотрите в консоль почаще.</strong> Одна ошибка в файле из двадцати строк
     ищется за минуту, в файле из двухсот — за полчаса. Чем короче промежуток между «написал»
@@ -931,7 +948,7 @@ String([1, 2]);    // "1,2"
 String([]);        // ""
 String({ });       // "[object Object]"  ← признак ошибки в выводе
 
-// ложны только: false 0 "" NaN null undefined
+// ложны: false 0 "" NaN null undefined (и варианты нуля: -0, 0n)
 
 // почему == нетранзитивно
 "0" == 0;    // типы разные → оба в число → 0 == 0 → true

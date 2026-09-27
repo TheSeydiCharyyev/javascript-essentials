@@ -77,8 +77,15 @@ l.slice(1, 3);        // ["b", "c"] — копия, оригинал цел
 l.splice(1, 2, "X");  // оригинал стал ["a", "X", "d"]</pre>
 
     <div class="remember">
-        <strong>slice</strong> — отрезать себе копию. <strong>splice</strong> — вырезать из оригинала.
-    </div>
+    <strong>slice</strong> — отрезать себе копию. <strong>splice</strong> — вырезать из оригинала.
+</div>
+
+<h2>Стек и очередь</h2>
+
+<p><strong>Стек</strong> — «последним пришёл, первым ушёл»: <code>push</code> + <code>pop</code>, как
+кнопка «Отменить». <strong>Очередь</strong> — «первым пришёл, первым ушёл»: <code>push</code> +
+<code>shift</code>, как очередь в кассу. Работа с началом (<code>unshift</code>, <code>shift</code>)
+на длинных массивах в сотни раз медленнее, чем с концом.</p>
 
     <h2>Поиск и склейка</h2>
 
@@ -90,7 +97,24 @@ m.includes(4);      // true
 
 ["Аман", "Мерет"].join(", ");   // "Аман, Мерет"
 [1, 2].concat([3]);             // [1, 2, 3] — новый массив
-Array.isArray([1]);             // true (typeof тут бесполезен)</pre>
+Array.isArray([1]);             // true (typeof тут бесполезен)
+
+[5, 4, 3].with(1, 5);           // [5, 5, 3] — копия с заменой
+[5, 4, 3].toSpliced(1, 1);      // [5, 3] — копия без элемента</pre>
+
+<h2>Дыры и пустой массив</h2>
+
+<pre class="code js">const h = [1, , 3];         // дыра — элемента нет вовсе
+h[1];                       // undefined
+h.includes(undefined);      // true
+h.indexOf(undefined);       // -1 — indexOf дыры пропускает
+
+[].pop();                   // undefined — ошибки нет
+[].indexOf(1);              // -1</pre>
+
+<p>Методы на пустом массиве ошибок не бросают, поэтому ошибка всплывает дальше:
+<code>[].pop().toUpperCase()</code> — <code>TypeError</code>. Если массив может быть пустым,
+проверяйте <code>length</code> заранее.</p>
 
     <h2>Две группы методов</h2>
 
@@ -120,6 +144,8 @@ Array.isArray([1]);             // true (typeof тут бесполезен)</pr
             <li>Напишите две строки, которые дают перевёрнутую копию массива, не меняя оригинал.
                 Проверьте, что оригинал цел.</li>
             <li>Найдите на MDN страницу <code>Array.prototype.with()</code> и запишите пример её работы.</li>
+        <li>Проверьте в консоли, что вернут <code>pop</code>, <code>shift</code>, <code>at(-1)</code> и
+            <code>indexOf</code> на пустом массиве, и запишите ответы в тетрадь.</li>
         </ol>
     </div>
 

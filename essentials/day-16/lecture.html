@@ -303,7 +303,9 @@ text.startsWith("Мерет", 5); // true — проверяем начиная 
     <p>Эти методы читаются лучше, чем <code>indexOf(...) === 0</code>, и именно поэтому их
     стоит предпочитать. Сравните две записи одного и того же:</p>
 
-    <pre class="code js">if (fileName.indexOf(".html") === fileName.length - 5) { }   // поди пойми
+    <pre class="code js">const fileName = "index.html";
+
+if (fileName.indexOf(".html") === fileName.length - 5) { }   // поди пойми
 if (fileName.endsWith(".html")) { }                          // сразу ясно</pre>
 
     <h2 id="slice">5. Отрезаем: slice</h2>
@@ -442,11 +444,11 @@ const typed = "аман ";
 
 typed === saved;   // false, а на экране строки выглядят одинаково</pre>
 
-    <p><strong>Шаг 1. Смотрим на строки в кавычках.</strong> На глаз пробел в конце не виден,
-    поэтому печатаем так, чтобы границы строки были видны:</p>
+    <p><strong>Шаг 1. Смотрим на границы строк.</strong> На глаз пробел в конце не виден,
+    поэтому печатаем каждую строку в скобках — так видно, где она начинается и кончается:</p>
 
-    <pre class="code js">console.log(JSON.stringify(typed), JSON.stringify(saved));
-// "аман " "Аман"</pre>
+    <pre class="code js">console.log("[" + typed + "]", "[" + saved + "]");
+// [аман ] [Аман]</pre>
 
     <p>Уже видно две разницы сразу: пробел справа и маленькая первая буква.</p>
 
@@ -469,7 +471,7 @@ typed.trim().toLowerCase() === saved.toLowerCase();   // true</pre>
     после каждой — та же привычка, что и в переписывании кода маленькими шагами.</p>
 
     <div class="mistake">
-        Для туркменского и турецкого у этих методов есть изъян: они не знают про букву
+        Для турецкого у этих методов есть изъян: они не знают про букву
         <code>ı</code> без точки. <code>"I".toLowerCase()</code> даёт <code>"i"</code>,
         хотя по правилам языка должно получиться <code>"ı"</code>. Существует вариант
         с учётом языка — <code>toLocaleLowerCase("tr")</code>, — и он даёт правильный ответ,
@@ -740,7 +742,8 @@ console.log(line);</pre>
 ----------------------------------------</pre>
     </div>
 
-    <p>Числа те же, что вчера, — изменилась только подача. Разберём, что где работает.</p>
+    <p>У первых четырёх числа те же, что вчера, — изменилась только подача. У «Огулджан»
+    теперь есть оценки: 4, 4 и 5. Разберём, что где работает.</p>
 
     <p><strong><code>padEnd(12)</code> для имени</strong> — дополняет справа, поэтому все имена
     начинаются в одной колонке. «Огулджан» длиной восемь, «Аман» длиной четыре, а отступ после
@@ -776,7 +779,7 @@ console.log(line);</pre>
 
     <h3>Карта методов дня</h3>
 
-    <p>Двадцать один метод — много, если держать их списком. По делу они распадаются
+    <p>Восемнадцать методов — много, если держать их списком. По делу они распадаются
     на четыре группы, и вопрос «какой метод взять» почти всегда решается выбором группы.</p>
 
     <figure class="scheme">
@@ -938,54 +941,63 @@ console.log(line);</pre>
                 <tr><td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Not_a_valid_code_point">Ошибка: не код символа</a></td><td>в Chrome — <code>Invalid code point -1</code></td><td><span class="mark mark-brief">кратко</span></td></tr>
             </tbody>
         </table>
-        <p>Тридцать одна страница — самый большой справочник с начала курса. Двадцать один
-        метод разобран подробно, десять страниц даны для узнавания.</p>
+        <p>Тридцать одна страница — самый большой справочник с начала курса. Двадцать одна
+        разобрана подробно, десять даны для узнавания.</p>
     </div>
 
     <div class="cheatsheet">
         <pre class="code js">// СТРОКА НЕ МЕНЯЕТСЯ — все методы возвращают новую
+let text = "  Аман  ";
 text = text.trim();   // без присваивания результат пропадёт
 
 // ДЛИНА И СИМВОЛЫ
-"Гүлнар".length      // 6, последний индекс 5
-name[0]  name.charAt(0)  name.at(0)     // "Г"
-name.at(-1)          // "р" — только at понимает отрицательные
-name.charAt(99)      // "" пустая строка; name.at(99) — undefined
+const name = "Гүлнар";
+name.length;          // 6, последний индекс 5
+name[0];  name.charAt(0);  name.at(0);   // "Г"
+name.at(-1);          // "р" — только at понимает отрицательные
+name.charAt(99);      // "" пустая строка; name.at(99) — undefined
 
 // ПОИСК
-text.indexOf("Аман")       // 0, не нашёл → -1
-text.lastIndexOf("Аман")   // с конца
-text.includes("Мерет")     // true/false — предпочитать
-text.startsWith("Аман")  text.endsWith("Аман")
+const group = "Аман Мерет Аман";
+group.indexOf("Аман");       // 0, не нашёл → -1
+group.lastIndexOf("Аман");   // 11 — с конца
+group.includes("Мерет");     // true/false — предпочитать
+group.startsWith("Аман");  group.endsWith("Аман");   // true
 // РЕГИСТР ВАЖЕН во всех четырёх
 
 // ОТРЕЗАТЬ
-word.slice(0, 4)   // "Турк"      вторая граница НЕ входит
-word.slice(4)      // до конца
-word.slice(-6)     // с конца
-word.slice(4, 2)   // "" — границы наоборот
-word.substring(4, 2)    // "рк" — МЕНЯЕТ местами; писать slice
+const word = "Туркменистан";
+word.slice(0, 4);       // "Турк"      вторая граница НЕ входит
+word.slice(4);          // "менистан"  до конца
+word.slice(-6);         // "нистан"    с конца
+word.slice(4, 2);       // "" — границы наоборот
+word.substring(4, 2);   // "рк" — МЕНЯЕТ местами; писать slice
 
 // ПОПРАВИТЬ
-"Аман".toUpperCase()   "АМАН".toLowerCase()
-a.trim().toLowerCase() === b.trim().toLowerCase()   // сравнение по-человечески
-"  Аман  ".trim()  .trimStart()  .trimEnd()
+"Аман".toUpperCase();   // "АМАН"
+"АМАН".toLowerCase();   // "аман"
+const a = "  АмАн ";
+const b = "аман";
+a.trim().toLowerCase() === b.trim().toLowerCase();   // true — сравнение по-человечески
+"  Аман  ".trimStart();   // "Аман  "
+"  Аман  ".trimEnd();     // "  Аман"
 
 // ДОПОЛНИТЬ И ПОВТОРИТЬ
-"5".padStart(3, "0")     // "005" — 3 это ДЛИНА РЕЗУЛЬТАТА
-"Аман".padEnd(10, ".")   // "Аман......"
-"-".repeat(40)           // линия
-String(5).padStart(2, "0")   // у числа методов строки нет
+"5".padStart(3, "0");         // "005" — 3 это ДЛИНА РЕЗУЛЬТАТА
+"Аман".padEnd(10, ".");       // "Аман......"
+"-".repeat(40);               // линия
+String(5).padStart(2, "0");   // "05" — у числа методов строки нет
 
 // СОБРАТЬ
-`${name}: ${avg.toFixed(2)}`     // шаблонная строка
+const avg = 4.333;
+`${name}: ${avg.toFixed(2)}`;   // "Гүлнар: 4.33" — шаблонная строка
 `перенос
-прямо в тексте`
+прямо в тексте`;
 
 // ОШИБКИ (все RangeError)
-"abc".repeat(-1)          // Invalid count value: -1
-"abc".repeat(1e10)        // Invalid string length
-String.fromCodePoint(-1)  // Invalid code point -1</pre>
+// "abc".repeat(-1)           → Invalid count value: -1
+// "abc".repeat(1e10)         → Invalid string length
+// String.fromCodePoint(-1)   → Invalid code point -1</pre>
     </div>
 
     <div class="selfcheck">

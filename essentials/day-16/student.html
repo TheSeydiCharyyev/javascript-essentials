@@ -37,7 +37,8 @@
         а старая остаётся прежней.
     </div>
 
-    <pre class="code js">text.trim();          // результат пропал
+    <pre class="code js">let text = "  Аман  ";
+text.trim();          // результат пропал: text всё ещё "  Аман  "
 text = text.trim();   // вот так правильно</pre>
 
     <div class="key-point">
@@ -54,9 +55,10 @@ text = text.trim();   // вот так правильно</pre>
 
     <h2>Длина и символы</h2>
 
-    <pre class="code js">"Гүлнар".length   // 6, последний индекс — 5
-name[0]  name.charAt(0)  name.at(0)   // "Г"
-name.at(-1)                           // "р" — отрицательные понимает только at</pre>
+    <pre class="code js">const name = "Гүлнар";
+name.length;                             // 6, последний индекс — 5
+name[0];  name.charAt(0);  name.at(0);   // "Г"
+name.at(-1);                             // "р" — отрицательные понимает только at</pre>
 
     <table>
         <thead><tr><th>Индекс</th><th><code>name[i]</code></th><th><code>charAt(i)</code></th><th><code>at(i)</code></th></tr></thead>
@@ -68,10 +70,11 @@ name.at(-1)                           // "р" — отрицательные п�
 
     <h2>Поиск</h2>
 
-    <pre class="code js">text.indexOf("Аман")        // позиция или -1
-text.lastIndexOf("Аман")    // с конца
-text.includes("Мерет")      // true / false
-text.startsWith("Аман")   text.endsWith("Аман")</pre>
+    <pre class="code js">const group = "Аман Мерет Аман";
+group.indexOf("Аман");       // 0 — позиция или -1
+group.lastIndexOf("Аман");   // 11 — с конца
+group.includes("Мерет");     // true / false
+group.startsWith("Аман");  group.endsWith("Аман");   // true</pre>
 
     <div class="remember">
         <strong><code>if (text.indexOf("Аман"))</code> — ошибка:</strong> ноль означает
@@ -82,10 +85,10 @@ text.startsWith("Аман")   text.endsWith("Аман")</pre>
 
     <h2>Отрезаем</h2>
 
-    <pre class="code js">"Туркменистан".slice(0, 4)   // "Турк" — вторая граница НЕ входит
-"Туркменистан".slice(4)      // "менистан"
-"Туркменистан".slice(-6)     // "нистан"
-"Туркменистан".slice(4, 2)   // "" — границы наоборот</pre>
+    <pre class="code js">"Туркменистан".slice(0, 4);   // "Турк" — вторая граница НЕ входит
+"Туркменистан".slice(4);      // "менистан"
+"Туркменистан".slice(-6);     // "нистан"
+"Туркменистан".slice(4, 2);   // "" — границы наоборот</pre>
 
     <table>
         <thead><tr><th>Случай</th><th><code>slice</code></th><th><code>substring</code></th></tr></thead>
@@ -99,19 +102,27 @@ text.startsWith("Аман")   text.endsWith("Аман")</pre>
 
     <h2>Правим и собираем</h2>
 
-    <pre class="code js">"Аман".toUpperCase()   "АМАН".toLowerCase()
-a.trim().toLowerCase() === b.trim().toLowerCase()   // сравнение по-человечески
+    <pre class="code js">"Аман".toUpperCase();   // "АМАН"
+"АМАН".toLowerCase();   // "аман"
 
-"   Аман   ".trim()   .trimStart()   .trimEnd()     // только края
+const a = "  АмАн ";
+const b = "аман";
+a.trim().toLowerCase() === b.trim().toLowerCase();   // true — сравнение по-человечески
 
-"5".padStart(3, "0")      // "005" — 3 это ДЛИНА РЕЗУЛЬТАТА, не добавка
-"Аман".padEnd(10, ".")    // "Аман......"
-String(5).padStart(2, "0")  // у числа методов строки нет
-"-".repeat(40)            // линия
+"   Аман   ".trim();        // "Аман" — только края
+"   Аман   ".trimStart();   // "Аман   "
+"   Аман   ".trimEnd();     // "   Аман"
 
-`${name}: средний ${avg.toFixed(2)}`   // шаблонная строка
+"5".padStart(3, "0");         // "005" — 3 это ДЛИНА РЕЗУЛЬТАТА, не добавка
+"Аман".padEnd(10, ".");       // "Аман......"
+String(5).padStart(2, "0");   // "05" — у числа методов строки нет
+"-".repeat(40);               // линия
+
+const student = "Аман";
+const avg = 4.333;
+`${student}: средний ${avg.toFixed(2)}`;   // "Аман: средний 4.33"
 `перенос
-прямо в тексте`</pre>
+прямо в тексте`;</pre>
 
     <div class="remember">
         <code>padEnd</code> — для текста (колонка слева), <code>padStart</code> — для чисел
@@ -121,13 +132,14 @@ String(5).padStart(2, "0")  // у числа методов строки нет
 
     <h2>Коды и превращения</h2>
 
-    <pre class="code js">"Аман".charCodeAt(0)      // 1040
-"🙂".charCodeAt(0)        // 55357 — половина значка
-"🙂".codePointAt(0)       // 128578 — значок целиком
-String.fromCharCode(1040) // "А"
+    <pre class="code js">"Аман".charCodeAt(0);        // 1040
+"🙂".charCodeAt(0);          // 55357 — половина значка
+"🙂".codePointAt(0);         // 128578 — значок целиком
+String.fromCharCode(1040);   // "А"
 
-String(5)  String(null)   // работает с чем угодно
-(5).toString(2)           // "101" — система счисления</pre>
+String(5);                   // "5"
+String(null);                // "null" — работает с чем угодно
+(5).toString(2);             // "101" — система счисления</pre>
 
     <div class="note-box">
         <strong>Три ошибки дня, все <code>RangeError</code>:</strong>

@@ -271,11 +271,12 @@ myGroupBy(cart, (item) =&gt; item.price &lt; 10 ? "дёшево" : "дорого
 
     <div class="task">
         <div class="task-header">
-            <span class="task-title">9. Девять ошибок</span>
+            <span class="task-title">9. Ошибки с объектами</span>
             <div class="task-meta"><span class="badge badge-hard">Сложно</span><span class="badge badge-time">10 мин</span></div>
         </div>
         <p class="task-goal">получить все ошибки дня и увидеть, где Chrome молчит.</p>
-        <p>Каждый синтаксический фрагмент — в отдельный файл. Запишите точный текст ошибки
+        <p>Каждый фрагмент — в отдельный файл: синтаксическая ошибка ломает файл целиком,
+        а упавшая строка останавливает всё, что ниже. Запишите точный текст ошибки
         из своей консоли.</p>
         <pre class="code js">// 1
 const o = { x = 5 };

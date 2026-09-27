@@ -200,7 +200,8 @@ makeStudent("Мерет", [4, 5]);   // { name: "Мерет", marks: [4, 5] }</p
 };
 
 settings["цвет фона"];   // "белый"
-settings.font-size;      // так нельзя: язык прочтёт это как вычитание</pre>
+settings["font-size"];   // 14
+// settings.font-size    → ReferenceError: size is not defined — язык прочёл это как вычитание</pre>
 
     <p><strong>Третий — числовой ключ.</strong> Числа в ключах превращаются в строки,
     поэтому обе записи ведут к одному свойству:</p>
@@ -266,6 +267,12 @@ Object.hasOwn(student, "toString");    // false — своего такого н
     <p>Откуда берётся <code>toString</code>, мы разберём в курсе 2 вместе с прототипами.
     Пока достаточно правила:</p>
 
+    <div class="important">
+        <strong>Спрашиваете про свои данные — берите <code>Object.hasOwn</code>.</strong>
+        Он отвечает ровно на тот вопрос, который вы задаёте, и не находит лишнего.
+        Оператор <code>in</code> оставьте для случаев, когда унаследованное тоже важно.
+    </div>
+
     <p>Когда разница между «нет свойства» и «свойство пустое» важна на практике?
     Чаще всего — в настройках. Если пользователь ничего не выбрал, подставляют умолчание;
     а если он выбрал «ничего», это его осознанный выбор, и умолчание подставлять нельзя:</p>
@@ -285,12 +292,6 @@ theme2;   // undefined — пользователь выбрал «ничего�
     <p>Случай редкий, но показательный: <code>??</code> и <code>hasOwn</code> отвечают
     на разные вопросы, и подменять один другим можно только тогда, когда вы уверены,
     что <code>undefined</code> в данных не бывает.</p>
-
-    <div class="important">
-        <strong>Спрашиваете про свои данные — берите <code>Object.hasOwn</code>.</strong>
-        Он отвечает ровно на тот вопрос, который вы задаёте, и не находит лишнего.
-        Оператор <code>in</code> оставьте для случаев, когда унаследованное тоже важно.
-    </div>
 
     <h2 id="iterate">6. Перебор: keys, values, entries</h2>
 
@@ -586,9 +587,12 @@ student.count();   // 3</pre>
     два подхода к одной задаче:</p>
 
     <pre class="code js">// данные отдельно, функции отдельно
+function addStudent(list, student) { list.push(student); }
+function countStudents(list) { return list.length; }
+
 const students = [];
 addStudent(students, { name: "Аман" });
-countStudents(students);
+countStudents(students);   // 1
 
 // данные и действия вместе
 const group = {
@@ -652,8 +656,8 @@ Object.groupBy(marks, (m) =&gt; m % 2 === 0 ? "чётные" : "нечётные
     <div class="mistake">
         Четыре верхние страницы на MDN озаглавлены иначе — «missing : after property id»,
         «missing } after property list», «missing name after . operator», «missing ] after
-        element list». Это формулировки Firefox, и они понятнее. Chrome в таких случаях
-        просто говорит «неожиданный токен» и показывает место — ищите ошибку на строку выше.
+        element list». Это формулировки Firefox, и они понятнее. Chrome в трёх случаях
+        из четырёх говорит «неожиданный токен» или «неожиданный идентификатор» и показывает место — ищите ошибку на строку выше.
     </div>
 
     <p>Две оставшиеся ошибки — не синтаксические, и обе <strong>появляются только в строгом
@@ -780,11 +784,11 @@ console.log(line);</pre>
     <div class="result-box">
         <pre class="plain-out">Имя          Средн  Мин Макс      %  Вердикт
 --------------------------------------------------------
-Аман          4.33    3    5     75%  хорошист
-Мерет         3.33    3    4    100%  троечник
+Аман          4.33    3    5    75%  хорошист
+Мерет         3.33    3    4   100%  троечник
 Гүлнар      нет годных оценок
-Сапар         4.75    4    5    100%  отличник
-Огулджан      4.50    4    5     67%  отличник
+Сапар         4.75    4    5   100%  отличник
+Огулджан      4.50    4    5    67%  отличник
 --------------------------------------------------------</pre>
     </div>
 
@@ -801,8 +805,8 @@ console.log(line);</pre>
     <code>map</code> ей не мешают.</p>
 
     <p><strong>Оператор <code>??</code> из дня 7</strong> подставляет значения, если свойства
-    нет вовсе. Проверьте: <code>makeRow({})</code> вернёт «без имени — нет годных оценок»
-    и не упадёт.</p>
+    нет вовсе. Проверьте: <code>makeRow({})</code> не упадёт и вернёт строку, где после
+    «без имени» стоит «нет годных оценок».</p>
 
     <div class="try-it">
         Три опыта.
@@ -874,7 +878,7 @@ console.log(line);</pre>
 
     <p>Сегодняшний <code>student.address.city</code> — как раз случай для завтрашнего
     <code>?.</code>: если адрес не заполнен, такая запись падает с
-    <code>TypeError: Cannot read properties of undefined</code>, и завтра мы научимся
+    <code>TypeError: Cannot read properties of undefined (reading 'city')</code>, и завтра мы научимся
     этого избегать.</p>
 
     <h3>Где сегодняшнее встретится дальше</h3>
@@ -888,7 +892,7 @@ console.log(line);</pre>
             <tr><td>22</td><td>деструктуризация и spread — короткая запись всего сегодняшнего</td></tr>
             <tr><td>23</td><td><code>JSON</code> превращает объект в строку и обратно</td></tr>
             <tr><td>27</td><td>объект события: <code>event.target</code>, <code>event.key</code> — обычные свойства</td></tr>
-            <tr><td>29</td><td>список дел — массив объектов <code>{ text, done }</code></td></tr>
+            <tr><td>29</td><td>список дел — массив объектов <code>{ id, text, done }</code></td></tr>
             <tr><td>31</td><td>ответ сервера приходит массивом объектов и разбирается так же</td></tr>
         </tbody>
     </table>
@@ -932,13 +936,17 @@ console.log(line);</pre>
     <div class="cheatsheet">
         <pre class="code js">// ЛИТЕРАЛ И ДОСТУП
 const student = { name: "Аман", age: 17 };
-student.name       // точка — имя буквально
-student["name"]    // скобки — любое выражение
-student[key]       // ключ в переменной — ТОЛЬКО скобки
-student.phone      // undefined, а не ошибка
+student.name;      // "Аман" — точка: имя буквально
+student["name"];   // "Аман" — скобки: любое выражение
+const key = "age";
+student[key];      // 17 — ключ в переменной: ТОЛЬКО скобки
+student.phone;     // undefined, а не ошибка
 
 // СКОБКИ ОБЯЗАТЕЛЬНЫ: ключ в переменной, с пробелом, числовой
-settings["цвет фона"]   marks[5]
+const settings = { "цвет фона": "белый" };
+settings["цвет фона"];   // "белый"
+const verdicts = { 5: "отлично" };
+verdicts[5];             // "отлично"
 
 // МЕНЯЕМ
 student.age = 18;        // изменили
@@ -947,29 +955,34 @@ delete student.name;     // удалили (вернёт true почти все�
 // const объекту не мешает: запрещена смена ПЕРЕМЕННОЙ, не содержимого
 
 // ЕСТЬ ЛИ СВОЙСТВО
-student.phone !== undefined   // путает «нет» и «пусто»
-"phone" in student            // включая унаследованные
-Object.hasOwn(student, "phone")   // своё — БРАТЬ ЭТО
+const s = { phone: undefined };
+s.phone !== undefined;       // false — путает «нет» и «пусто»
+"phone" in s;                // true — включая унаследованные
+Object.hasOwn(s, "phone");   // true — своё: БРАТЬ ЭТО
 
 // ПЕРЕБОР
-Object.keys(obj)      // ["name", "age"]
-Object.values(obj)    // ["Аман", 17]
-Object.entries(obj)   // [["name","Аман"], ["age",17]]
-Object.keys(obj).length   // у объекта НЕТ length
+const obj = { name: "Аман", age: 17 };
+Object.keys(obj);          // ["name", "age"]
+Object.values(obj);        // ["Аман", 17]
+Object.entries(obj);       // [["name", "Аман"], ["age", 17]]
+Object.keys(obj).length;   // 2 — у объекта НЕТ length
 
 // ОБЪЕДИНЕНИЕ И КОПИЯ
-Object.assign({}, defaults, given)   // {} первым — иначе испортит defaults
-const copy = Object.assign({}, obj); // копия ПОВЕРХНОСТНАЯ
+const defaults = { city: "Мары" };
+const given = { city: "Ашхабад" };
+Object.assign({}, defaults, given);    // { city: "Ашхабад" } — {} первым, иначе испортит defaults
+const copy = Object.assign({}, obj);   // копия ПОВЕРХНОСТНАЯ
 
 // ССЫЛКА
+const a = { x: 1 };
 const b = a;   // не копия! правка через b видна в a
 
 // МЕТОДЫ
-const o = { count() { return this.items.length; } };   // курс 2
+const o = { items: [], count() { return this.items.length; } };   // курс 2
 
 // НОВОЕ
-Object.fromEntries(pairs)
-Object.groupBy(arr, (x) =&gt; ключ)   // совсем новый, проверять typeof</pre>
+Object.fromEntries([["a", 1]]);                            // { a: 1 }
+Object.groupBy([5, 4, 3], (m) =&gt; m &gt;= 4 ? "ок" : "нет");   // { ок: [5, 4], нет: [3] } — совсем новый</pre>
     </div>
 
     <div class="selfcheck">

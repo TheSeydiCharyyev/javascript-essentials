@@ -40,17 +40,21 @@
 
     <h2>Деструктуризация</h2>
 
-    <pre class="code js">const [first, second] = marks;   // массив — ПО ПОЗИЦИИ
-const [, , third] = marks;       // пропуск
-const [a, b = 0] = marks;        // умолчание (только на undefined)
-const [head, ...tail] = marks;   // остаток
-[x, y] = [y, x];                 // обмен; точка с запятой на строке ВЫШЕ
+    <pre class="code js">const marks = [5, 4, 3];
+const [first, second] = marks;   // first = 5, second = 4 — массив ПО ПОЗИЦИИ
+const [, , third] = marks;       // third = 3 — пропуск
+const [p, q, r, s = 0] = marks;  // s = 0 — умолчание (только на undefined)
+const [head, ...tail] = marks;   // head = 5, tail = [4, 3] — остаток
+let x = 1;
+let y = 2;
+[x, y] = [y, x];                 // x = 2, y = 1 — обмен; точка с запятой на строке ВЫШЕ
 
-const { name, age } = student;            // объект — ПО ИМЕНИ
-const { name: studentName } = student;    // переименование
-const { group = "1-А" } = student;        // умолчание
-const { address: { city } } = student;    // вложенная
-const { name: n, ...others } = student;   // остаток</pre>
+const student = { name: "Аман", age: 17, address: { city: "Мары" } };
+const { name, age } = student;            // name = "Аман", age = 17 — объект ПО ИМЕНИ
+const { name: studentName } = student;    // studentName = "Аман" — переименование
+const { group = "1-А" } = student;        // group = "1-А" — умолчание
+const { address: { city } } = student;    // city = "Мары" — вложенная
+const { name: n, ...others } = student;   // others = { age: 17, address: {…} } — остаток</pre>
 
     <div class="key-point">
         У массива соответствие по позиции, имена придумываете вы. У объекта — по имени
@@ -64,8 +68,10 @@ const { name: n, ...others } = student;   // остаток</pre>
 
     <pre class="code js">function makeRow({ name, marks = [] } = {}) { }   // = {} спасает от вызова без аргументов
 
-cart.map(({ name, price }) =&gt; name + " — " + price);
+const cart = [{ name: "хлеб", price: 3.5 }, { name: "чай", price: 12 }];
+cart.map(({ name, price }) =&gt; name + " — " + price);   // ["хлеб — 3.5", "чай — 12"]
 
+const prices = { хлеб: 3.5, чай: 12 };
 for (const [key, value] of Object.entries(prices)) { }</pre>
 
     <p>Плюс к краткости: у функции с объектом-параметром <strong>порядок аргументов
@@ -80,19 +86,22 @@ for (const [key, value] of Object.entries(prices)) { }</pre>
 
     <h2>Spread — три точки раскладывают</h2>
 
-    <pre class="code js">const copy = [...marks];                    // копия массива
-const both = [...a, ...b];                  // объединение
-const merged = { ...defaults, ...given };   // правый побеждает
-const plus = { ...obj, year: 2026 };        // копия плюс свойство
+    <pre class="code js">const copy = [...marks];                    // [5, 4, 3] — копия массива
+const both = [...marks, ...[2, 1]];         // [5, 4, 3, 2, 1] — объединение
+const defaults = { city: "Мары", group: "1-А" };
+const given = { name: "Аман", city: "Ашхабад" };
+const merged = { ...defaults, ...given };   // { city: "Ашхабад", group: "1-А", name: "Аман" }
+const plus = { ...given, year: 2026 };      // копия плюс свойство
 
-Math.max(...marks);   // массив → аргументы
+Math.max(...marks);   // 5 — массив → аргументы
 [..."Аман"];          // ["А", "м", "а", "н"]</pre>
 
     <div class="remember">
         <strong>Копия поверхностная</strong> — вложенные объекты остаются общими,
         как у <code>Object.assign</code>.
-        <br>Литерал объекта нельзя начинать со строки: <code>{ ...obj };</code> прочтётся
-        как блок. Кладите результат в переменную.
+        <br>Строку нельзя начинать литералом объекта: в файле <code>{ ...obj };</code>
+        прочтётся как блок — <code>SyntaxError: Unexpected token '...'</code>. Кладите
+        результат в переменную.
     </div>
 
     <h2>Три точки: где стоят — то и делают</h2>
@@ -109,14 +118,16 @@ Math.max(...marks);   // массив → аргументы
 
     <h2>Необязательная цепочка</h2>
 
-    <pre class="code js">student.address.city;    // TypeError, если адреса нет
-student.address?.city;   // undefined, без ошибки
+    <pre class="code js">const pupil = { name: "Мерет" };   // адреса нет
+// pupil.address.city   → TypeError: Cannot read properties of undefined (reading 'city')
+pupil.address?.city;             // undefined, без ошибки
 
-student?.[key];        // свойство по переменной
-student.greet?.();     // вызов метода, которого может не быть
+const key = "name";
+pupil?.[key];                    // "Мерет" — свойство по переменной
+pupil.greet?.();                 // undefined — метода нет, вызова не было
 
-student.address?.city ?? "не указан";
-student.address?.city.length;   // undefined — вся цепочка обрывается целиком</pre>
+pupil.address?.city ?? "не указан";   // "не указан"
+pupil.address?.city.length;           // undefined — вся цепочка обрывается целиком</pre>
 
     <div class="note-box">
         <strong>Чего <code>?.</code> не делает:</strong> не спасает от опечатки в имени

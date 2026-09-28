@@ -129,16 +129,26 @@
     <pre class="code html">&lt;label for="name-field"&gt;Имя:&lt;/label&gt;
 &lt;input id="name-field" name="name"&gt;</pre>
 
+    <p>Разметка анкеты — в <code>index.html</code>, а в <code>app.js</code> — четыре строки,
+    которые нужны во всех разделах:</p>
+
+    <pre class="code js">// app.js
+const form = document.querySelector("#student-form");
+const nameInput = form.elements.name;   // как находить поля — раздел 6
+const present = form.elements.present;
+const message = document.querySelector("#message");</pre>
+
+    <p>Примеры разделов пишите в консоли. Примеры одного раздела продолжают друг друга,
+    а перед каждым новым разделом обновляйте страницу (<span class="kbd">F5</span>): анкета
+    вернётся к исходному виду, а четыре переменные из <code>app.js</code> появятся снова.</p>
+
     <h2 id="value">3. <code>value</code>: значение поля</h2>
 
     <p>Поле ввода в DOM — объект <code>HTMLInputElement</code>, ещё один уровень родословной
     из дня 25, ниже <code>HTMLElement</code>. Главное его свойство — <code>value</code>,
     то, что сейчас набрано в поле:</p>
 
-    <pre class="code js">const form = document.querySelector("#student-form");
-const nameInput = form.elements.name;   // как находить поля — раздел 6
-
-nameInput.value;          // "" — пока ничего не набрано
+    <pre class="code js">nameInput.value;          // "" — пока ничего не набрано
 nameInput.placeholder;    // "Например, Ильяс" — подсказка, не значение
 nameInput.value = "Аман"; // записать в поле из кода</pre>
 
@@ -180,9 +190,7 @@ nameInput.value;         // "Ильяс"</pre>
     <p>У флажка важно не значение, а <strong>отмечен ли он</strong>. Это свойство
     <code>checked</code>, <code>true</code> или <code>false</code>:</p>
 
-    <pre class="code js">const present = form.elements.present;
-
-present.checked;               // true — в разметке стоит атрибут checked
+    <pre class="code js">present.checked;               // true — в разметке стоит атрибут checked
 // человек снял флажок:
 present.checked;               // false
 present.hasAttribute("checked");   // true — атрибут остался!</pre>
@@ -241,9 +249,7 @@ form.elements.group.value;   // "JS-2" — value отмеченного пере
     когда изменение «принято»: человек ушёл из поля. У флажка и переключателя
     <code>change</code> приходит сразу при щелчке.</p>
 
-    <pre class="code js">const message = document.querySelector("#message");
-
-nameInput.addEventListener("input", () =&gt; {
+    <pre class="code js">nameInput.addEventListener("input", () =&gt; {
   message.textContent = `Букв: ${nameInput.value.length}`;
 });
 // набираем «Ильяс» — под формой по очереди: Букв: 1, 2, 3, 4, Букв: 5</pre>
@@ -332,8 +338,8 @@ form.addEventListener("submit", (event) =&gt; {
   event.preventDefault();
   console.log("submit", event.target.nodeName);
 });
-// щелчок по «Добавить»: click, потом submit FORM
-// Enter в поле имени:   click, потом submit FORM — браузер «щёлкнул» сам</pre>
+// щелчок по «Добавить»: click, «отправка …» из примера выше, потом submit FORM
+// Enter в поле имени:   то же самое — браузер «щёлкнул» по кнопке сам</pre>
 
     <div class="mistake">
         <code>&lt;button&gt;</code> внутри формы <strong>по умолчанию отправляет</strong> её.
@@ -390,7 +396,7 @@ form.addEventListener("submit", (event) =&gt; {
     пропало вместе со старой страницей.</p>
 
     <p><strong>Шаг 3. Чиним.</strong> Первая строка любого слушателя <code>submit</code> —
-    <code>event.preventDefault()</code>. Отправлять данные на сервер без перезагрузки мы
+    <code>event.preventDefault()</code>. Обращаться к серверу без перезагрузки страницы
     научимся на дне 31 — через <code>fetch</code>.</p>
 
     <h2 id="validate">9. Своя проверка ввода</h2>
@@ -568,7 +574,8 @@ Number("4.5");   // 4.5</pre>
     дальше работает остальная программа, и его же можно сохранить или отправить как JSON
     из дня 23:</p>
 
-    <pre class="code js">const data = {
+    <pre class="code js">// заполнили: Ильяс, «5 4 9», флажок снят, JS-2
+const data = {
   name: form.elements.name.value.trim(),
   marks: [...form.elements.marks.value].filter((ch) =&gt; ch !== " "),
   present: form.elements.present.checked,
@@ -586,7 +593,8 @@ JSON.stringify(data);
     <p>Событие <code>input</code> позволяет странице отвечать на ходу. Добавим над списком
     студентов из дня 24 поле поиска — и будем прятать тех, кто не подходит:</p>
 
-    <pre class="code html">&lt;input id="search" placeholder="Поиск"&gt;</pre>
+    <pre class="code html">&lt;input id="search" placeholder="Поиск"&gt;
+&lt;p id="count"&gt;&lt;/p&gt;</pre>
 
     <pre class="code js">const search = document.querySelector("#search");
 const items = document.querySelectorAll("#list li");
@@ -599,10 +607,12 @@ search.addEventListener("input", () =&gt; {
 });
 // «а» — Аман, Гүлнар, Сапар, Огулджан; «ман» — только Аман; «  МЕРЕТ» — Мерет</pre>
 
-    <p>Можно показать и сколько нашлось — строкой в конце того же слушателя:</p>
+    <p>Можно показать и сколько нашлось. Абзац находим один раз, а две последние строки
+    ставим в конец того же слушателя:</p>
 
-    <pre class="code js">const shown = [...items].filter((li) =&gt; !li.hidden).length;
-count.textContent = `Найдено: ${shown}`;   // count — абзац под полем поиска</pre>
+    <pre class="code js">const count = document.querySelector("#count");   // абзац под полем поиска
+const shown = [...items].filter((li) =&gt; !li.hidden).length;
+count.textContent = `Найдено: ${shown}`;</pre>
 
     <p>Здесь сошлись три модуля. Строки из дня 16: <code>trim</code>, <code>toLowerCase</code>
     и <code>includes</code> — поиск без учёта регистра и лишних пробелов. Поиск элементов
@@ -653,8 +663,8 @@ prompt("Ваше имя?", "Гость");     // "Ильяс" — ввели; ""
 
     <p><code>confirm</code> почти всегда стоит прямо в условии:</p>
 
-    <pre class="code js">if (confirm("Стереть весь список?")) {
-  list.textContent = "";
+    <pre class="code js">if (confirm("Очистить анкету?")) {
+  form.reset();
 }</pre>
 
     <p>А ответ <code>prompt</code> нужно проверить на <code>null</code> раньше всего остального,
@@ -813,14 +823,13 @@ form.addEventListener("submit", (event) =&gt; {
     </table>
 
     <p>Пять дней назад «Табель» печатал строки в консоль. Теперь это маленькое приложение:
-    данные, таблица, форма, кнопки. И расчёт внутри — тот же, что на дне 15.</p>
+    данные, таблица, форма, кнопки. И расчёт внутри — тот же, что на дне 23.</p>
 
     <h3>Где формы встретятся дальше</h3>
 
-    <p>Форма с <code>submit</code> и <code>preventDefault</code> будет в каждом оставшемся
-    проекте курса. На дне 29 — в списке дел. На дне 31 данные формы начнут уходить на сервер
-    через <code>fetch</code> — вместо той самой перезагрузки, которую мы сегодня отменили.
-    На днях 33–35 — в итоговом проекте.</p>
+    <p>Форма с <code>submit</code> и <code>preventDefault</code> вернётся уже завтра, на дне 29, —
+    в списке дел. А «Табель» сохранит свою форму и на днях 30–31, когда данные начнут
+    приходить с сервера через <code>fetch</code>.</p>
 
     <h3>Что будет завтра</h3>
 
@@ -849,16 +858,16 @@ form.addEventListener("submit", (event) =&gt; {
     </div>
 
     <div class="cheatsheet">
-        <pre class="code js">// ПОЛЯ — через форму и имя
-const form = document.querySelector("form");
-form.elements.name.value        // всегда строка; Number(...) для числа
-form.elements.present.checked   // true / false
-form.elements.group.value       // значение выбранного переключателя
-field.value = "…"               // записать; событий не будет!
+        <pre class="code js">// ПОЛЯ — через форму и имя (form, nameInput, present, message — из app.js)
+form.elements.name.value;          // всегда строка; Number(...) для числа
+form.elements.present.checked;     // true / false
+form.elements.group.value;         // значение выбранного переключателя
+nameInput.value = "Аман";          // записать; событий не будет!
 
 // СОБЫТИЯ ПОЛЕЙ
-field.addEventListener("input", …)    // на каждую букву
-field.addEventListener("change", …)   // принято: ушли из поля, щёлкнули флажок
+nameInput.addEventListener("input", () =&gt; console.log(nameInput.value));   // на каждую букву
+nameInput.addEventListener("change", () =&gt; console.log("принято"));        // ушли из поля
+present.addEventListener("change", () =&gt; console.log(present.checked));    // щёлкнули флажок
 
 // ОТПРАВКА
 form.addEventListener("submit", (event) =&gt; {
@@ -869,14 +878,14 @@ form.addEventListener("submit", (event) =&gt; {
     form.elements.name.focus();
     return;
   }
-  // … работа с данными
+  message.textContent = `Добавлен: ${name}`;   // работа с данными
   form.reset();                       // очистить
 });
 
 // ДИАЛОГИ
-alert("…")      // undefined
-confirm("…")    // true / false
-prompt("…")     // строка, "" или null</pre>
+alert("Сохранено");              // undefined
+confirm("Очистить анкету?");     // true / false
+prompt("Имя?", "Гость");         // строка, "" или null</pre>
     </div>
 
     <div class="selfcheck">

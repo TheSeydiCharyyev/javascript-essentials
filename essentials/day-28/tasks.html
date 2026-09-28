@@ -26,7 +26,7 @@
     <h1>День 28. Задания</h1>
     <p class="subtitle">Уроки 2 и 3, 90 минут. Разминка — 20 минут, основные — 50 минут, со звёздочкой — 20 минут.
     Задания 1–5, 8 и 9 делаем на анкете из лекции (папка <code>day-28</code>): разметку
-    возьмите из раздела 2 и добавьте в <code>&lt;style&gt;</code> правило
+    и <code>app.js</code> возьмите из раздела 2 и добавьте в <code>&lt;style&gt;</code> правило
     <code>.invalid { outline: 2px solid #b91c1c; }</code>. Задание 6 — на странице группы из
     прошлых дней, задание 7 — в папке <code>day-28/tabel</code>.</p>
 
@@ -252,8 +252,7 @@ fillForm(form, JSON.parse(saved));   // поля снова как были, в�
         </div>
         <p class="task-goal">собрать вместе всё, что сегодня ведёт себя неожиданно.</p>
         <p>В поле оценок набрано «5», в окне <code>prompt</code> нажмут «Отмена».</p>
-        <pre class="code js">const form = document.querySelector("#student-form");
-form.elements.name.addEventListener("input", () =&gt; console.log("input!"));
+        <pre class="code js">form.elements.name.addEventListener("input", () =&gt; console.log("input!"));
 
 console.log(form.elements.marks.value + 1);                    // 1
 console.log(form.name);                                        // 2
@@ -263,7 +262,7 @@ console.log(Number(form.elements.marks.value) + Number(""));   // 5
 console.log(prompt("Имя?").trim());                            // 6</pre>
         <div class="hint">
             Третья строка ничего не печатает сама — вопрос в том, напечатает ли что-то слушатель.
-            Падает только шестая. В пятой один из слагаемых неожиданно оказывается числом.
+            Падает только шестая. В пятой одно из слагаемых неожиданно оказывается нулём.
         </div>
         <div class="criteria">
             <ul>

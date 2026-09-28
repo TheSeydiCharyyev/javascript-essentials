@@ -32,12 +32,12 @@
 
     <h2>Поля</h2>
 
-    <pre class="code js">const form = document.querySelector("#student-form");
-
-form.elements.name.value        // "Ильяс" — всегда строка
-form.elements.present.checked   // true / false — флажок
-form.elements.group.value       // "JS-1" — выбранный переключатель группы
-form.elements.name.value = "";  // записать из кода</pre>
+    <pre class="code js">// form, nameInput, present, message — из app.js, как в лекции
+// набрали «Ильяс»:
+form.elements.name.value;        // "Ильяс" — всегда строка
+form.elements.present.checked;   // true / false — флажок
+form.elements.group.value;       // "JS-1" — выбранный переключатель группы
+form.elements.name.value = "";   // записать из кода</pre>
 
     <div class="remember">
         <code>value</code> — всегда строка: <code>"5" + 1</code> даст <code>"51"</code>.
@@ -99,15 +99,18 @@ form.elements.name.value = "";  // записать из кода</pre>
 
     <h2>Два приёма</h2>
 
-    <pre class="code js">// живой поиск: прятать тех, кто не подходит, на каждую букву
+    <pre class="code js">// живой поиск на странице группы: прятать тех, кто не подходит, на каждую букву
+const search = document.querySelector("#search");
+const items = document.querySelectorAll("#list li");
+
 search.addEventListener("input", () =&gt; {
   const query = search.value.trim().toLowerCase();
   items.forEach((li) =&gt; {
     li.hidden = !li.textContent.toLowerCase().includes(query);
   });
-});
+});</pre>
 
-// вся форма — в один объект, дальше код работает только с ним
+    <pre class="code js">// вся анкета — в один объект, дальше код работает только с ним
 const data = {
   name: form.elements.name.value.trim(),
   present: form.elements.present.checked,

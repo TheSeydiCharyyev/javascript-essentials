@@ -37,7 +37,8 @@
         его, нужен текст — этим и занимается JSON.
     </div>
 
-    <pre class="code js">const text = JSON.stringify(student);   // объект → строка
+    <pre class="code js">const student = { name: "Аман", marks: [5, 4] };
+const text = JSON.stringify(student);   // объект → строка
 const back = JSON.parse(text);          // строка → НОВЫЙ объект</pre>
 
     <div class="key-point">
@@ -73,11 +74,13 @@ JSON.stringify(undefined);           // undefined, а не строка</pre>
 
     <h2>Полезные аргументы</h2>
 
-    <pre class="code js">JSON.stringify(obj, null, 2);        // с отступами — для чтения
-JSON.stringify(obj, ["name", "age"]); // только нужные поля
+    <pre class="code js">const obj = { name: "Аман", age: 17, secret: "код" };
+JSON.stringify(obj, null, 2);         // с отступами — для чтения
+JSON.stringify(obj, ["name", "age"]); // '{"name":"Аман","age":17}' — только нужные поля
 
-JSON.parse(text, (key, value) =&gt;
-  key === "when" ? new Date(value) : value);   // оживитель</pre>
+const saved = '{"when":"2026-09-25"}';
+JSON.parse(saved, (key, value) =&gt;
+  key === "when" ? new Date(value) : value);   // оживитель: when снова дата</pre>
 
     <h2>Ошибки</h2>
 

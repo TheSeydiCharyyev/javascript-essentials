@@ -413,9 +413,11 @@ typeof store.students;   // "undefined"</pre>
     <pre class="code js">const text = store.students;
 const students = text ? JSON.parse(text) : [];</pre>
 
-    <p>Этот случай стоит запомнить: он ждёт вас на дне 31, когда хранилище станет настоящим.
-    Пустое хранилище — нормальное состояние программы при первом запуске, и падать
-    на нём она не должна.</p>
+    <p>На дне 31 хранилище станет настоящим. Там пустой ключ даёт <code>null</code>,
+    а <code>JSON.parse(null)</code> возвращает <code>null</code> без ошибки — зато
+    записанный по ошибке <code>undefined</code> превратится ровно в эту строку
+    <code>"undefined"</code>. Пустое хранилище — нормальное состояние программы при первом
+    запуске, и падать на нём она не должна.</p>
 
     <h2 id="cyclic">9. Циклическая ссылка</h2>
 
@@ -580,7 +582,7 @@ order.when instanceof Date;   // true — снова настоящая дата
             <tr>
                 <td>файлы настроек</td>
                 <td><code>package.json</code> и его родня — это обычный JSON с отступами</td>
-                <td>встречали на дне 2</td>
+                <td>в любом проекте</td>
             </tr>
         </tbody>
     </table>
@@ -746,11 +748,11 @@ console.log(line);</pre>
     <div class="result-box">
         <pre class="plain-out">Имя          Средн  Мин Макс      %  Вердикт
 --------------------------------------------------------
-Аман          4.33    3    5     75%  хорошист
-Мерет         3.33    3    4    100%  троечник
+Аман          4.33    3    5    75%  хорошист
+Мерет         3.33    3    4   100%  троечник
 Гүлнар      нет годных оценок
-Сапар         4.75    4    5    100%  отличник
-Огулджан      4.50    4    5     67%  отличник
+Сапар         4.75    4    5   100%  отличник
+Огулджан      4.50    4    5    67%  отличник
 --------------------------------------------------------</pre>
     </div>
 
@@ -800,13 +802,13 @@ console.log(line);</pre>
     (из документации, из ответа сервера, из чужого файла), разбираться в нём удобно
     не глазами, а кодом.</p>
 
-    <pre class="code js">const data = JSON.parse(text);
+    <pre class="code js">const incoming = '[{"name":"Аман","marks":[5,4]},{"name":"Мерет","marks":[3]}]';
+const data = JSON.parse(incoming);
 
-Object.keys(data);            // какие поля вообще есть
-typeof data;                  // объект или массив?
-Array.isArray(data);          // если массив — сколько в нём
-data.length;
-Object.keys(data[0]);         // какие поля у одного элемента</pre>
+typeof data;              // "object" — объект или массив?
+Array.isArray(data);      // true — значит, массив
+data.length;              // 2 — сколько в нём элементов
+Object.keys(data[0]);     // ["name", "marks"] — какие поля у одного элемента</pre>
 
     <p>Четыре строки — и структура понятна. Это то же самое чтение по слоям, что мы
     разбирали на дне 15 для чужих функций: сначала общая форма, потом подробности.</p>
@@ -814,7 +816,7 @@ Object.keys(data[0]);         // какие поля у одного элеме�
     <p>И полезная мелочь: если JSON пришёл одной длинной строкой, его легко сделать
     читаемым:</p>
 
-    <pre class="code js">console.log(JSON.stringify(JSON.parse(text), null, 2));</pre>
+    <pre class="code js">console.log(JSON.stringify(JSON.parse(incoming), null, 2));</pre>
 
     <p>Разобрали и тут же записали обратно, но уже с отступами. Тот же приём чинит
     и сжатые файлы настроек.</p>
@@ -824,28 +826,35 @@ Object.keys(data[0]);         // какие поля у одного элеме�
     <p>Соберём всё сегодняшнее в один порядок действий — им пользуются каждый раз, когда
     данные приходят извне, и он же пригодится на дне 31.</p>
 
-    <pre class="code js">// 1. проверить, что вообще что-то пришло
-if (!text) {
-  return [];
+    <pre class="code js">function readList(text) {
+  // 1. проверить, что вообще что-то пришло
+  if (!text) {
+    return [];
+  }
+
+  // 2. разобрать под защитой
+  let data;
+  try {
+    data = JSON.parse(text);
+  } catch (error) {
+    console.log("данные сломаны:", error.message);
+    return [];
+  }
+
+  // 3. проверить форму, а не только содержимое
+  if (!Array.isArray(data)) {
+    console.log("ожидали список, пришло:", typeof data);
+    return [];
+  }
+
+  // 4. и только теперь работать
+  return data.filter((item) =&gt; item &amp;&amp; item.name);
 }
 
-// 2. разобрать под защитой
-let data;
-try {
-  data = JSON.parse(text);
-} catch (error) {
-  console.log("данные сломаны:", error.message);
-  return [];
-}
-
-// 3. проверить форму, а не только содержимое
-if (!Array.isArray(data)) {
-  console.log("ожидали список, пришло:", typeof data);
-  return [];
-}
-
-// 4. и только теперь работать
-return data.filter((item) =&gt; item &amp;&amp; item.name);</pre>
+readList("");                        // [] — пусто
+readList("{");                       // [] и «данные сломаны: …»
+readList("42");                      // [] и «ожидали список, пришло: number»
+readList('[{"name":"Аман"}, {}]');   // [{ name: "Аман" }] — мусор отсеян</pre>
 
     <p>Четыре шага, и каждый закрывает свой случай: пусто, сломано, не та форма, мусор
     внутри. Пропустить можно любой — но тогда программа упадёт именно на нём, и обычно
@@ -893,8 +902,8 @@ return data.filter((item) =&gt; item &amp;&amp; item.name);</pre>
             </tr>
             <tr>
                 <td><code>JSON.parse(localStorage...)</code> без проверки</td>
-                <td>там может лежать пустота</td>
-                <td>проверить, что строка не пустая</td>
+                <td>при пустом ключе придёт <code>null</code></td>
+                <td>проверить результат до работы с ним</td>
             </tr>
         </tbody>
     </table>
@@ -918,7 +927,7 @@ return data.filter((item) =&gt; item &amp;&amp; item.name);</pre>
     <table>
         <thead><tr><th>День</th><th>Что появилось</th><th>Что это дало «Табелю»</th></tr></thead>
         <tbody>
-            <tr><td>19</td><td>массивы и их методы</td><td>оценки в списке, а не в отдельных переменных</td></tr>
+            <tr><td>19</td><td>массивы и их методы</td><td>не менялся: появились методы, на которых он держится с дня 20</td></tr>
             <tr><td>20</td><td>перебор: map, filter, reduce</td><td>все циклы исчезли</td></tr>
             <tr><td>21</td><td>объекты</td><td>студент стал одним целым, данные отделились от кода</td></tr>
             <tr><td>22</td><td>деструктуризация и spread</td><td>две функции-помощника стали не нужны</td></tr>
@@ -927,7 +936,7 @@ return data.filter((item) =&gt; item &amp;&amp; item.name);</pre>
     </table>
 
     <p>Обратите внимание на последний столбец: <strong>программа делает то же самое,
-    что на дне 15</strong>. Тот же вывод, те же числа. Менялось не поведение, а устройство —
+    что на дне 18</strong>. Тот же вывод, те же числа. Менялось не поведение, а устройство —
     и каждый раз ровно настолько, насколько позволял новый инструмент.</p>
 
     <div class="ref">
@@ -946,10 +955,11 @@ return data.filter((item) =&gt; item &amp;&amp; item.name);</pre>
 
     <div class="cheatsheet">
         <pre class="code js">// ОБЪЕКТ → СТРОКА
-JSON.stringify(obj)              // '{"name":"Аман"}'
-JSON.stringify(obj, null, 2)     // с отступами, для чтения
-JSON.stringify(obj, ["name"])    // только нужные поля
-typeof JSON.stringify(obj)       // "string"
+const obj = { name: "Аман", age: 17 };
+JSON.stringify(obj);              // '{"name":"Аман","age":17}'
+JSON.stringify(obj, null, 2);     // с отступами, для чтения
+JSON.stringify(obj, ["name"]);    // '{"name":"Аман"}' — только нужные поля
+typeof JSON.stringify(obj);       // "string"
 
 // ЧТО ТЕРЯЕТСЯ
 // функции и undefined в объекте — исчезают
@@ -958,8 +968,9 @@ typeof JSON.stringify(obj)       // "string"
 // Date — становится строкой и обратно НЕ оживает
 
 // СТРОКА → ОБЪЕКТ
-JSON.parse('{"a":1}')            // { a: 1 }
-JSON.parse(text, (k, v) =&gt; k === "when" ? new Date(v) : v)   // оживитель
+JSON.parse('{"a":1}');            // { a: 1 }
+const text = '{"when":"2026-09-25"}';
+JSON.parse(text, (k, v) =&gt; k === "when" ? new Date(v) : v);   // оживитель: when снова дата
 
 // ПРАВИЛА ФОРМАТА (строже, чем в JS)
 // ключи ТОЛЬКО в двойных кавычках
@@ -968,20 +979,20 @@ JSON.parse(text, (k, v) =&gt; k === "when" ? new Date(v) : v)   // оживит�
 // комментарии — нельзя
 
 // ОШИБКИ
-JSON.parse("{a:1}")
-// SyntaxError: Expected property name or '}' in JSON at position 1
-JSON.parse("")
-// SyntaxError: Unexpected end of JSON input
-const a = {}; a.self = a; JSON.stringify(a);
-// TypeError: Converting circular structure to JSON
+// JSON.parse("{a:1}")   → SyntaxError: Expected property name or '}' in JSON at position 1 (line 1 column 2)
+// JSON.parse("")        → SyntaxError: Unexpected end of JSON input
+// объект со ссылкой на себя → TypeError: Converting circular structure to JSON
 
 // ГЛУБОКАЯ КОПИЯ простых данных
 const clone = JSON.parse(JSON.stringify(obj));
 // методы, даты и undefined не переживут круг
 
 // ЧУЖОЙ JSON
-Object.keys(data)   Array.isArray(data)   data.length
-console.log(JSON.stringify(JSON.parse(text), null, 2));   // причесать</pre>
+const data = JSON.parse('[{"name":"Аман"}]');
+typeof data;               // "object"
+Array.isArray(data);       // true
+data.length;               // 1
+console.log(JSON.stringify(data, null, 2));   // причесать</pre>
     </div>
 
     <div class="selfcheck">

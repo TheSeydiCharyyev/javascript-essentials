@@ -321,8 +321,8 @@ percentOf(0, 0);   // 0   — и никакого NaN</pre>
 
     <p>Разделение выглядит так: одна функция считает, другая показывает.</p>
 
-    <pre class="code js">const came = countPresent(present);
-console.log("Пришло: " + came);</pre>
+    <pre class="code js">const count = countPresent(present);
+console.log("Пришло: " + count);</pre>
 
     <p>Второе следствие того же правила: <strong>функция не должна тайком менять то, что ей
     не принадлежит</strong>. Сравните:</p>
@@ -639,8 +639,8 @@ console.log(makeReport("Аман"));</pre>
     <p><strong>Первая</strong> обычно значит, что в переменной лежит не функция, а её результат.
     Одна лишняя пара скобок при сохранении — и дальше вызывать нечего:</p>
 
-    <pre class="code js">const came = countPresent([1, 0, 1]);   // в came лежит число 2
-came();                                 // TypeError: came is not a function</pre>
+    <pre class="code js">const found = countPresent([1, 0, 1]);   // в found лежит число 2
+found();                                 // TypeError: found is not a function</pre>
 
     <p>Рядом живёт её близкая родственница — опечатка в имени. Текст другой, и это подсказка:
     «не функция» значит «нашёл, но вызвать не могу», а «не определено» — «не нашёл вовсе»:</p>
@@ -659,10 +659,10 @@ came();                                 // TypeError: came is not a function</pr
   }
 }                          // ← return забыли
 
-const came = countPresent([1, 0, 1]);
-console.log(came);                        // undefined
-console.log(percentOf(came, 3));          // NaN
-console.log(`Пришло ${came} из 3`);       // "Пришло undefined из 3"</pre>
+const answer = countPresent([1, 0, 1]);
+console.log(answer);                      // undefined
+console.log(percentOf(answer, 3));        // NaN
+console.log(`Пришло ${answer} из 3`);     // "Пришло undefined из 3"</pre>
 
     <p>Обратите внимание, как ошибка расползается: сначала <code>undefined</code>, потом
     <code>NaN</code>, потом слово «undefined» прямо в тексте отчёта. Увидев <code>NaN</code>

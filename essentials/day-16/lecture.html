@@ -80,7 +80,7 @@
     <p>Начать надо с главного свойства, без которого половина методов выглядит странно.
     <strong>Строку нельзя изменить.</strong> Совсем. Попробуйте заменить первую букву:</p>
 
-    <pre class="code js">let name = "аман";
+    <pre class="code js">const name = "аман";
 name[0] = "А";
 
 console.log(name);   // "аман" — ничего не изменилось</pre>
@@ -89,7 +89,7 @@ console.log(name);   // "аман" — ничего не изменилось</p
     скажет, в чём дело:</p>
 
     <pre class="code js">"use strict";
-let name = "аман";
+const name = "аман";
 name[0] = "А";
 // TypeError: Cannot assign to read only property '0' of string 'аман'</pre>
 
@@ -101,21 +101,21 @@ name[0] = "А";
 
     <p>Как же тогда «поменять» букву? Никак — <strong>собрать новую строку</strong>:</p>
 
-    <pre class="code js">let name = "аман";
-name = "А" + name.slice(1);
+    <pre class="code js">let firstName = "аман";
+firstName = "А" + firstName.slice(1);
 
-console.log(name);   // "Аман"</pre>
+console.log(firstName);   // "Аман"</pre>
 
     <p>Отсюда правило, которое пригодится весь день: <strong>ни один метод строки не меняет
     саму строку</strong>. Все они возвращают новую, а старая остаётся как была. Поэтому
     результат метода обязательно надо куда-то положить, иначе он пропадёт:</p>
 
-    <pre class="code js">let text = "  Аман  ";
-text.trim();          // вернуло "Аман", но никуда не записали
-console.log(text);    // "  Аман  " — как было
+    <pre class="code js">let input = "  Аман  ";
+input.trim();           // вернуло "Аман", но никуда не записали
+console.log(input);     // "  Аман  " — как было
 
-text = text.trim();   // вот так правильно
-console.log(text);    // "Аман"</pre>
+input = input.trim();   // вот так правильно
+console.log(input);     // "Аман"</pre>
 
     <h3>Отсюда — цепочки</h3>
 
@@ -947,8 +947,8 @@ console.log(line);</pre>
 
     <div class="cheatsheet">
         <pre class="code js">// СТРОКА НЕ МЕНЯЕТСЯ — все методы возвращают новую
-let text = "  Аман  ";
-text = text.trim();   // без присваивания результат пропадёт
+let input = "  Аман  ";
+input = input.trim();   // без присваивания результат пропадёт
 
 // ДЛИНА И СИМВОЛЫ
 const name = "Гүлнар";

@@ -397,13 +397,13 @@ percent.toFixed(1);                    // "71.4" — только для пок�
 
     <pre class="code js">const prices = [10.10, 20.20, 30.30];
 
-let sum = 0;
+let bill = 0;
 for (const p of prices) {
-  sum += p;
+  bill += p;
 }
 
-sum;             // 60.599999999999994
-sum === 60.6;    // false</pre>
+bill;             // 60.599999999999994
+bill === 60.6;    // false</pre>
 
     <p><strong>Шаг 1. Смотрим на само число.</strong> Не на <code>toFixed</code>, а на то,
     что лежит в переменной. <code>toFixed(2)</code> показал бы <code>"60.60"</code>

@@ -49,7 +49,7 @@
         <div class="criteria">
             <ul>
                 <li>три переменные, три разных способа поиска;</li>
-                <li>оба сравнения дали <code>true</code>;</li>
+                <li>все три сравнения дали <code>true</code>;</li>
                 <li>записано, что вернул <code>nodeName</code> и почему большими буквами;</li>
                 <li>объяснено, почему в <code>getElementById</code> решётка не нужна,
                     а в селекторе обязательна.</li>
@@ -64,14 +64,14 @@
         </div>
         <p class="task-goal">научиться предсказывать, что найдёт селектор.</p>
         <p>Сначала на бумаге запишите, сколько элементов найдёт каждый селектор. Потом проверьте:</p>
-        <pre class="code js">const selectors = ["li", ".absent", "li:not(.absent)", "p", ".note", "nav a", "body *"];
+        <pre class="code js">const selectors = ["li", ".absent", "li:not(.absent)", "p", ".note", "nav a", "main *"];
 
 selectors.forEach((sel) =&gt; {
   console.log(sel, document.querySelectorAll(sel).length);
 });</pre>
         <div class="hint">
-            <code>*</code> — любой элемент, а <code>body *</code> — любой элемент внутри
-            <code>body</code>. Посчитайте по схеме дерева из лекции, сам <code>body</code>
+            <code>*</code> — любой элемент, а <code>main *</code> — любой элемент внутри
+            <code>main</code>. Посчитайте по схеме дерева из лекции, сам <code>main</code>
             в ответ не входит.
         </div>
         <div class="criteria">
@@ -91,7 +91,7 @@ selectors.forEach((sel) =&gt; {
             <div class="task-meta"><span class="badge badge-easy">Легко</span><span class="badge badge-time">7 мин</span></div>
         </div>
         <p class="task-goal">увидеть текстовые узлы из пробелов и найти закономерность.</p>
-        <pre class="code js">["#list", "nav", "body", "header"].forEach((sel) =&gt; {
+        <pre class="code js">["#list", "nav", "footer", "header"].forEach((sel) =&gt; {
   const el = document.querySelector(sel);
   console.log(sel, el.childNodes.length, el.children.length);
 });</pre>
@@ -284,6 +284,7 @@ path(document.body);                       // "BODY"</pre>
             <div class="task-meta"><span class="badge badge-hard">Сложно</span><span class="badge badge-time">10 мин</span></div>
         </div>
         <p class="task-goal">собрать вместе всё, что сегодня ведёт себя неожиданно.</p>
+        <p>Запускайте фрагменты по одному: вставляйте в консоль каждый отдельно.</p>
         <pre class="code js">// 1
 console.log(document.getElementById("#list"));
 

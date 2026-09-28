@@ -148,7 +148,7 @@ document.title;    // ReferenceError: document is not defined</pre>
 
     <p>Код из примеров пишите в <code>app.js</code> или прямо в консоли этой страницы —
     консоль видит тот же <code>document</code>. Строка со <code>&lt;script&gt;</code>
-    знакома по дням 1 и 2, а зачем в ней <code>defer</code>, увидим в разделе 5.</p>
+    знакома по дням 1 и 2, а что будет без <code>defer</code>, проверим в разделе 5.</p>
 
     <div class="pro-tip">
         Щёлкните правой кнопкой по пункту списка и выберите «Просмотреть код» — элемент
@@ -320,8 +320,8 @@ document.title;   // "Группа JS-1 — 5 студентов"</pre>
 
     <h3>Почему без <code>defer</code> ничего не находится</h3>
 
-    <p>На дне 1 мы обещали разобрать, почему скрипт без <code>defer</code> не видит
-    элементов. Уберите <code>defer</code>:</p>
+    <p>На дне 1 скрипт без <code>defer</code> падал, а на дне 2 мы узнали почему.
+    Проверим — уберите <code>defer</code>:</p>
 
     <pre class="code html">&lt;head&gt;
   &lt;meta charset="UTF-8"&gt;
@@ -593,6 +593,9 @@ document.querySelector(".absent").remove();   // день 26: убрать эл�
 live.length;       // 1 — живая коллекция следит за страницей
 snapshot.length;   // 2 — снимок помнит, как было</pre>
 
+    <p>Опыт удалил Мерет — обновите страницу (<span class="kbd">F5</span>), а в
+    <code>app.js</code> сотрите строку с <code>remove</code>: дальше нужны все пятеро.</p>
+
     <table>
         <thead><tr><th>Способ</th><th>Что передать</th><th>Что вернёт</th><th>Живой?</th></tr></thead>
         <tbody>
@@ -768,24 +771,24 @@ list.children.length;       // 5</pre>
     <pre class="code js">[...list.childNodes].filter((node) =&gt; node.nodeType === Node.ELEMENT_NODE).length;   // 5</pre>
 
     <p>Разница хорошо видна в цикле <code>while</code> из дня 10 — так обходит соседей
-    пример MDN со страницы <code>nodeName</code>:</p>
+    пример MDN со страницы <code>nodeName</code> (там — от <code>body</code>):</p>
 
-    <pre class="code js">let node = document.body.firstChild;
+    <pre class="code js">let node = document.querySelector("header").firstChild;
 while (node) {
   console.log(node.nodeName);
   node = node.nextSibling;
 }
-// #text HEADER #text MAIN #text FOOTER #text</pre>
+// #text H1 #text NAV #text</pre>
 
-    <pre class="code js">let el = document.body.firstElementChild;
+    <pre class="code js">let el = document.querySelector("header").firstElementChild;
 while (el) {
   console.log(el.nodeName);
   el = el.nextElementSibling;
 }
-// HEADER MAIN FOOTER</pre>
+// H1 NAV</pre>
 
     <p>Цикл кончается сам: у последнего соседа следующего нет, переход возвращает
-    <code>null</code>, а <code>null</code> в условии ложен. Узлов семь, элементов три.</p>
+    <code>null</code>, а <code>null</code> в условии ложен. Узлов пять, элементов два.</p>
 
     <h2 id="closest">13. <code>matches</code> и <code>closest</code></h2>
 
@@ -897,10 +900,13 @@ printTree(document.body);</pre>
       LI
     P
   FOOTER
-    P</pre>
+    P
+  SCRIPT</pre>
     </div>
 
-    <p>Это дерево из раздела 3, только лёжа, а порядок строк — порядок дерева.</p>
+    <p>Это дерево из раздела 3, только лёжа, а порядок строк — порядок дерева.
+    Строку <code>SCRIPT</code> добавил Live Server: он вставляет свой скрипт, как на дне 2.
+    Открыв файл двойным щелчком, вы её не увидите.</p>
 
     <p>Одним циклом тут не обойтись: глубина дерева заранее неизвестна — у <code>h1</code>
     она одна, у ссылок в <code>nav</code> другая. Рекурсия опускается ровно настолько,
@@ -908,7 +914,7 @@ printTree(document.body);</pre>
     это и есть условие выхода из дня 12.</p>
 
     <p>Сверить результат можно встроенным средством: селектор <code>*</code> означает
-    «любой элемент», и <code>document.body.querySelectorAll("*").length</code> даёт 15 —
+    «любой элемент», и <code>document.body.querySelectorAll("*").length</code> даёт 16 —
     ровно столько строк под <code>BODY</code> в выводе.</p>
 
     <h2 id="tabel">15. «Табель» на странице</h2>
@@ -992,7 +998,7 @@ document.title = `Табель: ${reports.length} студентов`;</pre>
         На вкладке: «Табель: 5 студентов».
     </div>
 
-    <p>Числа те же, что на дне 15. Вчерашнее правило «считаем в данных, форматируем
+    <p>Числа те же, что на дне 23. Вчерашнее правило «считаем в данных, форматируем
     в конце» окупилось сразу: способ показа сменился, а <code>makeReport</code> этого
     даже не заметила.</p>
 
@@ -1108,36 +1114,43 @@ rows[5].children;   // TypeError: Cannot read properties of undefined (reading '
 
     <div class="cheatsheet">
         <pre class="code js">// НАЙТИ ОДИН — элемент или null
-document.getElementById("title")        // id без решётки
-document.querySelector("#title")        // любой селектор
-document.querySelector(".student")      // класс — с точкой!
+document.getElementById("title");     // id без решётки
+document.querySelector("#title");     // любой селектор
+document.querySelector(".student");   // класс — с точкой!
 
 // НАЙТИ ВСЕ — NodeList, пустой, если нет
-document.querySelectorAll("li.absent")  // снимок
-list.length   list[0]   list.item(0)
-list.forEach(...)   for (const el of list)
-[...list].map(...)                      // map — только у массива
+const found = document.querySelectorAll("li.absent");   // снимок
+found.length;                         // 2
+found[0] === found.item(0);           // true
+found.forEach((li) =&gt; console.log(li));
+for (const li of found) console.log(li);
+[...found].map((li) =&gt; li.nodeName);  // ["LI", "LI"] — map только у массива
 
 // ИСКАТЬ ВНУТРИ ЭЛЕМЕНТА
-main.querySelector("p")   main.querySelectorAll("p")
+const main = document.querySelector("main");
+main.querySelectorAll("p").length;    // 1
 
 // ХОДИТЬ ПО ЭЛЕМЕНТАМ (null на краю)
-el.parentElement   el.children
-el.firstElementChild   el.lastElementChild
-el.previousElementSibling   el.nextElementSibling
+const list = document.getElementById("list");
+list.parentElement === main;          // true
+list.children.length;                 // 5
+list.firstElementChild.nextElementSibling === found[0];   // true
+list.lastElementChild.nextElementSibling;                 // null
 
 // ХОДИТЬ ПО УЗЛАМ (с текстом из пробелов)
-el.parentNode   el.childNodes   el.firstChild   el.nextSibling
+list.childNodes.length;               // 11
+list.firstChild.nodeName;             // "#text"
 
 // ПРОВЕРИТЬ
-el.matches(".absent")                   // true / false
-el.closest("main")                      // сам или предок, иначе null
-body.contains(el)                       // внутри?
-el.nodeName    // "LI" — большими буквами
-el.nodeType    // 1 элемент, 3 текст, 9 документ
+found[0].matches(".absent");          // true
+found[0].closest("main") === main;    // true — сам или предок, иначе null
+document.body.contains(list);         // true — внутри
+list.nodeName;                        // "UL" — большими буквами
+list.nodeType;                        // 1 элемент, 3 текст, 9 документ
 
 // ДОКУМЕНТ
-document.body   document.head   document.title = "новый заголовок"</pre>
+document.head;                        // &lt;head&gt;…&lt;/head&gt;
+document.title = "новый заголовок";</pre>
     </div>
 
     <div class="selfcheck">

@@ -66,7 +66,7 @@
     </table>
 
     <p>Правый щелчок не даёт <code>click</code> — только <code>mousedown</code>,
-    <code>mouseup</code> и <code>contextmenu</code>. Клавиши приходят элементу в фокусе,
+    <code>mouseup</code>, <code>auxclick</code> и <code>contextmenu</code>. Клавиши приходят элементу в фокусе,
     а без фокуса — <code>body</code>, поэтому клавиши страницы слушают у <code>document</code>.</p>
 
     <h2>Всплытие и делегирование</h2>
@@ -88,8 +88,12 @@
 
     <h2>Остановить и отменить</h2>
 
-    <pre class="code js">event.stopPropagation();   // дальше к предкам не пойдёт
-event.preventDefault();    // браузер не сделает своё: переход по ссылке, меню, отправку формы</pre>
+    <pre class="code js">const link = document.querySelector('a[href="#info"]');
+
+link.addEventListener("click", (event) =&gt; {
+  event.stopPropagation();   // дальше к предкам не пойдёт
+  event.preventDefault();    // браузер не сделает своё: переход по ссылке, меню, отправку формы
+});</pre>
 
     <p>Это разные вещи: <code>preventDefault</code> не мешает всплытию, <code>stopPropagation</code>
     не отменяет действия браузера. Останавливать всплытие приходится редко: оно ломает
@@ -97,7 +101,11 @@ event.preventDefault();    // браузер не сделает своё: пе�
 
     <h2>Снять, загрузка, события из кода</h2>
 
-    <pre class="code js">button.removeEventListener("click", greet);    // только ТА ЖЕ функция
+    <pre class="code js">function greet(event) {
+  console.log("нажали:", event.type);
+}
+
+button.removeEventListener("click", greet);    // только ТА ЖЕ функция
 button.addEventListener("click", greet, { once: true });   // один раз
 button.onclick = greet;                        // старый способ: место одно
 

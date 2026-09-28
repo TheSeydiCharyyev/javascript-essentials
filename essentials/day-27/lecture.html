@@ -93,6 +93,10 @@ button.addEventListener("click", () =&gt; {
     теперь можно делать <strong>в ответ</strong> на действие человека: находить (день 24),
     менять (день 25), создавать и удалять (день 26).</p>
 
+    <p>Этот код положите в <code>app.js</code>, а примеры разделов пишите в консоли. Примеры
+    одного раздела продолжают друг друга, а перед каждым новым разделом обновляйте страницу
+    (<span class="kbd">F5</span>): останется только слушатель из <code>app.js</code>.</p>
+
     <p>Функцию, которая отвечает на событие, называют <strong>слушателем</strong> или
     <strong>обработчиком</strong>. Она ждёт своего часа: строка с
     <code>addEventListener</code> выполняется сразу, а сама функция — только при щелчке,
@@ -146,7 +150,7 @@ button.addEventListener("click", greet);   // функцию передаём, �
 
     <pre class="code js">button.addEventListener("click", () =&gt; console.log("A"));
 button.addEventListener("click", () =&gt; console.log("B"));
-// щелчок: A, потом B
+// щелчок: «нажали: click» от greet выше, потом A, потом B
 
 button.addEventListener("click", greet);
 button.addEventListener("click", greet);   // greet уже есть — второй раз не добавится</pre>
@@ -165,7 +169,7 @@ button.addEventListener("click", greet);   // greet уже есть — втор
     <p><strong>Шаг 2. Слушатель повешен?</strong> В консоли Chrome есть помощник, который
     показывает слушателей элемента. Это возможность самого Chrome, а не языка:</p>
 
-    <pre class="code js">getEventListeners(button);   // {click: Array(1)} — один слушатель click на месте</pre>
+    <pre class="code js">getEventListeners(button);   // {click: Array(4)} — из app.js, greet, A и B</pre>
 
     <p>То же видно во вкладке Elements, на панели Event Listeners справа.</p>
 
@@ -259,7 +263,8 @@ button.addEventListener("click", (event) =&gt; {
     <pre class="code js">document.addEventListener("keydown", (event) =&gt; {
   console.log(event.key, event.code);
 });
-// a → "a" "KeyA"      Shift+A → "A" "KeyA"      1 → "1" "Digit1"
+// a → "a" "KeyA"      1 → "1" "Digit1"
+// Shift+A → сначала "Shift" "ShiftLeft", потом "A" "KeyA"
 // Enter → "Enter" "Enter"      Пробел → " " "Space"      Esc → "Escape" "Escape"</pre>
 
     <p>Два свойства отвечают на разные вопросы. <code>key</code> — <strong>что напечатано</strong>:
@@ -357,9 +362,8 @@ info.addEventListener("keydown", () =&gt; console.log("абзац услышал
     <p>На самом деле путь двусторонний. Сначала событие спускается от <code>window</code> к цели —
     это <strong>перехват</strong>, потом приходит на цель, потом поднимается обратно —
     <strong>всплытие</strong>. Обычный слушатель срабатывает на цели и при всплытии.
-    Чтобы поймать событие ещё на спуске, передают третий аргумент:</p>
-
-    <pre class="code js">list.addEventListener("click", handler, { capture: true });</pre>
+    Чтобы поймать событие ещё на спуске, передают третий аргумент —
+    <code>{ capture: true }</code>.</p>
 
     <p>Проверим на щелчке по Аману, повесив слушатель на каждого предка. Номер в скобках —
     свойство <code>event.eventPhase</code>: 1 — перехват, 2 — цель, 3 — всплытие.</p>
@@ -464,7 +468,8 @@ list.addEventListener("click", (event) =&gt; {
     <p>Зачем здесь <code>closest</code>, а не просто <code>event.target</code>? Внутри пункта
     может оказаться вложенный элемент — жирное имя, значок, кнопка. Тогда <code>target</code>
     будет он, а <code>closest("li")</code> всё равно поднимется до пункта. Так день 24
-    и обещал: «щелчок часто попадает во вложенный элемент, и <code>closest</code> найдёт пункт».</p>
+    и обещал: «щелчок часто попадает во вложенный элемент, и <code>closest("li")</code> найдёт
+    пункт, по которому щёлкнули».</p>
 
     <p>А <code>if (!li) return</code> нужен на случай щелчка по самому списку мимо пунктов —
     по отступу между ними: тогда <code>closest("li")</code> вернёт <code>null</code>.
@@ -491,20 +496,24 @@ list.append(ilyas);
     Остальные слушатели <strong>того же</strong> элемента всё равно сработают.
     <code>stopImmediatePropagation()</code> останавливает и их.</p>
 
-    <pre class="code js">li.addEventListener("click", (event) =&gt; {
+    <pre class="code js">const li = document.querySelector("li");   // Аман
+
+li.addEventListener("click", (event) =&gt; {
   console.log("li-1");
   event.stopPropagation();
 });
 li.addEventListener("click", () =&gt; console.log("li-2"));
 list.addEventListener("click", () =&gt; console.log("ul"));
-// щелчок: li-1, li-2 — а до ul не дошло</pre>
+// щелчок по Аману: li-1, li-2 — а до ul не дошло</pre>
 
-    <pre class="code js">li.addEventListener("click", (event) =&gt; {
+    <pre class="code js">const meret = document.querySelector(".absent");
+
+meret.addEventListener("click", (event) =&gt; {
   console.log("li-1");
   event.stopImmediatePropagation();
 });
-li.addEventListener("click", () =&gt; console.log("li-2"));
-// щелчок: только li-1 — ни соседний слушатель, ни предки</pre>
+meret.addEventListener("click", () =&gt; console.log("li-2"));
+// щелчок по Мерет: только li-1 — ни соседний слушатель, ни предки</pre>
 
     <div class="important">
         Останавливать всплытие приходится редко, и почти всегда это ломает что-то другое:
@@ -572,7 +581,7 @@ button.removeEventListener("click", () =&gt; console.log("стрелка"));   /
     объекта не равны). Поэтому слушателя, которого придётся снимать, делают именованной
     функцией или держат в переменной:</p>
 
-    <pre class="code js">const onClick = () =&gt; console.log("стрелка");
+    <pre class="code js">const onClick = () =&gt; console.log("onClick");
 button.addEventListener("click", onClick);
 button.removeEventListener("click", onClick);   // снят: это та же самая функция</pre>
 
@@ -588,11 +597,10 @@ button.removeEventListener("click", onClick);   // снят: это та же с
     <pre class="code js">button.onclick = () =&gt; console.log("onclick 1");
 button.onclick = () =&gt; console.log("onclick 2");      // заменил первый!
 button.addEventListener("click", () =&gt; console.log("listener"));
-// щелчок: onclick 2, listener
+// щелчок: onclick 2, listener</pre>
 
-button.onclick = null;   // убрать — просто записать null</pre>
-
-    <p>У свойства место <strong>одно</strong>: новая функция вытесняет старую. Слушатели
+    <p>У свойства место <strong>одно</strong>: новая функция вытесняет старую, а убрать её —
+    записать <code>null</code>: <code>button.onclick = null</code>. Слушатели
     <code>addEventListener</code> независимы и друг другу не мешают — поэтому MDN называет
     его рекомендуемым способом. Третий вариант — атрибут в разметке:</p>
 
@@ -787,8 +795,20 @@ document.addEventListener("keydown", (event) =&gt; {
 
     <p><strong>Делегирование.</strong> Слушатель один — на <code>tbody</code>, а не по
     одному на каждую кнопку. Щелчок по кнопке всплывает до тела таблицы, и
-    <code>closest(".delete")</code> отвечает, была ли это кнопка. Строки, добавленные позже
-    из консоли, как шестой студент вчера, обслуживаются сами.</p>
+    <code>closest(".delete")</code> отвечает, была ли это кнопка. Строки, добавленные позже,
+    обслуживаются сами — если студента добавить и в данные, и на страницу:</p>
+
+    <pre class="code js">const ilyas = makeReport({ name: "Ильяс", marks: [5, 5, "4"] });
+reports.push(ilyas);                             // в данные
+tbody.append(addDeleteButton(makeRow(ilyas)));   // и на страницу
+updateSummary();                                 // на странице: «Отличников: 3 из 6»</pre>
+
+    <div class="mistake">
+        Вчерашний способ — только <code>tbody.append(…)</code> — здесь подводит. У новой строки
+        нет пары в <code>reports</code>, <code>findIndex</code> вернёт <code>-1</code>, а
+        <code>reports.splice(-1, 1)</code> молча удалит последнего студента — Огулджан.
+        Строка Ильяса уйдёт, а итог соврёт: строк пять, а на странице «Отличников: 1 из 4».
+    </div>
 
     <p><strong>Две ветки одного слушателя.</strong> Щелчок по кнопке удаляет строку, щелчок
     по любому другому месту строки переключает выделение. <code>return</code> после удаления
@@ -897,35 +917,45 @@ document.addEventListener("keydown", (event) =&gt; {
 
     <div class="cheatsheet">
         <pre class="code js">// ПОДПИСАТЬСЯ — функцию передаём, не вызываем
-el.addEventListener("click", handler)
-el.addEventListener("click", handler, { once: true })     // один раз
-el.addEventListener("click", handler, { capture: true })  // на спуске
-el.removeEventListener("click", handler)                  // та же функция!
+function greet(event) { console.log("нажали:", event.type); }
+const list = document.querySelector("#list");
+button.addEventListener("click", greet);
+button.removeEventListener("click", greet);                 // та же функция!
+button.addEventListener("click", greet, { once: true });    // один раз
+list.addEventListener("click", greet, { capture: true });   // на спуске
 
-// ОБЪЕКТ СОБЫТИЯ
-event.type   event.target   event.currentTarget   event.isTrusted
-event.clientX   event.clientY   event.button          // мышь: 0 левая, 2 правая
-event.key    // "a", "A", "ф", "Enter" — что напечатано
-event.code   // "KeyA" — какая клавиша физически
+// ОБЪЕКТ СОБЫТИЯ — внутри слушателя
+document.addEventListener("keydown", (event) =&gt; {
+  console.log(event.type, event.target.nodeName, event.isTrusted);
+  console.log(event.key, event.code);   // "a" "KeyA": что напечатано и какая клавиша
+});
+button.addEventListener("mousedown", (event) =&gt; {
+  console.log(event.clientX, event.clientY, event.button);   // 0 левая, 1 колесо, 2 правая
+});
 
 // ВСПЛЫТИЕ И ДЕЙСТВИЯ
-event.stopPropagation()   // дальше вверх не пойдёт
-event.preventDefault()    // браузер не сделает своё (ссылка, форма)
+const link = document.querySelector('a[href="#info"]');
+link.addEventListener("click", (event) =&gt; {
+  event.preventDefault();    // браузер не сделает своё: ссылка, форма
+  event.stopPropagation();   // дальше вверх не пойдёт
+});
 
 // ДЕЛЕГИРОВАНИЕ — один слушатель на родителе
 list.addEventListener("click", (event) =&gt; {
   const li = event.target.closest("li");
   if (!li) return;
-  // … работаем с li
+  console.log(event.currentTarget.nodeName, li.textContent);   // "UL" и имя
 });
 
 // ЗАГРУЗКА
-document.addEventListener("DOMContentLoaded", …)   // дерево готово
-window.addEventListener("load", …)                 // и картинки тоже
+document.addEventListener("DOMContentLoaded", () =&gt; console.log("дерево готово"));
+window.addEventListener("load", () =&gt; console.log("и картинки тоже"));
 
 // ИЗ КОДА
-el.click()   el.focus()   el.blur()
-el.dispatchEvent(new Event("hello", { bubbles: true }))</pre>
+button.click();
+button.focus();
+button.blur();
+button.dispatchEvent(new Event("hello", { bubbles: true }));</pre>
     </div>
 
     <div class="selfcheck">

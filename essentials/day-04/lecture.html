@@ -109,6 +109,9 @@ console.log(price * count * days);</pre>
     то место, где новички теряют больше всего времени: переменная «есть», но почему-то не видна, или
     видна, но пустая. К концу урока обе ситуации станут предсказуемыми.</p>
 
+    <p>Примеры одного раздела продолжают друг друга, а перед каждым новым разделом обновляйте
+    страницу (<span class="kbd">F5</span>): имена из прошлых разделов пропадут и не помешают новым.</p>
+
     <h2 id="declare">2. Объявление и инициализация</h2>
 
     <p>В строке <code>let score = 42;</code> две разные вещи, и у каждой своё название:</p>
@@ -299,8 +302,8 @@ user.age = 17;             // и добавить свойство можно</p
     <div class="pro-tip">
         Если нужно запретить и содержимое, есть <code>Object.freeze(объект)</code>. Правда, в обычном
         режиме попытка изменить замороженный объект просто <em>молча ничего не делает</em>, а ошибку
-        <code>TypeError: Cannot assign to read only property</code> вы увидите только в строгом режиме.
-        Строгий режим — тема курса 3, а <code>freeze</code> пригодится уже в проектах.
+        <code>TypeError: Cannot assign to read only property 'x' of object '#&lt;Object&gt;'</code> вы увидите только в строгом режиме.
+        Строгий режим — тема курса 2, а <code>freeze</code> пригодится уже в проектах.
     </div>
 
     <h2 id="block">6. Блок — это фигурные скобки</h2>
@@ -451,9 +454,11 @@ console.log(withTax(100));      // 105</pre>
 
     <pre class="code js">var total = 100;
 var total = 5;      // ни ошибки, ни предупреждения
-console.log(total); // 5
+console.log(total); // 5</pre>
 
-let sum = 100;
+    <p>С <code>let</code> так не выйдет — файл с такими строками не запустится вовсе:</p>
+
+    <pre class="code js">let sum = 100;
 let sum = 5;        // SyntaxError: Identifier 'sum' has already been declared</pre>
 
     <p>В файле на двести строк такое случается легко, и <code>let</code> тут работает как страховка.</p>
@@ -507,7 +512,9 @@ for (let i = 0; i &lt; items.length; i++) {
     <h2 id="tdz">9. Обращение до объявления</h2>
 
     <p>Что будет, если обратиться к переменной раньше строки, где она объявлена? Ответ зависит от слова,
-    которым её объявили, и это четвёртое отличие <code>var</code>.</p>
+    которым её объявили, и это четвёртое отличие <code>var</code>. Примеры этого раздела
+    запускайте из <code>app.js</code>, по одному: консоль Chrome выполняет код иначе и вместо
+    ответов ниже часто покажет просто <code>is not defined</code>.</p>
 
     <pre class="code js">console.log(bar);   // undefined — var ведёт себя тихо
 var bar = 1;
@@ -587,12 +594,12 @@ function greet(name) {
     <p>А вот функция, положенная в переменную, подчиняется правилам переменной — и потому так не умеет:</p>
 
     <pre class="code js">hi();                         // ReferenceError: Cannot access 'hi' before initialization
-const hi = () =&gt; "салам";
+const hi = () =&gt; "салам";</pre>
 
-hi2();                        // TypeError: hi2 is not a function
+    <pre class="code js">hi2();                        // TypeError: hi2 is not a function
 var hi2 = function () { };    // var поднял имя, но значение ещё не присвоено</pre>
 
-    <p>Обратите внимание на разные ошибки в последнем примере. С <code>const</code> движок говорит
+    <p>Обратите внимание на разные ошибки в двух последних примерах. С <code>const</code> движок говорит
     «нельзя трогать», с <code>var</code> — «это не функция»: имя-то уже есть, в нём лежит
     <code>undefined</code>, а вызвать <code>undefined</code> нельзя. Сами функции разбираем на днях 12–15,
     здесь важно одно: <strong>поднимается только запись через <code>function</code></strong>.</p>
@@ -633,7 +640,7 @@ console.log(total);      // 0 — а мы ждали 5</pre>
 
     <p>В строгом режиме язык такое уже запрещает и бросает
     <code>ReferenceError: totl is not defined</code>. Строгий режим включается строкой
-    <code>"use strict";</code> и сам собой действует внутри модулей; подробно — в курсе 3.</p>
+    <code>"use strict";</code> и сам собой действует внутри модулей; подробно — в курсе 2.</p>
 
     <p>Как такую ошибку ловят на практике, если строгий режим не включён? Есть три приёма, и все три
     вам пригодятся:</p>
@@ -687,8 +694,8 @@ console.log(total);      // 0 — а мы ждали 5</pre>
                 <td>присваивание необъявленной (только в строгом режиме)</td>
             </tr>
             <tr>
-                <td><code>Object.freeze(o); o.x = 2;</code></td>
-                <td><code>TypeError: Cannot assign to read only property</code></td>
+                <td><code>const o = Object.freeze({ x: 1 }); o.x = 2;</code></td>
+                <td><code>TypeError: Cannot assign to read only property 'x' of object '#&lt;Object&gt;'</code></td>
                 <td>свойство только для чтения (только в строгом режиме)</td>
             </tr>
         </tbody>
@@ -867,12 +874,12 @@ console.log(`${student.name}: ${score.toFixed(2)} — ${verdict}`);</pre>
     </div>
 
     <p>Последний кусок — самый важный на сегодня. Посмотрите, что будет, если объявить
-    <code>verdict</code> внутри условия:</p>
+    вердикт внутри условия. Назовём его <code>grade</code>, чтобы не столкнуться с <code>verdict</code> выше:</p>
 
     <pre class="code js">if (score &gt;= MIN_GOOD) {
-  const verdict = "хорошо";     // объявили ВНУТРИ блока
+  const grade = "хорошо";       // объявили ВНУТРИ блока
 }
-console.log(verdict);           // ReferenceError: verdict is not defined</pre>
+console.log(grade);             // ReferenceError: grade is not defined</pre>
 
     <p>Переменная родилась и умерла внутри скобок. Отсюда приём, которым пользуются каждый день:
     <strong>если значение нужно после блока — объявите его до блока</strong> через <code>let</code>,
@@ -961,22 +968,22 @@ console.log(verdict);           // ReferenceError: verdict is not defined</pre>
 let count = 0;           // если значение меняется
 var old = 1;             // никогда
 
-let x;                   // без значения -> undefined
-const y;                 // SyntaxError: нужен инициализатор
+let empty;               // без значения -&gt; undefined
+// const y;              → SyntaxError: Missing initializer in const declaration
 
 // const держит имя, а не содержимое
-const a = [1, 2];
-a.push(3);               // можно
-a = [];                  // TypeError
+const list = [1, 2];
+list.push(3);            // можно
+// list = [];            → TypeError: Assignment to constant variable.
 
 // граница видимости
-if (true) { let b = 1; var c = 2; }
-b;                       // ReferenceError
-c;                       // 2 — var не знает про блок
+if (true) { let inner = 1; var outer = 2; }
+outer;                   // 2 — var не знает про блок
+// inner;                → ReferenceError: inner is not defined
 
-// обращение до объявления
+// обращение до объявления (в app.js)
 console.log(m);  var m = 1;    // undefined
-console.log(n);  let n = 1;    // ReferenceError
+// console.log(n);  let n = 1; → ReferenceError: Cannot access 'n' before initialization
 
 // имена
 const MAX_SCORE = 5;     // настройка

@@ -133,7 +133,8 @@
 &lt;/html&gt;</pre>
 
     <p>Экспериментируйте смело: код меняет DOM, а не файл, поэтому
-    <span class="kbd">F5</span> вернёт страницу к исходному виду.</p>
+    <span class="kbd">F5</span> вернёт страницу к исходному виду. Примеры одного раздела
+    продолжают друг друга, а перед каждым новым разделом обновляйте страницу.</p>
 
     <h2 id="element">2. <code>Element</code> и <code>HTMLElement</code></h2>
 
@@ -544,7 +545,7 @@ document.querySelector("li").id;   // "" — у пункта id нет, пуст
     <pre class="code js">const first = document.querySelector("nav a");
 
 first.getAttribute("href");   // "#list" — как записано в разметке
-first.href;                   // "file:///C:/…/index.html#list" — полный адрес</pre>
+first.href;                   // "http://127.0.0.1:5500/index.html#list" — полный адрес</pre>
 
     <p>Правило: <strong>есть свойство — берите свойство</strong>, оно короче и понятнее.
     <code>getAttribute</code> нужен для атрибутов без свойства и когда важно именно то,
@@ -586,9 +587,9 @@ meret.className;            // "star" — …а student и absent пропали
 
 meret.classList;                      // DOMTokenList(2) ['student', 'absent', value: 'student absent']
 meret.classList.contains("absent");   // true
-meret.classList.add("star");          // "student absent star"
+meret.classList.add("star");          // классы: student absent star
 meret.classList.add("star");          // повтор не добавится
-meret.classList.remove("star");       // "student absent"</pre>
+meret.classList.remove("star");       // классы снова: student absent</pre>
 
     <p><code>toggle</code> переключает: класс был — убирает и отвечает <code>false</code>,
     не было — добавляет и отвечает <code>true</code>. Второй аргумент делает
@@ -928,35 +929,45 @@ document.querySelectorAll("tr.excellent").length;          // 2</pre>
 
     <div class="cheatsheet">
         <pre class="code js">// ТЕКСТ
-el.textContent = "текст"     // по умолчанию; теги останутся буквами
-el.innerText                 // текст как на экране, без спрятанного
-el.textContent = ""          // очистить элемент
+const info = document.querySelector("#info");
+info.textContent;                     // "Занятия: пн, ср, пт" — без тегов
+info.innerText;                       // текст как на экране, без спрятанного
+info.textContent = "&lt;b&gt;пн&lt;/b&gt;";       // теги останутся буквами
+info.textContent = "";                // очистить элемент
 
 // РАЗМЕТКА — только своя, не данные!
-el.innerHTML = "&lt;b&gt;жирный&lt;/b&gt;"
-el.insertAdjacentHTML("beforeend", "&lt;i&gt;в конец&lt;/i&gt;")
-// beforebegin  afterbegin  beforeend  afterend
+info.innerHTML = "Занятия: &lt;b&gt;пн, ср, пт&lt;/b&gt;";
+info.insertAdjacentHTML("beforeend", " &lt;i&gt;(каждую неделю)&lt;/i&gt;");
+// места: beforebegin, afterbegin, beforeend, afterend
 
 // АТРИБУТЫ — всегда строки
-el.getAttribute("href")      // или null
-el.setAttribute("title", "…")
-el.hasAttribute("hidden")    el.removeAttribute("title")
-el.id   el.href   el.hidden  // свойства-отражения
+const link = document.querySelector("nav a");
+link.getAttribute("href");            // "#list", нет атрибута — null
+link.setAttribute("title", "Список группы");
+link.hasAttribute("title");           // true
+link.removeAttribute("title");
+link.href;                            // полный адрес — свойство-отражение
 
 // КЛАССЫ
-el.classList.add("a", "b")   el.classList.remove("a")
-el.classList.toggle("a")     el.classList.contains("a")
-el.classList.replace("a", "b")
-el.className                 // все сразу строкой — запись стирает остальные
+const meret = document.querySelector(".absent");
+meret.classList.add("star", "late");
+meret.classList.remove("late");
+meret.classList.toggle("star");       // false — класс был, убрали
+meret.classList.contains("absent");   // true
+meret.classList.replace("absent", "late");   // true
+meret.className;                      // "student late" — все классы строкой
 
 // СТИЛЬ — только встроенный
-el.style.backgroundColor = "#f5f3ff"   // «верблюдом»
-el.style.width = percent + "%"         // единицы обязательны
-el.style.color = ""                    // убрать
+const title = document.querySelector("#title");
+const percent = 75;
+title.style.backgroundColor = "#f5f3ff";   // имена «верблюдом»
+title.style.width = percent + "%";         // единицы обязательны
+title.style.backgroundColor = "";          // убрать
 
-// ДАННЫЕ
-el.dataset.groupName          // data-group-name, всегда строка
-Number(el.dataset.id)</pre>
+// ДАННЫЕ — всегда строки
+meret.dataset.id;                     // "2"
+Number(meret.dataset.id) + 1;         // 3
+meret.dataset.groupName = "JS-1";     // в разметке: data-group-name="JS-1"</pre>
     </div>
 
     <div class="selfcheck">

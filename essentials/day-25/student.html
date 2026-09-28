@@ -41,8 +41,9 @@
 
     <h2>Текст и разметка</h2>
 
-    <pre class="code js">el.textContent = "текст";          // теги останутся буквами; стирает всех детей
-el.innerText;                      // текст как на экране, без спрятанного
+    <pre class="code js">const el = document.querySelector("#info");
+el.textContent = "текст";          // теги останутся буквами; стирает всех детей
+el.innerText;                      // "текст" — как на экране, без спрятанного
 el.innerHTML = "&lt;b&gt;жирный&lt;/b&gt;";     // строка разбирается как HTML
 el.insertAdjacentHTML("beforeend", "&lt;i&gt;в конец&lt;/i&gt;");   // рядом, старое не трогает</pre>
 
@@ -58,10 +59,12 @@ el.insertAdjacentHTML("beforeend", "&lt;i&gt;в конец&lt;/i&gt;");   // р�
 
     <h2>Атрибуты</h2>
 
-    <pre class="code js">link.getAttribute("href");         // "#list" — как в разметке, или null
+    <pre class="code js">const link = document.querySelector("nav a");
+link.getAttribute("href");         // "#list" — как в разметке, или null
 link.href;                         // полный адрес — свойство-отражение
-link.setAttribute("title", "…");   link.removeAttribute("title");
-el.hasAttribute("hidden");         // true / false</pre>
+link.setAttribute("title", "…");
+link.removeAttribute("title");
+link.hasAttribute("title");        // false — атрибут убран</pre>
 
     <table>
         <thead><tr><th>Атрибут</th><th>Свойство</th></tr></thead>
@@ -81,16 +84,20 @@ el.hasAttribute("hidden");         // true / false</pre>
 
     <h2>Классы и стиль</h2>
 
-    <pre class="code js">el.classList.add("star", "late");   el.classList.remove("late");
-el.classList.toggle("star");         // true — добавил, false — убрал
-el.classList.toggle("star", cond);   // по условию
-el.classList.contains("absent");     el.classList.replace("absent", "late");
+    <pre class="code js">const li = document.querySelector(".absent");   // Мерет
+li.classList.add("star", "late");
+li.classList.remove("late");
+li.classList.toggle("star");         // false — был, убрал; не было бы — true
+li.classList.toggle("star", li.dataset.id === "2");   // по условию: true
+li.classList.contains("absent");     // true
+li.classList.replace("absent", "late");   // true — заменил
 
-el.className = "star";               // осторожно: стирает все остальные классы
+li.className = "star";               // осторожно: стирает все остальные классы
 
-el.style.backgroundColor = "#f5f3ff";   // имена «верблюдом»
-el.style.width = percent + "%";         // единицы обязательны
-el.style.color = "";                    // убрать</pre>
+const percent = 75;
+li.style.backgroundColor = "#f5f3ff";   // имена «верблюдом»
+li.style.width = percent + "%";         // единицы обязательны
+li.style.color = "";                    // убрать</pre>
 
     <div class="note-box">
         <code>style</code> видит только встроенный стиль: цвет от класса он не покажет. Ошибки в
@@ -101,10 +108,11 @@ el.style.color = "";                    // убрать</pre>
 
     <h2>Свои данные</h2>
 
-    <pre class="code js">li.dataset.id;                   // "2" из data-id="2" — строка
-Number(li.dataset.id) + 1;       // 3
-li.dataset.groupName = "JS-1";   // появится data-group-name="JS-1"
-delete li.dataset.groupName;     // и исчезнет</pre>
+    <pre class="code js">const meret = document.querySelector('[data-id="2"]');
+meret.dataset.id;                   // "2" из data-id="2" — строка
+Number(meret.dataset.id) + 1;       // 3
+meret.dataset.groupName = "JS-1";   // появится data-group-name="JS-1"
+delete meret.dataset.groupName;     // true — и атрибут исчез</pre>
 
     <p>Имя из разметки в код: убираем <code>data-</code>, каждый дефис с буквой после него
     превращается в большую букву. Элемент с данными легко найти селектором по атрибуту:
@@ -113,8 +121,11 @@ delete li.dataset.groupName;     // и исчезнет</pre>
 
     <h2>Спрятать и прокрутить</h2>
 
-    <pre class="code js">secret.hidden = true;                          // спрятать
+    <pre class="code js">const secret = document.querySelector("#secret");
+secret.hidden = true;                          // спрятать
 secret.hidden = false;                         // показать
+
+const footer = document.querySelector("footer");
 footer.scrollIntoView({ behavior: "smooth" }); // плавно прокрутить к элементу</pre>
 
     <div class="homework">

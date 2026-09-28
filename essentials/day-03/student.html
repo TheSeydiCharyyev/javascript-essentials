@@ -112,7 +112,7 @@ user = { };            // TypeError</pre>
     <pre class="code js">const student = { name: "Гүлнар", marks: [5, 4, 5] };
 student.name;         // через точку
 student["marks"];     // через скобки
-student.city = "Мары";     // свойство добавляется в любой момент
+student.city = "Мары";     // свойство добавили на ходу
 
 function add(x, y) { return x + y; }   // объявление
 const add2 = (x, y) =&gt; x + y;          // стрелочная
@@ -150,7 +150,7 @@ document.getElementById("result").textContent = line;</pre>
 
     <h2>Чтение ошибки</h2>
 
-    <pre class="code js">// Uncaught   TypeError   : Cannot read...   at app.js:24:45
+    <pre class="code js">// Uncaught   TypeError   : Cannot set...    at app.js:27:47
 //    |            |              |                  |
 // не поймали   вид ошибки   что не так    файл:строка:столбец — кликается!</pre>
 

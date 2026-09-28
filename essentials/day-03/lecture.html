@@ -193,7 +193,7 @@ console.log(5.03e2);        // 5.03 &#215; 10&#178;</pre>
 
     <p>Есть и второй числовой тип — <code>BigInt</code>, для очень больших целых чисел. Его пишут с буквой
     <code>n</code> на конце: <code>9007199254740993n</code>. Смешивать <code>BigInt</code> с обычными числами
-    в одном выражении нельзя. В Essentials он нам не понадобится, разбирать будем в курсе 3.</p>
+    в одном выражении нельзя. В Essentials он нам не понадобится, разбирать будем в курсе 2.</p>
 
     <p>Отдельно стоят два особых числовых значения: <code>Infinity</code> (бесконечность — получается при
     делении на ноль) и <code>NaN</code> — «не число». <code>NaN</code> появляется, когда вычисление бессмысленно,
@@ -277,7 +277,7 @@ typeof null;        // "object"  — старая ошибка языка, её 
 count = 1;            // так можно
 
 const city = "Мары";  // значение меняться не должно
-city = "Ашхабад";     // TypeError: Assignment to constant variable
+city = "Ашхабад";     // TypeError: Assignment to constant variable.
 
 var old = 1;          // старое слово; в новом коде не пишем</pre>
 
@@ -296,8 +296,8 @@ user = { };            // а вот это TypeError</pre>
     <p>Ещё одна особенность: тип принадлежит значению, а не переменной. Одна и та же переменная сегодня хранит
     число, а завтра строку, и язык не возражает:</p>
 
-    <pre class="code js">let a = 1;
-a = "теперь строка";   // ошибки нет — язык динамический</pre>
+    <pre class="code js">let value = 1;
+value = "теперь строка";   // ошибки нет — язык динамический</pre>
 
     <p>Это одновременно свобода и источник ошибок: никто не предупредит, что в переменной оказалось не то,
     что вы ждали. Отсюда привычка опытных программистов называть переменные так, чтобы имя говорило о типе:
@@ -376,8 +376,6 @@ const b = "Салам" || "dünýä"; // "Салам" — первое исти�
 /* многострочный
    комментарий */</pre>
 
-    <p>Обратите внимание: <code>#</code>, как в Python или Bash, здесь не работает.</p>
-
     <p><strong>Точка с запятой.</strong> Формально она необязательна: движок расставляет её сам — это называется
     <em>автоматической вставкой точки с запятой</em>. Но делает он это по своим правилам, и иногда они расходятся
     с вашими намерениями. Классический случай:</p>
@@ -446,15 +444,17 @@ console.log(getCity());   // undefined</pre>
   console.log(i);          // 0, 1, 2, 3, 4
 }
 
+const marks = [5, 4, 5];
 for (const mark of marks) {
-  console.log(mark);       // каждая оценка по очереди
+  console.log(mark);       // 5, 4, 5 — каждая оценка по очереди
 }</pre>
 
     <p><strong>Ошибки.</strong> Когда движок не может что-то сделать, он «бросает» ошибку, и программа
     останавливается. Чтобы этого не случилось, опасный участок оборачивают в <code>try...catch</code>:</p>
 
-    <pre class="code js">try {
-  const data = JSON.parse(text);   // вдруг текст испорчен
+    <pre class="code js">const text = "{ испорчено";        // текст пришёл испорченным
+try {
+  const data = JSON.parse(text);
 } catch (e) {
   console.error("Разобрать не вышло:", e);
 }</pre>
@@ -495,7 +495,7 @@ a.push({ });               // класть можно что угодно, да�
     <pre class="code js">const a = ["ит", "pişik", "towuk"];
 a[100] = "tilki";
 console.log(a.length);   // 101 — длина подтянулась за самым большим индексом
-console.log(a);          // ['ит', 'pişik', 'towuk', empty &#215; 97, 'tilki']</pre>
+console.log(a);          // (101) ['ит', 'pişik', 'towuk', empty &#215; 97, 'tilki']</pre>
 
     <p>Между третьим элементом и сотым — девяносто семь пустых мест. Такой массив называют
     <em>разреженным</em>, и движок перестаёт работать с ним как с массивом, переключаясь на медленный
@@ -641,7 +641,8 @@ async function load() {
     <p>Когда файл один, всё просто. Когда их десять, код делят на модули и связывают словами
     <code>import</code> и <code>export</code>:</p>
 
-    <pre class="code js">import { average } from "./math.js";
+    <pre class="code js">// только в модуле; в консоли — SyntaxError: Cannot use import statement outside a module
+import { average } from "./math.js";
 
 export const city = "Мары";</pre>
 
@@ -689,15 +690,6 @@ export const city = "Мары";</pre>
         спросите: а не для Node.js ли он написан? <code>require</code>, <code>fs.readFile</code>,
         <code>process.argv</code> в браузере не заработают никогда — не потому, что вы что-то сделали не так.
     </div>
-
-    <p>Хозяев у языка сегодня гораздо больше двух. На JavaScript пишут мобильные приложения, программы для
-    компьютера, серверы, код для умных устройств. Ядро языка везде одно и то же — меняется только набор
-    возможностей вокруг него. Поэтому, выучив язык один раз, вы переходите из браузера на сервер не заново,
-    а за несколько дней: учить придётся не язык, а новые инструменты хозяина.</p>
-
-    <p>Так же устроен и наш курс. Курсы 1–3 — это язык: он не устареет и будет работать везде. Курс 4 —
-    возможности браузера: их тысячи, они постоянно пополняются, и знать их наизусть не нужно, нужно уметь
-    искать в документации.</p>
 
     <h2 id="program">12. Первая программа целиком</h2>
 
@@ -753,7 +745,7 @@ document.getElementById("result").textContent = line;</pre>
         Аман: средний балл 4.40 — хорошо
     </div>
 
-    <p>Двадцать пять строк — и в них уместился весь сегодняшний обзор. Посмотрите, из чего они собраны:</p>
+    <p>Двадцать семь строк — и в них уместился весь сегодняшний обзор. Посмотрите, из чего они собраны:</p>
 
     <table>
         <thead><tr><th>Строка</th><th>Что это из обзора</th><th>День</th></tr></thead>
@@ -789,10 +781,10 @@ document.getElementById("result").textContent = line;</pre>
         <svg viewBox="0 0 600 200" role="img" aria-label="Разбор сообщения об ошибке на части">
             <rect x="8" y="8" width="584" height="62" rx="8" fill="#1e293b"/>
             <text x="22" y="34" font-family="Consolas, monospace" font-size="12.5">
-                <tspan fill="#fca5a5">Uncaught </tspan><tspan fill="#fcd34d">TypeError</tspan><tspan fill="#e2e8f0">: Cannot read properties of null</tspan>
+                <tspan fill="#fca5a5">Uncaught </tspan><tspan fill="#fcd34d">TypeError</tspan><tspan fill="#e2e8f0">: Cannot set properties of null (setting 'textContent')</tspan>
             </text>
             <text x="22" y="56" font-family="Consolas, monospace" font-size="12.5">
-                <tspan fill="#94a3b8">    at </tspan><tspan fill="#7dd3fc">app.js:24:45</tspan>
+                <tspan fill="#94a3b8">    at </tspan><tspan fill="#7dd3fc">app.js:27:47</tspan>
             </text>
 
             <rect x="20" y="90" width="14" height="14" rx="3" fill="#fca5a5"/>
@@ -802,15 +794,15 @@ document.getElementById("result").textContent = line;</pre>
             <text x="44" y="130" font-family="Segoe UI, sans-serif" font-size="12.5" fill="#334155">TypeError — вид ошибки: сделали со значением то, чего оно не умеет</text>
 
             <rect x="20" y="146" width="14" height="14" rx="3" fill="#cbd5e1"/>
-            <text x="44" y="158" font-family="Segoe UI, sans-serif" font-size="12.5" fill="#334155">Текст — что именно не так: читали свойство у null</text>
+            <text x="44" y="158" font-family="Segoe UI, sans-serif" font-size="12.5" fill="#334155">Текст — что именно не так: записывали свойство у null</text>
 
             <rect x="20" y="174" width="14" height="14" rx="3" fill="#7dd3fc"/>
-            <text x="44" y="186" font-family="Segoe UI, sans-serif" font-size="12.5" fill="#334155">app.js:24:45 — файл, строка 24, столбец 45. Кликается</text>
+            <text x="44" y="186" font-family="Segoe UI, sans-serif" font-size="12.5" fill="#334155">app.js:27:47 — файл, строка 27, столбец 47. Кликается</text>
         </svg>
         <figcaption>Читать начинайте с конца: сначала где, потом что</figcaption>
     </figure>
 
-    <p>Самое ценное здесь — последняя часть. <strong>Адрес <code>app.js:24:45</code> в консоли кликается</strong>:
+    <p>Самое ценное здесь — последняя часть. <strong>Адрес <code>app.js:27:47</code> в консоли кликается</strong>:
     браузер откроет файл и поставит курсор ровно в то место. Новички это место не замечают и ищут ошибку глазами
     по всему файлу.</p>
 
@@ -873,9 +865,9 @@ document.getElementById("result").textContent = line;</pre>
             <tr><td>строки, числа, даты, <code>Math</code></td><td>дни 16–18</td></tr>
             <tr><td>массивы, объекты, JSON</td><td>дни 19–23</td></tr>
             <tr><td>страница и события: DOM, формы</td><td>дни 24–28</td></tr>
-            <tr><td>таймеры, промисы, <code>fetch</code>, <code>async/await</code></td><td>дни 30–31</td></tr>
-            <tr><td>замыкания, <code>this</code>, прототипы, классы, <code>Map</code>, регулярные выражения, модули</td><td>курс 2</td></tr>
-            <tr><td><code>Symbol</code>, <code>BigInt</code>, <code>Proxy</code>, <code>Temporal</code>, <code>Intl</code></td><td>курс 3</td></tr>
+            <tr><td>таймеры, промисы, <code>fetch</code>, <code>async/await</code>, <code>localStorage</code></td><td>дни 30–31</td></tr>
+            <tr><td>замыкания, <code>this</code>, прототипы, классы, <code>Map</code>, регулярные выражения, модули, <code>BigInt</code>, <code>Temporal</code></td><td>курс 2</td></tr>
+            <tr><td><code>Symbol</code>, <code>Proxy</code>, <code>Intl</code> целиком</td><td>курс 3</td></tr>
             <tr><td>Canvas, хранилища, воркеры и прочие возможности браузера</td><td>курс 4</td></tr>
         </tbody>
     </table>
@@ -961,19 +953,20 @@ let count = 0;           // будет меняться
 123 === "123";           // false — сравниваем только через ===
 0 &amp;&amp; "Салам";            // 0     — короткое замыкание
 
-if (a) { } else if (b) { } else { }      // условие
+const obj = { name: "Аман", age: 17 };   // объект: пары имя — значение
+obj.name;                                // "Аман" — через точку
+obj["age"];                              // 17 — через скобки
+const list = [1, 2, 3];                  // массив: числовые ключи + length
+
+if (count &gt; 0) { } else if (count === 0) { } else { }   // условие
 for (const x of list) { }                // по значениям массива
 for (const k in obj) { }                 // по именам свойств
 try { } catch (e) { }                    // перехват ошибки
 
-const obj = { name: "Аман", age: 17 };   // объект: пары имя — значение
-obj.name;  obj["age"];                   // точка или скобки
-const arr = [1, 2, 3];                   // массив: числовые ключи + length
-
 function add(x, y) { return x + y; }     // функция
 const add2 = (x, y) =&gt; x + y;            // стрелочная, то же самое
 
-// TypeError: ... at app.js:24:45  &#8594;  вид, текст, файл:строка:столбец</pre>
+// TypeError: ... at app.js:27:47  &#8594;  вид, текст, файл:строка:столбец</pre>
     </div>
 
     <div class="selfcheck">
@@ -1004,9 +997,9 @@ const add2 = (x, y) =&gt; x + y;            // стрелочная, то же �
                     <code>alert</code>.
                 </details>
             </li>
-            <li>В консоли написано <code>Uncaught TypeError: ... at app.js:24:45</code>. Что делать первым?
+            <li>В консоли написано <code>Uncaught TypeError: ... at app.js:27:47</code>. Что делать первым?
                 <details class="answer"><summary>Ответ</summary>
-                    Щёлкнуть по <code>app.js:24:45</code> — браузер откроет файл на строке 24. Затем посмотреть,
+                    Щёлкнуть по <code>app.js:27:47</code> — браузер откроет файл на строке 27. Затем посмотреть,
                     какое значение там оказалось: при <code>TypeError</code> это обычно <code>null</code>
                     или <code>undefined</code>.
                 </details>

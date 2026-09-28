@@ -95,7 +95,8 @@
     <p>Новый набор короче и умеет больше: принимает строки и сразу несколько аргументов.
     Писать будем им. Старый нужно узнавать — он живёт в чужом коде, учебниках и на MDN,
     в том числе в руководстве, по которому построен этот урок. Страница для опытов —
-    вчерашняя, из дня 25.</p>
+    вчерашняя, из дня 25. Примеры одного раздела продолжают друг друга, а перед каждым
+    новым разделом обновляйте страницу (<span class="kbd">F5</span>).</p>
 
     <p>Создавать элементы придётся до конца курса: пункты списка дел на дне 29, карточки
     каталога с данными с сервера на дне 32, строки итогового проекта. Везде картина одна:
@@ -414,7 +415,7 @@ meret.isConnected;                          // false — на странице �
 document.querySelectorAll("li").length;    // 4
 meret.textContent;                          // "Мерет" — но объект цел
 
-list.append(meret);                         // вернули, теперь в конец списка</pre>
+list.firstElementChild.after(meret);        // вернули на место — после Амана</pre>
 
     <p>Удалить элемент, которого нет на странице, можно без ошибки: <code>remove</code>
     просто ничего не сделает.</p>
@@ -492,9 +493,8 @@ sapar.replaceWith(ilyas, nazik);
     <p>А строка вместо элемента станет текстовым узлом:
     <code>el.replaceWith("просто текст")</code>.</p>
 
-    <p>Где пригодится: на дне 28 абзац с текстом можно будет заменить полем ввода,
-    чтобы поправить запись, а после сохранения — вернуть абзац обратно. Две замены
-    <code>replaceWith</code>, туда и обратно.</p>
+    <p>Где пригодится: в задании со звёздочкой дня 29 текст дела на время заменяется
+    полем ввода, чтобы его поправить.</p>
 
     <h2 id="node">10. Старые методы <code>Node</code></h2>
 
@@ -639,7 +639,7 @@ table.querySelectorAll("td").length;             // 6</pre>
     <h2 id="errors">12. Ошибки вставки</h2>
 
     <p>Дерево не позволит сделать из себя не дерево. Нельзя вставить элемент внутрь его
-    же потомка: получился бы круг, а в дереве, как мы помним из дня 24, циклов нет.</p>
+    же потомка: получился бы круг, а в дереве кругов не бывает.</p>
 
     <pre class="code js">list.append(document.querySelector("main"));
 // HierarchyRequestError: Failed to execute 'append' on 'Element':
@@ -829,7 +829,7 @@ tbody.children.length;   // 6
         </tbody>
     </table>
 
-    <p>И всё это время числа те же, что на дне 15.</p>
+    <p>И всё это время числа те же, что на дне 23.</p>
 
     <div class="try-it">
         Два опыта.
@@ -901,27 +901,38 @@ tbody.children.length;   // 6
     <div class="cheatsheet">
         <pre class="code js">// СОЗДАТЬ — на странице его ещё нет
 const li = document.createElement("li");
-li.textContent = "Ильяс";            // наполнить до вставки
-document.createTextNode("текст")     // текстовый узел
+li.textContent = "Ильяс";                  // наполнить до вставки
+li.isConnected;                            // false
+const text = document.createTextNode("текст");   // текстовый узел
 
 // ВСТАВИТЬ — новый набор, строки и несколько аргументов
-list.append(li, "текст")   list.prepend(li)     // внутрь: в конец, в начало
-title.before(p)            title.after(p)       // рядом: до, после
-list.append(...items)                           // массив — разом
+const list = document.querySelector("#list");
+list.append(li, "!");                      // внутрь, в конец
+list.prepend(text);                        // внутрь, в начало
+const title = document.querySelector("#title");
+const note = document.createElement("p");
+title.after(note);                         // рядом, после
+title.before("Мары");                      // рядом, до
+list.append(...[...list.children].reverse());   // массив — разом
 
 // ПЕРЕНЕСТИ, СКОПИРОВАТЬ, УДАЛИТЬ, ЗАМЕНИТЬ
-list.prepend(list.lastElementChild)  // вставка существующего = перенос
-el.cloneNode(true)                   // копия с содержимым; сменить id!
-el.remove()                          // объект остаётся в переменной
-old.replaceWith(neu)
+list.prepend(list.lastElementChild);       // вставка существующего = перенос
+const copy = title.cloneNode(true);        // копия с содержимым
+copy.id = "title-2";                       // сменить id у копии!
+li.remove();                               // объект остаётся в переменной
+note.replaceWith(copy);                    // копия встала на место абзаца
 
 // СТАРЫЙ НАБОР NODE — у родителя, один узел, возвращает узел
-parent.appendChild(node)   parent.insertBefore(node, ref)   // ref null — в конец
-parent.removeChild(node)   parent.replaceChild(newNode, oldNode)
+list.appendChild(li);                      // &lt;li&gt;Ильяс&lt;/li&gt;
+list.insertBefore(li, null);               // null вместо соседа — в конец
+list.removeChild(li);                      // &lt;li&gt;Ильяс&lt;/li&gt;
+list.replaceChild(li, list.firstElementChild);   // сначала новый, потом старый
 
 // СОБРАТЬ: создаём сверху вниз, прикрепляем снизу вверх, вставляем один раз
-// ОЧИСТИТЬ: list.textContent = ""
-// УДАЛИТЬ ВСЕХ: querySelectorAll(...).forEach((el) =&gt; el.remove())</pre>
+// ОЧИСТИТЬ ВСЁ
+list.textContent = "";
+// УДАЛИТЬ ВЫБРАННЫХ
+document.querySelectorAll(".note").forEach((el) =&gt; el.remove());</pre>
     </div>
 
     <div class="selfcheck">

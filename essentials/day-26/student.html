@@ -38,18 +38,23 @@
         <code>false</code>.
     </div>
 
-    <pre class="code js">const li = document.createElement("li");   // создать
+    <pre class="code js">const list = document.querySelector("#list");
+const li = document.createElement("li");   // создать
 li.textContent = "Назик";                    // наполнить — данные только текстом
 li.classList.add("student");
 list.append(li);                             // вставить</pre>
 
     <h2>Куда вставить</h2>
 
-    <pre class="code js">list.append(a, "текст")   // внутрь, в конец; узлы и строки, сколько угодно
-list.prepend(a)           // внутрь, в начало
-title.before(p)           // рядом, перед элементом
-title.after(p)            // рядом, после элемента
-list.append(...items)     // массив элементов — одним вызовом</pre>
+    <pre class="code js">const a = document.createElement("li");
+const p = document.createElement("p");
+const title = document.querySelector("#title");
+
+list.append(a, "текст");  // внутрь, в конец; узлы и строки, сколько угодно
+list.prepend(a);          // внутрь, в начало
+title.before(p);          // рядом, перед элементом
+title.after(p);           // рядом, после элемента
+list.append(...[...list.children].reverse());   // массив элементов — одним вызовом</pre>
 
     <div class="remember">
         <code>append</code> ничего не возвращает: <code>const x = list.append(li)</code> даст
@@ -61,9 +66,13 @@ list.append(...items)     // массив элементов — одним вы
     <h2>Перенести, скопировать, удалить, заменить</h2>
 
     <pre class="code js">list.prepend(list.lastElementChild);   // вставка существующего — ПЕРЕНОС
+
+const el = document.querySelector(".absent");
 el.cloneNode(true);                     // копия с содержимым; без true — пустая оболочка
 el.remove();                            // убрать; объект остаётся в переменной
-old.replaceWith(a, b);                  // поставить другое на место</pre>
+
+const old = document.querySelector(".absent");
+old.replaceWith(el, "текст");           // поставить другое на место</pre>
 
     <div class="remember">
         Узел не может стоять в двух местах: вставка забирает его со старого. Нужна копия —
@@ -124,7 +133,7 @@ function renderList(list, names) {
         </tbody>
     </table>
 
-    <p>Дерево не даёт сделать из себя не дерево: циклов в нём не бывает (день 24).
+    <p>Дерево не даёт сделать из себя не дерево: кругов в нём не бывает.
     Новые методы от части этих ошибок избавляют — <code>el.remove()</code> сам знает родителя.</p>
 
     <div class="homework">

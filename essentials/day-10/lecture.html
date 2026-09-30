@@ -75,7 +75,9 @@
 
     <p>Представьте, что надо вывести оценки шести студентов. Без цикла это выглядит так:</p>
 
-    <pre class="code js">console.log(marks[0]);
+    <pre class="code js">const marks = [5, 4, 3, 5, 2, 4];
+
+console.log(marks[0]);
 console.log(marks[1]);
 console.log(marks[2]);
 console.log(marks[3]);
@@ -192,7 +194,9 @@ console.log(k);   // 3 — var вылезает наружу, день 4</pre>
 
     <p><strong>Вперёд по массиву</strong> — самая частая:</p>
 
-    <pre class="code js">for (let i = 0; i &lt; marks.length; i++) {
+    <pre class="code js">const marks = [5, 4, 3, 5, 2, 4];
+
+for (let i = 0; i &lt; marks.length; i++) {
   console.log(marks[i]);
 }</pre>
 
@@ -301,13 +305,13 @@ console.log(line);   // "5, 4, 3, 5, 2, 4"</pre>
 
     <div class="real-world">
         Честное предупреждение на будущее. Все пять приёмов выше в настоящем коде пишут
-        <strong>короче</strong> — через методы массива, которые мы разберём на дне 20:
+        <strong>короче</strong> — через методы массива и другие приёмы, которые мы разберём на днях 18–22:
         <!-- ahead-ok: день 22 -->
-        <pre class="code js">const sum = marks.reduce((a, b) =&gt; a + b, 0);
-const fives = marks.filter((m) =&gt; m === 5).length;
-const max = Math.max(...marks);
-const hasFail = marks.includes(2);
-const line = marks.join(", ");</pre>
+        <pre class="code js">marks.reduce((a, b) =&gt; a + b, 0);      // 23 — сумма
+marks.filter((m) =&gt; m === 5).length;   // 2 — пятёрки
+Math.max(...marks);                    // 5 — максимум
+marks.includes(2);                     // true — есть двойка
+marks.join(", ");                      // "5, 4, 3, 5, 2, 4"</pre>
         Пять строк вместо тридцати. Возникает вопрос: зачем тогда учить циклы?
         <br><br>
         Затем, что <strong>методы массива — это те же циклы внутри</strong>. Не поняв, как работает
@@ -341,12 +345,12 @@ while (i &lt; 3) {
     <pre class="code js">let balance = 1000;
 let months = 0;
 
-while (balance &gt; 0) {
+while (balance &gt;= 150) {
   balance -= 150;
   months++;
 }
 
-console.log(`Хватит на ${months} месяцев`);   // 7</pre>
+console.log(`Хватит на ${months} месяцев`);   // 6</pre>
 
     <p>Сколько раз выполнится цикл — заранее неизвестно, это и есть ответ задачи.</p>
 
@@ -385,14 +389,18 @@ do {
     случай — спросить у пользователя, пока не введёт правильно:</p>
 
     <!-- ahead-ok: день 28 -->
-    <pre class="code js">let answer;
+    <pre class="code js">let n;
 
 do {
-  answer = prompt("Введите число от 1 до 10");
-} while (Number(answer) &lt; 1 || Number(answer) &gt; 10);</pre>
+  n = Number(prompt("Введите число от 1 до 10"));
+} while (!(n &gt;= 1 &amp;&amp; n &lt;= 10));   // NaN тоже не пройдёт</pre>
 
     <p>Спросить надо в любом случае — значит, <code>do...while</code>. С обычным
     <code>while</code> пришлось бы спрашивать один раз до цикла и второй раз внутри.</p>
+
+    <p>Условие записано через «не»: повторяем, пока число <em>не</em> попало в диапазон.
+    Запись «меньше 1 или больше 10» пропустила бы <code>NaN</code> — с ним оба сравнения
+    ложны, и «abc» сошло бы за ответ.</p>
 
     <p>Встречается этот цикл заметно реже двух других. Знать его надо, писать придётся редко.</p>
 
@@ -461,7 +469,8 @@ do {
 
     <p>Главная опасность циклов: если условие никогда не станет ложным, программа зависнет.</p>
 
-    <pre class="code js">let i = 0;
+    <pre class="code js">// не запускайте — вкладка зависнет
+let i = 0;
 
 while (i &lt; 3) {
   console.log(i);
@@ -484,7 +493,8 @@ while (i &lt; 3) {
 
     <p>Третий пункт коварнее всех, потому что переменная меняется и цикл выглядит рабочим:</p>
 
-    <pre class="code js">for (let i = 0; i !== 10; i += 3) {   // 0, 3, 6, 9, 12, 15... мимо 10
+    <pre class="code js">// не запускайте — вкладка зависнет
+for (let i = 0; i !== 10; i += 3) {   // 0, 3, 6, 9, 12, 15... мимо 10
   console.log(i);
 }</pre>
 
@@ -566,12 +576,12 @@ for (let i = 0; i &lt; marks.length; i++) {
 
 console.log(firstFail);   // 3</pre>
 
-    <p>Обратите внимание на <code>-1</code> как «не нашли». Это соглашение, которому уже полвека,
+    <p>Обратите внимание на <code>-1</code> как «не нашли». Это давнее соглашение,
     и в языке оно встроено: метод <code>indexOf</code> из дня 19 отвечает ровно так же.</p>
 
     <h3>break в switch внутри цикла</h3>
 
-    <p>Вчера мы это пообещали разобрать — вот оно. <code>break</code> выходит из
+    <p>Вчера мы об этом упомянули — вот как это выглядит. <code>break</code> выходит из
     <strong>ближайшей</strong> конструкции. Если внутри цикла стоит <code>switch</code>,
     то <code>break</code> внутри него выйдет только из <code>switch</code>, а цикл продолжится:</p>
 
@@ -693,7 +703,8 @@ for (const cmd of commands) {
     выполнится. А в <code>while</code> шаг лежит <em>внутри тела</em> — и если
     <code>continue</code> стоит до него, шага не будет:</p>
 
-    <pre class="code js">let i = 0;
+    <pre class="code js">// не запускайте — вкладка зависнет
+let i = 0;
 
 while (i &lt; 5) {
   if (i === 2) {
@@ -709,7 +720,9 @@ while (i &lt; 5) {
         Отсюда практическое правило: <strong><code>continue</code> дружит с <code>for</code>
         и опасен в <code>while</code></strong>. Если очень нужен <code>continue</code>
         в <code>while</code> — не забудьте сделать шаг <em>до</em> него:
-        <pre class="code js">while (i &lt; 5) {
+        <pre class="code js">let i = 0;
+
+while (i &lt; 5) {
   const current = i;
   i++;                    // шаг сразу, в самом начале
   if (current === 2) {
@@ -753,9 +766,10 @@ console.log(count);   // 2</pre>
 
     <div class="mistake">
         У строк есть оговорка, о которой стоит знать заранее. Длина считается не в буквах,
-        а в единицах кодировки UTF-16 — мы упоминали это на дне 5. Для кириллицы, латиницы
+        а в единицах кодировки UTF-16. Для кириллицы, латиницы
         и туркменских букв разницы нет, а вот эмодзи и некоторые редкие символы занимают
-        две позиции, и цикл по индексу разрежет их пополам. Подробно — день 16.
+        две позиции, и цикл по индексу разрежет их пополам. Пример будет на дне 16,
+        подробный разбор — в курсе 2.
     </div>
 
     <h2 id="nested">12. Вложенные циклы</h2>
@@ -867,7 +881,7 @@ for (let i = 0; i &lt; names.length; i++) {
 
     <p>Первые две — когда правят чужой код и <code>break</code> или <code>continue</code> случайно
     оказываются снаружи после перестановки скобок. Полезно помнить, что <code>break</code>
-    законен в трёх местах: в любом цикле и в <code>switch</code>. А <code>continue</code> —
+    законен в двух местах: в любом цикле и в <code>switch</code>. А <code>continue</code> —
     только в цикле, в <code>switch</code> он бессмыслен.</p>
 
     <p>Третья — обычная опечатка в имени метки или попытка сослаться на метку, которая объявлена
@@ -953,8 +967,9 @@ console.log(`Половину суммы дают первые ${taken} оцен
     <div class="try-it">
         Три опыта.
         <br><br>
-        <strong>Первый.</strong> Уберите <code>taken++</code> из четвёртого цикла и приготовьтесь
-        закрыть вкладку. Затем верните.
+        <strong>Первый.</strong> Уберите <code>taken++</code> из четвёртого цикла. Кажется,
+        что цикл станет вечным, — но он остановится. Объясните почему и откуда в выводе
+        «первые 0 оценки (набрали 15 из 26)». Затем верните шаг.
         <br><br>
         <strong>Второй.</strong> Поменяйте <code>continue</code> в первом цикле на <code>break</code>
         и объясните, почему засчитано стало 2, а сумма — 9.
@@ -1037,27 +1052,37 @@ console.log(`Половину суммы дают первые ${taken} оцен
     </div>
 
     <div class="cheatsheet">
-        <pre class="code js">for (let i = 0; i &lt; 5; i++) { }        // начало; условие; шаг
-//   ^начало  ^условие  ^шаг — шаг выполняется ПОСЛЕ тела
+        <pre class="code js">const arr = [5, 4, 3];
 
+for (let i = 0; i &lt; arr.length; i++) { }        // начало; условие; шаг
+// условие проверяется ДО тела, шаг выполняется ПОСЛЕ
 for (let i = arr.length - 1; i &gt;= 0; i--) { }   // назад
 for (let i = 0; i &lt; 10; i += 2) { }             // через один
 for (let i = 0, j = 5; i &lt; j; i++, j--) { }     // два счётчика
 
 let i = 0;
 while (i &lt; 3) { i++; }        // шаг в теле — не забыть!
+i;                            // 3
 
-do { i++; } while (i &lt; 3);    // хотя бы один раз; точка с запятой нужна
+let j = 10;
+do { j++; } while (j &lt; 3);    // хотя бы один раз; точка с запятой нужна
+j;                            // 11
 
-break;       // выйти из цикла целиком
-continue;    // пропустить проход, идти к шагу
+for (let k = 0; k &lt; 10; k++) {
+  if (k === 3) { break; }         // выйти из цикла целиком
+  if (k % 2 === 0) { continue; }  // пропустить проход, идти к шагу
+  console.log(k);                 // 1
+}
 
 // continue в while ДО шага = вечный цикл
-// i <= arr.length = лишний проход с undefined
+// i &lt;= arr.length = лишний проход с undefined
 // i !== 10 при шаге += 3 = не остановится
+// break вне цикла и switch → SyntaxError: Illegal break statement
 
-outer: for (...) {            // метка
-  for (...) { break outer; }  // выход из внешнего
+outer: for (let a = 0; a &lt; 3; a++) {   // метка
+  for (let b = 0; b &lt; 3; b++) {
+    if (b === 1) { break outer; }      // выход из внешнего
+  }
 }
 
 // вложенные циклы перемножают работу: 1000 x 1000 = миллион</pre>

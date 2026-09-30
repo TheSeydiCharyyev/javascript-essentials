@@ -66,7 +66,9 @@ do { j++; } while (j &lt; 3);          // условие ПОСЛЕ тела; т
 
     <h2>Формы счётчика</h2>
 
-    <pre class="code js">for (let i = 0; i &lt; arr.length; i++) { }        // вперёд
+    <pre class="code js">const arr = [5, 4, 3];
+
+for (let i = 0; i &lt; arr.length; i++) { }        // вперёд
 for (let i = arr.length - 1; i &gt;= 0; i--) { }   // назад: -1 и &gt;= 0
 for (let i = 0; i &lt; 10; i += 2) { }             // через один
 for (let i = 0, j = 5; i &lt; j; i++, j--) { }     // два счётчика</pre>
@@ -78,20 +80,30 @@ for (let i = 0, j = 5; i &lt; j; i++, j--) { }     // два счётчика</p
 
     <h2>Пять приёмов</h2>
 
-    <pre class="code js">let sum = 0;        sum += arr[i];               // накопитель
-let n = 0;          if (...) n++;                // счётчик
-let max = arr[0];   if (arr[i] &gt; max) max = ...; // максимум (с i = 1)
-let has = false;    has = true; break;           // флаг
-let line = "";      line += arr[i] + ", ";       // сборка строки</pre>
+    <pre class="code js">const marks = [5, 4, 3, 5, 2, 4];
+let sum = 0;
+let fives = 0;
+let max = marks[0];
+for (let i = 0; i &lt; marks.length; i++) {
+  sum += marks[i];                             // накопитель
+  if (marks[i] === 5) { fives++; }             // счётчик
+  if (marks[i] &gt; max) { max = marks[i]; }      // максимум
+}
+let has = false;
+for (let i = 0; i &lt; marks.length; i++) {
+  if (marks[i] === 2) { has = true; break; }   // флаг: нашли — вышли
+}
+[sum, fives, max, has];                        // [23, 2, 5, true]
+// сборка строки — тот же накопитель, только с текстом</pre>
 
-    <p>На дне 20 всё это запишется короче — через <code>reduce</code>, <code>filter</code>,
+    <p>На днях 19 и 20 всё это запишется короче — через <code>reduce</code>, <code>filter</code>,
     <code>includes</code>, <code>join</code>. Но внутри них те же циклы.</p>
 
     <h2>Вечный цикл</h2>
 
-    <pre class="code js">while (i &lt; 3) { console.log(i); }       // i++ забыли — зависание
-
-for (let i = 0; i !== 10; i += 3) { }   // 0,3,6,9,12 — мимо 10, не остановится</pre>
+    <pre class="code js">// не запускайте — оба цикла вечные:
+// while (i &lt; 3) { console.log(i); }       → i++ забыли
+// for (let i = 0; i !== 10; i += 3) { }   → 0, 3, 6, 9, 12 — мимо 10</pre>
 
     <div class="remember">
         Три проверки: <strong>меняется</strong> ли переменная из условия, меняется ли
@@ -103,8 +115,8 @@ for (let i = 0; i !== 10; i += 3) { }   // 0,3,6,9,12 — мимо 10, не ос
     <h2>break и continue</h2>
 
     <pre class="code js">for (let i = 0; i &lt; 10; i++) {
-  if (i === 3) break;      // выйти из цикла совсем
-  if (i % 2 === 0) continue;  // пропустить проход, идти к шагу
+  if (i === 3) { break; }         // выйти из цикла совсем
+  if (i % 2 === 0) { continue; }  // пропустить проход, идти к шагу
   console.log(i);
 }</pre>
 

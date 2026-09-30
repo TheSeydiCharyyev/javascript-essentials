@@ -20,6 +20,12 @@ function setLang(lang) {
         }
     });
 
+    // the day list on the home page exists in Russian and English; TM and TR show the Russian one
+    var list = shown === 'en' ? 'en' : 'ru';
+    document.querySelectorAll('[data-list]').forEach(function(el) {
+        el.classList.toggle('lang-hidden', el.dataset.list !== list);
+    });
+
     document.documentElement.lang = shown;
     localStorage.setItem('javascript-essentials-lang', lang);
 

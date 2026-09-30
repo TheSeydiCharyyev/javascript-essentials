@@ -29,19 +29,24 @@ let missingTotal = 0, checked = 0;
 for (const [key, rows] of [...want].sort((a, b) => Number(a[0].split('/')[1]) - Number(b[0].split('/')[1]))) {
   const [course, day] = key.split('/').map(Number);
   if (args.length && !args.includes(day)) continue;
-  const dir = path.join(ROOT, COURSE_DIR[course], `day-${String(day).padStart(2, '0')}`);
-  if (!fs.existsSync(dir)) continue; // the day has not been written yet
-  checked++;
-  const html = fs.readdirSync(dir).filter((f) => f.endsWith('.html')).map((f) => fs.readFileSync(path.join(dir, f), 'utf8')).join('\n');
-  const linked = new Set([...html.matchAll(/https:\/\/developer\.mozilla\.org\/en-US\/docs\/([^"'\s)]+)/g)].map((m) => decodeURI(m[1]).replace(/#.*$/, '').toLowerCase()));
-  const missing = rows.filter((r) => !linked.has(r.path.toLowerCase()));
-  const planned = new Set(rows.map((r) => r.path.toLowerCase()));
-  const extra = [...linked].filter((l) => !planned.has(l));
-  missingTotal += missing.length;
-  results.push(`${missing.length ? 'FAIL' : 'PASS'}  day ${day} (${COURSE_DIR[course]}): ${rows.length} pages planned, ${rows.length - missing.length} linked` +
-    (extra.length ? `, ${extra.length} extra link(s)` : ''));
-  for (const m of missing) results.push(`        missing (${m.depth}): ${MDN}${m.path}`);
-  for (const e of extra) results.push(`        extra: ${MDN}${e}`);
+  const dayDir = path.join(ROOT, COURSE_DIR[course], `day-${String(day).padStart(2, '0')}`);
+  if (!fs.existsSync(dayDir)) continue; // the day has not been written yet
+  // a translation in en/ doubles as the same reference, so it links the same pages
+  for (const sub of ['', 'en']) {
+    const dir = path.join(dayDir, sub);
+    if (!fs.existsSync(dir)) continue;
+    checked++;
+    const html = fs.readdirSync(dir).filter((f) => f.endsWith('.html')).map((f) => fs.readFileSync(path.join(dir, f), 'utf8')).join('\n');
+    const linked = new Set([...html.matchAll(/https:\/\/developer\.mozilla\.org\/en-US\/docs\/([^"'\s)]+)/g)].map((m) => decodeURI(m[1]).replace(/#.*$/, '').toLowerCase()));
+    const missing = rows.filter((r) => !linked.has(r.path.toLowerCase()));
+    const planned = new Set(rows.map((r) => r.path.toLowerCase()));
+    const extra = [...linked].filter((l) => !planned.has(l));
+    missingTotal += missing.length;
+    results.push(`${missing.length ? 'FAIL' : 'PASS'}  day ${day} (${COURSE_DIR[course]}${sub ? `/${sub}` : ''}): ${rows.length} pages planned, ${rows.length - missing.length} linked` +
+      (extra.length ? `, ${extra.length} extra link(s)` : ''));
+    for (const m of missing) results.push(`        missing (${m.depth}): ${MDN}${m.path}`);
+    for (const e of extra) results.push(`        extra: ${MDN}${e}`);
+  }
 }
 
 console.log(results.join('\n') || 'no written days found');

@@ -22,6 +22,11 @@
     color: #3b82f6;
     background: #eff6ff;
 }
+a.lang-btn {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
 
 /* ========== LANGUAGE SWITCH (RU | EN | TM) ========== */
 .lang-switch {

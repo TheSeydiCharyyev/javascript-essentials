@@ -1,5 +1,6 @@
-// Layout check for the written day pages: no horizontal overflow at phone, tablet and desktop
-// widths, no JS errors, every code block highlighted. Also prints the word count of each page.
+// Layout check for the written day pages and their translations in day-NN/en/: no horizontal overflow
+// at phone, tablet and desktop widths, no JS errors, every code block highlighted, no Russian label
+// (CSS ::before) on a translated page. Also prints the word count of each page.
 //
 //   NODE_PATH=C:/Users/seydi/goose/ui/node_modules node tools/check-pages.cjs
 //   NODE_PATH=... node tools/check-pages.cjs 3        only day 3
@@ -12,7 +13,9 @@ const ROOT = path.join(__dirname, '..');
 const only = process.argv.slice(2).map(Number);
 const days = fs.readdirSync(path.join(ROOT, 'essentials')).filter((d) => /^day-\d+$/.test(d))
   .filter((d) => !only.length || only.includes(Number(d.slice(4))));
-const PAGES = days.flatMap((d) => ['lecture', 'student', 'tasks'].map((f) => `${d}/${f}.html`));
+const PAGES = days.flatMap((d) => ['', 'en/']
+  .filter((sub) => fs.existsSync(path.join(ROOT, 'essentials', d, sub)))
+  .flatMap((sub) => ['lecture', 'student', 'tasks'].map((f) => `${d}/${sub}${f}.html`)));
 const SIZES = [[360, 780], [414, 800], [768, 1024], [1280, 900], [640, 360]];
 const URL = 'file:///' + path.join(ROOT, 'essentials').replace(/\\/g, '/') + '/';
 
@@ -51,9 +54,12 @@ const URL = 'file:///' + path.join(ROOT, 'essentials').replace(/\\/g, '/') + '/'
           plain: [...document.querySelectorAll('pre.code')].filter((el) => !el.querySelector('span')).length,
           svg: document.querySelectorAll('figure.scheme svg').length,
           mdn: document.querySelectorAll('a[href*="developer.mozilla.org"]').length,
+          ruLabels: document.documentElement.lang === 'ru' ? [] : [...new Set([...document.querySelectorAll('body *')]
+            .map((el) => getComputedStyle(el, '::before').content).filter((c) => /[А-Яа-яЁё]/.test(c)))],
         };
       });
-      if (w === 360) console.log(`${p.padEnd(22)} ${String(r.words).padStart(5)} слов, код ${r.code}, схем ${r.svg}, ссылок MDN ${r.mdn}`);
+      if (w === 360) console.log(`${p.padEnd(25)} ${String(r.words).padStart(5)} слов, код ${r.code}, схем ${r.svg}, ссылок MDN ${r.mdn}`);
+      if (w === 360 && r.ruLabels.length) problems.push(`${p}: Russian labels — ${r.ruLabels.join(', ')}`);
       if (r.overflow > 0) problems.push(`${p} @${w}x${h}: overflow ${r.overflow} (${r.over.join(', ')})`);
       if (r.plain) problems.push(`${p} @${w}: ${r.plain} code blocks without highlighting`);
     }

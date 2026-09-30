@@ -356,6 +356,8 @@
             .lang-switch { margin-left: auto; }
         }
 
+        .lang-note { font-size: 0.7rem; font-weight: 700; color: #94a3b8; margin-left: 4px; }
+
         .sidebar::-webkit-scrollbar { width: 4px; }
         .sidebar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 2px; }
     </style>
@@ -394,6 +396,7 @@
         </div>
 
         <!-- days:sidebar:start -->
+        <div data-list="ru">
         <div class="sidebar-group">
             <div class="sidebar-group-title">&#x1F4DC; Введение и инструменты</div>
             <a href="essentials/day-01/lecture.html" class="sidebar-link"><span class="sidebar-num">1</span> Что такое JavaScript и где он работает</a>
@@ -469,6 +472,84 @@
             <a href="essentials/day-35/lecture.html" class="sidebar-link"><span class="sidebar-num">35</span> Итоговый проект: доработка и проверка</a>
             <a href="essentials/day-36/lecture.html" class="sidebar-link"><span class="sidebar-num">36</span> Защита проектов</a>
         </div>
+        </div>
+        <div data-list="en" class="lang-hidden">
+        <div class="sidebar-group">
+            <div class="sidebar-group-title">&#x1F4DC; Introduction and tools</div>
+            <a href="essentials/day-01/en/lecture.html" class="sidebar-link"><span class="sidebar-num">1</span> What JavaScript is and where it runs</a>
+            <a href="essentials/day-02/lecture.html" class="sidebar-link"><span class="sidebar-num">2</span> Tools: editor, page, console <span class="lang-note">RU</span></a>
+            <a href="essentials/day-03/lecture.html" class="sidebar-link"><span class="sidebar-num">3</span> Language overview and the first program <span class="lang-note">RU</span></a>
+        </div>
+
+        <div class="sidebar-group">
+            <div class="sidebar-group-title">&#x1F524; Syntax, types and operators</div>
+            <a href="essentials/day-04/lecture.html" class="sidebar-link"><span class="sidebar-num">4</span> Variables: let, const, var <span class="lang-note">RU</span></a>
+            <a href="essentials/day-05/lecture.html" class="sidebar-link"><span class="sidebar-num">5</span> Data types and typeof <span class="lang-note">RU</span></a>
+            <a href="essentials/day-06/lecture.html" class="sidebar-link"><span class="sidebar-num">6</span> Arithmetic and assignment <span class="lang-note">RU</span></a>
+            <a href="essentials/day-07/lecture.html" class="sidebar-link"><span class="sidebar-num">7</span> Comparison and logical operators <span class="lang-note">RU</span></a>
+            <a href="essentials/day-08/lecture.html" class="sidebar-link"><span class="sidebar-num">8</span> Type conversion and operator precedence <span class="lang-note">RU</span></a>
+        </div>
+
+        <div class="sidebar-group">
+            <div class="sidebar-group-title">&#x1F500; Conditions and loops</div>
+            <a href="essentials/day-09/lecture.html" class="sidebar-link"><span class="sidebar-num">9</span> Conditions: if, else, switch <span class="lang-note">RU</span></a>
+            <a href="essentials/day-10/lecture.html" class="sidebar-link"><span class="sidebar-num">10</span> Loops: for, while, do...while <span class="lang-note">RU</span></a>
+            <a href="essentials/day-11/lecture.html" class="sidebar-link"><span class="sidebar-num">11</span> Iterating values: for...of, for...in; try...catch <span class="lang-note">RU</span></a>
+        </div>
+
+        <div class="sidebar-group">
+            <div class="sidebar-group-title">&#x2699;&#xFE0F; Functions</div>
+            <a href="essentials/day-12/lecture.html" class="sidebar-link"><span class="sidebar-num">12</span> Functions: declaration, parameters, return <span class="lang-note">RU</span></a>
+            <a href="essentials/day-13/lecture.html" class="sidebar-link"><span class="sidebar-num">13</span> Arrow functions and function expressions <span class="lang-note">RU</span></a>
+            <a href="essentials/day-14/lecture.html" class="sidebar-link"><span class="sidebar-num">14</span> Default and rest parameters <span class="lang-note">RU</span></a>
+            <a href="essentials/day-15/lecture.html" class="sidebar-link"><span class="sidebar-num">15</span> Practice: splitting a task into functions (mixed day) <span class="lang-note">RU</span></a>
+        </div>
+
+        <div class="sidebar-group">
+            <div class="sidebar-group-title">&#x1F522; Strings, numbers, Math and date basics</div>
+            <a href="essentials/day-16/lecture.html" class="sidebar-link"><span class="sidebar-num">16</span> Strings and their methods <span class="lang-note">RU</span></a>
+            <a href="essentials/day-17/lecture.html" class="sidebar-link"><span class="sidebar-num">17</span> Numbers and first dates: Number, parseInt, Date <span class="lang-note">RU</span></a>
+            <a href="essentials/day-18/lecture.html" class="sidebar-link"><span class="sidebar-num">18</span> Math and random numbers <span class="lang-note">RU</span></a>
+        </div>
+
+        <div class="sidebar-group">
+            <div class="sidebar-group-title">&#x1F4E6; Arrays, objects and JSON</div>
+            <a href="essentials/day-19/lecture.html" class="sidebar-link"><span class="sidebar-num">19</span> Arrays: creation and basic methods <span class="lang-note">RU</span></a>
+            <a href="essentials/day-20/lecture.html" class="sidebar-link"><span class="sidebar-num">20</span> Iterating arrays: forEach, map, filter, reduce <span class="lang-note">RU</span></a>
+            <a href="essentials/day-21/lecture.html" class="sidebar-link"><span class="sidebar-num">21</span> Objects: properties, methods, iteration <span class="lang-note">RU</span></a>
+            <a href="essentials/day-22/lecture.html" class="sidebar-link"><span class="sidebar-num">22</span> Destructuring, spread and optional chaining <span class="lang-note">RU</span></a>
+            <a href="essentials/day-23/lecture.html" class="sidebar-link"><span class="sidebar-num">23</span> JSON: parse and stringify <span class="lang-note">RU</span></a>
+        </div>
+
+        <div class="sidebar-group">
+            <div class="sidebar-group-title">&#x1F5B1;&#xFE0F; DOM and events</div>
+            <a href="essentials/day-24/lecture.html" class="sidebar-link"><span class="sidebar-num">24</span> DOM: finding elements on the page <span class="lang-note">RU</span></a>
+            <a href="essentials/day-25/lecture.html" class="sidebar-link"><span class="sidebar-num">25</span> Changing the page: text, markup, attributes, classes, styles <span class="lang-note">RU</span></a>
+            <a href="essentials/day-26/lecture.html" class="sidebar-link"><span class="sidebar-num">26</span> Creating and removing elements <span class="lang-note">RU</span></a>
+            <a href="essentials/day-27/lecture.html" class="sidebar-link"><span class="sidebar-num">27</span> Events: listeners, the event object, bubbling <span class="lang-note">RU</span></a>
+            <a href="essentials/day-28/lecture.html" class="sidebar-link"><span class="sidebar-num">28</span> Forms: fields, submitting, input validation <span class="lang-note">RU</span></a>
+        </div>
+
+        <div class="sidebar-group">
+            <div class="sidebar-group-title">&#x1F3C6; Projects and defense</div>
+            <a href="essentials/day-29/lecture.html" class="sidebar-link"><span class="sidebar-num">29</span> Mini project: a to-do list <span class="lang-note">RU</span></a>
+        </div>
+
+        <div class="sidebar-group">
+            <div class="sidebar-group-title">&#x23F1;&#xFE0F; Timers, promises and fetch</div>
+            <a href="essentials/day-30/lecture.html" class="sidebar-link"><span class="sidebar-num">30</span> Timers and promises <span class="lang-note">RU</span></a>
+            <a href="essentials/day-31/lecture.html" class="sidebar-link"><span class="sidebar-num">31</span> fetch, async/await and localStorage <span class="lang-note">RU</span></a>
+        </div>
+
+        <div class="sidebar-group">
+            <div class="sidebar-group-title">&#x1F3C6; Projects and defense</div>
+            <a href="essentials/day-32/lecture.html" class="sidebar-link"><span class="sidebar-num">32</span> Mini project: a catalog with data from a server <span class="lang-note">RU</span></a>
+            <a href="essentials/day-33/lecture.html" class="sidebar-link"><span class="sidebar-num">33</span> Final project: idea and plan <span class="lang-note">RU</span></a>
+            <a href="essentials/day-34/lecture.html" class="sidebar-link"><span class="sidebar-num">34</span> Final project: implementation <span class="lang-note">RU</span></a>
+            <a href="essentials/day-35/lecture.html" class="sidebar-link"><span class="sidebar-num">35</span> Final project: polishing and testing <span class="lang-note">RU</span></a>
+            <a href="essentials/day-36/lecture.html" class="sidebar-link"><span class="sidebar-num">36</span> Project defense <span class="lang-note">RU</span></a>
+        </div>
+        </div>
         <!-- days:sidebar:end -->
     </aside>
 
@@ -506,6 +587,7 @@
         </div>
 
         <!-- days:modules:start -->
+        <div data-list="ru">
         <div class="module">
             <div class="module-header">
                 <div class="module-icon" style="background: linear-gradient(135deg, #3b82f6, #06b6d4);">&#x1F4DC;</div>
@@ -660,6 +742,164 @@
                 <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #eab308, #f97316);">35</div><div class="card-title">Итоговый проект: доработка и проверка</div><div class="card-links"><a href="essentials/day-35/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="essentials/day-35/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="essentials/day-35/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div></div>
                 <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #eab308, #f97316);">36</div><div class="card-title">Защита проектов</div><div class="card-links"><a href="essentials/day-36/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Лекция</a><a href="essentials/day-36/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Конспект</a><a href="essentials/day-36/tasks.html" class="card-link tasks">&#x1F4CB; Задания</a></div></div>
             </div>
+        </div>
+        </div>
+        <div data-list="en" class="lang-hidden">
+        <div class="module">
+            <div class="module-header">
+                <div class="module-icon" style="background: linear-gradient(135deg, #3b82f6, #06b6d4);">&#x1F4DC;</div>
+                <div>
+                    <div class="module-title">Introduction and tools</div>
+                    <div class="module-count">Days 1&ndash;3 &bull; Essentials course</div>
+                </div>
+            </div>
+            <div class="card-grid">
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #3b82f6, #06b6d4);">01</div><div class="card-title">What JavaScript is and where it runs</div><div class="card-links"><a href="essentials/day-01/en/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-01/en/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-01/en/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #3b82f6, #06b6d4);">02</div><div class="card-title">Tools: editor, page, console <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-02/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-02/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-02/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #3b82f6, #06b6d4);">03</div><div class="card-title">Language overview and the first program <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-03/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-03/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-03/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-header">
+                <div class="module-icon" style="background: linear-gradient(135deg, #8b5cf6, #d946ef);">&#x1F524;</div>
+                <div>
+                    <div class="module-title">Syntax, types and operators</div>
+                    <div class="module-count">Days 4&ndash;8 &bull; Essentials course</div>
+                </div>
+            </div>
+            <div class="card-grid">
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #8b5cf6, #d946ef);">04</div><div class="card-title">Variables: let, const, var <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-04/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-04/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-04/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #8b5cf6, #d946ef);">05</div><div class="card-title">Data types and typeof <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-05/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-05/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-05/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #8b5cf6, #d946ef);">06</div><div class="card-title">Arithmetic and assignment <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-06/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-06/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-06/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #8b5cf6, #d946ef);">07</div><div class="card-title">Comparison and logical operators <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-07/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-07/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-07/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #8b5cf6, #d946ef);">08</div><div class="card-title">Type conversion and operator precedence <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-08/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-08/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-08/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-header">
+                <div class="module-icon" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">&#x1F500;</div>
+                <div>
+                    <div class="module-title">Conditions and loops</div>
+                    <div class="module-count">Days 9&ndash;11 &bull; Essentials course</div>
+                </div>
+            </div>
+            <div class="card-grid">
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">09</div><div class="card-title">Conditions: if, else, switch <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-09/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-09/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-09/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">10</div><div class="card-title">Loops: for, while, do...while <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-10/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-10/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-10/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">11</div><div class="card-title">Iterating values: for...of, for...in; try...catch <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-11/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-11/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-11/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-header">
+                <div class="module-icon" style="background: linear-gradient(135deg, #10b981, #059669);">&#x2699;&#xFE0F;</div>
+                <div>
+                    <div class="module-title">Functions</div>
+                    <div class="module-count">Days 12&ndash;15 &bull; Essentials course</div>
+                </div>
+            </div>
+            <div class="card-grid">
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #10b981, #059669);">12</div><div class="card-title">Functions: declaration, parameters, return <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-12/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-12/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-12/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #10b981, #059669);">13</div><div class="card-title">Arrow functions and function expressions <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-13/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-13/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-13/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #10b981, #059669);">14</div><div class="card-title">Default and rest parameters <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-14/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-14/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-14/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #10b981, #059669);">15</div><div class="card-title">Practice: splitting a task into functions (mixed day) <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-15/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-15/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-15/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-header">
+                <div class="module-icon" style="background: linear-gradient(135deg, #0ea5e9, #6366f1);">&#x1F522;</div>
+                <div>
+                    <div class="module-title">Strings, numbers, Math and date basics</div>
+                    <div class="module-count">Days 16&ndash;18 &bull; Essentials course</div>
+                </div>
+            </div>
+            <div class="card-grid">
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #0ea5e9, #6366f1);">16</div><div class="card-title">Strings and their methods <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-16/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-16/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-16/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #0ea5e9, #6366f1);">17</div><div class="card-title">Numbers and first dates: Number, parseInt, Date <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-17/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-17/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-17/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #0ea5e9, #6366f1);">18</div><div class="card-title">Math and random numbers <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-18/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-18/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-18/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-header">
+                <div class="module-icon" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">&#x1F4E6;</div>
+                <div>
+                    <div class="module-title">Arrays, objects and JSON</div>
+                    <div class="module-count">Days 19&ndash;23 &bull; Essentials course</div>
+                </div>
+            </div>
+            <div class="card-grid">
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">19</div><div class="card-title">Arrays: creation and basic methods <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-19/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-19/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-19/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">20</div><div class="card-title">Iterating arrays: forEach, map, filter, reduce <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-20/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-20/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-20/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">21</div><div class="card-title">Objects: properties, methods, iteration <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-21/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-21/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-21/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">22</div><div class="card-title">Destructuring, spread and optional chaining <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-22/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-22/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-22/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">23</div><div class="card-title">JSON: parse and stringify <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-23/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-23/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-23/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-header">
+                <div class="module-icon" style="background: linear-gradient(135deg, #22c55e, #84cc16);">&#x1F5B1;&#xFE0F;</div>
+                <div>
+                    <div class="module-title">DOM and events</div>
+                    <div class="module-count">Days 24&ndash;28 &bull; Essentials course</div>
+                </div>
+            </div>
+            <div class="card-grid">
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #22c55e, #84cc16);">24</div><div class="card-title">DOM: finding elements on the page <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-24/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-24/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-24/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #22c55e, #84cc16);">25</div><div class="card-title">Changing the page: text, markup, attributes, classes, styles <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-25/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-25/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-25/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #22c55e, #84cc16);">26</div><div class="card-title">Creating and removing elements <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-26/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-26/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-26/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #22c55e, #84cc16);">27</div><div class="card-title">Events: listeners, the event object, bubbling <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-27/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-27/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-27/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #22c55e, #84cc16);">28</div><div class="card-title">Forms: fields, submitting, input validation <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-28/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-28/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-28/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-header">
+                <div class="module-icon" style="background: linear-gradient(135deg, #eab308, #f97316);">&#x1F3C6;</div>
+                <div>
+                    <div class="module-title">Projects and defense</div>
+                    <div class="module-count">Day 29 &bull; Essentials course</div>
+                </div>
+            </div>
+            <div class="card-grid">
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #eab308, #f97316);">29</div><div class="card-title">Mini project: a to-do list <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-29/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-29/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-29/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-header">
+                <div class="module-icon" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">&#x23F1;&#xFE0F;</div>
+                <div>
+                    <div class="module-title">Timers, promises and fetch</div>
+                    <div class="module-count">Days 30&ndash;31 &bull; Essentials course</div>
+                </div>
+            </div>
+            <div class="card-grid">
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">30</div><div class="card-title">Timers and promises <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-30/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-30/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-30/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">31</div><div class="card-title">fetch, async/await and localStorage <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-31/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-31/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-31/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-header">
+                <div class="module-icon" style="background: linear-gradient(135deg, #eab308, #f97316);">&#x1F3C6;</div>
+                <div>
+                    <div class="module-title">Projects and defense</div>
+                    <div class="module-count">Days 32&ndash;36 &bull; Essentials course</div>
+                </div>
+            </div>
+            <div class="card-grid">
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #eab308, #f97316);">32</div><div class="card-title">Mini project: a catalog with data from a server <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-32/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-32/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-32/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #eab308, #f97316);">33</div><div class="card-title">Final project: idea and plan <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-33/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-33/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-33/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #eab308, #f97316);">34</div><div class="card-title">Final project: implementation <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-34/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-34/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-34/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #eab308, #f97316);">35</div><div class="card-title">Final project: polishing and testing <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-35/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-35/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-35/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+                <div class="lesson-card"><div class="card-number" style="background: linear-gradient(135deg, #eab308, #f97316);">36</div><div class="card-title">Project defense <span class="lang-note">RU</span></div><div class="card-links"><a href="essentials/day-36/lecture.html" class="card-link lecture">&#x1F468;&#x200D;&#x1F3EB; Lecture</a><a href="essentials/day-36/student.html" class="card-link student">&#x1F468;&#x200D;&#x1F393; Notes</a><a href="essentials/day-36/tasks.html" class="card-link tasks">&#x1F4CB; Tasks</a></div></div>
+            </div>
+        </div>
         </div>
         <!-- days:modules:end -->
     </div>

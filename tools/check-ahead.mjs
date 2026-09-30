@@ -11,6 +11,7 @@
 //
 // A deliberate preview is excused in two ways:
 //   1. a comment on the same line that names the day or the course:  // день 22   // курс 2
+//      (on an English page: // day 22   // course 2)
 //   2. an HTML comment right before the block:  <!-- ahead-ok: причина -->
 //
 // The table below is kept by hand. A row is:
@@ -153,7 +154,7 @@ const blank = (line) => {
   return out;
 };
 
-const EXCUSE = /(?:день|дня|дне)\s*(\d+)|курс[а-я]*\s*(\d+)/i;
+const EXCUSE = /(?:день|дня|дне|day)\s*(\d+)|(?:курс[а-я]*|course)\s*(\d+)/i;
 
 const codeBlocks = (html) => {
   const blocks = [];
@@ -209,9 +210,14 @@ for (const [course, dir] of Object.entries(COURSE_DIR)) {
     }
     checked++;
     const hits = [];
-    for (const file of fs.readdirSync(path.join(base, folder)).filter((f) => f.endsWith('.html'))) {
-      const html = fs.readFileSync(path.join(base, folder, file), 'utf8');
-      for (const h of scan(html, day)) hits.push({ ...h, file: `${dir}/${folder}/${file}` });
+    // the translation in en/ is the same day and is held to the same rule
+    for (const sub of ['', 'en/']) {
+      const at = path.join(base, folder, sub);
+      if (!fs.existsSync(at)) continue;
+      for (const file of fs.readdirSync(at).filter((f) => f.endsWith('.html'))) {
+        const html = fs.readFileSync(path.join(at, file), 'utf8');
+        for (const h of scan(html, day)) hits.push({ ...h, file: `${dir}/${folder}/${sub}${file}` });
+      }
     }
     problems += hits.length;
     results.push(`${hits.length ? 'FAIL' : 'PASS'}  day ${day} (${dir}): ${hits.length || 'no'} construct(s) from later days`);

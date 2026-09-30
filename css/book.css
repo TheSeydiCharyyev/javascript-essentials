@@ -36,6 +36,7 @@
     padding: 18px 22px;
     margin: 16px 0 24px;
 }
+html[lang="en"] .goals::before { content: '\1F3AF  After this lesson you will be able to'; }
 .goals::before {
     content: '\1F3AF  После этого урока вы сможете';
     display: block;
@@ -93,6 +94,7 @@ figure.scheme figcaption {
     padding: 18px 22px;
     margin: 24px 0;
 }
+html[lang="en"] .cheatsheet::before { content: '\1F4CC  Cheat sheet'; }
 .cheatsheet::before {
     content: '\1F4CC  Шпаргалка';
     display: block;
@@ -110,6 +112,7 @@ figure.scheme figcaption {
     padding: 18px 22px;
     margin: 24px 0;
 }
+html[lang="en"] .selfcheck::before { content: '\2753  Check yourself'; }
 .selfcheck::before {
     content: '\2753  Проверь себя';
     display: block;

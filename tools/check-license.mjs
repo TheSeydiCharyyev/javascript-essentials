@@ -10,14 +10,15 @@ import path from 'node:path';
 const ROOT = path.join(import.meta.dirname, '..');
 const COURSE_DIR = ['essentials', 'intermediate', 'advanced', 'web-apis'];
 
-// what the footer of every page has to contain
-const NEEDS = [
+// what the footer of every page has to contain; a translation in day-NN/en/ is one folder deeper
+const NEEDS = (sub) => [
   ['ссылка на MDN', /href="https:\/\/developer\.mozilla\.org\/en-US\/docs\/[^"]+"/],
   ['авторы MDN', /Mozilla Contributors/],
   ['лицензия источника CC BY-SA 2.5', /href="https:\/\/creativecommons\.org\/licenses\/by-sa\/2\.5\/"/],
   ['лицензия курса CC BY-SA 4.0', /href="https:\/\/creativecommons\.org\/licenses\/by-sa\/4\.0\/"/],
-  ['ссылка на LICENSE', /href="\.\.\/\.\.\/LICENSE"/],
+  ['ссылка на LICENSE', sub ? /href="\.\.\/\.\.\/\.\.\/LICENSE"/ : /href="\.\.\/\.\.\/LICENSE"/],
 ];
+const LANG_DIRS = ['', 'en/'];
 
 const only = process.argv.slice(2).map(Number);
 const lines = [];
@@ -29,23 +30,27 @@ for (const dir of COURSE_DIR) {
   const days = fs.readdirSync(courseDir).filter((d) => /^day-\d+$/.test(d)).sort();
   for (const day of days) {
     if (only.length && !only.includes(Number(day.slice(4)))) continue;
-    const pages = fs.readdirSync(path.join(courseDir, day)).filter((f) => f.endsWith('.html')).sort();
-    for (const page of pages) {
-      const rel = `${dir}/${day}/${page}`;
-      checked++;
-      const html = fs.readFileSync(path.join(courseDir, day, page), 'utf8');
-      const blocks = html.match(/<div class="sources">[\s\S]*?<\/div>/g) || [];
-      if (blocks.length !== 1) {
-        bad++;
-        lines.push(`FAIL  ${rel}: блоков .sources ${blocks.length}, нужен ровно 1`);
-        continue;
-      }
-      const missing = NEEDS.filter(([, re]) => !re.test(blocks[0])).map(([name]) => name);
-      if (missing.length) {
-        bad++;
-        lines.push(`FAIL  ${rel}: в подписи нет — ${missing.join('; ')}`);
-      } else {
-        lines.push(`PASS  ${rel}`);
+    for (const sub of LANG_DIRS) {
+      const dayDir = path.join(courseDir, day, sub);
+      if (!fs.existsSync(dayDir)) continue;
+      const pages = fs.readdirSync(dayDir).filter((f) => f.endsWith('.html')).sort();
+      for (const page of pages) {
+        const rel = `${dir}/${day}/${sub}${page}`;
+        checked++;
+        const html = fs.readFileSync(path.join(dayDir, page), 'utf8');
+        const blocks = html.match(/<div class="sources">[\s\S]*?<\/div>/g) || [];
+        if (blocks.length !== 1) {
+          bad++;
+          lines.push(`FAIL  ${rel}: блоков .sources ${blocks.length}, нужен ровно 1`);
+          continue;
+        }
+        const missing = NEEDS(sub).filter(([, re]) => !re.test(blocks[0])).map(([name]) => name);
+        if (missing.length) {
+          bad++;
+          lines.push(`FAIL  ${rel}: в подписи нет — ${missing.join('; ')}`);
+        } else {
+          lines.push(`PASS  ${rel}`);
+        }
       }
     }
   }

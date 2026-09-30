@@ -47,7 +47,9 @@
 
     <h2>if и лестница</h2>
 
-    <pre class="code js">if (mark === 5) {
+    <pre class="code js">const mark = 4;
+
+if (mark === 5) {
   console.log("отлично");
 } else if (mark === 4) {
   console.log("хорошо");
@@ -66,12 +68,18 @@
     <h2>Проверка на границах</h2>
 
     <pre class="code js">// для порога 90 проверяем три значения
-grade(89);  grade(90);  grade(91);
+function isFive(score) {
+  return score &gt;= 90;
+}
+isFive(89);   // false
+isFive(90);   // true — ровно на границе
+isFive(91);   // true
 
 // дырка между ветками
-if (score &gt; 90) { g = "5"; }
-else if (score &lt; 90) { g = "4"; }
-// при score === 90 переменная останется undefined</pre>
+const score = 90;
+let g;
+if (score &gt; 90) { g = "5"; } else if (score &lt; 90) { g = "4"; }
+g;            // undefined — 90 не попало никуда</pre>
 
     <p>Ошибки живут <strong>на краях</strong> диапазонов, в середине всё обычно работает.
     У строк край — <code>""</code> и <code>"   "</code>, у массивов — пустой, у ввода —
@@ -79,8 +87,11 @@ else if (score &lt; 90) { g = "4"; }
 
     <h2>Что считается условием</h2>
 
-    <pre class="code js">if (name) { }            // непустая строка — истина
-if (marks.length) { }    // 0 ложь, значит «если не пусто»
+    <pre class="code js">const name = "Аман";
+const marks = [];
+
+if (name) { console.log("имя есть"); }      // непустая строка — истина
+if (marks.length) { console.log("есть"); }  // 0 — ложь, не выведется
 
 // ложны только: false 0 "" NaN null undefined</pre>
 
@@ -92,31 +103,52 @@ if (marks.length) { }    // 0 ложь, значит «если не пусто�
 
     <h2>Распутать вложенность</h2>
 
-    <pre class="code js">// 1. объединить через &amp;&amp;
-if (isLoggedIn &amp;&amp; hasTicket) { }
+    <pre class="code js">const isLoggedIn = true;
+const hasTicket = true;
+const user = { age: 20 };
 
-// 2. ранний выход — сначала отказы
-if (mark === undefined) return "негодная";
-if (mark &lt; 2 || mark &gt; 5) return "негодная";
-return "годится";
+// 1. объединить через &amp;&amp;
+if (isLoggedIn &amp;&amp; hasTicket) { console.log("проходите"); }
+
+// 2. ранний выход — сначала отказы (в одну строку можно без скобок)
+function check(mark) {
+  if (mark === undefined) return "негодная";
+  if (mark &lt; 2 || mark &gt; 5) return "негодная";
+  return "годится";
+}
+check(7);     // "негодная"
 
 // 3. дать условию имя
 const isAdult = user !== null &amp;&amp; user.age &gt;= 18;
-if (isAdult) { }</pre>
+if (isAdult) { console.log("взрослый"); }</pre>
 
     <h2>switch</h2>
 
-    <pre class="code js">switch (mark) {
+    <pre class="code js">const mark = 4;
+let word;
+
+switch (mark) {
   case 5:
     word = "отлично";
     break;          // забыли — провалится в следующую ветку!
+  case 4:
+    word = "хорошо";
+    break;
+  default:
+    word = "неизвестно";
+}
+word;               // "хорошо"
+
+const day = "вс";
+switch (day) {
   case "сб":
   case "вс":        // группировка: общий код на два значения
     word = "выходной";
     break;
   default:
-    word = "неизвестно";
-}</pre>
+    word = "рабочий";
+}
+word;               // "выходной"</pre>
 
     <div class="remember">
         <code>case</code> — это <strong>метка входа</strong>, а не отдельная ветка. Совпадение
@@ -126,13 +158,15 @@ if (isAdult) { }</pre>
 
     <h2>Три ловушки switch</h2>
 
-    <pre class="code js">// 1. весь switch — ОДИН блок
-switch (x) {
-  case 1: let a = 1; break;
-  case 2: let a = 2; break;   // SyntaxError: already been declared
-}
+    <pre class="code js">// 1. весь switch — ОДИН блок:
+// case 1: let a = 1; break; case 2: let a = 2;
+//   → SyntaxError: Identifier 'a' has already been declared
 // лечится своими { } у ветки:
-case 1: { let a = 1; break; }
+const x = 2;
+switch (x) {
+  case 1: { let a = 1; break; }
+  case 2: { let a = 2; break; }
+}
 
 // 2. default не обязан быть последним — но ставьте последним
 // 3. диапазоны через switch не проверить — нужна лестница else if</pre>

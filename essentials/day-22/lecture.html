@@ -318,8 +318,10 @@ greet({ name: "Мерет" });   // "Мерет из не указан"</pre>
     иметь значение</strong>. Это лекарство от беды дня 14, где вызов
     <code>f(1, undefined, undefined, true)</code> был нечитаем. Сравните:</p>
 
-    <pre class="code js">makeLine("Пришло", 3, undefined, undefined, "", 5);       // что есть что?
-makeLine({ name: "Пришло", value: 3, total: 5 });          // видно сразу</pre>
+    <pre class="code js">// функция из дня 15 — какой аргумент что значит?
+// makeLine("Пришло", 3, undefined, undefined, "", 5);
+// её же версия с объектом (напишете в задании 4) — видно сразу:
+// makeLine({ name: "Пришло", value: 3, total: 5 });</pre>
 
     <p>Так оформляют функции с четырьмя и более настройками. Так устроены и встроенные:
     на дне 25 встретится <code>scrollIntoView({ behavior: "smooth" })</code>.</p>

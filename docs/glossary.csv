@@ -80,3 +80,18 @@ ru,en,day,note
 двойное отрицание,double negation,5,!!
 объект-обёртка,wrapper object,5,
 идти влево от точки,go left of the dot,5,reading a TypeError
+оператор / операнд,operator / operand,6,
+бинарный / унарный / тернарный,binary / unary / ternary,6,
+склейка строк,joining strings (concatenation),6,
+остаток от деления,remainder,6,% is not percent
+делимое / делитель,dividend / divisor,6,
+модуль (по модулю),modulo,6,
+степень,exponentiation,6,**
+правоассоциативный,right-associative,6,
+составное присваивание,compound assignment,6,
+инкремент / декремент,increment / decrement,6,
+постфиксная / префиксная форма,postfix / prefix form,6,
+круговой счётчик,circular counter,6,
+порядок действий (приоритет),order of operations (precedence),6,
+пн / вт / ср / чт / пт,Mon / Tue / Wed / Thu / Fri,6,
+тенге,tenge,6,1 manat = 100 tenge

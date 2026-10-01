@@ -1,5 +1,6 @@
 // Translations of a day live in day-NN/en/. For every written day:
-//   - a day with en/ has all three pages there, each marked lang="en" and free of Cyrillic letters;
+//   - a day with en/ has all three pages there, each marked lang="en" and free of Cyrillic letters
+//     (except inside an element marked lang="ru", like the look-alike file name <span lang="ru">арр</span>.js);
 //   - every Russian page links to its English twin, and the English page links back;
 //   - a day without en/ has no link to an English version.
 //
@@ -12,6 +13,7 @@ const ROOT = path.join(import.meta.dirname, '..');
 const COURSE_DIR = ['essentials', 'intermediate', 'advanced', 'web-apis'];
 const PAGES = ['lecture', 'student', 'tasks'];
 const CYRILLIC = /[А-Яа-яЁё]/;
+const MARKED_RU = /<(\w+)\b[^>]*\blang="ru"[^>]*>.*?<\/\1>/g;
 
 const langLink = (html, href) => new RegExp(`<a href="${href.replace(/[./]/g, '\\$&')}" class="lang-btn"`).test(html);
 
@@ -42,7 +44,7 @@ for (const dir of COURSE_DIR) {
       if (!langLink(en, `../${page}.html`)) problems.push(`en/${page}.html has no RU link to ../${page}.html`);
       if (!/<html lang="en">/.test(en)) problems.push(`en/${page}.html is not marked <html lang="en">`);
       en.split('\n').forEach((line, i) => {
-        if (CYRILLIC.test(line)) problems.push(`en/${page}.html:${i + 1} Cyrillic: ${line.trim().slice(0, 80)}`);
+        if (CYRILLIC.test(line.replace(MARKED_RU, ''))) problems.push(`en/${page}.html:${i + 1} Cyrillic: ${line.trim().slice(0, 80)}`);
       });
     }
     if (problems.length) bad++;

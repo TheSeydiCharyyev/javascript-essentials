@@ -30,3 +30,17 @@ ru,en,day,note
 Мары,Mary,1,the city; the first use in a lecture says it is our city
 манат,manat,1,
 Аман / Мерет / Гүлнар / Мурад,Aman / Meret / Gülnar / Murad,1,names are transliterated
+редактор кода,code editor,2,
+расширение,extension,2,VS Code
+папка проекта,project folder,2,
+вкладка,tab,2,browser and DevTools
+инструменты разработчика,developer tools (DevTools),2,
+автосохранение,autosave,2,
+комментарий / закомментировать,comment / comment out,2,
+отладка,debugging,2,
+точка останова,breakpoint,2,
+условная точка останова / точка журнала,conditional breakpoint / logpoint,2,Chrome names
+подстановка,substitution,2,%s %d %c in console.log
+замер времени / метка,time measurement / label,2,console.time
+счётчик,counter,2,console.count
+Продолжить / Шаг через / Шаг внутрь / Шаг наружу,Resume / Step over / Step into / Step out,2,debugger buttons

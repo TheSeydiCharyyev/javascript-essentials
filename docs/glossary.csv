@@ -212,3 +212,16 @@ ru,en,day,note
 экзамен,exam,11,
 до / после,before / after,11,
 просто строка,just a string,11,
+параметр,parameter,12,a name in the declaration; an argument is the value in a call
+объявление функции / тело функции,function declaration / function body,12,
+мёртвый код,dead code,12,code after return
+колбэк,callback,12,a function passed so that it gets called
+рекурсия / условие выхода,recursion / exit condition,12,
+вспомогательная функция,helper function,12,
+константы-настройки,settings constants,12,TAX and MAX_MARK
+одна функция — одна работа,one function — one job,12,
+оглавление,table of contents,12,how makeReport reads
+предупреждение,warning,12,Firefox warns about code after return
+нормально,okay,12,a result word in task 4
+проверяю / нажали,checking / clicked,12,
+Смешала / Разделила,Mixed / Separated,12,labels of a compare block

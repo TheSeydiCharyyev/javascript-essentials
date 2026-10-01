@@ -150,3 +150,30 @@ ru,en,day,note
 пять / первая / вторая,five / first / second,8,strings in examples
 истина / ложь,truthy / falsy,8,strings in task 2
 «18лет»,“18 years”,8,parseInt example in task 8
+ветвление / развилка,branching / fork,9,
+ветка,branch,9,
+лестница else if,else if ladder,9,
+ранний выход / ранний возврат,early exit / early return,9,
+пирамида гибели,pyramid of doom,9,
+провал,fall-through,9,switch without break
+метка входа,entry label,9,what a case is
+группировка case,case grouping,9,
+проверка на границах,checking at the boundaries,9,the edges of ranges
+дырка между ветками,hole between branches,9,
+флаг,flag,9,a condition with a name
+объект-справочник,lookup object,9,instead of a long switch; day 21
+управление потоком / обработка ошибок,control flow / error handling,9,the MDN guide chapter
+отлично / хорошо / удовлетворительно / неудовлетворительно / неизвестно,excellent / good / satisfactory / unsatisfactory / unknown,9,markToWord
+отличник / хорошист / троечник,top student / good student / average student,9,Report card verdicts from day 9 on; with needs work
+пятёрка / тройка / двойка,a five / a three / a two,9,marks; the Report card counts fives and twos
+сдал / пересдача,passed / retake,9,
+выходной / рабочий день,day off / working day,9,
+проходите / отказ,come in / refused,9,
+годится / негодная,valid / invalid,9,
+молодец!,well done!,9,
+добавить / очистить / сколько / помощь,add / clear / count / help,9,commands in runCommand
+рисуем / едим / ничего,drawing / eating / nothing,9,
+Привет,Hello,9,Салам stays Salam
+А / Б / В,A / B / C,9,labels of fragments in tasks
+Коротко / Точно,Short / Exact,9,labels of a compare block
+Неверно / Верно,Wrong / Right,9,labels of a compare block

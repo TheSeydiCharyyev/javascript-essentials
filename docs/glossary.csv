@@ -70,3 +70,13 @@ ru,en,day,note
 строгий режим,strict mode,4,
 инструкция-выражение / пустая инструкция,expression statement / empty statement,4,
 магическое число,magic number,4,
+динамическая / слабая типизация,dynamic / weak typing,5,
+изменяемый / неизменяемый,mutable / immutable,5,
+приведение типов,type conversion (coercion),5,
+пусто намеренно,empty on purpose,5,null
+не число,not a number (NaN),5,
+бесконечность / минус ноль,Infinity / negative zero,5,
+шесть лжецов,six liars,5,the six falsy values
+двойное отрицание,double negation,5,!!
+объект-обёртка,wrapper object,5,
+идти влево от точки,go left of the dot,5,reading a TypeError

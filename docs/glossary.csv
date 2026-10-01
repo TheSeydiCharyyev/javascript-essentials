@@ -95,3 +95,31 @@ ru,en,day,note
 порядок действий (приоритет),order of operations (precedence),6,
 пн / вт / ср / чт / пт,Mon / Tue / Wed / Thu / Fri,6,
 тенге,tenge,6,1 manat = 100 tenge
+строгое / нестрогое сравнение,strict / loose comparison,7,=== and ==
+строгое равенство / неравенство,strict equality / strict inequality,7,=== and !== (MDN titles)
+нестрогое равенство / неравенство,equality / inequality,7,== and != (MDN titles)
+отсутствие транзитивности,lack of transitivity,7,== is not transitive
+операторы порядка,order operators,7,< > <= >=; MDN calls them relational operators
+посимвольно,character by character,7,comparing strings
+заглавная / строчная буква,capital / small letter,7,
+И / ИЛИ / НЕ,AND / OR / NOT,7,logical operators
+таблица истинности,truth table,7,
+отрицание / союз,negation / conjunction,7,the conjunction flips under negation
+составное условие,compound condition,7,
+запасное значение,fallback value,7,|| and ??
+нулевое слияние,nullish coalescing,7,??
+тернарный оператор,ternary operator,7,MDN: conditional (ternary) operator
+оператор запятая,comma operator,7,
+побочное действие,side effect,7,
+необязательная цепочка,optional chaining,7,?. on day 22
+законные данные,legitimate data,7,zero and the empty string for ||
+сравнение по ссылке / по содержимому,comparison by reference / by contents,7,
+проверка диапазона,range check,7,
+негодная оценка / мусор,invalid mark / garbage,7,
+пятёрка,a five (the mark 5),7,the Report card counts fives
+Гость / Без имени,Guest / No name,7,fallback names
+засчитано / отброшено,counted / skipped,7,Report card output
+сб / вс,Sat / Sun,7,
+Трудно / Понятно,Hard / Clear,7,labels of a compare block
+кириллица в порядке строк,letters with marks (Turkmen ä ş ý),7,adapted: they come after all plain Latin letters
+«не 2 и не 1»,“not 2 or 1”,7,adapted: English says or where the code needs &&

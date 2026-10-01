@@ -58,3 +58,15 @@ ru,en,day,note
 среда выполнения / хозяин,runtime / host,3,
 Табель,Report card,3,the running program of the course
 отлично / хорошо / надо подтянуть,excellent / good / needs work,3,Report card verdicts
+объявление / инициализатор,declaration / initializer,4,
+идентификатор,identifier,4,
+зарезервированное слово,reserved word,4,
+переприсваивание,reassignment,4,
+блок,block,4,
+область видимости,scope,4,
+затенение,shadowing,4,
+поднятие,hoisting,4,
+мёртвая зона,temporal dead zone (dead zone),4,the MDN term
+строгий режим,strict mode,4,
+инструкция-выражение / пустая инструкция,expression statement / empty statement,4,
+магическое число,magic number,4,

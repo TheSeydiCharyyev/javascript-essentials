@@ -194,3 +194,21 @@ ru,en,day,note
 двоек нет / первая двойка,no twos / the first two,10,Report card output
 Хватит на N месяцев,Enough for N months,10,
 Сапар,Sapar,10,a name
+перебираемый,iterable,11,for...of works only with these
+ключ / имя свойства,key / property name,11,what for...in gives
+собственные / унаследованные свойства,own / inherited properties,11,Object.keys takes only own
+дырка в массиве,hole in an array,11,sparse arrays from day 3
+перехватить / поймать ошибку,intercept / catch an error,11,
+бросить ошибку / пробросить дальше,throw an error / rethrow,11,
+стек / цепочка вызовов,stack / chain of calls,11,error.stack
+прибраться,clean up,11,what finally is for
+договор функции,the function’s contract,11,throw versus return null
+«так бывает» / «так быть не должно»,“this happens” / “this must not happen”,11,null versus throw
+запасной сценарий,fallback scenario,11,
+«Загрузка…»,“Loading…”,11,spinner text
+пропущено / поля объекта,skipped / object fields,11,Report card output
+Не удалось прочитать данные,Could not read the data,11,
+сломалось,it broke,11,messages in error examples
+экзамен,exam,11,
+до / после,before / after,11,
+просто строка,just a string,11,

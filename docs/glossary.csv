@@ -225,3 +225,28 @@ ru,en,day,note
 нормально,okay,12,a result word in task 4
 проверяю / нажали,checking / clicked,12,
 Смешала / Разделила,Mixed / Separated,12,labels of a compare block
+функция-выражение,function expression,13,a function where a value is expected
+анонимная функция,anonymous function,13,a function without a name
+стрелочная функция: короткое тело / блок,arrow function: short body / block,13,two kinds of body
+неявный возврат,implicit return,13,switched off by curly braces
+сократить / сокращение,shorten / shortening,13,steps from a function expression to an arrow
+именованная функция-выражение,named function expression,13,the inner name is visible only inside
+немедленно вызываемая функция,immediately invoked function expression (IIFE),13,
+замыкание,closure,13,course 2
+метод объекта / короткая запись метода,object method / shortened method syntax,13,
+поднимается / не поднимается,hoisted / not hoisted,13,labels in the scheme of three forms
+имя от переменной,name from the variable,13,the name property
+годится методом / не годится методом,can be a method / cannot be a method,13,labels in the scheme of three forms
+функции программы / старый код / короткие колбэки,program functions / old code / short callbacks,13,where each form fits
+развернуть / свернуть,unfold / fold,13,reading dense code with arrows
+сломалось,it broke!,13,nine characters like the Russian word so the stack column 6:54 stays
+результат,result,13,named function expression example
+выполнилась сразу / и эта тоже,ran right away / and this one too,13,IIFE output
+не виден снаружи,not visible outside,13,
+очень много / много / мало,very many / many / few,13,size() and the line break example
+Я ...,I am ...,13,the this example: I am undefined
+Выражение — нельзя / Объявление — можно,Expression — not allowed / Declaration — allowed,13,labels of a compare block
+В стеке — anonymous / В стеке — handleClick,In the stack — anonymous / In the stack — handleClick,13,labels of a compare block
+Обычными функциями / Стрелочными,With ordinary functions / With arrows,13,labels of a compare block
+«Стрелки везде» / «function для главного»,“Arrows everywhere” / “function for the main things”,13,labels of a compare block
+оценка,mark,13,the string in task 5 that is joined with m

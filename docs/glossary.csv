@@ -123,3 +123,30 @@ ru,en,day,note
 Трудно / Понятно,Hard / Clear,7,labels of a compare block
 кириллица в порядке строк,letters with marks (Turkmen ä ş ý),7,adapted: they come after all plain Latin letters
 «не 2 и не 1»,“not 2 or 1”,7,adapted: English says or where the code needs &&
+приведение к строке / к числу / к логическому,conversion to a string / to a number / to a boolean,8,the three directions
+молчаливое приведение / явное приведение,silent conversion / explicit conversion,8,
+строковый контекст,string context,8,where an object becomes [object Object]
+сравнение по порядку,order comparison,8,< > <= >=
+научная / шестнадцатеричная запись,scientific notation / hexadecimal,8,1e3 and 0x1f
+вытащить число из текста,pull a number out of text,8,parseInt for 16px
+на границе программы / на входе,at the boundary of the program / at the entrance,8,convert and check once
+маршрут сравнения,the route of a comparison,8,how == takes different paths
+нетранзитивность,non-transitivity,8,
+оценщик,appraiser,8,the analogy for turning an object into a primitive
+таблица приоритетов,precedence table,8,18 levels on MDN
+оператор группировки,grouping operator,8,( )
+ассоциативность,associativity,8,
+слева направо / справа налево,left to right / right to left,8,
+синтаксическая ошибка,syntax error,8,
+«умные» / прямые кавычки,“smart” / straight quotes,8,
+незакрытая скобка / парность скобок,unclosed bracket / pairs of brackets,8,
+фигурная скобка,curly brace,8,
+споткнулся,stumbled,8,the place where the parser stopped
+отступы / автоформатирование,indentation / auto-formatting,8,Shift + Alt + F in VS Code
+приняты / отброшены,accepted / rejected,8,Report card output
+пусто / не число / вне диапазона,empty / is not a number / is out of range,8,reasons in the Report card
+шт.,pcs,8,
+Студент,Student,8,
+пять / первая / вторая,five / first / second,8,strings in examples
+истина / ложь,truthy / falsy,8,strings in task 2
+«18лет»,“18 years”,8,parseInt example in task 8

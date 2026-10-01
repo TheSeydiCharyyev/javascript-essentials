@@ -177,3 +177,20 @@ ru,en,day,note
 А / Б / В,A / B / C,9,labels of fragments in tasks
 Коротко / Точно,Short / Exact,9,labels of a compare block
 Неверно / Верно,Wrong / Right,9,labels of a compare block
+цикл / проход,loop / pass,10,MDN calls a pass an iteration
+заголовок цикла,loop header,10,
+начало / условие / шаг / тело,start / condition / step / body,10,the parts of a for loop
+перебирать,iterate,10,
+вечный цикл,infinite loop,10,
+зависание,hang,10,the tab stops responding
+страховка,safety net,10,a guard counter while debugging
+накопитель / максимум / сборка строки,accumulator / maximum / building a string,10,loop techniques
+ошибка «на единицу»,off-by-one mistake,10,
+вложенные циклы,nested loops,10,
+метка,label,10,break outer
+часовая и минутная стрелки,hour and minute hands,10,the analogy for nested loops
+идти / стоп,go / stop,10,commands in the switch example
+пропущено,skipped,10,Report card output
+двоек нет / первая двойка,no twos / the first two,10,Report card output
+Хватит на N месяцев,Enough for N months,10,
+Сапар,Sapar,10,a name

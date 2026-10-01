@@ -250,3 +250,25 @@ ru,en,day,note
 Обычными функциями / Стрелочными,With ordinary functions / With arrows,13,labels of a compare block
 «Стрелки везде» / «function для главного»,“Arrows everywhere” / “function for the main things”,13,labels of a compare block
 оценка,mark,13,the string in task 5 that is joined with m
+значение по умолчанию / умолчание,default value / default,14,used only on undefined
+остаточный параметр,rest parameter,14,always an array
+обязательный / необязательный параметр,required / optional parameter,14,optional ones go last
+заголовок функции,function header,14,where defaults are written
+явный undefined,explicit undefined,14,a way to say take your own here
+старый приём,old trick,14,num = num || 1
+висячая запятая,trailing comma,14,not allowed after a rest parameter
+настоящий массив,real array,14,a rest parameter versus arguments
+служебный объект arguments,service object arguments,14,
+переобъявление параметра,redeclaring a parameter,14,let over a parameter
+порог,threshold,14,verdict parameters
+шкала,scale,14,
+без имени,unnamed,14,the default name in makeReport
+оценок пока нет,no marks yet,14,makeCard
+не передан обязательный аргумент,missing a required argument,14,required()
+оценки россыпью,loose marks,14,the Report card section title
+бир / ики / уч / дёрт / бяш,bir / iki / üç / dört / bäş,14,Turkmen numbers written in Turkmen Latin: same lengths
+Hoş geldiň / Doglan günüň gutly,Hoş geldiň / Doglan günüň gutly,14,Turkmen phrases in Latin stay as they are
+Список / Оценки / пусто,List / Marks / empty,14,makeList in task 9
+оценок (в makeLine),marks,14,Aman — marks 3
+разбор по шагам,walkthrough,14,where did the marks go
+раскладывать массив,spread an array,14,three dots in a call: day 22

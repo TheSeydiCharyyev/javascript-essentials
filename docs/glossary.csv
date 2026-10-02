@@ -272,3 +272,31 @@ Hoş geldiň / Doglan günüň gutly,Hoş geldiň / Doglan günüň gutly,14,Tur
 оценок (в makeLine),marks,14,Aman — marks 3
 разбор по шагам,walkthrough,14,where did the marks go
 раскладывать массив,spread an array,14,three dots in a call: day 22
+смешанный день,mixed day,15,theory and practice in each lesson
+Теория,Theory,15,nav label of a mixed day instead of Lecture
+резать / разрезание,cut / cutting,15,splitting a task into functions
+программа одной кучей,a program in one pile,15,
+четыре признака,four signs,15,where to cut
+комментарий-заголовок,heading comment,15,a sign of a hidden function name
+имя — это договор,a name is a contract,15,
+вход / тело / выход,input / body / output,15,three places where a function breaks
+печать на границах,printing at the boundaries,15,console.log at the start and before return
+вошло / выходит,in / out,15,labels of debug prints
+точка останова / отладчик,breakpoint / debugger,15,Sources tab
+стек вызовов,call stack,15,read from the bottom up
+место падения / место причины,place of the crash / place of the cause,15,top and bottom of the stack
+уменьшай вход,shrink the input,15,
+крайние случаи,edge cases,15,
+хвост,tail,15,an extra separator at the end of a string
+переписывание маленькими шагами,rewriting in small steps,15,one step — one check
+чек-лист,checklist,15,
+Пришло / Нет,Present / Absent,15,attendance output
+чел.,people,15,unit in withPercent
+группа,group,15,label in a debug print
+годных оценок нет,no valid marks,15,Report card early branch
+Хороших,Good marks,15,task 4 output
+Огулджан,Oguljan,15,Turkmen Latin like Gülnar
+повторение,review,15,mark in the reference table
+Блок 1 — после части 1,Block 1 — after part 1,15,task sections of a mixed day
+было / стало,before / after,15,comments in the notes
+а / б / аба,a / b / aba,15,letters in h() adapted to Latin

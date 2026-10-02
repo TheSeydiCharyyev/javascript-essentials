@@ -533,3 +533,28 @@ DOM (объектная модель документа),DOM (Document Object Mo
 Средний:,Average:,26,task 6 card
 Карточки студентов,Student cards,26,task 6 title
 Сортировка таблицы,Sorting the table,26,task 8 title
+событие,event,27,the browser reports that something happened
+слушатель / обработчик,listener / handler,27,a function called on an event
+объект события,event object,27,the only argument of a listener
+всплытие / перехват,bubbling / capturing,27,phases 3 and 1; 2 is the target
+цель (события),target,27,where the event happened
+делегирование,delegation,27,one listener on the parent
+действие по умолчанию,default action,27,what preventDefault cancels
+фокус,focus,27,the element that gets the keyboard
+раскладка,layout,27,keyboard layout; key depends on it and code does not
+русская раскладка (ф / Ц Ф Ы В),French AZERTY layout (q / Z Q S D),27,the layout example adapted for EN
+Поздороваться,Say hello,27,the #hello button
+Салам!,Salam!,27,kept as the Turkmen greeting
+нажали:,clicked:,27,the log of greet
+прошло … мс,elapsed … ms,27,the timeStamp example
+закрыть / подтвердить,close / confirm,27,Escape and Enter
+абзац услышал,the paragraph heard,27,the keys walkthrough
+ul на спуске,ul on the way down,27,the capturing listener
+стрелка / только первый щелчок,arrow / only the first click,27,removeEventListener and once
+так не делаем,we do not do this,27,the onclick attribute example
+скрипт / опоздал,script / too late,27,the loading section
+своё событие / получено,my own event / received,27,dispatchEvent and EventTarget()
+Удалить,Delete,27,the button in each row
+Табель — студентов: N,Report card — students: N,27,tab title; the RU plural note became an English plural note
+Щелчков: N — хватит,Clicks: N — enough,27,task 8
+Новый 1,New 1,27,task 5 items

@@ -433,3 +433,22 @@ ru-RU: 22.09.2026,en-GB: 22/09/2026,17,locale adapted: Chrome has no tk-TM; en-G
 строка (в ошибке in),string,21,the right operand of in; Chrome prints it in the message
 Было / Стало (схема),Before / Now,21,scheme labels
 одна ссылка на двоих,one reference for two,21,reference scheme
+образец,pattern,22,the left side of destructuring
+деструктуризация массива / объекта,array / object destructuring,22,by position / by name
+пропуск (в образце),skip,22,two commas in a row
+остаток (в образце),the rest,22,three dots in a pattern
+обмен значениями,swapping values,22,two variables in one line without a third one
+переименование,renaming,22,{ name: studentName }
+вложенный образец,nested pattern,22,{ address: { city } }
+умолчание на весь образец,a default for the whole pattern,22,= {} after the pattern
+собирает / раскладывает,collects / spreads,22,three dots in a declaration / in a call or a literal
+необязательный вызов,optional call,22,greet?.()
+короткое замыкание (для ?.),short-circuiting,22,the rest of the chain is skipped; on day 3 it is short-circuit evaluation
+не указан,not given,22,the city fallback; the same length keeps the cheatsheet column
+из (в greet),from,22,the greeting string Meret from not given
+нет телефона,no phone,22,task 8
+Заказ / итого,Order / total,22,task 8
+шесть подвохов,six catches,22,task 9 title
+Справа — массив / Слева — образец,On the right — an array / On the left — a pattern,22,destructuring scheme labels
+Адрес есть / Адреса нет,With address / No address,22,optional chaining scheme labels
+сквозная программа,the program that runs through the course,22,the Report card

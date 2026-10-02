@@ -370,3 +370,26 @@ ru-RU: 22.09.2026,en-GB: 22/09/2026,17,locale adapted: Chrome has no tk-TM; en-G
 тригонометрия / гиперболические / логарифмы,trigonometry / hyperbolic / logarithms,18,
 Мин / Макс,Min / Max,18,Report card columns
 манаты / копейки,manats / kopecks,18,money examples
+массив / индекс,array / index,19,the index starts from zero
+литерал массива,array literal,19,the usual way to create an array
+пустые места / дыры,empty slots / holes,19,the MDN term; reading gives undefined
+ошибка смещения на один,off-by-one error,19,<= instead of <
+стек / очередь,stack / queue,19,LIFO with push and pop / FIFO with push and shift
+меняющие / копирующие методы,changing / copying methods,19,the main idea of the day
+ссылка,reference,19,a variable holds a reference to an array
+корзина покупок,shopping cart,19,
+полка с пронумерованными ячейками,a shelf with numbered cells,19,the analogy for an array
+алма / армыт,alma / armyt,19,Turkmen fruits in Turkmen Latin
+дүйшенбе / шенбе,duşenbe / şenbe,19,Turkmen weekdays in Turkmen Latin
+чай / суу (туркм.),çaý / suw,19,Turkmen words in the splice example
+хлеб / чай / масло,bread / tea / butter,19,cart and join examples
+рис / сахар / соль,rice / sugar / salt,19,task 9
+алгебра / физика / история / химия,algebra / physics / history / chemistry,19,subjects
+физкультура / информатика / геометрия / математика,PE / computer science / geometry / math,19,tasks 3 and 5
+свободно / занято,free / taken,19,fill example
+написал заголовок / добавил картинку / поменял цвет,wrote a heading / added a picture / changed the color,19,the stack example
+привет / как дела? / хорошо / пока / до завтра,hi / how are you? / fine / bye / see you tomorrow,19,the chat in lastThree
+товара в корзине / В корзине,items in the cart / In the cart,19,cart output
+столовая,canteen,19,task 2
+Список,List,19,toString example
+список из N элементов / одно значение,a list of N elements / one value,19,show()

@@ -410,3 +410,26 @@ ru-RU: 22.09.2026,en-GB: 22/09/2026,17,locale adapted: Chrome has no tk-TM; en-G
 Было / Отобрали / Изменили / Свернули,Before / Selected / Changed / Folded,20,chain scheme labels
 штук,items,20,chain scheme labels
 начало / итог,start / result,20,reduce scheme
+литерал объекта,object literal,21,curly braces with key: value pairs
+свойство / ключ,property / key,21,a whole pair is a property; its name is a key
+через точку / через квадратные скобки,through a dot / through square brackets,21,the two kinds of property access
+короткая запись свойства,short form of a property,21,{ name } instead of { name: name }
+числовой ключ,numeric key,21,always comes first and in ascending order
+объект как словарь,an object as a dictionary,21,a lookup table where the key is data
+плохо,poor,21,mark 2 in the verdicts dictionary
+нет такой оценки,no such mark,21,the ?? fallback for a missing key
+цвет фона,page color,21,a key with a space; the same length as in RU keeps the comment column
+светлая (тема),light,21,the default theme
+нетТакого,noSuchOne,21,a missing property in the delete example
+объединение объектов,merging objects,21,Object.assign
+поверхностная копия,shallow copy,21,nested objects stay shared
+копия на всю глубину,a copy to the full depth,21,course 2
+вложенный объект,nested object,21,
+Мир (улица),Mir,21,the street in the address example
+зелёный чай,green tea,21,the shallow copy walkthrough
+чётные / нечётные,even / odd,21,Object.groupBy example and task 8
+ок / нет,ok / no,21,groupBy in the cheatsheet and notes
+дёшево / дорого,cheap / expensive,21,task 8
+строка (в ошибке in),string,21,the right operand of in; Chrome prints it in the message
+Было / Стало (схема),Before / Now,21,scheme labels
+одна ссылка на двоих,one reference for two,21,reference scheme

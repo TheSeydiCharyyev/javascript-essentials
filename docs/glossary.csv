@@ -452,3 +452,25 @@ ru-RU: 22.09.2026,en-GB: 22/09/2026,17,locale adapted: Chrome has no tk-TM; en-G
 Справа — массив / Слева — образец,On the right — an array / On the left — a pattern,22,destructuring scheme labels
 Адрес есть / Адреса нет,With address / No address,22,optional chaining scheme labels
 сквозная программа,the program that runs through the course,22,the Report card
+круг через JSON,the round trip through JSON,23,stringify then parse
+записать строкой / запись,write as a string / written form,23,what stringify produces
+разбор / разобрать,parsing / parse,23,what JSON.parse does
+ошибка разбора,parse error,23,SyntaxError from JSON.parse
+отступ (в stringify),indentation,23,the third argument of stringify
+красивый вывод,pretty output,23,stringify with indentation
+выбор полей,choosing fields,23,the second argument of stringify
+оживитель,reviver,23,the second argument of parse
+циклическая ссылка,circular reference,23,Converting circular structure to JSON
+глубокая копия,deep copy,23,JSON.parse(JSON.stringify(x)) for simple data
+хранилище,store / storage,23,a plain object now; localStorage on day 31
+снимок (в консоли),snapshot,23,console.log of a JSON string
+не разобралось,could not parse,23,parseOrNull message
+данные сломаны / ожидали список; пришло,data is broken / expected a list; got,23,readList messages
+нет такого / битое,no such key / broken,23,task 8 keys
+код (значение secret),code,23,the secret field
+два,two,23,stringify example
+в памяти программы,in program memory,23,round trip scheme label
+Объект / Строка / Снова объект,Object / String / An object again,23,round trip scheme labels
+Можно / Нельзя,Allowed / Not allowed,23,JSON format scheme titles
+один на двоих / у каждого свой,one for both / each has its own,23,deep copy scheme labels
+Туда и обратно / Почини JSON / Своё хранилище,There and back / Fix the JSON / Your own storage,23,task titles

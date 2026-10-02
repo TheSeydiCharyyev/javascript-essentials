@@ -498,3 +498,22 @@ DOM (объектная модель документа),DOM (Document Object Mo
 Просмотреть код,Inspect,24,Chrome context menu item
 вкладка Elements,the Elements tab,24,DevTools
 новый заголовок,a new title,24,cheatsheet
+родословная (видов DOM),lineage,25,Node / Element / HTMLElement
+отражение (атрибута),reflection,25,a property and an attribute are one value
+встроенный стиль,inline style,25,the style attribute as an object
+«верблюдом»,camel case,25,backgroundColor for background-color
+атрибут-флажок,flag attribute,25,presence matters; hidden
+межсайтовый скриптинг (XSS),cross-site scripting (XSS),25,data through innerHTML
+Контрольная в пятницу,Test on Friday,25,the hidden paragraph of the study page
+Староста,Leader,25,the footer example in section 6
+Когда занятия,Class days,25,title attribute example; padded to keep the comment column
+краснй (опечатка),purpel (typo),25,a typo in a style value; same length
+нет-такого,no-such,25,a nonexistent attribute
+Студенты группы:,Group students:,25,the textContent walkthrough
+(5 студентов),(5 students),25,insertAdjacentHTML example
+каждую неделю / Список группы,every week / Group list,25,cheatsheet strings
+Отличников: N из M,Top students: N of M,25,the summary under the table
+«отлично» вместо «отличник»,top instead of top student,25,a verdict missing from VERDICT_CLASS
+текст / жирный / в конец,text / bold / the end,25,notes example strings
+Оценки:,Marks:,25,task 8 card
+Безопасная карточка,A safe card,25,task 8 title

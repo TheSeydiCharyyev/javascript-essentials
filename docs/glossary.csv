@@ -330,3 +330,25 @@ Hoş geldiň / Doglan günüň gutly,Hoş geldiň / Doglan günüň gutly,14,Tur
 сорок дефисов,forty hyphens,16,
 Итог,Result,16,template example
 инициалы,initials,16,task 8
+строгий (о Number),strict,17,the whole string is a number or NaN
+функции-разборщики,parsing functions,17,parseInt and parseFloat read from the left
+хвост после числа,tail,17,the px after 42
+основание системы счисления,base of the numeral system,17,the second argument of parseInt and toString
+двоичная / восьмеричная / шестнадцатеричная,binary / octal / hexadecimal,17,
+ведущий ноль,leading zero,17,parseInt of 08
+бесконечность,infinity,17,
+граница точных целых,the limit of exact integers,17,MAX_SAFE_INTEGER
+погрешность,error,17,the tiny binary error in 0.1 + 0.2
+значащие цифры / научная запись,significant digits / scientific notation,17,toPrecision / toExponential
+копейки,kopecks,17,money counted in integers; the variable kopecks keeps its name
+миллисекунды,milliseconds,17,a date is a number of them
+месяцы с нуля,months from zero,17,
+неверная дата,invalid date,17,Invalid Date
+часовой пояс,time zone,17,UTC+5 in Turkmenistan
+22 сентября 2026,22 September 2026,17,
+ru-RU: 22.09.2026,en-GB: 22/09/2026,17,locale adapted: Chrome has no tk-TM; en-GB keeps the day first and 24 hours
+Табель на,Report card for,17,makeTitle
+не дата / дата есть,not a date / there is a date,17,
+кг,kg,17,parseFloat example
+четверть,term,17,days to the end of the term
+по-человечески,the human way,17,section about toLocaleDateString

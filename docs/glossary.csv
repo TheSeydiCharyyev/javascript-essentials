@@ -300,3 +300,33 @@ Hoş geldiň / Doglan günüň gutly,Hoş geldiň / Doglan günüň gutly,14,Tur
 Блок 1 — после части 1,Block 1 — after part 1,15,task sections of a mixed day
 было / стало,before / after,15,comments in the notes
 а / б / аба,a / b / aba,15,letters in h() adapted to Latin
+строка не меняется,a string does not change,16,every method returns a new string
+цепочка методов,chain of methods,16,each step returns a new string
+с начала / с конца,from the start / from the end,16,indices
+единица (в length),unit,16,length counts units not letters
+значок,icon,16,an emoji has length 2
+граница,boundary,16,a gap between characters in slice
+регистр / верхний / нижний,case / upper / lower,16,toUpperCase toLowerCase
+чистим края,cleaning the edges,16,trim
+неразрывный пробел / пробел нулевой ширины,non-breaking space / zero-width space,16,
+дополнить до ширины / добивка,pad to a width / padding,16,padStart padEnd
+ведущие нули,leading zeros,16,
+обратные кавычки,backticks,16,template literals
+коды символов,character codes,16,
+система счисления,numeral system,16,toString(2)
+объектные строки,string objects,16,valueOf
+Имя / Средн / Оц / Вердикт,Name / Avg / Num / Verdict,16,Report card table header
+нет годных оценок,no valid marks,16,the same words as day 15
+НАЙТИ / ОТРЕЗАТЬ / ПОПРАВИТЬ / СОБРАТЬ,FIND / CUT / ADJUST / BUILD,16,groups of string methods
+аман / Аман / АмАн,aman / Aman / AmAn,16,case examples
+Туркменистан,Turkmenistan,16,slice gives the same pieces: Turk / menistan / nistan
+Ашхабад / Туркменабат,Ashgabat / Turkmenabat,16,cities in task 5
+Ыклымова / ходжаев,Yklymowa / hojaýew,16,Turkmen Latin surnames in task 8
+1040 / 1084 (А / м),65 / 109 (A / m),16,character codes adapted to Latin letters
+Первая строка / Вторая строка,First line / Second line,16,
+не подставится,not substituted,16,
+поди пойми / сразу ясно,go figure / clear at once,16,
+нашлось / нашли на позиции,found / found at position,16,
+сорок дефисов,forty hyphens,16,
+Итог,Result,16,template example
+инициалы,initials,16,task 8

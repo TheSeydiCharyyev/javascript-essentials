@@ -474,3 +474,27 @@ ru-RU: 22.09.2026,en-GB: 22/09/2026,17,locale adapted: Chrome has no tk-TM; en-G
 Можно / Нельзя,Allowed / Not allowed,23,JSON format scheme titles
 один на двоих / у каждого свой,one for both / each has its own,23,deep copy scheme labels
 Туда и обратно / Почини JSON / Своё хранилище,There and back / Fix the JSON / Your own storage,23,task titles
+DOM (объектная модель документа),DOM (Document Object Model),24,the tree the browser builds from HTML
+дерево DOM,DOM tree,24,
+узел / элемент / текстовый узел,node / element / text node,24,nodeType 1 and 3
+корень / родитель / дети / соседи,root / parent / children / siblings,24,tree words
+предки / потомки / лист,ancestors / descendants / leaf,24,tree words
+порядок дерева,tree order,24,the order in which tags open in the file
+селектор,selector,24,the CSS notation that querySelector takes
+решётка,hash,24,# before an id in a selector
+живая коллекция / снимок,live collection / snapshot,24,getElementsBy… versus querySelectorAll
+переход (по дереву),transition,24,parentElement / nextElementSibling and the like
+учебная страница,study page,24,Group JS-1
+Группа JS-1,Group JS-1,24,the study page title
+Список / Расписание,List / Schedule,24,nav links of the study page
+Занятия: пн ср пт,Classes: Mon Wed Fri,24,the info paragraph; commas dropped here
+пропустил / был / не ученик,absent / present / not a student,24,kind() results
+шапка / список / подвал / другое,header / list / footer / other,24,where() results in task 6
+Понедельник … Пятница,Monday … Friday,24,task 4 schedule
+выходные (дни без занятий),days off,24,the off class in task 4
+Выходные — суббота и воскресенье,Weekend — Saturday and Sunday,24,task 4 note
+Табель группы JS-1,Report card of group JS-1,24,the h1 of the table page
+Табель: N студентов,Report card: N students,24,the tab title
+Просмотреть код,Inspect,24,Chrome context menu item
+вкладка Elements,the Elements tab,24,DevTools
+новый заголовок,a new title,24,cheatsheet

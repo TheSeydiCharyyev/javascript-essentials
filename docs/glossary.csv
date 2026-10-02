@@ -352,3 +352,21 @@ ru-RU: 22.09.2026,en-GB: 22/09/2026,17,locale adapted: Chrome has no tk-TM; en-G
 кг,kg,17,parseFloat example
 четверть,term,17,days to the end of the term
 по-человечески,the human way,17,section about toLocaleDateString
+коробка с функциями,a box of functions,18,what Math is
+к ближайшему / вниз / вверх / отбросить,to the nearest / down / up / drop,18,round / floor / ceil / trunc
+кратное пяти,a multiple of five,18,
+шаг округления,rounding step,18,divide / round / multiply
+модуль / знак,absolute value / sign,18,abs / sign
+степень / квадратный корень / кубический корень,power / square root / cube root,18,
+гипотенуза,hypotenuse,18,hypot
+исход,outcome,18,of a random roll
+бросок кубика,dice roll,18,
+орёл или решка,heads or tails,18,
+счётчик частот,frequency counter,18,checking random formulas with statistics
+больше / меньше / угадал!,higher / lower / you got it!,18,checkGuess answers
+это не целое число,this is not an integer,18,checkGuess answer
+разброс,spread,18,maximum minus minimum
+радианы / градусы,radians / degrees,18,
+тригонометрия / гиперболические / логарифмы,trigonometry / hyperbolic / logarithms,18,
+Мин / Макс,Min / Max,18,Report card columns
+манаты / копейки,manats / kopecks,18,money examples

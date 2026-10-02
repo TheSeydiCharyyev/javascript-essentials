@@ -558,3 +558,44 @@ ul на спуске,ul on the way down,27,the capturing listener
 Табель — студентов: N,Report card — students: N,27,tab title; the RU plural note became an English plural note
 Щелчков: N — хватит,Clicks: N — enough,27,task 8
 Новый 1,New 1,27,task 5 items
+форма,form,28,HTMLFormElement
+анкета,the student form,28,the form of the lecture; id student-form
+поле ввода,input field,28,HTMLInputElement
+флажок,checkbox,28,type checkbox; the checked property
+переключатель,radio button,28,type radio; one of a group
+подпись поля,label,28,the label tag
+значение по умолчанию,default value,28,the checked attribute; what reset restores
+отправка формы,submitting a form,28,the submit event
+кнопка отправки,submit button,28,a button without type
+проверка ввода,input validation,28,
+встроенная проверка,built-in validation,28,the required attribute
+обязательное поле,required field,28,
+подсказка в поле,placeholder hint,28,placeholder
+подсветка ошибки,error highlight,28,the invalid class
+живой поиск,live search,28,
+модальное окно,modal window,28,alert confirm prompt
+Имя / Оценки / Группа,Name / Marks / Group,28,labels of the student form
+был на занятии / пропустил занятие,was in class / missed class,28,the checkbox label and section 5
+Добавить / Очистить,Add / Clear,28,form buttons
+отправка,sending,28,console label in section 7
+Добавлено! / Добавлен: имя / Готово,Added! / Added: name / Done,28,messages under the form
+Введите имя,Enter a name,28,
+Букв: N,Letters: N,28,the counter of section 5 and task 3
+слишком длинно,too long,28,task 3
+Поиск / Найдено: N,Search / Found: N,28,live search
+Никого не нашли,Nobody found,28,task 6
+Сохранено,Saved,28,alert
+Очистить анкету?,Clear the form?,28,confirm
+Ваше имя? / Как вас зовут?,Your name? / What is your name?,28,prompt
+Отмена,Cancel,28,the dialog button
+Заполните это поле.,Please fill out this field.,28,the Chrome hint for required
+принято,accepted,28,the change listener of the cheatsheet
+Такой студент уже есть,This student already exists,28,the Report card form
+Введите хотя бы одну оценку,Enter at least one mark,28,the Report card form
+Удалить: имя?,Delete name?,28,confirm before deleting a row
+Имя слишком короткое / Введите оценки,The name is too short / Enter the marks,28,task 5
+Оценки — цифры от 2 до 5,Marks are digits from 2 to 5,28,task 5
+Подсказка / Показать подсказку,Hint / Show a hint,28,a button that must not submit
+Огулджан Ильясовна Бер,Oguljan Ilýasowna Berd,28,task 3: 22 characters in both
+шесть подвохов,six traps,28,task 9
+форма туда и обратно,the form there and back,28,task 8

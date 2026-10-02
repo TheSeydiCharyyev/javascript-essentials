@@ -517,3 +517,19 @@ DOM (объектная модель документа),DOM (Document Object Mo
 текст / жирный / в конец,text / bold / the end,25,notes example strings
 Оценки:,Marks:,25,task 8 card
 Безопасная карточка,A safe card,25,task 8 title
+Ильяс / Назик / Бахар,Ilýas / Nazik / Bahar,26,new students; Turkmen Latin like Gülnar
+Куратор,Tutor,26,the paragraph after the heading
+создать / наполнить / вставить,create / fill / insert,26,the order of work with a new element
+вставка переносит,inserting moves,26,a node cannot stand in two places
+глубокая / мелкая копия (cloneNode),deep / shallow copy,26,cloneNode(true) and cloneNode()
+новый / старый набор методов,the new / old set of methods,26,append and the like versus appendChild and the like
+создаём сверху вниз / прикрепляем снизу вверх,create from the top down / attach from the bottom up,26,the MDN rule for building a piece of the tree
+перерисовать,redraw,26,clear and insert again
+строка / столбец (в ячейке),row / column,26,the MDN table example
+Аман — оценка,Aman — mark,26,append with a string and a node; padded to keep the comment column
+Аман (копия),Aman (copy),26,cloneNode example
+просто текст,just text,26,replaceWith with a string
+до / в начале / в конце / после,before / at the start / at the end / after,26,task 2 paragraphs
+Средний:,Average:,26,task 6 card
+Карточки студентов,Student cards,26,task 6 title
+Сортировка таблицы,Sorting the table,26,task 8 title

@@ -393,3 +393,20 @@ ru-RU: 22.09.2026,en-GB: 22/09/2026,17,locale adapted: Chrome has no tk-TM; en-G
 столовая,canteen,19,task 2
 Список,List,19,toString example
 список из N элементов / одно значение,a list of N elements / one value,19,show()
+метод перебора,iteration method,20,forEach / map / filter / reduce
+колбэк получает три аргумента,the callback gets three arguments,20,value / index / array
+накопленное значение / начальное значение,accumulated value / initial value,20,reduce
+свернуть в одно,fold into one,20,reduce
+цепочка методов массива,chain of array methods,20,filter then map then reduce
+истинно от пустоты,vacuous truth,20,every on an empty array
+функция сравнения,compare function,20,sort
+по возрастанию / по убыванию,ascending / descending,20,
+параллельные массивы,parallel arrays,20,items and prices linked by index
+наценка,markup,20,
+оценка (в выводе),mark,20,the label in forEach and map examples
+нашли двойку / пятёрка есть,found a two / there is a five,20,
+не функция / по возрастанию (аргумент sort),not a function / ascending,20,wrong arguments of sort in examples
+м (знак маната),m,20,the manat sign in the cart string
+Было / Отобрали / Изменили / Свернули,Before / Selected / Changed / Folded,20,chain scheme labels
+штук,items,20,chain scheme labels
+начало / итог,start / result,20,reduce scheme

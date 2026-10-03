@@ -711,3 +711,27 @@ ul на спуске,ul on the way down,27,the capturing listener
 как в каталоге / новые сначала / по названию,as in the catalog / newest first / by title,32,task 5
 Показать ещё,Show more,32,task 6
 род.,born,32,task 8
+итоговый проект,final project,33,days 33–36
+замысел одним предложением,the idea in one sentence,33,who for / what / why
+таблица возможностей,feature table,33,every row has a way to check it
+потом / не делает,later / does not do,33,the two lists under the feature table
+макет,mockup,33,drawn narrow like a phone screen
+рама,frame,33,markup without data
+каркас,skeleton,33,stubs and listeners with a plan inside
+заглушка,stub,33,returns a value of the same type
+сторож,guard,33,checkData after every loading
+проверки до кода,checks before the code,33,the stub must fail them
+колода,deck,33,deck()
+Карточки слов,Word cards,33,the example project of days 33–35
+Знаю / Повторить / Начать сначала,I know / Again / Start over,33,
+Все выучены,All learned,33,the plan of day 34
+Выучено: N из M,Learned: N of M,33,the counter
+Слов нет,No words,33,
+Не удалось загрузить слова,Could not load the words,33,
+школа / еда / дом,school / food / home,33,topics in words.json
+книга / учитель / урок / хлеб / вода / яблоко / дом / окно,kitap / mugallym / sapak / çörek / suw / alma / jaý / penjire,33,the translations in words.json: Turkmen in the English course
+перемешать колоду,shuffle the deck,33,the later list
+меню кафе / афиша / викторина / справочник,a cafe menu / an events listing / a quiz / a reference guide,33,ideas
+расписание / трекер привычек / список покупок,a timetable / a habit tracker / a shopping list,33,ideas
+у слова не хватает поля / номера повторяются,a word is missing a field / numbers repeat,33,assert messages
+регистрация и вход / чат / рейтинг / тёмная тема,sign-up and log-in / a chat / a leaderboard / a dark theme,33,the wish list

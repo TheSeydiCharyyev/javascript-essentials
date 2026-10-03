@@ -750,3 +750,20 @@ ul на спуске,ul on the way down,27,the capturing listener
 клавиши: пробел — перевернуть,keys: Space — flip,34,the later list
 с оговоркой,with a reservation,34,a mark in the feature table
 доработка,polishing,34,day 35
+режим телефона,phone mode,35,DevTools Ctrl + Shift + M
+адрес компьютера в сети,the address of the computer in the network,35,the IPv4 line of ipconfig
+строка viewport,the viewport line,35,without it innerWidth is 980
+проверка худшего,checking the worst,35,the narrowest screen / the thickest finger / the longest word
+интернационализация,internasionallaşdyrylma,35,the test translation of section 4: long enough to stick out of the card
+данные проверяют на входе,data is checked at the entrance,35,readLearned / the empty file / foreign numbers
+тренажёр,the trainer,35,#trainer is hidden until everything has loaded
+в файле нет слов,the file has no words,35,throw in load
+три прохода,three passes,35,run it / a map / one action
+замечание,remark,35,where · what I did · what I saw · what I expected
+отзыв,feedback,35,
+сделать / объяснить / отложить,do it / explain / postpone,35,the three answers to a remark
+обмен с соседом,a swap with a neighbor,35,
+перемешивание Фишера — Йетса,the Fisher–Yates shuffle,35,shuffle()
+сценарий показа,the demo scenario,35,for the defense
+перекос,skew,35,task 9
+упрощённое перемешивание,a simplified shuffle,35,simpleShuffle

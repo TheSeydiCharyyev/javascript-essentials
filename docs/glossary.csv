@@ -664,3 +664,27 @@ ul на спуске,ul on the way down,27,the capturing listener
 Обновить,Refresh,30,task 7
 Удалено: текст Отменить,Deleted: text Undo,30,task 8
 шесть,six,30,task 9 error text
+сервер,server,31,a program that keeps data and gives it out on request
+запрос / ответ,request / response,31,
+статус ответа,response status,31,200 404 500
+тело ответа,response body,31,read once
+заголовки ответа,response headers,31,content-type
+сбой сети,network failure,31,TypeError: Failed to fetch
+асинхронная функция,asynchronous function,31,async; always returns a promise
+хранилище браузера,browser storage,31,localStorage and sessionStorage
+ключ / значение,key / value,31,storage pairs
+приставка ключа,key prefix,31,todo: and tabel:
+адрес сервера,server address,31,origin: the scheme and the name and the port
+кодирование адреса,encoding an address,31,encodeURIComponent
+черновик формы,draft of a form,31,sessionStorage
+вкладка Network / Application,the Network / Application tab,31,developer tools
+Загрузить,Load,31,the button of the group page
+Сервер ответил N,Server replied N,31,same length as the Russian so the comment columns hold
+оценок N,N marks,31,the list item of the group page
+Вы открыли страницу N-й раз,Visit number N,31,the visit counter; no ordinal suffix needed
+нет такого,no such key,31,a missing key
+начали / пришло,started / received,31,the await order example
+нет оценок,no marks,31,task 4
+Начать заново,Start over,31,task 6
+Сбросить,Reset,31,task 7
+Каталог,Catalog,31,the mini project of day 32

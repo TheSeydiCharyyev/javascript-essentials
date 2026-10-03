@@ -735,3 +735,18 @@ ul на спуске,ul on the way down,27,the capturing listener
 расписание / трекер привычек / список покупок,a timetable / a habit tracker / a shopping list,33,ideas
 у слова не хватает поля / номера повторяются,a word is missing a field / numbers repeat,33,assert messages
 регистрация и вход / чат / рейтинг / тёмная тема,sign-up and log-in / a chat / a leaderboard / a dark theme,33,the wish list
+работа по плану,working by the plan,34,one task — code — check — mark
+Если застряли,If you are stuck,34,section 1
+текущая карточка,the current card,34,current() from the deck and the position
+по кругу,in a circle,34,% keeps the position within the deck
+переворот,flipping,34,flipped = !flipped
+пустое состояние,the empty state,34,a clear text / extra buttons hidden / a guarded listener
+зависимые данные сбрасываются вместе,dependent data is reset together,34,flipped and position
+функция-проверка,check function,34,testDeck and testCurrent
+план и факт,plan and actual,34,section 16
+перерасход,overrun,34,recount the next day instead of hurrying
+Все слова темы выучены!,All the words of this topic are learned!,34,the card on an empty deck
+Забыть все выученные слова?,Forget all the learned words?,34,the confirm of Start over
+клавиши: пробел — перевернуть,keys: Space — flip,34,the later list
+с оговоркой,with a reservation,34,a mark in the feature table
+доработка,polishing,34,day 35

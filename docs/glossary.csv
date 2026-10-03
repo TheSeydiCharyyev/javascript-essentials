@@ -599,3 +599,32 @@ ul на спуске,ul on the way down,27,the capturing listener
 Огулджан Ильясовна Бер,Oguljan Ilýasowna Berd,28,task 3: 22 characters in both
 шесть подвохов,six traps,28,task 9
 форма туда и обратно,the form there and back,28,task 8
+мини-проект,mini project,29,a project day after a module
+список дел,to-do list,29,the mini project; the page title To-do list
+дело,task,29,an object { id text done }; the exercises of a day are tasks too
+пункт списка,list item,29,makeItem
+перерисовать,redraw,29,render()
+страница — картинка данных,the page is a picture of the data,29,the main scheme
+постоянный номер,permanent number,29,id; a position changes
+счётчик номеров,number counter,29,nextId
+крайний случай,edge case,29,section 15
+тихая ошибка,silent mistake,29,section 14
+чек-лист готовности,readiness checklist,29,the notes
+Что нужно сделать?,What needs to be done?,29,placeholder
+Все / Активные / Сделанные,All / Active / Done,29,filter buttons
+Удалить сделанные,Clear done,29,the button clear-done
+Осталось: N из M,Left: N of M,29,the counter
+Напишите что нужно сделать,Write what needs to be done,29,the empty input error
+Слишком длинно: не больше 60 знаков,Too long: no more than 60 characters,29,
+Повторить день 26 / Сделать задания дня 28 / Прочитать про события на MDN,Review day 26 / Do the tasks of day 28 / Read about events on MDN,29,the initial tasks
+Купить тетрадь / Купить хлеб / Купить сок,Buy a notebook / Buy bread / Buy juice,29,added tasks
+Проверка,Test,29,the makeItem check
+жирно,bold,29,the markup edge case
+Отметить все / Снять отметки,Check all / Uncheck all,29,task 5
+Поиск по делам / Ничего не нашлось,Search tasks / Nothing found,29,task 6
+за / ДЕНЬ / ть,task / REVIEW / e,29,task 6 search examples chosen for the English texts
+важное дело,important task,29,task 7
+Повторить дни 26 и 27,Review days 26 and 27,29,task 8
+Рама и данные,The frame and the data,29,task 1
+Доводим края,Polishing the edges,29,task 4
+Три жалобы,Three complaints,29,task 9

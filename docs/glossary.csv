@@ -597,7 +597,6 @@ ul на спуске,ul on the way down,27,the capturing listener
 Оценки — цифры от 2 до 5,Marks are digits from 2 to 5,28,task 5
 Подсказка / Показать подсказку,Hint / Show a hint,28,a button that must not submit
 Огулджан Ильясовна Бер,Oguljan Ilýasowna Berd,28,task 3: 22 characters in both
-шесть подвохов,six traps,28,task 9
 форма туда и обратно,the form there and back,28,task 8
 мини-проект,mini project,29,a project day after a module
 список дел,to-do list,29,the mini project; the page title To-do list
@@ -628,3 +627,40 @@ ul на спуске,ul on the way down,27,the capturing listener
 Рама и данные,The frame and the data,29,task 1
 Доводим края,Polishing the edges,29,task 4
 Три жалобы,Three complaints,29,task 9
+таймер,timer,30,setTimeout and setInterval
+задержка,delay,30,in milliseconds; means not earlier than
+номер таймера,timer number,30,what setTimeout returns
+синхронный / асинхронный,synchronous / asynchronous,30,
+поток выполнения,thread of execution,30,one per page
+промис,promise,30,
+ожидание / выполнен / отклонён / завершён,pending / fulfilled / rejected / settled,30,the states of a promise
+цепочка промисов,promise chain,30,then after then
+исполнитель,executor,30,the function given to new Promise
+ад обратных вызовов,callback hell,30,the MDN term
+плавающий промис,floating promise,30,a promise not returned from a step
+Секундомер,Stopwatch,30,the study page
+Старт / Стоп / Сброс,Start / Stop / Reset,30,stopwatch buttons
+Заметка,Note,30,placeholder
+Прошло две секунды,Two seconds have passed,30,
+Пора отдохнуть!,Time for a break!,30,
+Удалено,Deleted,30,flash message
+Загрузка…,Loading…,30,
+Не удалось загрузить,Could not load,30,the catch of the Report card
+Нет связи,No network,30,failLater example
+Сервер не ответил / Сервер спит,The server did not respond / The server is asleep,30,
+орёл,heads,30,the coin
+сейчас / потом,now / afterwards,30,Promise.resolve example; afterwards avoids the name later
+до / после / исполнитель,before / after / executor,30,order examples
+первый / второй / третий,first / second / third,30,timers and resolve calls
+шаг,step,30,the ladder and the chain
+обычный код,ordinary code,30,delay 0
+пришло,received,30,then example
+Из таймера / поймали,From a timer / caught,30,throw inside a timer
+поздно,too late,30,the third call in the executor
+А Б В Г Д,A B C D E,30,task 1 letters
+Время!,Time!,30,task 2
+Нет студента / запрос закончен,No student / request finished,30,task 5
+Айна,Aýna,30,task 6; Turkmen Latin like Ilýas
+Обновить,Refresh,30,task 7
+Удалено: текст Отменить,Deleted: text Undo,30,task 8
+шесть,six,30,task 9 error text

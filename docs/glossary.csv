@@ -688,3 +688,26 @@ ul на спуске,ul on the way down,27,the capturing listener
 Начать заново,Start over,31,task 6
 Сбросить,Reset,31,task 7
 Каталог,Catalog,31,the mini project of day 32
+каталог книг,book catalog,32,the mini project
+карточка,card,32,makeCard
+избранное,favorites,32,the numbers of favorite books in localStorage
+жанр,genre,32,
+три состояния,three states,32,loading / data / error
+источник правды,source of truth,32,the server for the books
+без повторов,without repeats,32,the genre buttons
+сначала прочитать — потом записывать,first read — then write,32,the favorites walkthrough
+Каталог книг,Book catalog,32,the page title
+Название или автор,Title or author,32,placeholder
+Только избранное,Only favorites,32,the checkbox
+Показано: N из M,Shown: N of M,32,the counter
+Не удалось загрузить каталог,Could not load the catalog,32,
+в избранное / в избранном,to favorites / in favorites,32,the star button
+все,all,32,the genre button
+повесть / роман / детектив / фэнтези / сказка,novella / novel / detective / fantasy / fairy tale,32,genres
+Капитанская дочка / Преступление и наказание / Война и мир / Собака Баскервилей,The Captain’s Daughter / Crime and Punishment / War and Peace / The Hound of the Baskervilles,32,books 1–4
+Хоббит / Маленький принц / Старик и море / Гарри Поттер и философский камень,The Hobbit / The Little Prince / The Old Man and the Sea / Harry Potter and the Philosopher’s Stone,32,books 5–8
+Лев Толстой / Джон Толкин / Джоан Роулинг,Leo Tolstoy / John Tolkien / Joanne Rowling,32,authors as the Russian source names them
+толст / ин / и,tolst / to / e,32,search examples chosen for the English titles: 1 / 5 / 8 books
+как в каталоге / новые сначала / по названию,as in the catalog / newest first / by title,32,task 5
+Показать ещё,Show more,32,task 6
+род.,born,32,task 8
